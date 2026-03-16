@@ -1,0 +1,6 @@
+# Ignore VSCode files
+.vscode/
+
+# Ignore bin and obj files
+eHotels/bin/
+eHotels/obj/
