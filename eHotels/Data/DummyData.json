@@ -1,0 +1,228 @@
+{
+  "Address": [
+    { "StreetNum": 123, "StreetName": "Maple Avenue", "PostalCode": "K1A0B1", "Province": "Ontario", "Country": "Canada" },
+    { "StreetNum": 456, "StreetName": "Oak Street", "PostalCode": "H2X1Y5", "Province": "Quebec", "Country": "Canada" },
+    { "StreetNum": 789, "StreetName": "Pine Road", "PostalCode": "V6B2W9", "Province": "BC", "Country": "Canada" },
+    { "StreetNum": 321, "StreetName": "Elm Boulevard", "PostalCode": "T2P3C4", "Province": "Alberta", "Country": "Canada" },
+    { "StreetNum": 654, "StreetName": "Cedar Lane", "PostalCode": "M5V2T6", "Province": "Ontario", "Country": "Canada" },
+    { "StreetNum": 987, "StreetName": "Birch Court", "PostalCode": "R3C1A3", "Province": "Manitoba", "Country": "Canada" },
+    { "StreetNum": 111, "StreetName": "Spruce Way", "PostalCode": "S7K1M8", "Province": "Saskatchewan", "Country": "Canada" },
+    { "StreetNum": 222, "StreetName": "Willow Drive", "PostalCode": "E1C4Z6", "Province": "NB", "Country": "Canada" }
+  ],
+
+  "HotelChain": [
+    { "ChainID": 1, "Name": "Prestige Hotels & Resorts", "PostalCode": "K1A0B1" },
+    { "ChainID": 2, "Name": "Summit Stays Group", "PostalCode": "H2X1Y5" },
+    { "ChainID": 3, "Name": "Harbour View Collection", "PostalCode": "V6B2W9" }
+  ],
+
+  "HotelChainEmail": [
+    { "ChainID": 1, "Email": "info@prestige.com" },
+    { "ChainID": 1, "Email": "support@prestige.com" },
+    { "ChainID": 2, "Email": "hello@summitstays.com" },
+    { "ChainID": 2, "Email": "reservations@summitstays.com" },
+    { "ChainID": 3, "Email": "contact@harbourview.com" }
+  ],
+
+  "HotelChainPhone": [
+    { "ChainID": 1, "PhoneNumber": "6135550101" },
+    { "ChainID": 1, "PhoneNumber": "6135550102" },
+    { "ChainID": 2, "PhoneNumber": "5145550201" },
+    { "ChainID": 3, "PhoneNumber": "6045550301" }
+  ],
+
+  "Account": [
+    { "Email": "alice.smith@email.com", "Username": "asmith", "Password": "Pass1234" },
+    { "Email": "bob.jones@email.com", "Username": "bjones", "Password": "Secure99" },
+    { "Email": "carol.white@email.com", "Username": "cwhite", "Password": "Hello567" },
+    { "Email": "david.brown@email.com", "Username": "dbrown", "Password": "Qwerty12" },
+    { "Email": "emma.davis@email.com", "Username": "edavis", "Password": "Winter88" },
+    { "Email": "frank.lee@email.com", "Username": "flee", "Password": "Summer55" },
+    { "Email": "grace.kim@email.com", "Username": "gkim", "Password": "Spring33" },
+    { "Email": "henry.ng@email.com", "Username": "hng", "Password": "Autumn77" },
+    { "Email": "mgr.prestige1@prestige.com", "Username": "mgr_p1", "Password": "MgrPass01" },
+    { "Email": "mgr.summit1@summitstays.com", "Username": "mgr_s1", "Password": "MgrPass02" },
+    { "Email": "mgr.harbour1@harbourview.com", "Username": "mgr_h1", "Password": "MgrPass03" },
+    { "Email": "mgr.prestige2@prestige.com", "Username": "mgr_p2", "Password": "MgrPass04" },
+    { "Email": "mgr.summit2@summitstays.com", "Username": "mgr_s2", "Password": "MgrPass05" }
+  ],
+
+  "Employee": [
+    { "SSN": "100000001", "FirstName": "James",   "LastName": "Carter",  "PostalCode": "K1A0B1", "Position": "Manager",      "HotelID": 1, "Email": "mgr.prestige1@prestige.com" },
+    { "SSN": "100000002", "FirstName": "Linda",   "LastName": "Nguyen",  "PostalCode": "K1A0B1", "Position": "Receptionist", "HotelID": 1, "Email": "alice.smith@email.com" },
+    { "SSN": "100000003", "FirstName": "Marcus",  "LastName": "Bell",    "PostalCode": "K1A0B1", "Position": "Concierge",    "HotelID": 1, "Email": "bob.jones@email.com" },
+    { "SSN": "100000004", "FirstName": "Nina",    "LastName": "Patel",   "PostalCode": "K1A0B1", "Position": "Cleaning",     "HotelID": 1, "Email": "carol.white@email.com" },
+    { "SSN": "100000005", "FirstName": "Oliver",  "LastName": "Grant",   "PostalCode": "H2X1Y5", "Position": "Manager",      "HotelID": 2, "Email": "mgr.summit1@summitstays.com" },
+    { "SSN": "100000006", "FirstName": "Paula",   "LastName": "Hughes",  "PostalCode": "H2X1Y5", "Position": "Receptionist", "HotelID": 2, "Email": "david.brown@email.com" },
+    { "SSN": "100000007", "FirstName": "Quinn",   "LastName": "Foster",  "PostalCode": "H2X1Y5", "Position": "Restaurant",   "HotelID": 2, "Email": "emma.davis@email.com" },
+    { "SSN": "100000008", "FirstName": "Rachel",  "LastName": "Stone",   "PostalCode": "V6B2W9", "Position": "Manager",      "HotelID": 3, "Email": "mgr.harbour1@harbourview.com" },
+    { "SSN": "100000009", "FirstName": "Samuel",  "LastName": "Yuen",    "PostalCode": "V6B2W9", "Position": "Concierge",    "HotelID": 3, "Email": "frank.lee@email.com" },
+    { "SSN": "100000010", "FirstName": "Tina",    "LastName": "Walsh",   "PostalCode": "T2P3C4", "Position": "Manager",      "HotelID": 4, "Email": "mgr.prestige2@prestige.com" },
+    { "SSN": "100000011", "FirstName": "Umar",    "LastName": "Hassan",  "PostalCode": "T2P3C4", "Position": "Cleaning",     "HotelID": 4, "Email": "grace.kim@email.com" },
+    { "SSN": "100000012", "FirstName": "Vera",    "LastName": "Moss",    "PostalCode": "M5V2T6", "Position": "Manager",      "HotelID": 5, "Email": "mgr.summit2@summitstays.com" },
+    { "SSN": "100000013", "FirstName": "Wayne",   "LastName": "Chu",     "PostalCode": "M5V2T6", "Position": "Restaurant",   "HotelID": 5, "Email": "henry.ng@email.com" }
+  ],
+
+  "Hotel": [
+    { "HotelID": 1, "ChainID": 1, "Name": "Prestige Ottawa Downtown",  "PostalCode": "K1A0B1", "Stars": 5, "Manager": "100000001", "Description": "Luxury hotel in the heart of Ottawa with premium amenities." },
+    { "HotelID": 2, "ChainID": 2, "Name": "Summit Montreal Centre",    "PostalCode": "H2X1Y5", "Stars": 4, "Manager": "100000005", "Description": "Modern hotel near Montreal's cultural district." },
+    { "HotelID": 3, "ChainID": 3, "Name": "Harbour View Vancouver",    "PostalCode": "V6B2W9", "Stars": 4, "Manager": "100000008", "Description": "Scenic hotel overlooking Vancouver harbour." },
+    { "HotelID": 4, "ChainID": 1, "Name": "Prestige Calgary Tower",    "PostalCode": "T2P3C4", "Stars": 3, "Manager": "100000010", "Description": "Business-friendly hotel close to Calgary's downtown core." },
+    { "HotelID": 5, "ChainID": 2, "Name": "Summit Toronto Waterfront", "PostalCode": "M5V2T6", "Stars": 5, "Manager": "100000012", "Description": "Upscale waterfront property with stunning lake views." }
+  ],
+
+  "HotelEmail": [
+    { "HotelID": 1, "Email": "ottawa@prestige.com" },
+    { "HotelID": 1, "Email": "reservations.ottawa@prestige.com" },
+    { "HotelID": 2, "Email": "montreal@summitstays.com" },
+    { "HotelID": 3, "Email": "vancouver@harbourview.com" },
+    { "HotelID": 4, "Email": "calgary@prestige.com" },
+    { "HotelID": 5, "Email": "toronto@summitstays.com" }
+  ],
+
+  "HotelPhone": [
+    { "HotelID": 1, "PhoneNumber": "6135550111" },
+    { "HotelID": 2, "PhoneNumber": "5145550222" },
+    { "HotelID": 3, "PhoneNumber": "6045550333" },
+    { "HotelID": 4, "PhoneNumber": "4035550444" },
+    { "HotelID": 5, "PhoneNumber": "4165550555" }
+  ],
+
+  "HotelImage": [
+    { "HotelID": 1, "FileName": "ottawa_lobby.jpg",    "ImageDesc": "Grand lobby with marble floors and chandelier." },
+    { "HotelID": 1, "FileName": "ottawa_pool.jpg",     "ImageDesc": "Heated indoor pool on the 3rd floor." },
+    { "HotelID": 2, "FileName": "montreal_exterior.jpg","ImageDesc": "Modern glass exterior at dusk." },
+    { "HotelID": 3, "FileName": "vancouver_view.jpg",  "ImageDesc": "Panoramic harbour view from rooftop terrace." },
+    { "HotelID": 4, "FileName": "calgary_room.jpg",    "ImageDesc": "Standard king room with city view." },
+    { "HotelID": 5, "FileName": "toronto_suite.jpg",   "ImageDesc": "Penthouse suite with lake view balcony." }
+  ],
+
+  "HotelAmenity": [
+    { "HotelID": 1, "AmenityName": "Spa",          "AmenityDesc": "Full-service spa with massage and sauna." },
+    { "HotelID": 1, "AmenityName": "Indoor Pool",  "AmenityDesc": "Heated pool open 6am–10pm." },
+    { "HotelID": 1, "AmenityName": "Gym",          "AmenityDesc": "24-hour fitness centre with modern equipment." },
+    { "HotelID": 2, "AmenityName": "Restaurant",   "AmenityDesc": "On-site bistro serving local Quebec cuisine." },
+    { "HotelID": 2, "AmenityName": "Gym",          "AmenityDesc": "Fitness room open 5am–11pm." },
+    { "HotelID": 3, "AmenityName": "Rooftop Bar",  "AmenityDesc": "Outdoor bar with harbour views." },
+    { "HotelID": 3, "AmenityName": "Valet Parking","AmenityDesc": "24-hour valet parking service." },
+    { "HotelID": 4, "AmenityName": "Business Center","AmenityDesc": "Meeting rooms and workstations available." },
+    { "HotelID": 5, "AmenityName": "Spa",          "AmenityDesc": "Luxury lakeside spa experience." },
+    { "HotelID": 5, "AmenityName": "Concierge",    "AmenityDesc": "24-hour concierge and errand service." }
+  ],
+
+  "Room": [
+    { "RoomNumber": 101, "HotelID": 1, "Price": 249.99, "Capacity": 2, "View": "City",    "Extendable": false },
+    { "RoomNumber": 102, "HotelID": 1, "Price": 299.99, "Capacity": 2, "View": "Garden",  "Extendable": true  },
+    { "RoomNumber": 201, "HotelID": 1, "Price": 399.99, "Capacity": 4, "View": "City",    "Extendable": true  },
+    { "RoomNumber": 101, "HotelID": 2, "Price": 179.00, "Capacity": 2, "View": "Street",  "Extendable": false },
+    { "RoomNumber": 102, "HotelID": 2, "Price": 219.00, "Capacity": 3, "View": "Courtyard","Extendable": true  },
+    { "RoomNumber": 201, "HotelID": 2, "Price": 320.00, "Capacity": 4, "View": "City",    "Extendable": false },
+    { "RoomNumber": 101, "HotelID": 3, "Price": 275.50, "Capacity": 2, "View": "Harbour", "Extendable": false },
+    { "RoomNumber": 102, "HotelID": 3, "Price": 350.00, "Capacity": 2, "View": "Harbour", "Extendable": true  },
+    { "RoomNumber": 201, "HotelID": 3, "Price": 500.00, "Capacity": 6, "View": "Ocean",   "Extendable": true  },
+    { "RoomNumber": 101, "HotelID": 4, "Price": 139.00, "Capacity": 2, "View": "City",    "Extendable": false },
+    { "RoomNumber": 102, "HotelID": 4, "Price": 159.00, "Capacity": 2, "View": "Mountain","Extendable": true  },
+    { "RoomNumber": 101, "HotelID": 5, "Price": 450.00, "Capacity": 2, "View": "Lake",    "Extendable": false },
+    { "RoomNumber": 201, "HotelID": 5, "Price": 650.00, "Capacity": 4, "View": "Lake",    "Extendable": true  }
+  ],
+
+  "RoomAmenity": [
+    { "RoomNumber": 101, "HotelID": 1, "Amenity": "King Bed" },
+    { "RoomNumber": 101, "HotelID": 1, "Amenity": "Mini Bar" },
+    { "RoomNumber": 102, "HotelID": 1, "Amenity": "Queen Bed" },
+    { "RoomNumber": 102, "HotelID": 1, "Amenity": "Kitchenette" },
+    { "RoomNumber": 201, "HotelID": 1, "Amenity": "Jacuzzi" },
+    { "RoomNumber": 101, "HotelID": 2, "Amenity": "Double Bed" },
+    { "RoomNumber": 101, "HotelID": 3, "Amenity": "King Bed" },
+    { "RoomNumber": 101, "HotelID": 3, "Amenity": "Balcony" },
+    { "RoomNumber": 201, "HotelID": 3, "Amenity": "Full Kitchen" },
+    { "RoomNumber": 201, "HotelID": 3, "Amenity": "Jacuzzi" },
+    { "RoomNumber": 101, "HotelID": 5, "Amenity": "King Bed" },
+    { "RoomNumber": 201, "HotelID": 5, "Amenity": "Two Queen Beds" }
+  ],
+
+  "RoomProblem": [
+    { "RoomNumber": 101, "HotelID": 2, "Problem": "Broken window latch" },
+    { "RoomNumber": 102, "HotelID": 1, "Problem": "Stained carpet" },
+    { "RoomNumber": 101, "HotelID": 4, "Problem": "AC unit is noisy" }
+  ],
+
+  "Customer": [
+    { "IDType": "Passport", "IDNumber": "AB123456", "FirstName": "Alice",   "LastName": "Smith",   "RegistrationDate": "2023-01-15", "PhoneNumber": "6135551001", "PostalCode": "R3C1A3", "Email": "alice.smith@email.com" },
+    { "IDType": "Passport", "IDNumber": "CD789012", "FirstName": "Bob",     "LastName": "Jones",   "RegistrationDate": "2023-03-22", "PhoneNumber": "5145551002", "PostalCode": "S7K1M8", "Email": "bob.jones@email.com" },
+    { "IDType": "DriversLicense", "IDNumber": "DL-ON-334455", "FirstName": "Carol",   "LastName": "White",   "RegistrationDate": "2023-06-01", "PhoneNumber": "4165551003", "PostalCode": "M5V2T6", "Email": "carol.white@email.com" },
+    { "IDType": "DriversLicense", "IDNumber": "DL-AB-998877", "FirstName": "David",   "LastName": "Brown",   "RegistrationDate": "2024-01-10", "PhoneNumber": "4035551004", "PostalCode": "T2P3C4", "Email": "david.brown@email.com" },
+    { "IDType": "Passport", "IDNumber": "EF345678", "FirstName": "Emma",    "LastName": "Davis",   "RegistrationDate": "2024-02-28", "PhoneNumber": "6045551005", "PostalCode": "V6B2W9", "Email": "emma.davis@email.com" },
+    { "IDType": "NationalID", "IDNumber": "NID-112233", "FirstName": "Frank",   "LastName": "Lee",     "RegistrationDate": "2024-05-14", "PhoneNumber": "5145551006", "PostalCode": "H2X1Y5", "Email": "frank.lee@email.com" },
+    { "IDType": "Passport", "IDNumber": "GH901234", "FirstName": "Grace",   "LastName": "Kim",     "RegistrationDate": "2024-07-19", "PhoneNumber": "6135551007", "PostalCode": "K1A0B1", "Email": "grace.kim@email.com" },
+    { "IDType": "DriversLicense", "IDNumber": "DL-MB-556677", "FirstName": "Henry",   "LastName": "Ng",      "RegistrationDate": "2024-09-03", "PhoneNumber": "2045551008", "PostalCode": "E1C4Z6", "Email": "henry.ng@email.com" }
+  ],
+
+  "Booking": [
+    { "BookingID": 1001, "BookingDate": "2024-11-01", "Status": "Occupied",   "StartDate": "2024-12-01", "EndDate": "2024-12-05" },
+    { "BookingID": 1002, "BookingDate": "2024-11-10", "Status": "Scheduled",  "StartDate": "2025-01-15", "EndDate": "2025-01-18" },
+    { "BookingID": 1003, "BookingDate": "2024-11-20", "Status": "Cancelled",  "StartDate": "2025-02-10", "EndDate": "2025-02-12" },
+    { "BookingID": 1004, "BookingDate": "2024-12-01", "Status": "Scheduled",  "StartDate": "2025-03-05", "EndDate": "2025-03-10" },
+    { "BookingID": 1005, "BookingDate": "2024-12-15", "Status": "Occupied",   "StartDate": "2024-12-20", "EndDate": "2024-12-26" },
+    { "BookingID": 1006, "BookingDate": "2025-01-05", "Status": "Scheduled",  "StartDate": "2025-04-01", "EndDate": "2025-04-04" }
+  ],
+
+  "RoomBooking": [
+    { "BookingID": 1001, "RoomNumber": 101, "HotelID": 1 },
+    { "BookingID": 1002, "RoomNumber": 102, "HotelID": 2 },
+    { "BookingID": 1003, "RoomNumber": 101, "HotelID": 3 },
+    { "BookingID": 1004, "RoomNumber": 201, "HotelID": 5 },
+    { "BookingID": 1005, "RoomNumber": 101, "HotelID": 4 },
+    { "BookingID": 1006, "RoomNumber": 102, "HotelID": 1 }
+  ],
+
+  "CustBooking": [
+    { "BookingID": 1001, "IDType": "Passport",       "IDNumber": "AB123456"    },
+    { "BookingID": 1002, "IDType": "Passport",       "IDNumber": "CD789012"    },
+    { "BookingID": 1003, "IDType": "DriversLicense", "IDNumber": "DL-ON-334455"},
+    { "BookingID": 1004, "IDType": "DriversLicense", "IDNumber": "DL-AB-998877"},
+    { "BookingID": 1005, "IDType": "Passport",       "IDNumber": "EF345678"    },
+    { "BookingID": 1006, "IDType": "NationalID",     "IDNumber": "NID-112233"  }
+  ],
+
+  "ArchivedBooking": [
+    { "ArchivedBookingID": 2001, "RoomNumber": 101, "HotelID": 1, "BookingDate": "2023-06-01", "Status": "Occupied",  "StartDate": "2023-07-10", "EndDate": "2023-07-14" },
+    { "ArchivedBookingID": 2002, "RoomNumber": 102, "HotelID": 2, "BookingDate": "2023-08-15", "Status": "Cancelled", "StartDate": "2023-09-01", "EndDate": "2023-09-03" },
+    { "ArchivedBookingID": 2003, "RoomNumber": 101, "HotelID": 3, "BookingDate": "2023-10-20", "Status": "Occupied",  "StartDate": "2023-11-05", "EndDate": "2023-11-08" }
+  ],
+
+  "Renting": [
+    { "RentingID": 3001, "Status": "Finished",  "StartDate": "2024-12-01", "EndDate": "2024-12-05", "InvoiceNumber": 90001, "PaymentMethod": "Credit Card", "Amount": 999,  "ProcessedDate": "2024-12-05" },
+    { "RentingID": 3002, "Status": "Finished",  "StartDate": "2024-12-20", "EndDate": "2024-12-26", "InvoiceNumber": 90002, "PaymentMethod": "Debit Card",  "Amount": 834,  "ProcessedDate": "2024-12-26" },
+    { "RentingID": 3003, "Status": "Occupied",  "StartDate": "2025-01-15", "EndDate": "2025-01-18", "InvoiceNumber": null,  "PaymentMethod": "Cash",        "Amount": 537,  "ProcessedDate": "2025-01-15" },
+    { "RentingID": 3004, "Status": "Cancelled", "StartDate": "2025-02-10", "EndDate": "2025-02-12", "InvoiceNumber": null,  "PaymentMethod": "Credit Card", "Amount": 550,  "ProcessedDate": "2025-02-08" }
+  ],
+
+  "RentedRoom": [
+    { "RentingID": 3001, "RoomNumber": 101, "HotelID": 1 },
+    { "RentingID": 3002, "RoomNumber": 101, "HotelID": 4 },
+    { "RentingID": 3003, "RoomNumber": 102, "HotelID": 2 },
+    { "RentingID": 3004, "RoomNumber": 101, "HotelID": 3 }
+  ],
+
+  "RentingTenant": [
+    { "RentingID": 3001, "IDType": "Passport",       "IDNumber": "AB123456"    },
+    { "RentingID": 3002, "IDType": "Passport",       "IDNumber": "EF345678"    },
+    { "RentingID": 3003, "IDType": "Passport",       "IDNumber": "CD789012"    },
+    { "RentingID": 3004, "IDType": "DriversLicense", "IDNumber": "DL-ON-334455"}
+  ],
+
+  "ArchivedRenting": [
+    { "ArchivedRentingID": 4001, "Status": "Finished", "StartDate": "2023-07-10", "EndDate": "2023-07-14", "InvoiceNumber": 80001, "PaymentMethod": "Credit Card", "Amount": 1200, "ProcessedDate": "2023-07-14" },
+    { "ArchivedRentingID": 4002, "Status": "Finished", "StartDate": "2023-11-05", "EndDate": "2023-11-08", "InvoiceNumber": 80002, "PaymentMethod": "Cash",        "Amount": 826,  "ProcessedDate": "2023-11-08" }
+  ],
+
+  "Review": [
+    { "Email": "alice.smith@email.com", "HotelID": 1, "Rating": 5, "Date": "2024-12-06", "Comments": "Absolutely stunning hotel. Staff were incredibly attentive." },
+    { "Email": "bob.jones@email.com",   "HotelID": 2, "Rating": 4, "Date": "2024-11-20", "Comments": "Great location and comfortable rooms. Restaurant was excellent." },
+    { "Email": "carol.white@email.com", "HotelID": 3, "Rating": 4, "Date": "2023-11-10", "Comments": "Beautiful harbour views. Would definitely return." },
+    { "Email": "emma.davis@email.com",  "HotelID": 4, "Rating": 3, "Date": "2024-12-27", "Comments": "Decent stay. AC was a bit noisy but otherwise fine." },
+    { "Email": "frank.lee@email.com",   "HotelID": 1, "Rating": 5, "Date": "2025-01-02", "Comments": "Best hotel experience I have ever had. Impeccable service." },
+    { "Email": "grace.kim@email.com",   "HotelID": 5, "Rating": 5, "Date": "2025-01-20", "Comments": "The lake view suite was worth every penny. Highly recommend." }
+  ]
+}
