@@ -1,0 +1,74 @@
+{
+    "hotelChains": [
+    {
+      "chainId": 1,
+      "name": "L'Esteen Hotel",
+      "address": "100, Park Avenue, New York",
+      "emailAddresses": [
+        "contact@lesteen.com",
+        "service@lesteen.com",
+        "reservation@lesteen.com"
+      ],
+      "phoneNumbers": [
+        "+1-212-555-0100",
+        "+1-212-555-0200"
+      ]
+    },
+    {
+      "chainId": 2,
+      "name": "Le Germain Resorts",
+      "address": "45, Boulevard de la Croisette, Cannes",
+      "emailAddresses": [
+        "info@legermain.com",
+        "service@legermain.com",
+        "reservation@legermain.com"
+      ],
+      "phoneNumbers": [
+        "+33-4-555-0200",
+        "+33-4-565-0200",
+        "+33-4-557-0200"
+      ]
+    },
+    {
+      "chainId": 3,
+      "name": "Summit Lake Hotels",
+      "address": "8, Bahnhofstrasse, Zurich",
+      "emailAddresses": [
+        "info@summitlake.com",
+        "service@summitlake.com",
+        "reservation@sumitlake.com"
+      ],
+      "phoneNumbers": [
+        "+33-4-555-0200",
+        "+33-4-565-0200",
+        "+33-4-557-0200"
+      ]
+    },
+    {
+      "chainId": 4,
+      "name": "Heritage Grand Hotels",
+      "address": "22, King Street, London",
+      "emailAddresses": [
+        "info@heritagegrand.com",
+        "service@heritagegrand.com",
+        "reservation@legermain.com"
+      ],
+      "phoneNumbers": [
+        "+33-4-555-0200",
+        "+33-4-565-0200",
+        "+33-4-557-0200"
+      ]
+    },
+    {
+      "chainId": 5,
+      "name": "Pacific Horizon Hotels",
+      "address": "300, Orchard Road, Singapore",
+      "emailAddresses": [
+        "guest.services@pacifichorizon.com"
+      ],
+      "phoneNumbers": [
+        "+65-6-555-0500"
+      ]
+    }
+  ]
+}
