@@ -7,11 +7,11 @@
     "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\DBManager\\DBManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\DBManager\\DBManager.csproj",
+        "projectUniqueName": "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\eHotels\\Data\\DBManager\\DBManager.csproj",
         "projectName": "DBManager",
-        "projectPath": "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\DBManager\\DBManager.csproj",
+        "projectPath": "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\eHotels\\Data\\DBManager\\DBManager.csproj",
         "packagesPath": "C:\\Users\\abiSh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\DBManager\\obj\\",
+        "outputPath": "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\eHotels\\Data\\DBManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\abiSh\\AppData\\Roaming\\NuGet\\NuGet.Config"
