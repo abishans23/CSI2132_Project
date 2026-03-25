@@ -1,228 +1,437 @@
 {
-  "Address": [
-    { "StreetNum": 123, "StreetName": "Maple Avenue", "PostalCode": "K1A0B1", "Province": "Ontario", "Country": "Canada" },
-    { "StreetNum": 456, "StreetName": "Oak Street", "PostalCode": "H2X1Y5", "Province": "Quebec", "Country": "Canada" },
-    { "StreetNum": 789, "StreetName": "Pine Road", "PostalCode": "V6B2W9", "Province": "BC", "Country": "Canada" },
-    { "StreetNum": 321, "StreetName": "Elm Boulevard", "PostalCode": "T2P3C4", "Province": "Alberta", "Country": "Canada" },
-    { "StreetNum": 654, "StreetName": "Cedar Lane", "PostalCode": "M5V2T6", "Province": "Ontario", "Country": "Canada" },
-    { "StreetNum": 987, "StreetName": "Birch Court", "PostalCode": "R3C1A3", "Province": "Manitoba", "Country": "Canada" },
-    { "StreetNum": 111, "StreetName": "Spruce Way", "PostalCode": "S7K1M8", "Province": "Saskatchewan", "Country": "Canada" },
-    { "StreetNum": 222, "StreetName": "Willow Drive", "PostalCode": "E1C4Z6", "Province": "NB", "Country": "Canada" }
+  "hotelChains": [
+    {
+      "chainId": 1,
+      "name": "Meridian Luxury Hotels",
+      "address": "100, Park Avenue, New York",
+      "emailAddress": "contact@meridianhotels.com",
+      "phoneNumber": "+1-212-555-0100"
+    },
+    {
+      "chainId": 2,
+      "name": "Azure Coast Resorts",
+      "address": "45, Boulevard de la Croisette, Cannes",
+      "emailAddress": "info@azurecoast.com",
+      "phoneNumber": "+33-4-555-0200"
+    },
+    {
+      "chainId": 3,
+      "name": "Summit Peak Hotels",
+      "address": "8, Bahnhofstrasse, Zurich",
+      "emailAddress": "reservations@summitpeak.com",
+      "phoneNumber": "+41-44-555-0300"
+    },
+    {
+      "chainId": 4,
+      "name": "Heritage Grand Hotels",
+      "address": "22, King Street, London",
+      "emailAddress": "hello@heritagegrand.com",
+      "phoneNumber": "+44-20-555-0400"
+    },
+    {
+      "chainId": 5,
+      "name": "Pacific Horizon Hotels",
+      "address": "300, Orchard Road, Singapore",
+      "emailAddress": "guest.services@pacifichorizon.com",
+      "phoneNumber": "+65-6-555-0500"
+    }
   ],
-
-  "HotelChain": [
-    { "ChainID": 1, "Name": "Prestige Hotels & Resorts", "PostalCode": "K1A0B1" },
-    { "ChainID": 2, "Name": "Summit Stays Group", "PostalCode": "H2X1Y5" },
-    { "ChainID": 3, "Name": "Harbour View Collection", "PostalCode": "V6B2W9" }
-  ],
-
-  "HotelChainEmail": [
-    { "ChainID": 1, "Email": "info@prestige.com" },
-    { "ChainID": 1, "Email": "support@prestige.com" },
-    { "ChainID": 2, "Email": "hello@summitstays.com" },
-    { "ChainID": 2, "Email": "reservations@summitstays.com" },
-    { "ChainID": 3, "Email": "contact@harbourview.com" }
-  ],
-
-  "HotelChainPhone": [
-    { "ChainID": 1, "PhoneNumber": "6135550101" },
-    { "ChainID": 1, "PhoneNumber": "6135550102" },
-    { "ChainID": 2, "PhoneNumber": "5145550201" },
-    { "ChainID": 3, "PhoneNumber": "6045550301" }
-  ],
-
-  "Account": [
-    { "Email": "alice.smith@email.com", "Username": "asmith", "Password": "Pass1234" },
-    { "Email": "bob.jones@email.com", "Username": "bjones", "Password": "Secure99" },
-    { "Email": "carol.white@email.com", "Username": "cwhite", "Password": "Hello567" },
-    { "Email": "david.brown@email.com", "Username": "dbrown", "Password": "Qwerty12" },
-    { "Email": "emma.davis@email.com", "Username": "edavis", "Password": "Winter88" },
-    { "Email": "frank.lee@email.com", "Username": "flee", "Password": "Summer55" },
-    { "Email": "grace.kim@email.com", "Username": "gkim", "Password": "Spring33" },
-    { "Email": "henry.ng@email.com", "Username": "hng", "Password": "Autumn77" },
-    { "Email": "mgr.prestige1@prestige.com", "Username": "mgr_p1", "Password": "MgrPass01" },
-    { "Email": "mgr.summit1@summitstays.com", "Username": "mgr_s1", "Password": "MgrPass02" },
-    { "Email": "mgr.harbour1@harbourview.com", "Username": "mgr_h1", "Password": "MgrPass03" },
-    { "Email": "mgr.prestige2@prestige.com", "Username": "mgr_p2", "Password": "MgrPass04" },
-    { "Email": "mgr.summit2@summitstays.com", "Username": "mgr_s2", "Password": "MgrPass05" }
-  ],
-
-  "Employee": [
-    { "SSN": "100000001", "FirstName": "James",   "LastName": "Carter",  "PostalCode": "K1A0B1", "Position": "Manager",      "HotelID": 1, "Email": "mgr.prestige1@prestige.com" },
-    { "SSN": "100000002", "FirstName": "Linda",   "LastName": "Nguyen",  "PostalCode": "K1A0B1", "Position": "Receptionist", "HotelID": 1, "Email": "alice.smith@email.com" },
-    { "SSN": "100000003", "FirstName": "Marcus",  "LastName": "Bell",    "PostalCode": "K1A0B1", "Position": "Concierge",    "HotelID": 1, "Email": "bob.jones@email.com" },
-    { "SSN": "100000004", "FirstName": "Nina",    "LastName": "Patel",   "PostalCode": "K1A0B1", "Position": "Cleaning",     "HotelID": 1, "Email": "carol.white@email.com" },
-    { "SSN": "100000005", "FirstName": "Oliver",  "LastName": "Grant",   "PostalCode": "H2X1Y5", "Position": "Manager",      "HotelID": 2, "Email": "mgr.summit1@summitstays.com" },
-    { "SSN": "100000006", "FirstName": "Paula",   "LastName": "Hughes",  "PostalCode": "H2X1Y5", "Position": "Receptionist", "HotelID": 2, "Email": "david.brown@email.com" },
-    { "SSN": "100000007", "FirstName": "Quinn",   "LastName": "Foster",  "PostalCode": "H2X1Y5", "Position": "Restaurant",   "HotelID": 2, "Email": "emma.davis@email.com" },
-    { "SSN": "100000008", "FirstName": "Rachel",  "LastName": "Stone",   "PostalCode": "V6B2W9", "Position": "Manager",      "HotelID": 3, "Email": "mgr.harbour1@harbourview.com" },
-    { "SSN": "100000009", "FirstName": "Samuel",  "LastName": "Yuen",    "PostalCode": "V6B2W9", "Position": "Concierge",    "HotelID": 3, "Email": "frank.lee@email.com" },
-    { "SSN": "100000010", "FirstName": "Tina",    "LastName": "Walsh",   "PostalCode": "T2P3C4", "Position": "Manager",      "HotelID": 4, "Email": "mgr.prestige2@prestige.com" },
-    { "SSN": "100000011", "FirstName": "Umar",    "LastName": "Hassan",  "PostalCode": "T2P3C4", "Position": "Cleaning",     "HotelID": 4, "Email": "grace.kim@email.com" },
-    { "SSN": "100000012", "FirstName": "Vera",    "LastName": "Moss",    "PostalCode": "M5V2T6", "Position": "Manager",      "HotelID": 5, "Email": "mgr.summit2@summitstays.com" },
-    { "SSN": "100000013", "FirstName": "Wayne",   "LastName": "Chu",     "PostalCode": "M5V2T6", "Position": "Restaurant",   "HotelID": 5, "Email": "henry.ng@email.com" }
-  ],
-
-  "Hotel": [
-    { "HotelID": 1, "ChainID": 1, "Name": "Prestige Ottawa Downtown",  "PostalCode": "K1A0B1", "Stars": 5, "Manager": "100000001", "Description": "Luxury hotel in the heart of Ottawa with premium amenities." },
-    { "HotelID": 2, "ChainID": 2, "Name": "Summit Montreal Centre",    "PostalCode": "H2X1Y5", "Stars": 4, "Manager": "100000005", "Description": "Modern hotel near Montreal's cultural district." },
-    { "HotelID": 3, "ChainID": 3, "Name": "Harbour View Vancouver",    "PostalCode": "V6B2W9", "Stars": 4, "Manager": "100000008", "Description": "Scenic hotel overlooking Vancouver harbour." },
-    { "HotelID": 4, "ChainID": 1, "Name": "Prestige Calgary Tower",    "PostalCode": "T2P3C4", "Stars": 3, "Manager": "100000010", "Description": "Business-friendly hotel close to Calgary's downtown core." },
-    { "HotelID": 5, "ChainID": 2, "Name": "Summit Toronto Waterfront", "PostalCode": "M5V2T6", "Stars": 5, "Manager": "100000012", "Description": "Upscale waterfront property with stunning lake views." }
-  ],
-
-  "HotelEmail": [
-    { "HotelID": 1, "Email": "ottawa@prestige.com" },
-    { "HotelID": 1, "Email": "reservations.ottawa@prestige.com" },
-    { "HotelID": 2, "Email": "montreal@summitstays.com" },
-    { "HotelID": 3, "Email": "vancouver@harbourview.com" },
-    { "HotelID": 4, "Email": "calgary@prestige.com" },
-    { "HotelID": 5, "Email": "toronto@summitstays.com" }
-  ],
-
-  "HotelPhone": [
-    { "HotelID": 1, "PhoneNumber": "6135550111" },
-    { "HotelID": 2, "PhoneNumber": "5145550222" },
-    { "HotelID": 3, "PhoneNumber": "6045550333" },
-    { "HotelID": 4, "PhoneNumber": "4035550444" },
-    { "HotelID": 5, "PhoneNumber": "4165550555" }
-  ],
-
-  "HotelImage": [
-    { "HotelID": 1, "FileName": "ottawa_lobby.jpg",    "ImageDesc": "Grand lobby with marble floors and chandelier." },
-    { "HotelID": 1, "FileName": "ottawa_pool.jpg",     "ImageDesc": "Heated indoor pool on the 3rd floor." },
-    { "HotelID": 2, "FileName": "montreal_exterior.jpg","ImageDesc": "Modern glass exterior at dusk." },
-    { "HotelID": 3, "FileName": "vancouver_view.jpg",  "ImageDesc": "Panoramic harbour view from rooftop terrace." },
-    { "HotelID": 4, "FileName": "calgary_room.jpg",    "ImageDesc": "Standard king room with city view." },
-    { "HotelID": 5, "FileName": "toronto_suite.jpg",   "ImageDesc": "Penthouse suite with lake view balcony." }
-  ],
-
-  "HotelAmenity": [
-    { "HotelID": 1, "AmenityName": "Spa",          "AmenityDesc": "Full-service spa with massage and sauna." },
-    { "HotelID": 1, "AmenityName": "Indoor Pool",  "AmenityDesc": "Heated pool open 6am–10pm." },
-    { "HotelID": 1, "AmenityName": "Gym",          "AmenityDesc": "24-hour fitness centre with modern equipment." },
-    { "HotelID": 2, "AmenityName": "Restaurant",   "AmenityDesc": "On-site bistro serving local Quebec cuisine." },
-    { "HotelID": 2, "AmenityName": "Gym",          "AmenityDesc": "Fitness room open 5am–11pm." },
-    { "HotelID": 3, "AmenityName": "Rooftop Bar",  "AmenityDesc": "Outdoor bar with harbour views." },
-    { "HotelID": 3, "AmenityName": "Valet Parking","AmenityDesc": "24-hour valet parking service." },
-    { "HotelID": 4, "AmenityName": "Business Center","AmenityDesc": "Meeting rooms and workstations available." },
-    { "HotelID": 5, "AmenityName": "Spa",          "AmenityDesc": "Luxury lakeside spa experience." },
-    { "HotelID": 5, "AmenityName": "Concierge",    "AmenityDesc": "24-hour concierge and errand service." }
-  ],
-
-  "Room": [
-    { "RoomNumber": 101, "HotelID": 1, "Price": 249.99, "Capacity": 2, "View": "City",    "Extendable": false },
-    { "RoomNumber": 102, "HotelID": 1, "Price": 299.99, "Capacity": 2, "View": "Garden",  "Extendable": true  },
-    { "RoomNumber": 201, "HotelID": 1, "Price": 399.99, "Capacity": 4, "View": "City",    "Extendable": true  },
-    { "RoomNumber": 101, "HotelID": 2, "Price": 179.00, "Capacity": 2, "View": "Street",  "Extendable": false },
-    { "RoomNumber": 102, "HotelID": 2, "Price": 219.00, "Capacity": 3, "View": "Courtyard","Extendable": true  },
-    { "RoomNumber": 201, "HotelID": 2, "Price": 320.00, "Capacity": 4, "View": "City",    "Extendable": false },
-    { "RoomNumber": 101, "HotelID": 3, "Price": 275.50, "Capacity": 2, "View": "Harbour", "Extendable": false },
-    { "RoomNumber": 102, "HotelID": 3, "Price": 350.00, "Capacity": 2, "View": "Harbour", "Extendable": true  },
-    { "RoomNumber": 201, "HotelID": 3, "Price": 500.00, "Capacity": 6, "View": "Ocean",   "Extendable": true  },
-    { "RoomNumber": 101, "HotelID": 4, "Price": 139.00, "Capacity": 2, "View": "City",    "Extendable": false },
-    { "RoomNumber": 102, "HotelID": 4, "Price": 159.00, "Capacity": 2, "View": "Mountain","Extendable": true  },
-    { "RoomNumber": 101, "HotelID": 5, "Price": 450.00, "Capacity": 2, "View": "Lake",    "Extendable": false },
-    { "RoomNumber": 201, "HotelID": 5, "Price": 650.00, "Capacity": 4, "View": "Lake",    "Extendable": true  }
-  ],
-
-  "RoomAmenity": [
-    { "RoomNumber": 101, "HotelID": 1, "Amenity": "King Bed" },
-    { "RoomNumber": 101, "HotelID": 1, "Amenity": "Mini Bar" },
-    { "RoomNumber": 102, "HotelID": 1, "Amenity": "Queen Bed" },
-    { "RoomNumber": 102, "HotelID": 1, "Amenity": "Kitchenette" },
-    { "RoomNumber": 201, "HotelID": 1, "Amenity": "Jacuzzi" },
-    { "RoomNumber": 101, "HotelID": 2, "Amenity": "Double Bed" },
-    { "RoomNumber": 101, "HotelID": 3, "Amenity": "King Bed" },
-    { "RoomNumber": 101, "HotelID": 3, "Amenity": "Balcony" },
-    { "RoomNumber": 201, "HotelID": 3, "Amenity": "Full Kitchen" },
-    { "RoomNumber": 201, "HotelID": 3, "Amenity": "Jacuzzi" },
-    { "RoomNumber": 101, "HotelID": 5, "Amenity": "King Bed" },
-    { "RoomNumber": 201, "HotelID": 5, "Amenity": "Two Queen Beds" }
-  ],
-
-  "RoomProblem": [
-    { "RoomNumber": 101, "HotelID": 2, "Problem": "Broken window latch" },
-    { "RoomNumber": 102, "HotelID": 1, "Problem": "Stained carpet" },
-    { "RoomNumber": 101, "HotelID": 4, "Problem": "AC unit is noisy" }
-  ],
-
-  "Customer": [
-    { "IDType": "Passport", "IDNumber": "AB123456", "FirstName": "Alice",   "LastName": "Smith",   "RegistrationDate": "2023-01-15", "PhoneNumber": "6135551001", "PostalCode": "R3C1A3", "Email": "alice.smith@email.com" },
-    { "IDType": "Passport", "IDNumber": "CD789012", "FirstName": "Bob",     "LastName": "Jones",   "RegistrationDate": "2023-03-22", "PhoneNumber": "5145551002", "PostalCode": "S7K1M8", "Email": "bob.jones@email.com" },
-    { "IDType": "DriversLicense", "IDNumber": "DL-ON-334455", "FirstName": "Carol",   "LastName": "White",   "RegistrationDate": "2023-06-01", "PhoneNumber": "4165551003", "PostalCode": "M5V2T6", "Email": "carol.white@email.com" },
-    { "IDType": "DriversLicense", "IDNumber": "DL-AB-998877", "FirstName": "David",   "LastName": "Brown",   "RegistrationDate": "2024-01-10", "PhoneNumber": "4035551004", "PostalCode": "T2P3C4", "Email": "david.brown@email.com" },
-    { "IDType": "Passport", "IDNumber": "EF345678", "FirstName": "Emma",    "LastName": "Davis",   "RegistrationDate": "2024-02-28", "PhoneNumber": "6045551005", "PostalCode": "V6B2W9", "Email": "emma.davis@email.com" },
-    { "IDType": "NationalID", "IDNumber": "NID-112233", "FirstName": "Frank",   "LastName": "Lee",     "RegistrationDate": "2024-05-14", "PhoneNumber": "5145551006", "PostalCode": "H2X1Y5", "Email": "frank.lee@email.com" },
-    { "IDType": "Passport", "IDNumber": "GH901234", "FirstName": "Grace",   "LastName": "Kim",     "RegistrationDate": "2024-07-19", "PhoneNumber": "6135551007", "PostalCode": "K1A0B1", "Email": "grace.kim@email.com" },
-    { "IDType": "DriversLicense", "IDNumber": "DL-MB-556677", "FirstName": "Henry",   "LastName": "Ng",      "RegistrationDate": "2024-09-03", "PhoneNumber": "2045551008", "PostalCode": "E1C4Z6", "Email": "henry.ng@email.com" }
-  ],
-
-  "Booking": [
-    { "BookingID": 1001, "BookingDate": "2024-11-01", "Status": "Occupied",   "StartDate": "2024-12-01", "EndDate": "2024-12-05" },
-    { "BookingID": 1002, "BookingDate": "2024-11-10", "Status": "Scheduled",  "StartDate": "2025-01-15", "EndDate": "2025-01-18" },
-    { "BookingID": 1003, "BookingDate": "2024-11-20", "Status": "Cancelled",  "StartDate": "2025-02-10", "EndDate": "2025-02-12" },
-    { "BookingID": 1004, "BookingDate": "2024-12-01", "Status": "Scheduled",  "StartDate": "2025-03-05", "EndDate": "2025-03-10" },
-    { "BookingID": 1005, "BookingDate": "2024-12-15", "Status": "Occupied",   "StartDate": "2024-12-20", "EndDate": "2024-12-26" },
-    { "BookingID": 1006, "BookingDate": "2025-01-05", "Status": "Scheduled",  "StartDate": "2025-04-01", "EndDate": "2025-04-04" }
-  ],
-
-  "RoomBooking": [
-    { "BookingID": 1001, "RoomNumber": 101, "HotelID": 1 },
-    { "BookingID": 1002, "RoomNumber": 102, "HotelID": 2 },
-    { "BookingID": 1003, "RoomNumber": 101, "HotelID": 3 },
-    { "BookingID": 1004, "RoomNumber": 201, "HotelID": 5 },
-    { "BookingID": 1005, "RoomNumber": 101, "HotelID": 4 },
-    { "BookingID": 1006, "RoomNumber": 102, "HotelID": 1 }
-  ],
-
-  "CustBooking": [
-    { "BookingID": 1001, "IDType": "Passport",       "IDNumber": "AB123456"    },
-    { "BookingID": 1002, "IDType": "Passport",       "IDNumber": "CD789012"    },
-    { "BookingID": 1003, "IDType": "DriversLicense", "IDNumber": "DL-ON-334455"},
-    { "BookingID": 1004, "IDType": "DriversLicense", "IDNumber": "DL-AB-998877"},
-    { "BookingID": 1005, "IDType": "Passport",       "IDNumber": "EF345678"    },
-    { "BookingID": 1006, "IDType": "NationalID",     "IDNumber": "NID-112233"  }
-  ],
-
-  "ArchivedBooking": [
-    { "ArchivedBookingID": 2001, "RoomNumber": 101, "HotelID": 1, "BookingDate": "2023-06-01", "Status": "Occupied",  "StartDate": "2023-07-10", "EndDate": "2023-07-14" },
-    { "ArchivedBookingID": 2002, "RoomNumber": 102, "HotelID": 2, "BookingDate": "2023-08-15", "Status": "Cancelled", "StartDate": "2023-09-01", "EndDate": "2023-09-03" },
-    { "ArchivedBookingID": 2003, "RoomNumber": 101, "HotelID": 3, "BookingDate": "2023-10-20", "Status": "Occupied",  "StartDate": "2023-11-05", "EndDate": "2023-11-08" }
-  ],
-
-  "Renting": [
-    { "RentingID": 3001, "Status": "Finished",  "StartDate": "2024-12-01", "EndDate": "2024-12-05", "InvoiceNumber": 90001, "PaymentMethod": "Credit Card", "Amount": 999,  "ProcessedDate": "2024-12-05" },
-    { "RentingID": 3002, "Status": "Finished",  "StartDate": "2024-12-20", "EndDate": "2024-12-26", "InvoiceNumber": 90002, "PaymentMethod": "Debit Card",  "Amount": 834,  "ProcessedDate": "2024-12-26" },
-    { "RentingID": 3003, "Status": "Occupied",  "StartDate": "2025-01-15", "EndDate": "2025-01-18", "InvoiceNumber": null,  "PaymentMethod": "Cash",        "Amount": 537,  "ProcessedDate": "2025-01-15" },
-    { "RentingID": 3004, "Status": "Cancelled", "StartDate": "2025-02-10", "EndDate": "2025-02-12", "InvoiceNumber": null,  "PaymentMethod": "Credit Card", "Amount": 550,  "ProcessedDate": "2025-02-08" }
-  ],
-
-  "RentedRoom": [
-    { "RentingID": 3001, "RoomNumber": 101, "HotelID": 1 },
-    { "RentingID": 3002, "RoomNumber": 101, "HotelID": 4 },
-    { "RentingID": 3003, "RoomNumber": 102, "HotelID": 2 },
-    { "RentingID": 3004, "RoomNumber": 101, "HotelID": 3 }
-  ],
-
-  "RentingTenant": [
-    { "RentingID": 3001, "IDType": "Passport",       "IDNumber": "AB123456"    },
-    { "RentingID": 3002, "IDType": "Passport",       "IDNumber": "EF345678"    },
-    { "RentingID": 3003, "IDType": "Passport",       "IDNumber": "CD789012"    },
-    { "RentingID": 3004, "IDType": "DriversLicense", "IDNumber": "DL-ON-334455"}
-  ],
-
-  "ArchivedRenting": [
-    { "ArchivedRentingID": 4001, "Status": "Finished", "StartDate": "2023-07-10", "EndDate": "2023-07-14", "InvoiceNumber": 80001, "PaymentMethod": "Credit Card", "Amount": 1200, "ProcessedDate": "2023-07-14" },
-    { "ArchivedRentingID": 4002, "Status": "Finished", "StartDate": "2023-11-05", "EndDate": "2023-11-08", "InvoiceNumber": 80002, "PaymentMethod": "Cash",        "Amount": 826,  "ProcessedDate": "2023-11-08" }
-  ],
-
-  "Review": [
-    { "Email": "alice.smith@email.com", "HotelID": 1, "Rating": 5, "Date": "2024-12-06", "Comments": "Absolutely stunning hotel. Staff were incredibly attentive." },
-    { "Email": "bob.jones@email.com",   "HotelID": 2, "Rating": 4, "Date": "2024-11-20", "Comments": "Great location and comfortable rooms. Restaurant was excellent." },
-    { "Email": "carol.white@email.com", "HotelID": 3, "Rating": 4, "Date": "2023-11-10", "Comments": "Beautiful harbour views. Would definitely return." },
-    { "Email": "emma.davis@email.com",  "HotelID": 4, "Rating": 3, "Date": "2024-12-27", "Comments": "Decent stay. AC was a bit noisy but otherwise fine." },
-    { "Email": "frank.lee@email.com",   "HotelID": 1, "Rating": 5, "Date": "2025-01-02", "Comments": "Best hotel experience I have ever had. Impeccable service." },
-    { "Email": "grace.kim@email.com",   "HotelID": 5, "Rating": 5, "Date": "2025-01-20", "Comments": "The lake view suite was worth every penny. Highly recommend." }
+  "hotels": [
+    {
+      "hotelId": 1,
+      "chainId": 1,
+      "name": "Meridian Grand New York",
+      "address": "101, Park Avenue, New York",
+      "stars": 5,
+      "email": "nyc@meridianhotels.com",
+      "manager": "EMP001",
+      "phoneNumber": "+1-212-555-1001",
+      "description": "A flagship five-star property in the heart of Midtown Manhattan, offering sweeping views of Central Park and world-class dining.",
+      "amenities": [
+        { "amenityName": "Rooftop Pool", "amenityDesc": "Heated infinity pool with panoramic city views" },
+        { "amenityName": "Spa", "amenityDesc": "Full-service spa with 12 treatment rooms" },
+        { "amenityName": "Fine Dining Restaurant", "amenityDesc": "Award-winning French-American cuisine" },
+        { "amenityName": "Fitness Center", "amenityDesc": "24-hour gym with personal trainers on request" },
+        { "amenityName": "Concierge Service", "amenityDesc": "Round-the-clock concierge assistance" }
+      ]
+    },
+    {
+      "hotelId": 2,
+      "chainId": 1,
+      "name": "Meridian Suites Chicago",
+      "address": "500, Michigan Avenue, Chicago",
+      "stars": 4,
+      "email": "chi@meridianhotels.com",
+      "manager": "EMP002",
+      "phoneNumber": "+1-312-555-1002",
+      "description": "Elegant suites on the Magnificent Mile with easy access to the lakefront, museums, and Chicago's vibrant dining scene.",
+      "amenities": [
+        { "amenityName": "Indoor Pool", "amenityDesc": "Temperature-controlled lap pool" },
+        { "amenityName": "Business Center", "amenityDesc": "Fully equipped conference rooms and co-working space" },
+        { "amenityName": "Sky Lounge Bar", "amenityDesc": "Cocktail bar on the 34th floor with lake views" },
+        { "amenityName": "Valet Parking", "amenityDesc": "24-hour valet and self-parking available" }
+      ]
+    },
+    {
+      "hotelId": 3,
+      "chainId": 1,
+      "name": "Meridian Palace Miami",
+      "address": "1200, Collins Avenue, Miami",
+      "stars": 5,
+      "email": "mia@meridianhotels.com",
+      "manager": "EMP003",
+      "phoneNumber": "+1-305-555-1003",
+      "description": "A beachfront resort on South Beach blending Art Deco heritage with modern luxury. Private beach access and a celebrity-favourite pool deck.",
+      "amenities": [
+        { "amenityName": "Private Beach", "amenityDesc": "Reserved beachfront with cabana service" },
+        { "amenityName": "Outdoor Pool", "amenityDesc": "Olympic-length pool with poolside bar" },
+        { "amenityName": "Spa", "amenityDesc": "Caribbean-inspired treatments and hot tub suites" },
+        { "amenityName": "Waterfront Restaurant", "amenityDesc": "Fresh seafood and Latin-fusion menu" }
+      ]
+    },
+    {
+      "hotelId": 4,
+      "chainId": 1,
+      "name": "Meridian Tower Toronto",
+      "address": "88, Wellington Street, Toronto",
+      "stars": 4,
+      "email": "tor@meridianhotels.com",
+      "manager": "EMP004",
+      "phoneNumber": "+1-416-555-1004",
+      "description": "A sleek downtown tower steps from the Financial District and the CN Tower, ideal for both business and leisure travellers.",
+      "amenities": [
+        { "amenityName": "Fitness Center", "amenityDesc": "State-of-the-art equipment and yoga studio" },
+        { "amenityName": "Executive Lounge", "amenityDesc": "Private lounge with complimentary breakfast and evening refreshments" },
+        { "amenityName": "Restaurant", "amenityDesc": "Canadian cuisine with locally sourced ingredients" }
+      ]
+    },
+    {
+      "hotelId": 5,
+      "chainId": 1,
+      "name": "Meridian Boutique Montreal",
+      "address": "350, Rue Saint-Denis, Montreal",
+      "stars": 3,
+      "email": "mtl@meridianhotels.com",
+      "manager": "EMP005",
+      "phoneNumber": "+1-514-555-1005",
+      "description": "A charming boutique hotel in the Plateau-Mont-Royal neighbourhood, surrounded by galleries, bistros, and the best of Montreal's cultural scene.",
+      "amenities": [
+        { "amenityName": "Café", "amenityDesc": "In-house café serving specialty coffee and pastries" },
+        { "amenityName": "Bicycle Rental", "amenityDesc": "Complimentary bikes for exploring the city" }
+      ]
+    },
+    {
+      "hotelId": 6,
+      "chainId": 2,
+      "name": "Azure Riviera Cannes",
+      "address": "46, Boulevard de la Croisette, Cannes",
+      "stars": 5,
+      "email": "cannes@azurecoast.com",
+      "manager": "EMP006",
+      "phoneNumber": "+33-4-555-2001",
+      "description": "A palatial retreat on the Côte d'Azur, host to film stars during the festival season and discerning travellers year-round.",
+      "amenities": [
+        { "amenityName": "Private Beach Club", "amenityDesc": "Exclusive beachfront with sun beds and champagne service" },
+        { "amenityName": "Michelin-Star Restaurant", "amenityDesc": "Provençal seafood by a two-star chef" },
+        { "amenityName": "Spa", "amenityDesc": "Talasso therapy and sea-mineral treatments" },
+        { "amenityName": "Yacht Charter", "amenityDesc": "Arrangements for private yacht hire from the marina" }
+      ]
+    },
+    {
+      "hotelId": 7,
+      "chainId": 2,
+      "name": "Azure Côte Nice",
+      "address": "1, Promenade des Anglais, Nice",
+      "stars": 4,
+      "email": "nice@azurecoast.com",
+      "manager": "EMP007",
+      "phoneNumber": "+33-4-555-2002",
+      "description": "Belle Époque elegance meets the Mediterranean on Nice's iconic Promenade. Walking distance to the Old Town and bustling Cours Saleya market.",
+      "amenities": [
+        { "amenityName": "Outdoor Pool", "amenityDesc": "Heated seawater pool with panoramic sea views" },
+        { "amenityName": "Wine Bar", "amenityDesc": "Curated Provence wine cellar and tasting events" },
+        { "amenityName": "Fitness Center", "amenityDesc": "Overlooking the sea with Pilates classes" }
+      ]
+    },
+    {
+      "hotelId": 8,
+      "chainId": 2,
+      "name": "Azure Med Barcelona",
+      "address": "5, Passeig de Gràcia, Barcelona",
+      "stars": 5,
+      "email": "bcn@azurecoast.com",
+      "manager": "EMP008",
+      "phoneNumber": "+34-93-555-2003",
+      "description": "Set in a restored Modernista building on Passeig de Gràcia, steps from the Sagrada Família and Picasso Museum.",
+      "amenities": [
+        { "amenityName": "Rooftop Terrace", "amenityDesc": "Open-air terrace with tapas bar and city views" },
+        { "amenityName": "Spa", "amenityDesc": "Mediterranean-inspired therapies and hammam" },
+        { "amenityName": "Art Gallery", "amenityDesc": "Rotating exhibitions by local Catalan artists" }
+      ]
+    },
+    {
+      "hotelId": 9,
+      "chainId": 2,
+      "name": "Azure Adriatic Dubrovnik",
+      "address": "2, Stradun, Dubrovnik",
+      "stars": 4,
+      "email": "dbv@azurecoast.com",
+      "manager": "EMP009",
+      "phoneNumber": "+385-20-555-2004",
+      "description": "A historic hotel within the Old Town walls of Dubrovnik, offering stunning Adriatic views and access to the city's UNESCO heritage sites.",
+      "amenities": [
+        { "amenityName": "Infinity Pool", "amenityDesc": "Cliffside pool overlooking the Adriatic Sea" },
+        { "amenityName": "Restaurant", "amenityDesc": "Dalmatian seafood and regional wines" }
+      ]
+    },
+    {
+      "hotelId": 10,
+      "chainId": 2,
+      "name": "Azure Garden Lisbon",
+      "address": "120, Avenida da Liberdade, Lisbon",
+      "stars": 3,
+      "email": "lis@azurecoast.com",
+      "manager": "EMP010",
+      "phoneNumber": "+351-21-555-2005",
+      "description": "A stylish mid-century property on Lisbon's grand boulevard, with lush courtyard gardens and a terrace overlooking the avenue.",
+      "amenities": [
+        { "amenityName": "Courtyard Garden", "amenityDesc": "Tranquil garden with orange trees and fountain" },
+        { "amenityName": "Rooftop Bar", "amenityDesc": "Sunset cocktails and fado music evenings" }
+      ]
+    },
+    {
+      "hotelId": 11,
+      "chainId": 3,
+      "name": "Summit Alpine Zurich",
+      "address": "9, Bahnhofstrasse, Zurich",
+      "stars": 5,
+      "email": "zur@summitpeak.com",
+      "manager": "EMP011",
+      "phoneNumber": "+41-44-555-3001",
+      "description": "A landmark property on Zurich's most exclusive shopping street, overlooking Lake Zurich and the Alps.",
+      "amenities": [
+        { "amenityName": "Fine Dining", "amenityDesc": "Swiss-French cuisine with an 800-label wine cellar" },
+        { "amenityName": "Spa", "amenityDesc": "Alpine herb treatments and heated pool" },
+        { "amenityName": "Concierge Service", "amenityDesc": "Private banking, ski arrangement, and helicopter bookings" }
+      ]
+    },
+    {
+      "hotelId": 12,
+      "chainId": 3,
+      "name": "Summit Glacier Zermatt",
+      "address": "15, Bahnhofstrasse, Zermatt",
+      "stars": 5,
+      "email": "zrm@summitpeak.com",
+      "manager": "EMP012",
+      "phoneNumber": "+41-27-555-3002",
+      "description": "A car-free alpine sanctuary at the foot of the Matterhorn. Direct gondola access, a celebrated ski-in/ski-out lounge, and glacier views from every room.",
+      "amenities": [
+        { "amenityName": "Ski Storage", "amenityDesc": "Heated ski room with boot dryers" },
+        { "amenityName": "Après-ski Lounge", "amenityDesc": "Fondue, raclette, and mulled wine fireside" },
+        { "amenityName": "Spa", "amenityDesc": "Heated outdoor pool with Matterhorn views" }
+      ]
+    },
+    {
+      "hotelId": 13,
+      "chainId": 3,
+      "name": "Summit City Geneva",
+      "address": "30, Quai du Général-Guisan, Geneva",
+      "stars": 4,
+      "email": "gva@summitpeak.com",
+      "manager": "EMP013",
+      "phoneNumber": "+41-22-555-3003",
+      "description": "A refined lakeside hotel on the Rive Gauche, ideal for diplomats and international business travellers. Walking distance to the UN and CERN.",
+      "amenities": [
+        { "amenityName": "Business Center", "amenityDesc": "Private meeting rooms and interpretation services" },
+        { "amenityName": "Lakeside Restaurant", "amenityDesc": "Swiss cuisine with views of Lake Geneva" }
+      ]
+    },
+    {
+      "hotelId": 14,
+      "chainId": 3,
+      "name": "Summit Heritage Lucerne",
+      "address": "6, Schweizerhofquai, Lucerne",
+      "stars": 4,
+      "email": "lux@summitpeak.com",
+      "manager": "EMP014",
+      "phoneNumber": "+41-41-555-3004",
+      "description": "A 19th-century grand hotel overlooking Lake Lucerne and the Chapel Bridge. Wagner and Tolstoy once stayed here.",
+      "amenities": [
+        { "amenityName": "Classic Restaurant", "amenityDesc": "Traditional Swiss dishes in a Belle Époque dining hall" },
+        { "amenityName": "Boat Dock", "amenityDesc": "Private dock for lake excursions and paddle-boat hire" }
+      ]
+    },
+    {
+      "hotelId": 15,
+      "chainId": 3,
+      "name": "Summit Inn Interlaken",
+      "address": "20, Höheweg, Interlaken",
+      "stars": 3,
+      "email": "int@summitpeak.com",
+      "manager": "EMP015",
+      "phoneNumber": "+41-33-555-3005",
+      "description": "A cosy mountain inn between Lakes Thun and Brienz, popular with hikers, paragliders, and adventure travellers heading to the Jungfrau region.",
+      "amenities": [
+        { "amenityName": "Gear Storage", "amenityDesc": "Secure storage for skis, bikes, and hiking equipment" },
+        { "amenityName": "Restaurant", "amenityDesc": "Hearty mountain cuisine with local Bernese specialties" }
+      ]
+    },
+    {
+      "hotelId": 16,
+      "chainId": 4,
+      "name": "Heritage Grand London Mayfair",
+      "address": "23, Brook Street, London",
+      "stars": 5,
+      "email": "lon@heritagegrand.com",
+      "manager": "EMP016",
+      "phoneNumber": "+44-20-555-4001",
+      "description": "A Georgian townhouse hotel in the heart of Mayfair, blending 18th-century grandeur with contemporary British design. Two streets from Bond Street.",
+      "amenities": [
+        { "amenityName": "Fine Dining", "amenityDesc": "Seasonal British tasting menu with a 1,000-bottle cellar" },
+        { "amenityName": "Drawing Room", "amenityDesc": "Afternoon tea served daily in the original Georgian parlour" },
+        { "amenityName": "Spa", "amenityDesc": "Aromatherapy and deep-tissue treatments" }
+      ]
+    },
+    {
+      "hotelId": 17,
+      "chainId": 4,
+      "name": "Heritage Royal Edinburgh",
+      "address": "1, Princes Street, Edinburgh",
+      "stars": 5,
+      "email": "edi@heritagegrand.com",
+      "manager": "EMP017",
+      "phoneNumber": "+44-131-555-4002",
+      "description": "A Victorian landmark facing Edinburgh Castle and the gardens of Princes Street, with baronial interiors and sweeping views of the Old Town.",
+      "amenities": [
+        { "amenityName": "Castle View Terrace", "amenityDesc": "Outdoor terrace overlooking the castle esplanade" },
+        { "amenityName": "Whisky Bar", "amenityDesc": "Over 200 single malts and blended Scotch whiskies" },
+        { "amenityName": "Fitness Center", "amenityDesc": "Victorian-styled gym and heated indoor pool" }
+      ]
+    },
+    {
+      "hotelId": 18,
+      "chainId": 4,
+      "name": "Heritage Manor Oxford",
+      "address": "4, Beaumont Street, Oxford",
+      "stars": 4,
+      "email": "oxf@heritagegrand.com",
+      "manager": "EMP018",
+      "phoneNumber": "+44-1865-555-4003",
+      "description": "A neoclassical hotel opposite the Ashmolean Museum, beloved by academics, visiting fellows, and discerning travellers exploring the University city.",
+      "amenities": [
+        { "amenityName": "Library Lounge", "amenityDesc": "Quiet reading room with 2,000 volumes and a fire" },
+        { "amenityName": "Garden Restaurant", "amenityDesc": "English garden dining and Sunday roasts" }
+      ]
+    },
+    {
+      "hotelId": 19,
+      "chainId": 4,
+      "name": "Heritage Townhouse Bath",
+      "address": "99, Great Pulteney Street, Bath",
+      "stars": 4,
+      "email": "bth@heritagegrand.com",
+      "manager": "EMP019",
+      "phoneNumber": "+44-1225-555-4004",
+      "description": "A perfectly preserved Georgian townhouse on Bath's grandest street, moments from the Roman Baths and the Jane Austen Centre.",
+      "amenities": [
+        { "amenityName": "Thermal Suite", "amenityDesc": "Access to Bath's famous natural thermal spa waters" },
+        { "amenityName": "Tearoom", "amenityDesc": "Cream teas and Georgian pastries daily" }
+      ]
+    },
+    {
+      "hotelId": 20,
+      "chainId": 4,
+      "name": "Heritage Inn York",
+      "address": "10, Museum Street, York",
+      "stars": 3,
+      "email": "yor@heritagegrand.com",
+      "manager": "EMP020",
+      "phoneNumber": "+44-1904-555-4005",
+      "description": "A cheerful inn in the shadow of York Minster, on a cobbled street lined with independent shops and Viking-era archaeology.",
+      "amenities": [
+        { "amenityName": "Traditional Pub", "amenityDesc": "Real ales, pork pies, and live folk music on Fridays" }
+      ]
+    },
+    {
+      "hotelId": 21,
+      "chainId": 5,
+      "name": "Pacific Horizon Marina Singapore",
+      "address": "1, Bayfront Avenue, Singapore",
+      "stars": 5,
+      "email": "sin@pacifichorizon.com",
+      "manager": "EMP021",
+      "phoneNumber": "+65-6-555-5001",
+      "description": "An iconic tower hotel overlooking Marina Bay Sands and the glittering Singapore skyline. Infinity pool on the 57th floor.",
+      "amenities": [
+        { "amenityName": "Sky Infinity Pool", "amenityDesc": "World-famous rooftop pool with 360-degree city and sea views" },
+        { "amenityName": "Spa", "amenityDesc": "Asian holistic therapies and couple treatment suites" },
+        { "amenityName": "Celebrity Restaurant", "amenityDesc": "Pan-Asian cuisine by a four-time award-winning chef" },
+        { "amenityName": "Casino Access", "amenityDesc": "Direct passageway to the Marina Bay casino" }
+      ]
+    },
+    {
+      "hotelId": 22,
+      "chainId": 5,
+      "name": "Pacific Horizon Orchard",
+      "address": "290, Orchard Road, Singapore",
+      "stars": 4,
+      "email": "orc@pacifichorizon.com",
+      "manager": "EMP022",
+      "phoneNumber": "+65-6-555-5002",
+      "description": "A contemporary city hotel on Singapore's premier shopping strip, ideal for leisure travellers and families visiting Sentosa and the Gardens by the Bay.",
+      "amenities": [
+        { "amenityName": "Outdoor Pool", "amenityDesc": "Tropical garden pool with poolside BBQ" },
+        { "amenityName": "Food Hall", "amenityDesc": "Hawker-style dining featuring 12 Singaporean street food stalls" }
+      ]
+    },
+    {
+      "hotelId": 23,
+      "chainId": 5,
+      "name": "Pacific Horizon Tokyo Shinjuku",
+      "address": "2, Nishi-Shinjuku, Tokyo",
+      "stars": 5,
+      "email": "tyo@pacifichorizon.com",
+      "manager": "EMP023",
+      "phoneNumber": "+81-3-555-5003",
+      "description": "A skyscraper hotel in Shinjuku's high-rise district with breathtaking views of Mount Fuji on clear mornings. Award-winning Japanese kaiseki dining.",
+      "amenities": [
+        { "amenityName": "Kaiseki Restaurant", "amenityDesc": "Multi-course traditional Japanese cuisine" },
+        { "amenityName": "Onsen Spa", "amenityDesc": "Natural hot spring baths on the 48th floor" },
+        { "amenityName": "Tea Ceremony Room", "amenityDesc": "Private tatami rooms for traditional tea ceremonies" }
+      ]
+    },
+    {
+      "hotelId": 24,
+      "chainId": 5,
+      "name": "Pacific Horizon Bangkok Riverside",
+      "address": "48, Charoen Nakhon Road, Bangkok",
+      "stars": 4,
+      "email": "bkk@pacifichorizon.com",
+      "manager": "EMP024",
+      "phoneNumber": "+66-2-555-5004",
+      "description": "A riverside resort on the Chao Phraya, with private boat transfers to the Grand Palace, Wat Pho, and Bangkok's famous floating markets.",
+      "amenities": [
+        { "amenityName": "River Pool", "amenityDesc": "Infinity pool overlooking the Chao Phraya River" },
+        { "amenityName": "Thai Restaurant", "amenityDesc": "Royal Thai cuisine and cooking classes" },
+        { "amenityName": "Private Boat Pier", "amenityDesc": "Complimentary shuttle boat to city temples and markets" }
+      ]
+    },
+    {
+      "hotelId": 25,
+      "chainId": 5,
+      "name": "Pacific Horizon Sydney Harbour",
+      "address": "61, Macquarie Street, Sydney",
+      "stars": 5,
+      "email": "syd@pacifichorizon.com",
+      "manager": "EMP025",
+      "phoneNumber": "+61-2-555-5005",
+      "description": "A five-star icon overlooking the Sydney Opera House and Harbour Bridge from the Royal Botanic Gardens edge. A bucket-list destination in itself.",
+      "amenities": [
+        { "amenityName": "Harbour View Restaurant", "amenityDesc": "Modern Australian cuisine with an unobstructed Opera House view" },
+        { "amenityName": "Spa", "amenityDesc": "Indigenous Australian treatments using native botanicals" },
+        { "amenityName": "Rooftop Bar", "amenityDesc": "Sunset cocktails overlooking the Harbour Bridge" },
+        { "amenityName": "Fitness Center", "amenityDesc": "Floor-to-ceiling harbour windows and personal training" }
+      ]
+    }
   ]
 }
