@@ -1,6 +1,6 @@
 class Account{
     //primary key
-    string email
+    string email;
     
 
     //other keys

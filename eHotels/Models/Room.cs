@@ -1,8 +1,8 @@
 class Room{
 
     //primary key
-    int hotelID //references hotel
-    int roomNumber
+    int hotelID; //references hotel
+    int roomNumber;
 
     //other keys
     float price {get;set;}
