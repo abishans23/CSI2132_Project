@@ -1,13 +1,18 @@
 using Npgsql;
+using Microsoft.Extensions.Logging;
 
 namespace Data
 {
-    class DBContext
+    public class DBContext
     {
-        private NpgsqlDataSource db;
-        public DBContext() { }
+        private NpgsqlDataSource? db;   //mark as nullable type
+        private readonly ILogger<DBContext> _logger;
+        public DBContext(ILogger<DBContext> logger)
+        {
+            _logger=logger;
+        }
 
-        public async Task<bool> openConnection()
+        public async Task<bool> OpenConnection()
         {
             string connectionString = "Host=localhost;Port=5432;Database=eHotels;Username=postgres;Password=1234";
             db = NpgsqlDataSource.Create(connectionString);
@@ -29,13 +34,13 @@ namespace Data
             catch (NpgsqlException ex)
             {
                 // Catches all NpgSQL errors
-                Console.WriteLine($"[Npgsql Error]: {ex.Message} (Code: {ex.SqlState})");
+                _logger.LogError($"[Npgsql Error]: {ex.Message} (Code: {ex.SqlState})");
                 return default; 
             }
             catch (Exception ex)
             {
                 // Catches non-Postgres errors (like timeouts or network being totally down)
-                Console.WriteLine($"[General Error]: {ex.Message}");
+                _logger.LogError($"[General Error]: {ex.Message}");
                 return default;
             }
         }

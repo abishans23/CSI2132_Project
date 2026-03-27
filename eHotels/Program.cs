@@ -1,9 +1,18 @@
+using Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
+//Dependency inject the database
+builder.Services.AddScoped<DBContext>();
 
 var app = builder.Build();
+
 
 
 // Configure the HTTP request pipeline.
