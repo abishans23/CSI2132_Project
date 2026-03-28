@@ -21,8 +21,6 @@
   float: right;
 }
 
-
-
 .nav-link{
   display: block;
   color: white;
@@ -34,7 +32,7 @@
   padding-right: 1.5em;
   padding-top: 1em;
   padding-bottom: 1em;
-  transition: background-color 0.3s ease-in, transform 0.3s ease-in;
+  transition: background-color 0.25s ease-in, transform 0.3s ease-in;
 }
 
 .nav-link:hover{
