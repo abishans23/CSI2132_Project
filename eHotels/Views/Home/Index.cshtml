@@ -18,12 +18,14 @@
 
         <div class="search-bar">
             <form action="/Home/Search" method="get">
-                <input type="text" name="search" placeholder="Search Hotels..."/>
-                <input type="text" name="area" placeholder="Area..." />
-                <input type="number" name="capacity" placeholder="Capacity" />
-                <input type="date" name="startDate" placeholder="Start Date" />
-                <input type="date" name="endDate" placeholder="End Date" />
-                <button type="submit">Search</button>
+                <input class="hotel-search" type="text" name="search" placeholder="Search Hotels..."/>
+                <input class="area" type="text" name="area" placeholder="Area..." />
+                <input class="capacity" type="number" name="capacity" placeholder="Capacity" />
+                <input class="start-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" />
+                <input class="end-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" />
+                <button class="submit">
+                    <img class="search-img" src="https://static.vecteezy.com/system/resources/thumbnails/009/652/218/small/magnifying-glass-icon-isolated-on-white-background-search-illustration-vector.jpg" />
+                </button>
             </form>
 
         </div>
