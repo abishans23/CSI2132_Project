@@ -17,32 +17,13 @@ namespace Data
             string connectionString = "Host=localhost;Port=5432;Database=eHotels;Username=postgres;Password=1234";
             db = NpgsqlDataSource.Create(connectionString);
 
-            
-            return await TryExecute(async () => 
+    
+            return await Utils.TryExecute<bool,DBContext>(async () => 
             {
                 await using var conn = await db.OpenConnectionAsync();
                 return true; 
-            });
+            },_logger);
         }
 
-        public async Task<T?> TryExecute<T>(Func<Task<T>> operation)
-        {
-            try
-            {
-                return await operation();
-            }
-            catch (NpgsqlException ex)
-            {
-                // Catches all NpgSQL errors
-                _logger.LogError($"[Npgsql Error]: {ex.Message} (Code: {ex.SqlState})");
-                return default; 
-            }
-            catch (Exception ex)
-            {
-                // Catches non-Postgres errors (like timeouts or network being totally down)
-                _logger.LogError($"[General Error]: {ex.Message}");
-                return default;
-            }
-        }
     }
 }
