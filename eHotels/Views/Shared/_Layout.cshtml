@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - eHotels</title>
     <script type="importmap"></script>
+    
+
     <link rel="stylesheet" href="~/eHotels.styles.css" asp-append-version="true" />
 </head>
 
@@ -12,11 +14,11 @@
 
     <header>
 
-        <ul class="nav-bar">
+        <ul class="nav-bar nav-bar-expand-sm nav-bar-toggleable-sm">
             <li class="nav-iteml"><a class="nav-link">LOGO</a></li>
-            <li class="nav-iteml"><a class="nav-link">Home</a></li>
+            <li class="nav-iteml"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
             <li class="nav-iteml"><a class="nav-link">My Bookings</a></li>
-            <li class="nav-itemr"><a class="nav-link">Sign In</a></li>
+            <li class="nav-itemr"><a class="nav-link"  asp-area="" asp-controller="Home" asp-action="SignIn">Sign In</a></li>
             <li class="nav-itemr"><a class="nav-link">Check In</a></li>
             <li class="nav-itemr"><a class="nav-link">Manage</a></li>
         </ul>
@@ -35,6 +37,53 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    @* some styling gets overridden when put in seperate css file for some reason *@
+    <style>
+        html, body{
+            margin: 0 ;
+            padding: 0;
+        }
+
+        .nav-bar{
+            list-style-type: none;
+            background-color: #343034ff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            align-items: center;
+        }
+
+        .nav-iteml {
+            float: left;
+        }
+
+        .nav-itemr {
+            float: right;
+        }
+
+        .nav-link{
+            display: block;
+            color: white;
+            text-align: center;
+            font-family: serif;
+            font-style: italic;
+            font-size: 1em;
+            padding-left: 1.5em;
+            padding-right: 1.5em;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            text-decoration: none;
+
+            transition: background-color 0.25s ease-in, transform 0.3s ease-in;
+        }
+
+        .nav-link:hover{
+            background-color: rgb(98, 93, 99);
+            transform: scale(1.1);
+        }
+    </style>
+    
     
 </body>
 </html>
