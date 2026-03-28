@@ -1,6 +1,6 @@
 class Hotel{
     //primary key
-    int hotelID 
+    int hotelID; 
 
     //other keys
     int chainID {get;set;} //references HotelChain
@@ -22,7 +22,7 @@ class Hotel{
         this.postalCode = postalCode;
         this.description = description;
         this.fileName = fileName;
-        this.imageDesc = imageDesc
+        this.imageDesc = imageDesc;
     }
 
 }

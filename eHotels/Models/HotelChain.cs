@@ -1,6 +1,6 @@
 class HotelChain{
     //primary key
-    int chainID 
+    int chainID; 
 
     //other keys
     string name {get;set;}

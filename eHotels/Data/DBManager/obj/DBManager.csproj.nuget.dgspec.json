@@ -1,10 +1,10 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\DBManager\\DBManager.csproj": {}
+    "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\eHotels\\Data\\DBManager\\DBManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\DBManager\\DBManager.csproj": {
+    "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\eHotels\\Data\\DBManager\\DBManager.csproj": {
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\eHotels\\Data\\DBManager\\DBManager.csproj",

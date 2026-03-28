@@ -3,10 +3,10 @@ class Address{
     string postalCode;
 
     //other keys
-    int id {get;set;};
-    string streetName{get;set;};
-    string province{get;set;};
-    string country{get;set;};
+    int id {get;set;}
+    string streetName{get;set;}
+    string province{get;set;}
+    string country{get;set;}
 
      
     public Address(string postalCode, int id, string streetName, string province){

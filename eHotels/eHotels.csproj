@@ -6,4 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\DBManager\**" />
+    <Content Remove="Data\DBManager\**" />
+    <EmbeddedResource Remove="Data\DBManager\**" />
+    <None Remove="Data\DBManager\**" />
+  </ItemGroup>
+
 </Project>

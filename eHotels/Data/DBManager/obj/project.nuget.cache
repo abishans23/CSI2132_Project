@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d6qr8BKAloY=",
+  "dgSpecHash": "jb+a3732OZM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\DBManager\\DBManager.csproj",
+  "projectFilePath": "C:\\Users\\abiSh\\OneDrive\\Desktop\\CSI2132_Project\\eHotels\\Data\\DBManager\\DBManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abiSh\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.5\\microsoft.extensions.configuration.10.0.5.nupkg.sha512",
     "C:\\Users\\abiSh\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.5\\microsoft.extensions.configuration.abstractions.10.0.5.nupkg.sha512",
