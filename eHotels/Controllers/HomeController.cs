@@ -16,6 +16,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
+        //TODO::remove since only debug code
         await _db.OpenConnection();
         return View();
     }
