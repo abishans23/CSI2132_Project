@@ -1,0 +1,42 @@
+﻿html, body{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.nav-bar{
+  list-style-type: none;
+  background-color: #343034ff;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  align-items: center;
+}
+
+.nav-iteml {
+  float: left;
+}
+
+.nav-itemr {
+  float: right;
+}
+
+.nav-link{
+  display: block;
+  color: white;
+  text-align: center;
+  font-family: serif;
+  font-style: italic;
+  font-size: 1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+    text-decoration: none;
+
+  transition: background-color 0.25s ease-in, transform 0.3s ease-in;
+}
+
+.nav-link:hover{
+  background-color: rgb(98, 93, 99);
+  transform: scale(1.1);
+}

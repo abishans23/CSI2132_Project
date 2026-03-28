@@ -16,6 +16,12 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Search(String search, String area, String capacity, String startDate, String endDate)
+    {
+        Console.WriteLine(search + area + capacity + startDate + endDate);
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();
