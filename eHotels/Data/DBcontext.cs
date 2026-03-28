@@ -41,7 +41,6 @@ namespace Data
             }, _logger) ?? Enumerable.Empty<T>();
         }
 
-        // Added this so your 'Fat Controllers' can also handle Inserts/Updates
         public async Task<int> ExecuteAsync(string sql, object? parameters = null)
         {
             return await Utils.TryExecute<int, DBContext>(async () =>
