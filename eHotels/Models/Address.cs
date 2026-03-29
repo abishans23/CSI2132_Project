@@ -1,6 +1,6 @@
 class Address{
     //primary key
-    public string PostalCode;
+    public string PostalCode{get;set;}
 
     //other keys
     public int StreetNumber{get; set;}

@@ -3,7 +3,7 @@ class Employee{
     //TODO::Mark fields public
 
     //primary key
-    public string SSN;
+    public string SSN{get;set;}
 
     //other keys
     string FirstName {get;set;}

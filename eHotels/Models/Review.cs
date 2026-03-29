@@ -1,14 +1,15 @@
 class Review
 {   
     //primary keys
-    public string Email;
-    public int HotelID;
+    public string Email{get;set;}
+    public int HotelID{get;set;}
 
     //other keys
-    public int Rating;
-    public DateOnly Date;
-    public String Comments;
+    public int Rating{get;set;}
+    public DateOnly Date{get;set;}
+    public String Comments{get;set;}
 
+    public Review(){}
     public Review(string email, int hotelID, int rating, DateOnly date, string comments)
     {
         this.Email = email;
