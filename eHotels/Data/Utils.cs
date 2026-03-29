@@ -5,7 +5,7 @@ namespace Data
 {
     public static class Utils
     {
-        public static async Task<T?> TryExecute<T,V>(Func<Task<T>> operation,ILogger<V> _logger)
+        public static async Task<T?> TryExecuteAsync<T,V>(Func<Task<T>> operation,ILogger<V> _logger)
         {
             try
             {
@@ -24,5 +24,6 @@ namespace Data
                 return default;
             }
         }
+
     }
 }
