@@ -11,9 +11,15 @@ class Renting
     public int Amount{get;set;}
     public DateOnly ProcessedDate{get;set;}
 
+    public string IDType{get;set;}
+    public int IDNumber{get;set;}
+
+    public int HotelID{get;set;}
+    public int RoomNumber{get;set;}
+
     public Renting(){}
 
-    public Renting(int rentingID, string status, DateOnly startDate, DateOnly endDate, int invoiceNumber, string paymentMethod, int amount, DateOnly processedDate)
+    public Renting(int rentingID, string status, DateOnly startDate, DateOnly endDate, int invoiceNumber, string paymentMethod, int amount, DateOnly processedDate, string idType, int idNumber, int hotelID, int roomNumber)
     {
         this.RentingID = rentingID;
         this.Status = status;
@@ -23,5 +29,9 @@ class Renting
         this.PaymentMethod = paymentMethod;
         this.Amount = amount;
         this.ProcessedDate = processedDate;
+        this.IDType = idType;
+        this.IDNumber = idNumber;
+        this.HotelID = hotelID;
+        this.RoomNumber = roomNumber;
     }
 }
