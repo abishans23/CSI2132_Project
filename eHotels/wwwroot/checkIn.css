@@ -1,0 +1,11 @@
+body{
+    background-image: linear-gradient(#8b76a5ff, #e07fe6ff);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+html, body{
+    margin: 0;
+    height: 100%;
+}
