@@ -127,7 +127,7 @@
 
 .about{
     margin-top: 5em;
-    margin-bottom: 5em;
+    margin-bottom: 8em;
     text-align: center;
     font-family: serif;
     font-style: italic;
@@ -150,11 +150,16 @@
     height: 105%;
 }
 
+html, body {
+    height: 100vh;
+}
+
 .hotel-chains-list-container{
     position: relative;
     background-color: rgb(53, 45, 53);
-    height: 100%;
-    
+    flex: 1;   
+    display: flex;
+    flex-direction: column;
 }
 
 .hotel-chains-title{
@@ -174,8 +179,7 @@
     grid-template-rows: auto auto;
     gap: 10px;
     padding: 1em;
-    margin-bottom: 2em;
-    bottom: 0;
+    height: 100%;
 }
 
 .chain{
@@ -190,3 +194,4 @@
     margin-bottom: 1em;
     opacity: 0.9;
 }
+
