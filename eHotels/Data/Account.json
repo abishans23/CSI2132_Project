@@ -1,0 +1,27 @@
+[
+  {
+    "email": "a.shanmuhesan@uottawa.ca",
+    "username": "ashanmuhesan",
+    "password": "hashed_password_123"
+  },
+  {
+    "email": "v.singathi@uottawa.ca",
+    "username": "vsingathi",
+    "password": "hashed_password_456"
+  },
+  {
+    "email": "a.rakotobe@uottawa.ca",
+    "username": "arakotobe",
+    "password": "hashed_password_789"
+  },
+  {
+    "email": "manager.lesteen@hotel.com",
+    "username": "lesteen_mgr",
+    "password": "secure_password_001"
+  },
+  {
+    "email": "guest.services@pacifichorizon.com",
+    "username": "pacifichorizon_guest",
+    "password": "secure_password_002"
+  }
+]

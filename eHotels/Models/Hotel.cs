@@ -4,7 +4,7 @@ namespace Data
     public class Hotel
     {
         // 1. All fields must be public properties with {get; set;}
-        public int HotelID { get; set; } 
+        public int HotelID { get; set; }
         public int ChainID { get; set; }
         public string Name { get; set; }
         public int Stars { get; set; }
@@ -29,5 +29,6 @@ namespace Data
             this.FileName = fileName;
             this.ImageDesc = imageDesc;
         }
+
     }
 }

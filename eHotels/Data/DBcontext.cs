@@ -52,6 +52,10 @@ namespace Data
             }, _logger);
         }
 
+        //TODO::move SeedDatabase to a better place
+
+        //SeedDataBase populates the database with JSON file data on startup or empty database
+
         public async Task<bool> SeedDatabase()
         {
             string[] jsonPaths = {
@@ -84,7 +88,7 @@ namespace Data
             var hotels = JsonSerializer.Deserialize<List<Hotel>>(fileData[0],options);
             var hotelChains = JsonSerializer.Deserialize<List<HotelChain>>(fileData[1],options);
             var rooms = JsonSerializer.Deserialize<List<Room>>(fileData[2],options);
-            //var accounts = JsonSerializer.Deserialize<List<Account>>(fileData[3],options);
+            var accounts = JsonSerializer.Deserialize<List<Account>>(fileData[3],options);
 
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
@@ -124,8 +128,9 @@ namespace Data
                   ON CONFLICT (HotelID, RoomNumber) DO NOTHING;", room);
                 }
 
+
                 // 4. Insert Accounts
-                /*
+                
                 foreach (var account in accounts)
                 {
                     await this.ExecuteAsync(
@@ -133,7 +138,6 @@ namespace Data
                   VALUES (@Email, @Username, @Password)
                   ON CONFLICT (Email) DO NOTHING;", account);
                 }
-                */
 
 
                 return true;

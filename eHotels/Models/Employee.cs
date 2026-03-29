@@ -1,5 +1,7 @@
 class Employee{
 
+    //TODO::Mark fields public
+
     //primary key
     string SSN;
 
