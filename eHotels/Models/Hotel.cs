@@ -14,7 +14,9 @@ namespace Data
         public string FileName { get; set; }
         public string ImageDesc { get; set; }
 
-        // 2. Add a parameterless constructor
+        //Amenity Array
+        public List<HotelAmenity> amenity=new List<HotelAmenity>();
+        
         public Hotel() { }
 
         public Hotel(int chainID, string name, int stars, string manager, string postalCode, string description, string fileName, string imageDesc)
