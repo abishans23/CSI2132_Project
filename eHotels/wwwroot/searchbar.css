@@ -129,6 +129,8 @@
     margin-top: 5em;
     margin-bottom: 5em;
     text-align: center;
+    font-family: serif;
+    font-style: italic;
     padding-left: 3em;
     padding-right: 3em;
     font-size: 1.5em;
@@ -178,7 +180,6 @@
 
 .chain{
     color: white;
-    background-color: blue;
     height: 100%;
     width: 100%;
     border-radius: 10px;
@@ -187,4 +188,5 @@
     font-family: serif;
     font-style: italic;
     margin-bottom: 1em;
+    opacity: 0.9;
 }
