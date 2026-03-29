@@ -1,16 +1,15 @@
-class Account{
-    //primary key
-    string email;
-    
+public class Account
+{
+    public string Email { get; set; }
+    public string Username { get; set; }
+    public string Password { get; set; }
 
-    //other keys
-    string username {get;set;}
-    string password {get;set;}
+    public Account() { }
 
-    public Account(string email, string username, string password){
-        this.email = email;
-        this.username = username;
-        this.password = password;
+    public Account(string email, string username, string password)
+    {
+        this.Email = email;
+        this.Username = username;
+        this.Password = password;
     }
-
 }

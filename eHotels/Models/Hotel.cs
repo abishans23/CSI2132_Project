@@ -1,28 +1,33 @@
-class Hotel{
-    //primary key
-    int hotelID; 
+namespace Data
+{
+    // Class must be public
+    public class Hotel
+    {
+        // 1. All fields must be public properties with {get; set;}
+        public int HotelID { get; set; } 
+        public int ChainID { get; set; }
+        public string Name { get; set; }
+        public int Stars { get; set; }
+        public string Manager { get; set; }
+        public string PostalCode { get; set; }
+        public string Description { get; set; }
+        public string FileName { get; set; }
+        public string ImageDesc { get; set; }
 
-    //other keys
-    int chainID {get;set;} //references HotelChain
-    string name {get;set;}
-    int stars {get;set;}
-    string manager {get;set;} //references Employees
-    string postalCode {get;set;} //references Address
-    string description {get;set;}
-    string fileName {get;set;}
-    string imageDesc {get;set;}
+        // 2. Add a parameterless constructor
+        public Hotel() { }
 
-    //MORE TO COME
-
-    public Hotel(int chainID, string name, int stars, string manager,string postalCode, string descriptio, string fileName, string imageDesc){
-        this.chainID = chainID;
-        this.name = name;
-        this.stars = stars;
-        this.manager = manager;
-        this.postalCode = postalCode;
-        this.description = description;
-        this.fileName = fileName;
-        this.imageDesc = imageDesc;
+        // 3. You can keep your existing constructor for manual use
+        public Hotel(int chainID, string name, int stars, string manager, string postalCode, string description, string fileName, string imageDesc)
+        {
+            this.ChainID = chainID;
+            this.Name = name;
+            this.Stars = stars;
+            this.Manager = manager;
+            this.PostalCode = postalCode;
+            this.Description = description;
+            this.FileName = fileName;
+            this.ImageDesc = imageDesc;
+        }
     }
-
 }

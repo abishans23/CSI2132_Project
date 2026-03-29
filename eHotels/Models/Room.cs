@@ -1,21 +1,21 @@
-class Room{
+public class Room
+{
+    public int HotelID { get; set; }
+    public int RoomNumber { get; set; }
+    public float Price { get; set; }
+    public int Capacity { get; set; }
+    public string View { get; set; }
+    public bool Extendable { get; set; }
 
-    //primary key
-    int hotelID; //references hotel
-    int roomNumber;
+    public Room() { }
 
-    //other keys
-    float price {get;set;}
-    int capacity {get;set;}
-    string view {get;set;}
-    bool extendable {get;set;}
-
-    public Room(int hotelID, int roomNumber, float price, int capacity, string view, bool extendable){
-        this.hotelID = hotelID;
-        this.roomNumber = roomNumber;
-        this.price = price;
-        this.capacity = capacity;
-        this.view = view;
-        this.extendable = extendable;
+    public Room(int hotelID, int roomNumber, float price, int capacity, string view, bool extendable)
+    {
+        this.HotelID = hotelID;
+        this.RoomNumber = roomNumber;
+        this.Price = price;
+        this.Capacity = capacity;
+        this.View = view;
+        this.Extendable = extendable;
     }
 }
