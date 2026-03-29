@@ -94,7 +94,7 @@ namespace Data
 
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
-                if (hotelChains == null || rooms == null)
+                if (hotelChains == null || rooms == null || hotels==null || accounts==null)
                 {
                     _logger.LogError("One or more JSON files failed to deserialize.");
                     return false;
