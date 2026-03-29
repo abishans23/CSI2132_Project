@@ -1,0 +1,2 @@
+.Modify the models to handle amenities and customer
+-->make a seperate class
