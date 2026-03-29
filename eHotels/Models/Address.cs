@@ -1,19 +1,19 @@
 class Address{
     //primary key
-    string postalCode;
+    public string PostalCode;
 
     //other keys
-    int id {get;set;}
-    string streetName{get;set;}
-    string province{get;set;}
-    string country{get;set;}
+    public int StreetNumber{get; set;}
+    public string StreetName{get; set;}
+    public string Province{get;set;}
+    public string Country{get;set;}
 
      
-    public Address(string postalCode, int id, string streetName, string province){
-        this.postalCode = postalCode;
-        this.id = id;
-        this.streetName = streetName;
-        this.province = province;
+    public Address(string postalCode, int StreetNumber, string StreetName, string Province){
+        this.PostalCode = postalCode;
+        this.StreetNumber = StreetNumber;
+        this.StreetName = StreetName;
+        this.Province = Province;
     }
 
 }

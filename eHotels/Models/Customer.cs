@@ -1,8 +1,8 @@
 class Customer{
 
     //primary keys
-    int IDType;
-    int IDNumber;
+    public int IDType;
+    public int IDNumber;
 
     //other keys
     string firstName{get;set;}
