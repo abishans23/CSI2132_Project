@@ -1,0 +1,398 @@
+[
+  {
+    "hotelId": 1,
+    "chainId": 1,
+    "name": "Meridian Grand New York",
+    "address": "101, Park Avenue, New York",
+    "stars": 5,
+    "email": "nyc@meridianhotels.com",
+    "manager": "EMP001",
+    "phoneNumber": "+1-212-555-1001",
+    "description": "A flagship five-star property in the heart of Midtown Manhattan, offering sweeping views of Central Park and world-class dining.",
+    "amenities": [
+      { "amenityName": "Rooftop Pool", "amenityDesc": "Heated infinity pool with panoramic city views" },
+      { "amenityName": "Spa", "amenityDesc": "Full-service spa with 12 treatment rooms" },
+      { "amenityName": "Fine Dining Restaurant", "amenityDesc": "Award-winning French-American cuisine" },
+      { "amenityName": "Fitness Center", "amenityDesc": "24-hour gym with personal trainers on request" },
+      { "amenityName": "Concierge Service", "amenityDesc": "Round-the-clock concierge assistance" }
+    ]
+  },
+  {
+    "hotelId": 2,
+    "chainId": 1,
+    "name": "Meridian Suites Chicago",
+    "address": "500, Michigan Avenue, Chicago",
+    "stars": 4,
+    "email": "chi@meridianhotels.com",
+    "manager": "EMP002",
+    "phoneNumber": "+1-312-555-1002",
+    "description": "Elegant suites on the Magnificent Mile with easy access to the lakefront, museums, and Chicago's vibrant dining scene.",
+    "amenities": [
+      { "amenityName": "Indoor Pool", "amenityDesc": "Temperature-controlled lap pool" },
+      { "amenityName": "Business Center", "amenityDesc": "Fully equipped conference rooms and co-working space" },
+      { "amenityName": "Sky Lounge Bar", "amenityDesc": "Cocktail bar on the 34th floor with lake views" },
+      { "amenityName": "Valet Parking", "amenityDesc": "24-hour valet and self-parking available" }
+    ]
+  },
+  {
+    "hotelId": 3,
+    "chainId": 1,
+    "name": "Meridian Palace Miami",
+    "address": "1200, Collins Avenue, Miami",
+    "stars": 5,
+    "email": "mia@meridianhotels.com",
+    "manager": "EMP003",
+    "phoneNumber": "+1-305-555-1003",
+    "description": "A beachfront resort on South Beach blending Art Deco heritage with modern luxury. Private beach access and a celebrity-favourite pool deck.",
+    "amenities": [
+      { "amenityName": "Private Beach", "amenityDesc": "Reserved beachfront with cabana service" },
+      { "amenityName": "Outdoor Pool", "amenityDesc": "Olympic-length pool with poolside bar" },
+      { "amenityName": "Spa", "amenityDesc": "Caribbean-inspired treatments and hot tub suites" },
+      { "amenityName": "Waterfront Restaurant", "amenityDesc": "Fresh seafood and Latin-fusion menu" }
+    ]
+  },
+  {
+    "hotelId": 4,
+    "chainId": 1,
+    "name": "Meridian Tower Toronto",
+    "address": "88, Wellington Street, Toronto",
+    "stars": 4,
+    "email": "tor@meridianhotels.com",
+    "manager": "EMP004",
+    "phoneNumber": "+1-416-555-1004",
+    "description": "A sleek downtown tower steps from the Financial District and the CN Tower, ideal for both business and leisure travellers.",
+    "amenities": [
+      { "amenityName": "Fitness Center", "amenityDesc": "State-of-the-art equipment and yoga studio" },
+      { "amenityName": "Executive Lounge", "amenityDesc": "Private lounge with complimentary breakfast and evening refreshments" },
+      { "amenityName": "Restaurant", "amenityDesc": "Canadian cuisine with locally sourced ingredients" }
+    ]
+  },
+  {
+    "hotelId": 5,
+    "chainId": 1,
+    "name": "Meridian Boutique Montreal",
+    "address": "350, Rue Saint-Denis, Montreal",
+    "stars": 3,
+    "email": "mtl@meridianhotels.com",
+    "manager": "EMP005",
+    "phoneNumber": "+1-514-555-1005",
+    "description": "A charming boutique hotel in the Plateau-Mont-Royal neighbourhood, surrounded by galleries, bistros, and the best of Montreal's cultural scene.",
+    "amenities": [
+      { "amenityName": "Café", "amenityDesc": "In-house café serving specialty coffee and pastries" },
+      { "amenityName": "Bicycle Rental", "amenityDesc": "Complimentary bikes for exploring the city" }
+    ]
+  },
+  {
+    "hotelId": 6,
+    "chainId": 2,
+    "name": "Azure Riviera Cannes",
+    "address": "46, Boulevard de la Croisette, Cannes",
+    "stars": 5,
+    "email": "cannes@azurecoast.com",
+    "manager": "EMP006",
+    "phoneNumber": "+33-4-555-2001",
+    "description": "A palatial retreat on the Côte d'Azur, host to film stars during the festival season and discerning travellers year-round.",
+    "amenities": [
+      { "amenityName": "Private Beach Club", "amenityDesc": "Exclusive beachfront with sun beds and champagne service" },
+      { "amenityName": "Michelin-Star Restaurant", "amenityDesc": "Provençal seafood by a two-star chef" },
+      { "amenityName": "Spa", "amenityDesc": "Talasso therapy and sea-mineral treatments" },
+      { "amenityName": "Yacht Charter", "amenityDesc": "Arrangements for private yacht hire from the marina" }
+    ]
+  },
+  {
+    "hotelId": 7,
+    "chainId": 2,
+    "name": "Azure Côte Nice",
+    "address": "1, Promenade des Anglais, Nice",
+    "stars": 4,
+    "email": "nice@azurecoast.com",
+    "manager": "EMP007",
+    "phoneNumber": "+33-4-555-2002",
+    "description": "Belle Époque elegance meets the Mediterranean on Nice's iconic Promenade. Walking distance to the Old Town and bustling Cours Saleya market.",
+    "amenities": [
+      { "amenityName": "Outdoor Pool", "amenityDesc": "Heated seawater pool with panoramic sea views" },
+      { "amenityName": "Wine Bar", "amenityDesc": "Curated Provence wine cellar and tasting events" },
+      { "amenityName": "Fitness Center", "amenityDesc": "Overlooking the sea with Pilates classes" }
+    ]
+  },
+  {
+    "hotelId": 8,
+    "chainId": 2,
+    "name": "Azure Med Barcelona",
+    "address": "5, Passeig de Gràcia, Barcelona",
+    "stars": 5,
+    "email": "bcn@azurecoast.com",
+    "manager": "EMP008",
+    "phoneNumber": "+34-93-555-2003",
+    "description": "Set in a restored Modernista building on Passeig de Gràcia, steps from the Sagrada Família and Picasso Museum.",
+    "amenities": [
+      { "amenityName": "Rooftop Terrace", "amenityDesc": "Open-air terrace with tapas bar and city views" },
+      { "amenityName": "Spa", "amenityDesc": "Mediterranean-inspired therapies and hammam" },
+      { "amenityName": "Art Gallery", "amenityDesc": "Rotating exhibitions by local Catalan artists" }
+    ]
+  },
+  {
+    "hotelId": 9,
+    "chainId": 2,
+    "name": "Azure Adriatic Dubrovnik",
+    "address": "2, Stradun, Dubrovnik",
+    "stars": 4,
+    "email": "dbv@azurecoast.com",
+    "manager": "EMP009",
+    "phoneNumber": "+385-20-555-2004",
+    "description": "A historic hotel within the Old Town walls of Dubrovnik, offering stunning Adriatic views and access to the city's UNESCO heritage sites.",
+    "amenities": [
+      { "amenityName": "Infinity Pool", "amenityDesc": "Cliffside pool overlooking the Adriatic Sea" },
+      { "amenityName": "Restaurant", "amenityDesc": "Dalmatian seafood and regional wines" }
+    ]
+  },
+  {
+    "hotelId": 10,
+    "chainId": 2,
+    "name": "Azure Garden Lisbon",
+    "address": "120, Avenida da Liberdade, Lisbon",
+    "stars": 3,
+    "email": "lis@azurecoast.com",
+    "manager": "EMP010",
+    "phoneNumber": "+351-21-555-2005",
+    "description": "A stylish mid-century property on Lisbon's grand boulevard, with lush courtyard gardens and a terrace overlooking the avenue.",
+    "amenities": [
+      { "amenityName": "Courtyard Garden", "amenityDesc": "Tranquil garden with orange trees and fountain" },
+      { "amenityName": "Rooftop Bar", "amenityDesc": "Sunset cocktails and fado music evenings" }
+    ]
+  },
+  {
+    "hotelId": 11,
+    "chainId": 3,
+    "name": "Summit Alpine Zurich",
+    "address": "9, Bahnhofstrasse, Zurich",
+    "stars": 5,
+    "email": "zur@summitpeak.com",
+    "manager": "EMP011",
+    "phoneNumber": "+41-44-555-3001",
+    "description": "A landmark property on Zurich's most exclusive shopping street, overlooking Lake Zurich and the Alps.",
+    "amenities": [
+      { "amenityName": "Fine Dining", "amenityDesc": "Swiss-French cuisine with an 800-label wine cellar" },
+      { "amenityName": "Spa", "amenityDesc": "Alpine herb treatments and heated pool" },
+      { "amenityName": "Concierge Service", "amenityDesc": "Private banking, ski arrangement, and helicopter bookings" }
+    ]
+  },
+  {
+    "hotelId": 12,
+    "chainId": 3,
+    "name": "Summit Glacier Zermatt",
+    "address": "15, Bahnhofstrasse, Zermatt",
+    "stars": 5,
+    "email": "zrm@summitpeak.com",
+    "manager": "EMP012",
+    "phoneNumber": "+41-27-555-3002",
+    "description": "A car-free alpine sanctuary at the foot of the Matterhorn. Direct gondola access, a celebrated ski-in/ski-out lounge, and glacier views from every room.",
+    "amenities": [
+      { "amenityName": "Ski Storage", "amenityDesc": "Heated ski room with boot dryers" },
+      { "amenityName": "Après-ski Lounge", "amenityDesc": "Fondue, raclette, and mulled wine fireside" },
+      { "amenityName": "Spa", "amenityDesc": "Heated outdoor pool with Matterhorn views" }
+    ]
+  },
+  {
+    "hotelId": 13,
+    "chainId": 3,
+    "name": "Summit City Geneva",
+    "address": "30, Quai du Général-Guisan, Geneva",
+    "stars": 4,
+    "email": "gva@summitpeak.com",
+    "manager": "EMP013",
+    "phoneNumber": "+41-22-555-3003",
+    "description": "A refined lakeside hotel on the Rive Gauche, ideal for diplomats and international business travellers. Walking distance to the UN and CERN.",
+    "amenities": [
+      { "amenityName": "Business Center", "amenityDesc": "Private meeting rooms and interpretation services" },
+      { "amenityName": "Lakeside Restaurant", "amenityDesc": "Swiss cuisine with views of Lake Geneva" }
+    ]
+  },
+  {
+    "hotelId": 14,
+    "chainId": 3,
+    "name": "Summit Heritage Lucerne",
+    "address": "6, Schweizerhofquai, Lucerne",
+    "stars": 4,
+    "email": "lux@summitpeak.com",
+    "manager": "EMP014",
+    "phoneNumber": "+41-41-555-3004",
+    "description": "A 19th-century grand hotel overlooking Lake Lucerne and the Chapel Bridge. Wagner and Tolstoy once stayed here.",
+    "amenities": [
+      { "amenityName": "Classic Restaurant", "amenityDesc": "Traditional Swiss dishes in a Belle Époque dining hall" },
+      { "amenityName": "Boat Dock", "amenityDesc": "Private dock for lake excursions and paddle-boat hire" }
+    ]
+  },
+  {
+    "hotelId": 15,
+    "chainId": 3,
+    "name": "Summit Inn Interlaken",
+    "address": "20, Höheweg, Interlaken",
+    "stars": 3,
+    "email": "int@summitpeak.com",
+    "manager": "EMP015",
+    "phoneNumber": "+41-33-555-3005",
+    "description": "A cosy mountain inn between Lakes Thun and Brienz, popular with hikers, paragliders, and adventure travellers heading to the Jungfrau region.",
+    "amenities": [
+      { "amenityName": "Gear Storage", "amenityDesc": "Secure storage for skis, bikes, and hiking equipment" },
+      { "amenityName": "Restaurant", "amenityDesc": "Hearty mountain cuisine with local Bernese specialties" }
+    ]
+  },
+  {
+    "hotelId": 16,
+    "chainId": 4,
+    "name": "Heritage Grand London Mayfair",
+    "address": "23, Brook Street, London",
+    "stars": 5,
+    "email": "lon@heritagegrand.com",
+    "manager": "EMP016",
+    "phoneNumber": "+44-20-555-4001",
+    "description": "A Georgian townhouse hotel in the heart of Mayfair, blending 18th-century grandeur with contemporary British design. Two streets from Bond Street.",
+    "amenities": [
+      { "amenityName": "Fine Dining", "amenityDesc": "Seasonal British tasting menu with a 1,000-bottle cellar" },
+      { "amenityName": "Drawing Room", "amenityDesc": "Afternoon tea served daily in the original Georgian parlour" },
+      { "amenityName": "Spa", "amenityDesc": "Aromatherapy and deep-tissue treatments" }
+    ]
+  },
+  {
+    "hotelId": 17,
+    "chainId": 4,
+    "name": "Heritage Royal Edinburgh",
+    "address": "1, Princes Street, Edinburgh",
+    "stars": 5,
+    "email": "edi@heritagegrand.com",
+    "manager": "EMP017",
+    "phoneNumber": "+44-131-555-4002",
+    "description": "A Victorian landmark facing Edinburgh Castle and the gardens of Princes Street, with baronial interiors and sweeping views of the Old Town.",
+    "amenities": [
+      { "amenityName": "Castle View Terrace", "amenityDesc": "Outdoor terrace overlooking the castle esplanade" },
+      { "amenityName": "Whisky Bar", "amenityDesc": "Over 200 single malts and blended Scotch whiskies" },
+      { "amenityName": "Fitness Center", "amenityDesc": "Victorian-styled gym and heated indoor pool" }
+    ]
+  },
+  {
+    "hotelId": 18,
+    "chainId": 4,
+    "name": "Heritage Manor Oxford",
+    "address": "4, Beaumont Street, Oxford",
+    "stars": 4,
+    "email": "oxf@heritagegrand.com",
+    "manager": "EMP018",
+    "phoneNumber": "+44-1865-555-4003",
+    "description": "A neoclassical hotel opposite the Ashmolean Museum, beloved by academics, visiting fellows, and discerning travellers exploring the University city.",
+    "amenities": [
+      { "amenityName": "Library Lounge", "amenityDesc": "Quiet reading room with 2,000 volumes and a fire" },
+      { "amenityName": "Garden Restaurant", "amenityDesc": "English garden dining and Sunday roasts" }
+    ]
+  },
+  {
+    "hotelId": 19,
+    "chainId": 4,
+    "name": "Heritage Townhouse Bath",
+    "address": "99, Great Pulteney Street, Bath",
+    "stars": 4,
+    "email": "bth@heritagegrand.com",
+    "manager": "EMP019",
+    "phoneNumber": "+44-1225-555-4004",
+    "description": "A perfectly preserved Georgian townhouse on Bath's grandest street, moments from the Roman Baths and the Jane Austen Centre.",
+    "amenities": [
+      { "amenityName": "Thermal Suite", "amenityDesc": "Access to Bath's famous natural thermal spa waters" },
+      { "amenityName": "Tearoom", "amenityDesc": "Cream teas and Georgian pastries daily" }
+    ]
+  },
+  {
+    "hotelId": 20,
+    "chainId": 4,
+    "name": "Heritage Inn York",
+    "address": "10, Museum Street, York",
+    "stars": 3,
+    "email": "yor@heritagegrand.com",
+    "manager": "EMP020",
+    "phoneNumber": "+44-1904-555-4005",
+    "description": "A cheerful inn in the shadow of York Minster, on a cobbled street lined with independent shops and Viking-era archaeology.",
+    "amenities": [
+      { "amenityName": "Traditional Pub", "amenityDesc": "Real ales, pork pies, and live folk music on Fridays" }
+    ]
+  },
+  {
+    "hotelId": 21,
+    "chainId": 5,
+    "name": "Pacific Horizon Marina Singapore",
+    "address": "1, Bayfront Avenue, Singapore",
+    "stars": 5,
+    "email": "sin@pacifichorizon.com",
+    "manager": "EMP021",
+    "phoneNumber": "+65-6-555-5001",
+    "description": "An iconic tower hotel overlooking Marina Bay Sands and the glittering Singapore skyline. Infinity pool on the 57th floor.",
+    "amenities": [
+      { "amenityName": "Sky Infinity Pool", "amenityDesc": "World-famous rooftop pool with 360-degree city and sea views" },
+      { "amenityName": "Spa", "amenityDesc": "Asian holistic therapies and couple treatment suites" },
+      { "amenityName": "Celebrity Restaurant", "amenityDesc": "Pan-Asian cuisine by a four-time award-winning chef" },
+      { "amenityName": "Casino Access", "amenityDesc": "Direct passageway to the Marina Bay casino" }
+    ]
+  },
+  {
+    "hotelId": 22,
+    "chainId": 5,
+    "name": "Pacific Horizon Orchard",
+    "address": "290, Orchard Road, Singapore",
+    "stars": 4,
+    "email": "orc@pacifichorizon.com",
+    "manager": "EMP022",
+    "phoneNumber": "+65-6-555-5002",
+    "description": "A contemporary city hotel on Singapore's premier shopping strip, ideal for leisure travellers and families visiting Sentosa and the Gardens by the Bay.",
+    "amenities": [
+      { "amenityName": "Outdoor Pool", "amenityDesc": "Tropical garden pool with poolside BBQ" },
+      { "amenityName": "Food Hall", "amenityDesc": "Hawker-style dining featuring 12 Singaporean street food stalls" }
+    ]
+  },
+  {
+    "hotelId": 23,
+    "chainId": 5,
+    "name": "Pacific Horizon Tokyo Shinjuku",
+    "address": "2, Nishi-Shinjuku, Tokyo",
+    "stars": 5,
+    "email": "tyo@pacifichorizon.com",
+    "manager": "EMP023",
+    "phoneNumber": "+81-3-555-5003",
+    "description": "A skyscraper hotel in Shinjuku's high-rise district with breathtaking views of Mount Fuji on clear mornings. Award-winning Japanese kaiseki dining.",
+    "amenities": [
+      { "amenityName": "Kaiseki Restaurant", "amenityDesc": "Multi-course traditional Japanese cuisine" },
+      { "amenityName": "Onsen Spa", "amenityDesc": "Natural hot spring baths on the 48th floor" },
+      { "amenityName": "Tea Ceremony Room", "amenityDesc": "Private tatami rooms for traditional tea ceremonies" }
+    ]
+  },
+  {
+    "hotelId": 24,
+    "chainId": 5,
+    "name": "Pacific Horizon Bangkok Riverside",
+    "address": "48, Charoen Nakhon Road, Bangkok",
+    "stars": 4,
+    "email": "bkk@pacifichorizon.com",
+    "manager": "EMP024",
+    "phoneNumber": "+66-2-555-5004",
+    "description": "A riverside resort on the Chao Phraya, with private boat transfers to the Grand Palace, Wat Pho, and Bangkok's famous floating markets.",
+    "amenities": [
+      { "amenityName": "River Pool", "amenityDesc": "Infinity pool overlooking the Chao Phraya River" },
+      { "amenityName": "Thai Restaurant", "amenityDesc": "Royal Thai cuisine and cooking classes" },
+      { "amenityName": "Private Boat Pier", "amenityDesc": "Complimentary shuttle boat to city temples and markets" }
+    ]
+  },
+  {
+    "hotelId": 25,
+    "chainId": 5,
+    "name": "Pacific Horizon Sydney Harbour",
+    "address": "61, Macquarie Street, Sydney",
+    "stars": 5,
+    "email": "syd@pacifichorizon.com",
+    "manager": "EMP025",
+    "phoneNumber": "+61-2-555-5005",
+    "description": "A five-star icon overlooking the Sydney Opera House and Harbour Bridge from the Royal Botanic Gardens edge. A bucket-list destination in itself.",
+    "amenities": [
+      { "amenityName": "Harbour View Restaurant", "amenityDesc": "Modern Australian cuisine with an unobstructed Opera House view" },
+      { "amenityName": "Spa", "amenityDesc": "Indigenous Australian treatments using native botanicals" },
+      { "amenityName": "Rooftop Bar", "amenityDesc": "Sunset cocktails overlooking the Harbour Bridge" },
+      { "amenityName": "Fitness Center", "amenityDesc": "Floor-to-ceiling harbour windows and personal training" }
+    ]
+  }
+]

@@ -1,15 +1,15 @@
-class HotelChain{
-    //primary key
-    int chainID; 
+public class HotelChain
+{
+    public int ChainID { get; set; }
+    public string Name { get; set; }
+    public string PostalCode { get; set; }
 
-    //other keys
-    string name {get;set;}
-    string postalCode {get;set;} //references Address
+    public HotelChain() { }
 
-    public HotelChain(int chainID, string name, string postalCode){
-        this.chainID = chainID;
-        this.name = name;
-        this.postalCode = postalCode;
+    public HotelChain(int chainID, string name, string postalCode)
+    {
+        this.ChainID = chainID;
+        this.Name = name;
+        this.PostalCode = postalCode;
     }
-
 }
