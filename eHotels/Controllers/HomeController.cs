@@ -22,6 +22,13 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
+    public IActionResult SignIn(String username, String password, String action)
+    {
+        Console.WriteLine(username + " " + password + " " + action);
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();

@@ -24,10 +24,10 @@ html, body{
     border-color: #4f435d;
     display: flex;
     flex-direction: column;
-    margin-top: 10em;
+    margin-top: 11em;
     padding: 10px;
     border-radius: 20px;
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .name-holder{
@@ -102,11 +102,12 @@ html, body{
 .login:hover{
     background-color: rgb(115, 164, 242);
     cursor: pointer;
-    transform:translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .login:active{
     background-color: rgb(84, 129, 200);
+    transform: scale(0.95);
 }
 
 .sign-in{
@@ -134,4 +135,5 @@ html, body{
 
 .sign-in:active{
     background-color: rgb(84, 129, 200);
+    transform: scale(0.95);
 }
