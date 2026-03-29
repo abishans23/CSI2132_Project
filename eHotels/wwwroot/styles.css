@@ -34,10 +34,15 @@
   padding-bottom: 1em;
   text-decoration: none;
 
-  transition: background-color 0.25s ease-in, transform 0.3s ease-in;
+  transition: background-color 0.2s ease-in, transform 0.2s ease-in;
 }
 
 .nav-link:hover{
   background-color: rgb(98, 93, 99);
   transform: scale(1.1);
+}
+
+.nav-link:active{
+  background-color: rgb(125, 119, 126);
+  transform: scale(0.9);
 }

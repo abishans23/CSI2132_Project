@@ -108,7 +108,6 @@
 
 .search-img:active{
     filter: brightness(0.9);
-
 }
 
 .about-us{
@@ -144,15 +143,16 @@
     z-index: -1;
     overflow: hidden;
     background-position: -10%;
-    filter: blur(1px) brightness(0.75);
+    filter: blur(2px) brightness(0.75);
     width: 105%;
     height: 105%;
 }
 
 .hotel-chains-list-container{
-    background-color: #343034ff;
+    position: relative;
+    background-color: rgb(53, 45, 53);
     height: 100%;
-    background-image: linear-gradient(to bottom, #343034ff, rgb(28, 25, 28));
+    
 }
 
 .hotel-chains-title{
@@ -162,18 +162,29 @@
     font-style: italic;
     padding-top: 0.5em;
     color: white;
+
 }
 
 .hotel-chains-list{
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
+    margin-top: 1em;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
     padding: 1em;
+    margin-bottom: 2em;
+    bottom: 0;
 }
 
 .chain{
     color: white;
+    background-color: blue;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
     font-size: 2em;
     text-align: center;
-    margin: 1em;
+    font-family: serif;
+    font-style: italic;
+    margin-bottom: 1em;
 }
