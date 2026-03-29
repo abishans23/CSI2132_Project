@@ -17,7 +17,6 @@ namespace Data
         // 2. Add a parameterless constructor
         public Hotel() { }
 
-        // 3. You can keep your existing constructor for manual use
         public Hotel(int chainID, string name, int stars, string manager, string postalCode, string description, string fileName, string imageDesc)
         {
             this.ChainID = chainID;

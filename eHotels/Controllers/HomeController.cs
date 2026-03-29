@@ -17,6 +17,7 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         //TODO::remove since only debug code
+        //TODO::fix performance issue
         await _db.OpenConnection();
         return View();
     }
