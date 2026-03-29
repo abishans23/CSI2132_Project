@@ -1,13 +1,28 @@
 class Customer{
 
     //primary keys
-    public int IDType;
-    public int IDNumber;
+    public string IDType;
+    public int idNumber;
 
     //other keys
-    string firstName{get;set;}
-    string lastName{get;set;}
-     string registrationDate{get;set;}
+    public string FirstName{get;set;}
+    public string LastName{get;set;}
+    public DateOnly RegistrationDate{get;set;}
+    public int PhoneNumber{get;set;}
+    public string PostalCode{get;set;}
+    public string Email{get;set;}
+
+
+    public Customer(string idType, int idNumber, string firstName, string lastName, DateOnly registrationDate, int phoneNumber, string postalCode, string email)
+    {
+        this.IDType = idType;
+        this.idNumber = idNumber;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.RegistrationDate = registrationDate;
+        this.PhoneNumber = phoneNumber;
+        this.PostalCode = postalCode;
+    }
     
     
 }

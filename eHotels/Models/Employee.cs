@@ -3,24 +3,25 @@ class Employee{
     //TODO::Mark fields public
 
     //primary key
-    string SSN;
+    public string SSN;
 
     //other keys
-    string firstName {get;set;}
-    string lastName {get;set;}
-    string postalCode {get;set;} //references address
-    string position {get;set;}
-    string hotelID {get;set;} //references hotel
-    string email {get;set;} //references account
+    string FirstName {get;set;}
+    string LastName {get;set;}
+    string PostalCode {get;set;} //references address
+    string Position {get;set;}
+    string HotelID {get;set;} //references hotel
+    string Email {get;set;} //references account
 
+    public Employee(){}
     public Employee(string SSN, string firstName, string lastName, string postalCode, string position, string hotelID, string email){
         this.SSN = SSN;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.postalCode = postalCode;
-        this.position = position;
-        this.hotelID = hotelID;
-        this.email = email;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.PostalCode = postalCode;
+        this.Position = position;
+        this.HotelID = hotelID;
+        this.Email = email;
     }
 
 }
