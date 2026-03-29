@@ -126,8 +126,8 @@
 }
 
 .about{
-    margin-top: 5em;
-    margin-bottom: 8em;
+    margin-top: 6em;
+    margin-bottom: 6em;
     text-align: center;
     font-family: serif;
     font-style: italic;
@@ -169,7 +169,6 @@ html, body {
     font-style: italic;
     padding-top: 0.5em;
     color: white;
-
 }
 
 .hotel-chains-list{
