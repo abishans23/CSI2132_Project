@@ -85,6 +85,8 @@ namespace Data
             };
 
             //TODO::instantiate all models
+
+            //TODO::create all JSON files
             var hotels = JsonSerializer.Deserialize<List<Hotel>>(fileData[0],options);
             var hotelChains = JsonSerializer.Deserialize<List<HotelChain>>(fileData[1],options);
             var rooms = JsonSerializer.Deserialize<List<Room>>(fileData[2],options);
