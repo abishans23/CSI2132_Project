@@ -55,11 +55,11 @@ namespace Data
         public async Task<bool> SeedDatabase()
         {
             string[] jsonPaths = {
-        Path.Combine("Data", "Hotel.json"),
-        Path.Combine("Data", "HotelChain.json"),
-        Path.Combine("Data", "Room.json"),
-        Path.Combine("Data", "Account.json")
-    };
+                Path.Combine("Data", "Hotel.json"),
+                Path.Combine("Data", "HotelChain.json"),
+                Path.Combine("Data", "Room.json"),
+                Path.Combine("Data", "Account.json")
+            };
 
             // Load and check files
             List<string> fileData = new List<string>();
@@ -84,11 +84,11 @@ namespace Data
             var hotels = JsonSerializer.Deserialize<List<Hotel>>(fileData[0],options);
             var hotelChains = JsonSerializer.Deserialize<List<HotelChain>>(fileData[1],options);
             var rooms = JsonSerializer.Deserialize<List<Room>>(fileData[2],options);
-            var accounts = JsonSerializer.Deserialize<List<Account>>(fileData[3],options);
+            //var accounts = JsonSerializer.Deserialize<List<Account>>(fileData[3],options);
 
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
-                if (hotelChains == null || rooms == null || accounts == null)
+                if (hotelChains == null || rooms == null)
                 {
                     _logger.LogError("One or more JSON files failed to deserialize.");
                     return false;
@@ -125,6 +125,7 @@ namespace Data
                 }
 
                 // 4. Insert Accounts
+                /*
                 foreach (var account in accounts)
                 {
                     await this.ExecuteAsync(
@@ -132,6 +133,7 @@ namespace Data
                   VALUES (@Email, @Username, @Password)
                   ON CONFLICT (Email) DO NOTHING;", account);
                 }
+                */
 
 
                 return true;
