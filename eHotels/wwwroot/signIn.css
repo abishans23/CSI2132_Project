@@ -28,6 +28,24 @@ html, body{
     padding: 10px;
     border-radius: 20px;
     transform: scale(1.15);
+
+    box-shadow: 20px 20px #4f435d69;
+
+    animation-name: shadowAnim;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shadowAnim {
+    from {
+        box-shadow: 0px 0px #4f435d69;
+        transform: scale(1.15) translateX(5px) translateY(5px);
+    }
+    to {
+        box-shadow: 20px 20px #4f435d69;
+        transform: scale(1.15) translateX(-5px) translateY(-5px);
+    }
 }
 
 .name-holder{
@@ -38,6 +56,8 @@ html, body{
     color: white;
     font-family: serif;
     font-style: italic;
+    font-weight: bold;
+    text-shadow: 1px 1px #1e1923c8;
 }
 
 .username{
