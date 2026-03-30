@@ -43,7 +43,7 @@ html, body{
         transform: scale(1.15) translateX(5px) translateY(5px);
     }
     to {
-        box-shadow: 20px 20px #4f435d69;
+        box-shadow: 20px 20px #4f435d43;
         transform: scale(1.15) translateX(-5px) translateY(-5px);
     }
 }
