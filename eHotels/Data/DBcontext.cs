@@ -66,7 +66,6 @@ namespace Data
             }, _logger);
         }
 
-        //TODO::move SeedDatabase to a better place
 
         //SeedDataBase populates the database with JSON file data on startup or empty database
 
