@@ -1,5 +1,7 @@
 using Npgsql;
 using Dapper;
+using System.Net.Sockets;
+
 using System.Text.Json;
 
 namespace Data
@@ -24,7 +26,20 @@ namespace Data
             {
                 if (db == null) return false;
 
-                await using var conn = await db.OpenConnectionAsync();
+                try
+                {
+                    await db.OpenConnectionAsync();
+                }
+                catch (Npgsql.NpgsqlException ex) when (ex.InnerException is SocketException socketEx)
+                {
+                    
+                    Console.WriteLine($"DB connection failed: {socketEx.SocketErrorCode}");
+                }
+                catch (Npgsql.NpgsqlException ex)
+                {
+                    // General Npgsql connectivity error
+                    Console.WriteLine($"Npgsql error: {ex.Message}");
+                }
                 return true;
             }, _logger);
         }
