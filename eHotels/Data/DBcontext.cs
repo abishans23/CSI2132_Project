@@ -21,7 +21,6 @@ namespace Data
 
         public async Task<bool> OpenConnection()
         {
-            await SeedDatabase();
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
                 if (db == null) return false;

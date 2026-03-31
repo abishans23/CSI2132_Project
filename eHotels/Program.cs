@@ -13,6 +13,12 @@ builder.Services.AddSingleton<DBContext>();
 
 var app = builder.Build();
 
+using(var scope = app.Services.CreateScope())
+{
+    var db=scope.ServiceProvider.GetRequiredService<DBContext>();
+    await db.SeedDatabase();
+}
+
 
 
 // Configure the HTTP request pipeline.
