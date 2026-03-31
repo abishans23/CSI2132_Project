@@ -9,7 +9,7 @@ builder.Logging.AddConsole();
 builder.Logging.AddDebug();
 
 //Dependency inject the database
-builder.Services.AddSingleton<DBContext>();
+builder.Services.AddScoped<DBContext>();
 
 var app = builder.Build();
 

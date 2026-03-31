@@ -15,7 +15,7 @@ namespace Data
         //use singleton 
         private static DBContext instance;
 
-        private DBContext()
+        private DBContext(ILogger<DBContext> logger)
         {
             // Initialize the DataSource immediately so it's ready for testing
             string connectionString = "Host=ep-sweet-glitter-a8ag8fj1-pooler.eastus2.azure.neon.tech; Database=neondb; Username=neondb_owner; Password=npg_cU7jafXmtI5k; SSL Mode=VerifyFull; Channel Binding=Require;";
@@ -26,7 +26,7 @@ namespace Data
         {
             if (instance == null)
             {
-                instance=new DBContext();
+                instance=new DBContext(_logger);
             }
             return instance;
         }
