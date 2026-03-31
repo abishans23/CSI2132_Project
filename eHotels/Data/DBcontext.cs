@@ -3,32 +3,20 @@ using Dapper;
 using System.Net.Sockets;
 
 using System.Text.Json;
-using System.ComponentModel;
 
 namespace Data
 {
     public class DBContext
     {
         private NpgsqlDataSource? db;
-        private static readonly ILogger<DBContext> _logger;
+        private readonly ILogger<DBContext> _logger;
 
-        //use singleton 
-        private static DBContext instance;
-
-        private DBContext(ILogger<DBContext> logger)
+        public DBContext(ILogger<DBContext> logger)
         {
+            _logger = logger;
             // Initialize the DataSource immediately so it's ready for testing
             string connectionString = "Host=ep-sweet-glitter-a8ag8fj1-pooler.eastus2.azure.neon.tech; Database=neondb; Username=neondb_owner; Password=npg_cU7jafXmtI5k; SSL Mode=VerifyFull; Channel Binding=Require;";
             db = NpgsqlDataSource.Create(connectionString);
-        }
-
-        public static DBContext getInstance()
-        {
-            if (instance == null)
-            {
-                instance=new DBContext(_logger);
-            }
-            return instance;
         }
 
         public async Task<bool> OpenConnection()

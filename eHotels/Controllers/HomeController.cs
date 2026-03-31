@@ -7,17 +7,18 @@ namespace eHotels.Controllers;
 
 public class HomeController : Controller
 {
+    private DBContext _db;
 
-
-    public HomeController() 
+    public HomeController(DBContext db) 
     {
+        _db = db; 
     }
 
     public async Task<IActionResult> Index()
     {
         //TODO::remove since only debug code
         //TODO::fix performance issue
-        await DBContext.getInstance().OpenConnection();
+        await _db.OpenConnection();
         return View();
     }
 
