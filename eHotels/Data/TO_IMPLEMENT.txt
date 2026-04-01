@@ -1,2 +1,1 @@
-FOREIGN KEY (Manager) REFERENCES Employee(SSN),
-FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID),
+.Add create table statements

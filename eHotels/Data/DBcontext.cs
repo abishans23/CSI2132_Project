@@ -100,7 +100,8 @@ namespace Data
                     return false;
                 }
 
-
+                // --- 1. Create Tables in Order of Dependencies ---
+                
                 // Base Tables
                 await this.ExecuteAsync(CreateString.createAddress);
                 await this.ExecuteAsync(CreateString.createAccount);
@@ -111,21 +112,12 @@ namespace Data
                 await this.ExecuteAsync(CreateString.createHotelChain);
                 await this.ExecuteAsync(CreateString.createCustomer);
 
+                // Level 3 (Circular logic: Employee/Hotel)
                 await this.ExecuteAsync(CreateString.createEmployee);
                 await this.ExecuteAsync(CreateString.createHotel);
+
+                // Level 4 (Dependencies on Hotel/Room)
                 await this.ExecuteAsync(CreateString.createRoom);
-
-                //alter table commands to fix temporary circular dependency between Hotel and Employee
-                await this.ExecuteAsync(@"
-                                        ALTER TABLE Hotel 
-                                        ADD CONSTRAINT fk_hotel_manager 
-                                        FOREIGN KEY (Manager) REFERENCES Employee(SSN);");
-
-                await this.ExecuteAsync(@"
-                                        ALTER TABLE Employee 
-                                        ADD CONSTRAINT fk_employee_hotel 
-                                        FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID);");
-
                 await this.ExecuteAsync(CreateString.createHotelEmail);
                 await this.ExecuteAsync(CreateString.createHotelPhone);
                 await this.ExecuteAsync(CreateString.createHotelChainEmail);
@@ -134,60 +126,51 @@ namespace Data
                 await this.ExecuteAsync(CreateString.createHotelAmenity);
                 await this.ExecuteAsync(CreateString.createReview);
 
+                // Level 5 (Specific linking tables)
                 await this.ExecuteAsync(CreateString.createRoomProblem);
                 await this.ExecuteAsync(CreateString.createRoomAmenity);
                 await this.ExecuteAsync(CreateString.createRoomBooking);
                 await this.ExecuteAsync(CreateString.createRentedRoom);
                 await this.ExecuteAsync(CreateString.createCustBooking);
                 await this.ExecuteAsync(CreateString.createRentingTenant);
-                
 
-
+                // --- 2. Insert Data ---
 
                 // HotelChain
-                
                 foreach (var chain in hotelChains)
                 {
                     await this.ExecuteAsync(
-                        @"INSERT INTO HotelChain(ChainID, Name, PostalCode) 
+                        @"INSERT INTO HotelChain (ChainID, Name, PostalCode) 
                           VALUES (@ChainID, @Name, @PostalCode)
                           ON CONFLICT (ChainID) DO NOTHING;", chain);
                 }
 
                 // Hotel
-                /*
-                if (hotels != null)
+                foreach (var hotel in hotels)
                 {
-                    foreach (var hotel in hotels)
-                    {
-
-                        await this.ExecuteAsync(
-                            @"INSERT INTO Hotel(HotelID, ChainID, Name, Stars, Manager, PostalCode, Description) 
+                    await this.ExecuteAsync(
+                        @"INSERT INTO Hotel (HotelID, ChainID, Name, Stars, Manager, PostalCode, Description) 
                           VALUES (@HotelID, @ChainID, @Name, @Stars, @Manager, @PostalCode, @Description)
                           ON CONFLICT (HotelID) DO NOTHING;", hotel);
-                    }
                 }
 
                 // Room
                 foreach (var room in rooms)
                 {
                     await this.ExecuteAsync(
-                        @"INSERT INTO Room(HotelID, RoomNumber, Price, Capacity, View, Extendable) 
+                        @"INSERT INTO Room (HotelID, RoomNumber, Price, Capacity, View, Extendable) 
                           VALUES (@HotelID, @RoomNumber, @Price, @Capacity, @View, @Extendable)
                           ON CONFLICT (HotelID, RoomNumber) DO NOTHING;", room);
                 }
-
-                */
 
                 // Account
                 foreach (var account in accounts)
                 {
                     await this.ExecuteAsync(
-                        @"INSERT INTO Account(Email, Username, Password) 
+                        @"INSERT INTO Account (Email, Username, Password) 
                           VALUES (@Email, @Username, @Password)
                           ON CONFLICT (Email) DO NOTHING;", account);
                 }
-
 
                 return true;
             }, _logger);

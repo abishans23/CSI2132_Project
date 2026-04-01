@@ -2,7 +2,6 @@ namespace Data
 {
     static class CreateString
     {
-        //TODO::add an alter table to fi circular dependency
         public static readonly string createHotel = @"CREATE TABLE IF NOT EXISTS Hotel(
                     HotelID INT PRIMARY KEY CHECK(HotelID >=0),
                     ChainID INT CHECK(ChainID >= 0),
@@ -11,6 +10,7 @@ namespace Data
                     Stars INT CHECK (Stars BETWEEN 1 AND 5),
                     Manager VARCHAR(9) NOT NULL,
                     Description VARCHAR(200),
+                    FOREIGN KEY (Manager) REFERENCES Employee(SSN),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode),
                     FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID)
                     );";
@@ -88,6 +88,7 @@ namespace Data
                     HotelID INT NOT NULL CHECK(HotelID >= 0),
                     Email VARCHAR(30) NOT NULL CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode),
+                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID),
                     FOREIGN KEY (Email) REFERENCES Account(Email)
                     );";
 
