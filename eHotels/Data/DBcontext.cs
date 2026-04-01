@@ -1,7 +1,6 @@
 using Npgsql;
 using Dapper;
 using System.Net.Sockets;
-
 using System.Text.Json;
 
 namespace Data
@@ -15,7 +14,7 @@ namespace Data
         {
             _logger = logger;
             // Initialize the DataSource immediately so it's ready for testing
-            string connectionString ="Host=ep-sweet-glitter-a8ag8fj1-pooler.eastus2.azure.neon.tech; Database=neondb; Username=neondb_owner; Password=npg_cU7jafXmtI5k; SSL Mode=VerifyFull; Channel Binding=Require;";
+            string connectionString = "Host=ep-sweet-glitter-a8ag8fj1-pooler.eastus2.azure.neon.tech; Database=neondb; Username=neondb_owner; Password=npg_cU7jafXmtI5k; SSL Mode=VerifyFull; Channel Binding=Require;";
             db = NpgsqlDataSource.Create(connectionString);
         }
 
@@ -31,12 +30,10 @@ namespace Data
                 }
                 catch (Npgsql.NpgsqlException ex) when (ex.InnerException is SocketException socketEx)
                 {
-                    
                     Console.WriteLine($"DB connection failed: {socketEx.SocketErrorCode}");
                 }
                 catch (Npgsql.NpgsqlException ex)
                 {
-                    // General Npgsql connectivity error
                     Console.WriteLine($"Npgsql error: {ex.Message}");
                 }
                 return true;
@@ -47,7 +44,6 @@ namespace Data
         {
             return await Utils.TryExecuteAsync<IEnumerable<T>, DBContext>(async () =>
             {
-                // Ensure the data source exists before querying
                 if (db == null) throw new InvalidOperationException("Database source not initialized.");
 
                 await using var conn = await db.OpenConnectionAsync();
@@ -66,9 +62,6 @@ namespace Data
             }, _logger);
         }
 
-
-        //SeedDataBase populates the database with JSON file data on startup or empty database
-
         public async Task<bool> SeedDatabase()
         {
             string[] jsonPaths = {
@@ -78,7 +71,6 @@ namespace Data
                 Path.Combine("Data", "Account.json")
             };
 
-            // Load and check files
             List<string> fileData = new List<string>();
             foreach (var path in jsonPaths)
             {
@@ -90,70 +82,95 @@ namespace Data
                 fileData.Add(File.ReadAllText(path));
             }
 
-            // Deserialize data
-
-            var options =  new JsonSerializerOptions
+            var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             };
 
-            //TODO::instantiate all models
-
-            //TODO::create all JSON files
-            var hotels = JsonSerializer.Deserialize<List<Hotel>>(fileData[0],options);
-            var hotelChains = JsonSerializer.Deserialize<List<HotelChain>>(fileData[1],options);
-            var rooms = JsonSerializer.Deserialize<List<Room>>(fileData[2],options);
-            var accounts = JsonSerializer.Deserialize<List<Account>>(fileData[3],options);
+            var hotels = JsonSerializer.Deserialize<List<Hotel>>(fileData[0], options);
+            var hotelChains = JsonSerializer.Deserialize<List<HotelChain>>(fileData[1], options);
+            var rooms = JsonSerializer.Deserialize<List<Room>>(fileData[2], options);
+            var accounts = JsonSerializer.Deserialize<List<Account>>(fileData[3], options);
 
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
-                if (hotelChains == null || rooms == null || hotels==null || accounts==null)
+                if (hotelChains == null || rooms == null || hotels == null || accounts == null)
                 {
                     _logger.LogError("One or more JSON files failed to deserialize.");
                     return false;
                 }
 
+                // --- 1. Create Tables in Order of Dependencies ---
+                
+                // Base Tables
+                await this.ExecuteAsync(CreateString.createAddress);
+                await this.ExecuteAsync(CreateString.createAccount);
+                await this.ExecuteAsync(CreateString.createBooking);
+                await this.ExecuteAsync(CreateString.createRenting);
 
-                // 1. Insert HotelChains (Must be first if Hotels reference them)
+                // Level 2
+                await this.ExecuteAsync(CreateString.createHotelChain);
+                await this.ExecuteAsync(CreateString.createCustomer);
+
+                // Level 3 (Circular logic: Employee/Hotel)
+                await this.ExecuteAsync(CreateString.createEmployee);
+                await this.ExecuteAsync(CreateString.createHotel);
+
+                // Level 4 (Dependencies on Hotel/Room)
+                await this.ExecuteAsync(CreateString.createRoom);
+                await this.ExecuteAsync(CreateString.createHotelEmail);
+                await this.ExecuteAsync(CreateString.createHotelPhone);
+                await this.ExecuteAsync(CreateString.createHotelChainEmail);
+                await this.ExecuteAsync(CreateString.createHotelChainPhone);
+                await this.ExecuteAsync(CreateString.createHotelImage);
+                await this.ExecuteAsync(CreateString.createHotelAmenity);
+                await this.ExecuteAsync(CreateString.createReview);
+
+                // Level 5 (Specific linking tables)
+                await this.ExecuteAsync(CreateString.createRoomProblem);
+                await this.ExecuteAsync(CreateString.createRoomAmenity);
+                await this.ExecuteAsync(CreateString.createRoomBooking);
+                await this.ExecuteAsync(CreateString.createRentedRoom);
+                await this.ExecuteAsync(CreateString.createCustBooking);
+                await this.ExecuteAsync(CreateString.createRentingTenant);
+
+                // --- 2. Insert Data ---
+
+                // HotelChain
                 foreach (var chain in hotelChains)
                 {
                     await this.ExecuteAsync(
-                        @"INSERT INTO HotelChains (ChainID, Name, PostalCode) 
-                  VALUES (@ChainID, @Name, @PostalCode)
-                  ON CONFLICT (ChainID) DO NOTHING;", chain);
+                        @"INSERT INTO HotelChain (ChainID, Name, PostalCode) 
+                          VALUES (@ChainID, @Name, @PostalCode)
+                          ON CONFLICT (ChainID) DO NOTHING;", chain);
                 }
 
-                // 2. Insert Hotels
-                
+                // Hotel
                 foreach (var hotel in hotels)
                 {
                     await this.ExecuteAsync(
-                        @"INSERT INTO Hotels (HotelID, ChainID, Name, Stars, Manager, PostalCode, Description, FileName, ImageDesc) 
-                  VALUES (@HotelID, @ChainID, @Name, @Stars, @Manager, @PostalCode, @Description, @FileName, @ImageDesc)
-                  ON CONFLICT (HotelID) DO NOTHING;", hotel);
+                        @"INSERT INTO Hotel (HotelID, ChainID, Name, Stars, Manager, PostalCode, Description) 
+                          VALUES (@HotelID, @ChainID, @Name, @Stars, @Manager, @PostalCode, @Description)
+                          ON CONFLICT (HotelID) DO NOTHING;", hotel);
                 }
-                
 
-                // 3. Insert Rooms
+                // Room
                 foreach (var room in rooms)
                 {
                     await this.ExecuteAsync(
-                        @"INSERT INTO Rooms (HotelID, RoomNumber, Price, Capacity, View, Extendable) 
-                  VALUES (@HotelID, @RoomNumber, @Price, @Capacity, @View, @Extendable)
-                  ON CONFLICT (HotelID, RoomNumber) DO NOTHING;", room);
+                        @"INSERT INTO Room (HotelID, RoomNumber, Price, Capacity, View, Extendable) 
+                          VALUES (@HotelID, @RoomNumber, @Price, @Capacity, @View, @Extendable)
+                          ON CONFLICT (HotelID, RoomNumber) DO NOTHING;", room);
                 }
 
-
-                // 4. Insert Accounts
-                
+                // Account
                 foreach (var account in accounts)
                 {
                     await this.ExecuteAsync(
-                        @"INSERT INTO Accounts (Email, Username, Password) 
-                  VALUES (@Email, @Username, @Password)
-                  ON CONFLICT (Email) DO NOTHING;", account);
+                        @"INSERT INTO Account (Email, Username, Password) 
+                          VALUES (@Email, @Username, @Password)
+                          ON CONFLICT (Email) DO NOTHING;", account);
                 }
-
 
                 return true;
             }, _logger);
