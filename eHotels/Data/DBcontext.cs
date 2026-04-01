@@ -101,7 +101,7 @@ namespace Data
                 }
 
                 // --- 1. Create Tables in Order of Dependencies ---
-                
+
                 // Base Tables
                 await this.ExecuteAsync(CreateString.createAddress);
                 await this.ExecuteAsync(CreateString.createAccount);
@@ -113,8 +113,24 @@ namespace Data
                 await this.ExecuteAsync(CreateString.createCustomer);
 
                 // Level 3 (Circular logic: Employee/Hotel)
-                await this.ExecuteAsync(CreateString.createEmployee);
                 await this.ExecuteAsync(CreateString.createHotel);
+                await this.ExecuteAsync(CreateString.createEmployee);
+
+                //fix circular dependency with ALTER TABLE
+                await this.ExecuteAsync(@"
+                ALTER TABLE Hotel 
+                DROP CONSTRAINT IF EXISTS fk_hotel_manager;
+                ALTER TABLE Hotel
+                ADD CONSTRAINT fk_hotel_manager
+                FOREIGN KEY (Manager) REFERENCES Employee(SSN);");
+
+                await this.ExecuteAsync(@"
+                ALTER TABLE Employee
+                DROP CONSTRAINT IF EXISTS fk_employee_hotel;
+                ALTER TABLE Employee
+                ADD CONSTRAINT fk_employee_hotel
+                FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID);");
+
 
                 // Level 4 (Dependencies on Hotel/Room)
                 await this.ExecuteAsync(CreateString.createRoom);
