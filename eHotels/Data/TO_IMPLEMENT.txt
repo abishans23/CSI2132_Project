@@ -1,2 +1,24 @@
 FOREIGN KEY (Manager) REFERENCES Employee(SSN),
 FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID),
+
+
+The "CreateAppHost" task failed unexpectedly.
+  System.AggregateException: One or more errors occurred. (Access to the path 'C:\CSI 2132\deliverable2\CSI2132_Project\eHotels\obj\De  bug\net10.0\apphost.exe' is denied.) (Access to the path 'C:\CSI 2132\deliverable2\CSI2132_Project\eHotels\obj\Debug\net10.0\apphost  .exe' is denied.)
+   ---> System.UnauthorizedAccessException: Access to the path 'C:\CSI 2132\deliverable2\CSI2132_Project\eHotels\obj\Debug\net10.0\app  host.exe' is denied.
+     at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, File  Options options)
+     at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOption  s options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+     at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions op  tions, Int64 preallocationSize, Nullable`1 unixCreateMode)
+     at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, File  Options options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+     at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+     at Microsoft.NET.HostModel.AppHost.HostWriter.<>c__DisplayClass8_0.<CreateAppHost>b__1()
+     at Microsoft.NET.HostModel.RetryUtil.RetryOnIOError(Action func)
+     at Microsoft.NET.HostModel.AppHost.HostWriter.CreateAppHost(String appHostSourceFilePath, String appHostDestinationFilePath, Stri  ng appBinaryFilePath, Boolean windowsGraphicalUserInterface, String assemblyToCopyResourcesFrom, Boolean enableMacOSCodeSign, Boolea  n disableCetCompat, DotNetSearchOptions dotNetSearchOptions)
+     --- End of inner exception stack trace ---
+     at Microsoft.NET.HostModel.AppHost.HostWriter.CreateAppHost(String appHostSourceFilePath, String appHostDestinationFilePath, Stri  ng appBinaryFilePath, Boolean windowsGraphicalUserInterface, String assemblyToCopyResourcesFrom, Boolean enableMacOSCodeSign, Boolea  n disableCetCompat, DotNetSearchOptions dotNetSearchOptions)
+     at Microsoft.NET.Build.Tasks.CreateAppHost.ExecuteCore()
+     at Microsoft.NET.Build.Tasks.TaskBase.Execute()
+     at Microsoft.Build.BackEnd.TaskExecutionHost.Execute()
+     at Microsoft.Build.BackEnd.TaskBuilder.ExecuteInstantiatedTask(TaskExecutionHost taskExecutionHost, TaskLoggingContext taskLoggin  gContext, TaskHost taskHost, ItemBucket bucket, TaskExecutionMode howToExecuteTask)
+   ---> (Inner Exception #1) System.UnauthorizedAccessException: Access to the path 'C:\CSI 2132\deliverable2\CSI2132_Project\eHotels\  obj\Debug\net10.0\apphost.exe' is denied.
+     at System.IO.FileSystem.DeleteFile(String fullPath)
+     at Microsoft.NET.HostModel.AppHost.HostWriter.CreateAppHost(String appHostSourceFilePath, String appHostDestinationFilePath, Stri  ng appBinaryFilePath, Boolean windowsGraphicalUserInterface, String assemblyToCopyResourcesFrom, Boolean enableMacOSCodeSign, Boolea  n disableCetCompat, DotNetSearchOptions dotNetSearchOptions)<---

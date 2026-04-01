@@ -142,8 +142,6 @@ namespace Data
                 await this.ExecuteAsync(CreateString.createRentingTenant);
                 
 
-
-
                 // HotelChain
                 
                 foreach (var chain in hotelChains)
