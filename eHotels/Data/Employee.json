@@ -1,44 +1,173 @@
-{
-  "employees": [
-    { "ssn": "100-000-001", "firstName": "Alice", "lastName": "Smith", "address": "101, Park Avenue, New York", "position": "Manager", "hotelId": 1, "emailAddress": "asmith@meridian.com" },
-    { "ssn": "100-000-002", "firstName": "Bob", "lastName": "Johnson", "address": "500, Michigan Avenue, Illinois", "position": "Manager", "hotelId": 2, "emailAddress": "bjohnson@meridian.com" },
-    { "ssn": "100-000-003", "firstName": "Charlie", "lastName": "Davis", "address": "1200, Collins Avenue, Florida", "position": "Manager", "hotelId": 3, "emailAddress": "cdavis@meridian.com" },
-    { "ssn": "100-000-004", "firstName": "Diana", "lastName": "Prince", "address": "88, Wellington Street, Ontario", "position": "Manager", "hotelId": 4, "emailAddress": "dprince@meridian.com" },
-    { "ssn": "100-000-005", "firstName": "Jean", "lastName": "Dupont", "address": "350, Rue Saint-Denis, Quebec", "position": "Manager", "hotelId": 5, "emailAddress": "jdupont@meridian.com" },
-    { "ssn": "100-000-006", "firstName": "Francois", "lastName": "Blanc", "address": "46, Boulevard de la Croisette, Cannes", "position": "Manager", "hotelId": 6, "emailAddress": "fblanc@azure.com" },
-    { "ssn": "100-000-007", "firstName": "Marie", "lastName": "Clair", "address": "1, Promenade des Anglais, Nice", "position": "Manager", "hotelId": 7, "emailAddress": "mclair@azure.com" },
-    { "ssn": "100-000-008", "firstName": "Carlos", "lastName": "Ruiz", "address": "5, Passeig de Gràcia, Barcelona", "position": "Manager", "hotelId": 8, "emailAddress": "cruiz@azure.com" },
-    { "ssn": "100-000-009", "firstName": "Luka", "lastName": "Modric", "address": "2, Stradun, Dubrovnik", "position": "Manager", "hotelId": 9, "emailAddress": "lmodric@azure.com" },
-    { "ssn": "100-000-010", "firstName": "Ana", "lastName": "Silva", "address": "120, Avenida da Liberdade, Lisbon", "position": "Manager", "hotelId": 10, "emailAddress": "asilva@azure.com" },
-    { "ssn": "100-000-011", "firstName": "Hans", "lastName": "Zimmer", "address": "9, Bahnhofstrasse, Zurich", "position": "Manager", "hotelId": 11, "emailAddress": "hzimmer@summit.com" },
-    { "ssn": "100-000-012", "firstName": "Heidi", "lastName": "Klum", "address": "15, Bahnhofstrasse, Zermatt", "position": "Manager", "hotelId": 12, "emailAddress": "hklum@summit.com" },
-    { "ssn": "100-000-013", "firstName": "Marc", "lastName": "Steiner", "address": "30, Quai du Général-Guisan, Geneva", "position": "Manager", "hotelId": 13, "emailAddress": "msteiner@summit.com" },
-    { "ssn": "100-000-014", "firstName": "Ursula", "lastName": "Andress", "address": "6, Schweizerhofquai, Lucerne", "position": "Manager", "hotelId": 14, "emailAddress": "uandress@summit.com" },
-    { "ssn": "100-000-015", "firstName": "Stefan", "lastName": "Meier", "address": "20, Höheweg, Interlaken", "position": "Manager", "hotelId": 15, "emailAddress": "smeier@summit.com" },
-    { "ssn": "100-000-016", "firstName": "James", "lastName": "Bond", "address": "23, Brook Street, London", "position": "Manager", "hotelId": 16, "emailAddress": "jbond@heritage.com" },
-    { "ssn": "100-000-017", "firstName": "Arthur", "lastName": "Conan", "address": "1, Princes Street, Edinburgh", "position": "Manager", "hotelId": 17, "emailAddress": "aconan@heritage.com" },
-    { "ssn": "100-000-018", "firstName": "Lewis", "lastName": "Carroll", "address": "4, Beaumont Street, Oxford", "position": "Manager", "hotelId": 18, "emailAddress": "lcarroll@heritage.com" },
-    { "ssn": "100-000-019", "firstName": "Jane", "lastName": "Austen", "address": "99, Great Pulteney Street, Bath", "position": "Manager", "hotelId": 19, "emailAddress": "jausten@heritage.com" },
-    { "ssn": "100-000-020", "firstName": "Guy", "lastName": "Fawkes", "address": "10, Museum Street, York", "position": "Manager", "hotelId": 20, "emailAddress": "gfawkes@heritage.com" },
-    { "ssn": "100-000-021", "firstName": "Lee", "lastName": "Kuan", "address": "1, Bayfront Avenue, Singapore", "position": "Manager", "hotelId": 21, "emailAddress": "lkuan@pacific.com" },
-    { "ssn": "100-000-022", "firstName": "Tan", "lastName": "Ah", "address": "290, Orchard Road, Singapore", "position": "Manager", "hotelId": 22, "emailAddress": "tah@pacific.com" },
-    { "ssn": "100-000-023", "firstName": "Yuki", "lastName": "Sato", "address": "2, Nishi-Shinjuku, Tokyo", "position": "Manager", "hotelId": 23, "emailAddress": "ysato@pacific.com" },
-    { "ssn": "100-000-024", "firstName": "Somchai", "lastName": "Dee", "address": "48, Charoen Nakhon Road, Bangkok", "position": "Manager", "hotelId": 24, "emailAddress": "sdee@pacific.com" },
-    { "ssn": "100-000-025", "firstName": "Steve", "lastName": "Irwin", "address": "61, Macquarie Street, Sydney", "position": "Manager", "hotelId": 25, "emailAddress": "sirwin@pacific.com" },
-    { "ssn": "200-000-001", "firstName": "Sarah", "lastName": "Connor", "address": "10, Rideau Street, Ontario", "position": "Receptionist", "hotelId": 5, "emailAddress": "sconnor@meridian.com" },
-    { "ssn": "200-000-002", "firstName": "John", "lastName": "Wick", "address": "305, Rideau Street, Ontario", "position": "Security", "hotelId": 5, "emailAddress": "jwick@meridian.com" },
-    { "ssn": "200-000-003", "firstName": "Ellen", "lastName": "Ripley", "address": "15, Bank Street, Ontario", "position": "Receptionist", "hotelId": 4, "emailAddress": "eripley@meridian.com" },
-    { "ssn": "200-000-004", "firstName": "Marty", "lastName": "McFly", "address": "45, Laurier Ave, Ontario", "position": "Cleaner", "hotelId": 4, "emailAddress": "mmcfly@meridian.com" },
-    { "ssn": "200-000-005", "firstName": "Leia", "lastName": "Organa", "address": "12, King Street, London", "position": "Receptionist", "hotelId": 16, "emailAddress": "lorgana@heritage.com" },
-    { "ssn": "200-000-006", "firstName": "Luke", "lastName": "Skywalker", "address": "22, Brook Street, London", "position": "Security", "hotelId": 16, "emailAddress": "lskywalker@heritage.com" },
-    { "ssn": "200-000-007", "firstName": "Han", "lastName": "Solo", "address": "5, Park Lane, London", "position": "Cleaner", "hotelId": 16, "emailAddress": "hsolo@heritage.com" },
-    { "ssn": "200-000-008", "firstName": "Peter", "lastName": "Parker", "address": "20, Queens St, New York", "position": "Receptionist", "hotelId": 1, "emailAddress": "pparker@meridian.com" },
-    { "ssn": "200-000-009", "firstName": "Tony", "lastName": "Stark", "address": "10, Manhattan Tower, New York", "position": "Spa Handler", "hotelId": 1, "emailAddress": "tstark@meridian.com" },
-    { "ssn": "200-000-010", "firstName": "Bruce", "lastName": "Wayne", "address": "1, Gotham Road, Illinois", "position": "Security", "hotelId": 2, "emailAddress": "bwayne@meridian.com" },
-    { "ssn": "200-000-011", "firstName": "Clark", "lastName": "Kent", "address": "55, Metropolis Ave, Illinois", "position": "Cleaner", "hotelId": 2, "emailAddress": "ckent@meridian.com" },
-    { "ssn": "200-000-012", "firstName": "Wanda", "lastName": "Maximoff", "address": "90, Westview Dr, Florida", "position": "Spa Handler", "hotelId": 3, "emailAddress": "wmaximoff@meridian.com" },
-    { "ssn": "200-000-013", "firstName": "Natasha", "lastName": "Romanoff", "address": "12, Beach Road, Florida", "position": "Security", "hotelId": 3, "emailAddress": "nromanoff@meridian.com" },
-    { "ssn": "200-000-014", "firstName": "Steve", "lastName": "Rogers", "address": "40, Brooklyn St, New York", "position": "Cleaner", "hotelId": 1, "emailAddress": "srogers@meridian.com" },
-    { "ssn": "200-000-015", "firstName": "Bucky", "lastName": "Barnes", "address": "41, Brooklyn St, New York", "position": "Security", "hotelId": 1, "emailAddress": "bbarnes@meridian.com" }
-  ]
-}
+[
+  {
+    "SSN": "100-000-001",
+    "FirstName": "Alice",
+    "LastName": "Smith",
+    "PostalCode": "10022",
+    "Position": "Manager",
+    "HotelID": 1,
+    "Email": "asmith@meridian.com"
+  },
+  {
+    "SSN": "100-000-002",
+    "FirstName": "Bob",
+    "LastName": "Johnson",
+    "PostalCode": "60611",
+    "Position": "Manager",
+    "HotelID": 2,
+    "Email": "bjohnson@meridian.com"
+  },
+  {
+    "SSN": "100-000-003",
+    "FirstName": "Charlie",
+    "LastName": "Davis",
+    "PostalCode": "33139",
+    "Position": "Manager",
+    "HotelID": 3,
+    "Email": "cdavis@meridian.com"
+  },
+  {
+    "SSN": "100-000-004",
+    "FirstName": "Diana",
+    "LastName": "Prince",
+    "PostalCode": "M5J1B1",
+    "Position": "Manager",
+    "HotelID": 4,
+    "Email": "dprince@meridian.com"
+  },
+  {
+    "SSN": "100-000-005",
+    "FirstName": "Jean",
+    "LastName": "Dupont",
+    "PostalCode": "H2X3L8",
+    "Position": "Manager",
+    "HotelID": 5,
+    "Email": "jdupont@meridian.com"
+  },
+  {
+    "SSN": "100-000-006",
+    "FirstName": "Pierre",
+    "LastName": "Gagnon",
+    "PostalCode": "06400",
+    "Position": "Manager",
+    "HotelID": 6,
+    "Email": "pgagnon@azure.com"
+  },
+  {
+    "SSN": "100-000-007",
+    "FirstName": "Amélie",
+    "LastName": "Boucher",
+    "PostalCode": "06000",
+    "Position": "Manager",
+    "HotelID": 7,
+    "Email": "aboucher@azure.com"
+  },
+  {
+    "SSN": "100-000-008",
+    "FirstName": "Carlos",
+    "LastName": "Ruiz",
+    "PostalCode": "08007",
+    "Position": "Manager",
+    "HotelID": 8,
+    "Email": "cruiz@azure.com"
+  },
+  {
+    "SSN": "100-000-009",
+    "FirstName": "Luka",
+    "LastName": "Modric",
+    "PostalCode": "20000",
+    "Position": "Manager",
+    "HotelID": 9,
+    "Email": "lmodric@azure.com"
+  },
+  {
+    "SSN": "100-000-010",
+    "FirstName": "João",
+    "LastName": "Silva",
+    "PostalCode": "12500",
+    "Position": "Manager",
+    "HotelID": 10,
+    "Email": "jsilva@azure.com"
+  },
+  {
+    "SSN": "200-000-001",
+    "FirstName": "John",
+    "LastName": "Doe",
+    "PostalCode": "10022",
+    "Position": "Concierge",
+    "HotelID": 1,
+    "Email": "jdoe@meridian.com"
+  },
+  {
+    "SSN": "200-000-002",
+    "FirstName": "Jane",
+    "LastName": "Doe",
+    "PostalCode": "10022",
+    "Position": "Receptionist",
+    "HotelID": 1,
+    "Email": "janedoe@meridian.com"
+  },
+  {
+    "SSN": "200-000-008",
+    "FirstName": "Peter",
+    "LastName": "Parker",
+    "PostalCode": "10022",
+    "Position": "Receptionist",
+    "HotelID": 1,
+    "Email": "pparker@meridian.com"
+  },
+  {
+    "SSN": "200-000-009",
+    "FirstName": "Tony",
+    "LastName": "Stark",
+    "PostalCode": "10022",
+    "Position": "Restaurant",
+    "HotelID": 1,
+    "Email": "tstark@meridian.com"
+  },
+  {
+    "SSN": "200-000-010",
+    "FirstName": "Bruce",
+    "LastName": "Wayne",
+    "PostalCode": "60611",
+    "Position": "Receptionist",
+    "HotelID": 2,
+    "Email": "bwayne@meridian.com"
+  },
+  {
+    "SSN": "200-000-011",
+    "FirstName": "Clark",
+    "LastName": "Kent",
+    "PostalCode": "60611",
+    "Position": "Cleaning",
+    "HotelID": 2,
+    "Email": "ckent@meridian.com"
+  },
+  {
+    "SSN": "200-000-012",
+    "FirstName": "Wanda",
+    "LastName": "Maximoff",
+    "PostalCode": "33139",
+    "Position": "Restaurant",
+    "HotelID": 3,
+    "Email": "wmaximoff@meridian.com"
+  },
+  {
+    "SSN": "200-000-013",
+    "FirstName": "Natasha",
+    "LastName": "Romanoff",
+    "PostalCode": "M5J1B1",
+    "Position": "Concierge",
+    "HotelID": 4,
+    "Email": "nromanoff@meridian.com"
+  },
+  {
+    "SSN": "200-000-014",
+    "FirstName": "Steve",
+    "LastName": "Rogers",
+    "PostalCode": "H2X3L8",
+    "Position": "Receptionist",
+    "HotelID": 5,
+    "Email": "srogers@meridian.com"
+  }
+]

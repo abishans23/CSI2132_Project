@@ -1,31 +1,67 @@
 [
   {
-    "chainId": 1,
-    "name": "L'Esteen Hotel",
-    "address": "100, Park Avenue, New York",
-    "emailAddresses": [
+    "ChainID": 1,
+    "Name": "L'Esteen Hotel",
+    "PostalCode": "10022",
+    "Emails": [
       "contact@lesteen.com",
       "service@lesteen.com",
       "reservation@lesteen.com"
     ],
-    "phoneNumbers": [
-      "+1-212-555-0100",
-      "+1-212-555-0200"
+    "PhoneNumbers": [
+      "2125550100",
+      "2125550200"
     ]
   },
   {
-    "chainId": 2,
-    "name": "Le Germain Resorts",
-    "address": "45, Boulevard de la Croisette, Cannes",
-    "emailAddresses": [
+    "ChainID": 2,
+    "Name": "Le Germain Resorts",
+    "PostalCode": "06400",
+    "Emails": [
       "info@legermain.com",
       "service@legermain.com",
       "reservation@legermain.com"
     ],
-    "phoneNumbers": [
-      "+33-4-555-0200",
-      "+33-4-565-0200",
-      "+33-4-557-0200"
+    "PhoneNumbers": [
+      "3345550200",
+      "3345650200",
+      "3345570200"
+    ]
+  },
+  {
+    "ChainID": 3,
+    "Name": "Summit Peak Hotels",
+    "PostalCode": "8001",
+    "Emails": [
+      "corporate@summitpeak.com",
+      "media@summitpeak.com"
+    ],
+    "PhoneNumbers": [
+      "41445553000"
+    ]
+  },
+  {
+    "ChainID": 4,
+    "Name": "Heritage Grand Group",
+    "PostalCode": "W1K4DG",
+    "Emails": [
+      "hq@heritagegrand.com",
+      "partners@heritagegrand.com"
+    ],
+    "PhoneNumbers": [
+      "44205554000"
+    ]
+  },
+  {
+    "ChainID": 5,
+    "Name": "Pacific Horizon Co.",
+    "PostalCode": "018970",
+    "Emails": [
+      "info@pacifichorizon.com",
+      "hr@pacifichorizon.com"
+    ],
+    "PhoneNumbers": [
+      "6565555000"
     ]
   }
 ]

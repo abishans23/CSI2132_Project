@@ -1,27 +1,97 @@
 [
   {
-    "email": "a.shanmuhesan@uottawa.ca",
-    "username": "ashanmuhesan",
-    "password": "hashed_password_123"
+    "Email": "asmith@meridian.com",
+    "Username": "asmith_mgr",
+    "Password": "Password123!"
   },
   {
-    "email": "v.singathi@uottawa.ca",
-    "username": "vsingathi",
-    "password": "hashed_password_456"
+    "Email": "bjohnson@meridian.com",
+    "Username": "bjohnson_mgr",
+    "Password": "Password123!"
   },
   {
-    "email": "a.rakotobe@uottawa.ca",
-    "username": "arakotobe",
-    "password": "hashed_password_789"
+    "Email": "cdavis@meridian.com",
+    "Username": "cdavis_mgr",
+    "Password": "Password123!"
   },
   {
-    "email": "manager.lesteen@hotel.com",
-    "username": "lesteen_mgr",
-    "password": "secure_password_001"
+    "Email": "dprince@meridian.com",
+    "Username": "dprince_mgr",
+    "Password": "Password123!"
   },
   {
-    "email": "guest.services@pacifichorizon.com",
-    "username": "pacifichorizon_guest",
-    "password": "secure_password_002"
+    "Email": "jdupont@meridian.com",
+    "Username": "jdupont_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "pgagnon@azure.com",
+    "Username": "pgagnon_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "aboucher@azure.com",
+    "Username": "aboucher_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "cruiz@azure.com",
+    "Username": "cruiz_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "lmodric@azure.com",
+    "Username": "lmodric_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "jsilva@azure.com",
+    "Username": "jsilva_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "jdoe@meridian.com",
+    "Username": "jdoe_concierge",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "janedoe@meridian.com",
+    "Username": "janedoe_reception",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "pparker@meridian.com",
+    "Username": "spidey_reception",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "tstark@meridian.com",
+    "Username": "ironman_rest",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "bwayne@meridian.com",
+    "Username": "batman_reception",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "ckent@meridian.com",
+    "Username": "superman_clean",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "wmaximoff@meridian.com",
+    "Username": "scarlet_rest",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "nromanoff@meridian.com",
+    "Username": "blackwidow_concierge",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "srogers@meridian.com",
+    "Username": "cap_reception",
+    "Password": "Password123!"
   }
 ]
