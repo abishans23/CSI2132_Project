@@ -73,6 +73,8 @@
 .main-info{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.5em;
     flex: 1 1 1;
 }
 
@@ -80,20 +82,23 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin: 0.75em;
 }
 
 .price-range{
+    font-family: serif;
+    color: #595959;
     margin-left: auto;
 }
 
 .stars{
-    margin: auto;
+    font-family: serif;
+    color: #595959;
+    margin-left: 5%;
 }
 
 .hotel-name{
-    color: black;
+    color: #595959;
     font-weight: bold;
     font-family: serif;
     font-style: italic;
