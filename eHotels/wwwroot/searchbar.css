@@ -99,7 +99,7 @@
 }
 
 .search-img{
-    height:3em;
+    height: 3em;
 }
 
 .search-img:hover{
@@ -109,88 +109,3 @@
 .search-img:active{
     filter: brightness(0.9);
 }
-
-.about-us{
-    position: relative;
-    display: block;
-    overflow: hidden;
-}
-
-.name{
-    text-align: center;
-    font-size: 4em;
-    font-family: serif;
-    font-style: italic;
-    padding-top: 0.5em;
-    color: white;
-}
-
-.about{
-    margin-top: 6em;
-    margin-bottom: 6em;
-    text-align: center;
-    font-family: serif;
-    font-style: italic;
-    padding-left: 3em;
-    padding-right: 3em;
-    font-size: 1.5em;
-    color: white;
-}
-
-.about-background{
-    position: absolute;
-    background-image: url("https://wallpapercave.com/wp/wp2542286.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: -1;
-    overflow: hidden;
-    background-position: -10%;
-    filter: blur(2px) brightness(0.75);
-    width: 105%;
-    height: 105%;
-}
-
-html, body {
-    height: 100vh;
-}
-
-.hotel-chains-list-container{
-    position: relative;
-    background-color: rgb(53, 45, 53);
-    flex: 1;   
-    display: flex;
-    flex-direction: column;
-}
-
-.hotel-chains-title{
-    text-align: center;
-    font-size: 3em;
-    font-family: serif;
-    font-style: italic;
-    padding-top: 0.5em;
-    color: white;
-}
-
-.hotel-chains-list{
-    display: grid;
-    margin-top: 1em;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
-    padding: 1em;
-    height: 100%;
-}
-
-.chain{
-    color: white;
-    height: 100%;
-    width: 100%;
-    border-radius: 10px;
-    font-size: 2em;
-    text-align: center;
-    font-family: serif;
-    font-style: italic;
-    margin-bottom: 1em;
-    opacity: 0.85;
-}
-
