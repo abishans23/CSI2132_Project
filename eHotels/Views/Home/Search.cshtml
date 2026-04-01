@@ -9,8 +9,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - eHotels</title>
     <script type="importmap"></script>
+    <link rel="stylesheet" href="~/searchBar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/search.css" asp-append-version="true" />
 </head>
 
 <body>
-    searched stufffff ahhh
+    <div class="search-bar">
+        <form action="/Home/Search" method="get">
+            <input class="hotel-search" type="text" name="search" placeholder="Search Hotels..."/>
+            <input class="area" type="text" name="area" placeholder="Area" />
+            <input class="capacity" type="number" name="capacity" placeholder="Capacity" />
+            <input class="start-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" />
+            <input class="end-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" />
+            <button class="submit">
+                <img class="search-img" src="https://static.vecteezy.com/system/resources/thumbnails/009/652/218/small/magnifying-glass-icon-isolated-on-white-background-search-illustration-vector.jpg" />
+            </button>
+        </form>
+    </div>
+
+    <div class="filters-holder">
+        <div class="filters-title">Filters:</div>
+
+        <div class="select-holder">
+            <div class="select-title">Rating:</div>
+            <select class="option-select">
+                <option selected>Any</option>
+                <option>1⭐</option>
+                <option>2⭐</option>
+                <option>3⭐</option>
+                <option>4⭐</option>
+                <option>5⭐</option>
+            </select>
+        </div>
+
+        <div class="select-holder">
+            <div class="select-title">Amenity:</div>
+            <select class="option-select">
+                <option selected>Any</option>
+                <option>Pool</option>
+                <option>Spa</option>
+                <option>stufff</option>
+            </select>
+        </div>
+
+        <div class="select-holder">
+            <div class="select-title">View:</div>
+            <select class="option-select">
+                <option selected>Any</option>
+                <option>Sea</option>
+                <option>Land</option>
+                <option>Grass</option>
+            </select>
+        </div>
+
+        <div class="select-holder">
+            <div class="select-title">Sort:</div>
+            <select class="option-select">
+                <option selected>Default</option>
+                <option>Price</option>
+                <option>Name</option>
+                <option>Stars</option>
+            </select>
+        </div>
+
+
+    </div>
+
+    <div class="results-holder">
+        <div class="search-result">
+            ss
+        </div>
+    </div>
+
 </body>
