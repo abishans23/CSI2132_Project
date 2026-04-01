@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Sign In";
+    ViewData["Title"] = "Search";
 }
 
 <!DOCTYPE html>
@@ -16,11 +16,11 @@
 <body>
     <div class="search-bar">
         <form action="/Home/Search" method="get">
-            <input class="hotel-search" type="text" name="search" placeholder="Search Hotels..."/>
-            <input class="area" type="text" name="area" placeholder="Area" />
-            <input class="capacity" type="number" name="capacity" placeholder="Capacity" />
-            <input class="start-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" />
-            <input class="end-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" />
+            <input class="hotel-search" type="text" name="search" placeholder="Search Hotels..." value="@Context.Request.Query["search"]"/>
+            <input class="area" type="text" name="area" placeholder="Area" value="@Context.Request.Query["area"]"/>
+            <input class="capacity" type="number" name="capacity" placeholder="Capacity" value="@Context.Request.Query["capacity"]"/>
+            <input class="start-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" value="@Context.Request.Query["startDate"]"/>
+            <input class="end-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" value="@Context.Request.Query["endDate"]"/>
             <button class="submit">
                 <img class="search-img" src="https://static.vecteezy.com/system/resources/thumbnails/009/652/218/small/magnifying-glass-icon-isolated-on-white-background-search-illustration-vector.jpg" />
             </button>
@@ -77,7 +77,10 @@
 
     <div class="results-holder">
         <div class="search-result">
-            ss
+            <img class="hotel-image" src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg" />
+            <div class="">
+
+            </div>
         </div>
     </div>
 
