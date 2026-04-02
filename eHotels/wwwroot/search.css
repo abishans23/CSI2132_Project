@@ -60,7 +60,24 @@
     border-color: #90869f;
     padding: 0.75em;
     display: flex;
+
+    animation-name: loadAnim;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
+
+@keyframes loadAnim {
+    from {
+        opacity: 0;
+        transform: scale(1.05) translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.05) translateY(5px);
+    }
+}
+
 
 .hotel-image{
     aspect-ratio: 1;
@@ -105,4 +122,61 @@
     font-size: large;
     text-align: center;
     font-size: x-large;
+}
+
+.result-body-holder{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.other-info{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap:10px;
+}
+
+.address{
+    font-family: serif;
+    font-style: italic;
+    color: #595959;
+}
+
+.description{
+    font-family: serif;
+    color: #595959;
+}
+
+.button-region{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.book-button{
+    color: white;
+    font-size: larger;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-family: serif;
+    border-radius: 0.5em;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #3c3b3d;
+    background-color: rgb(130, 110, 161);
+    transition: background-color 0.1s ease-in, transform 0.15s ease-in;
+}
+
+.book-button:hover{
+    cursor: pointer;
+    background-color: rgb(105, 85, 136);
+    transform: scale(1.03) translateY(-5px);
+}
+.book-button:active{
+    background-color: rgb(186, 170, 211);
+    transform: scale(0.97);
 }
