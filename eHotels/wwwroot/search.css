@@ -36,9 +36,25 @@
     border: none;
 }
 
+.rooms-input{
+    height: 2.25em;
+    text-align: center;
+    width: 4em;
+    border: none;
+}
+
+.rooms-input::placeholder{
+    text-align: center;
+}
+
+.rooms-input:focus{
+    outline: none;
+}
+
 .price-input::placeholder{
     text-align: center;
 }
+
 .price-input:focus{
     outline: none;
 }
