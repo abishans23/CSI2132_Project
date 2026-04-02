@@ -22,6 +22,25 @@
     border-color: rgb(113, 69, 116);
     padding-left: 4px;
     padding-right: 4px;
+    height: 200%;
+}
+
+.select-title{
+    height: 200%;
+}
+
+.price-input{
+    height: 2.25em;
+    text-align: center;
+    width: 3.5em;
+    border: none;
+}
+
+.price-input::placeholder{
+    text-align: center;
+}
+.price-input:focus{
+    outline: none;
 }
 
 .filters-title{

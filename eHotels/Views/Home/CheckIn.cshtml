@@ -9,5 +9,18 @@
 </head>
 
 <body>
-    check in :(
+    <div class="main">
+            <div class="check-in-container">
+                <div class="check-in-title">Check In</div>
+                <div class="check-in-options">
+                    <button class="manual-check-in">In Person Check In</button>
+                    <button class="transfer-booking">Transfer Booking</button>
+                </div>
+
+                <form asp-action="CheckIn" asp-controller="Home" method="post">
+                    
+                </form>
+                
+            </div>
+    </div>
 </body>
