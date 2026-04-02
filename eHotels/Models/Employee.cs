@@ -10,11 +10,11 @@ class Employee{
     public string LastName {get;set;}
     public string PostalCode {get;set;} //references address
     public string Position {get;set;}
-    public string HotelID {get;set;} //references hotel
+    public int HotelID {get;set;} //references hotel
     public string Email {get;set;} //references account
 
     public Employee(){}
-    public Employee(string SSN, string firstName, string lastName, string postalCode, string position, string hotelID, string email){
+    public Employee(string SSN, string firstName, string lastName, string postalCode, string position, int hotelID, string email){
         this.SSN = SSN;
         this.FirstName = firstName;
         this.LastName = lastName;

@@ -8,14 +8,15 @@ namespace Data
                     Name VARCHAR(50) NOT NULL,
                     PostalCode VARCHAR(6) NOT NULL,
                     Stars INT CHECK (Stars BETWEEN 1 AND 5),
-                    Manager VARCHAR(9) NOT NULL,
+                    Manager VARCHAR(20) NOT NULL,
                     Description VARCHAR(200),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode),
-                    FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID)
+                    FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID),
+                    FOREIGN KEY (Manager) REFERENCES Employee(SSN)
                     );";
 
         public static readonly string createHotelChain = @"CREATE TABLE IF NOT EXISTS HotelChain (
-                    ChainId INT CHECK(ChainID >= 0) PRIMARY KEY,
+                    ChainID INT CHECK(ChainID >= 0) PRIMARY KEY,
                     Name VARCHAR(50) NOT NULL,
                     PostalCode VARCHAR(6) NOT NULL,
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode)
@@ -62,14 +63,16 @@ namespace Data
                     HotelID INT CHECK(HotelID >= 0),
                     FileName VARCHAR(25),
                     ImageDesc VARCHAR(100),
-                    PRIMARY KEY (HotelID, FileName)
+                    PRIMARY KEY (HotelID, FileName),
+                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
                     );";
 
         public static readonly string createHotelAmenity = @"CREATE TABLE IF NOT EXISTS HotelAmenity(
                     HotelID INT CHECK(HotelID >= 0),
                     AmenityName VARCHAR(20),
                     AmenityDesc VARCHAR(100),
-                    PRIMARY KEY (HotelID, AmenityName)
+                    PRIMARY KEY (HotelID, AmenityName),
+                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
                     );";
 
         public static readonly string createAccount = @"CREATE TABLE IF NOT EXISTS Account(
@@ -79,7 +82,7 @@ namespace Data
                     );";
 
         public static readonly string createEmployee = @"CREATE TABLE IF NOT EXISTS Employee(
-                    SSN VARCHAR(9) PRIMARY KEY,
+                    SSN VARCHAR(20) PRIMARY KEY,
                     FirstName VARCHAR(20) NOT NULL,
                     LastName VARCHAR(20) NOT NULL,
                     PostalCode VARCHAR(6) NOT NULL,
@@ -87,7 +90,8 @@ namespace Data
                     HotelID INT NOT NULL CHECK(HotelID >= 0),
                     Email VARCHAR(30) NOT NULL CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode),
-                    FOREIGN KEY (Email) REFERENCES Account(Email)
+                    FOREIGN KEY (Email) REFERENCES Account(Email),
+                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
                     );";
 
         public static readonly string createRoom = @"CREATE TABLE IF NOT EXISTS Room(
@@ -106,8 +110,7 @@ namespace Data
                     HotelID INT NOT NULL CHECK(HotelID >= 0),
                     Problem VARCHAR(40),
                     PRIMARY KEY (RoomNumber, HotelID, Problem),
-                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID),
-                    FOREIGN KEY (RoomNumber) REFERENCES Room (RoomNumber)
+                    FOREIGN KEY (RoomNumber, HotelID) REFERENCES Room(RoomNumber, HotelID)
                     );";
 
         public static readonly string createRoomAmenity = @"CREATE TABLE IF NOT EXISTS RoomAmenity(
@@ -115,8 +118,7 @@ namespace Data
                     HotelID INT NOT NULL CHECK(HotelID >= 0),
                     Amenity VARCHAR(40),
                     PRIMARY KEY (RoomNumber, HotelID, Amenity),
-                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID),
-                    FOREIGN KEY (RoomNumber) REFERENCES Room (RoomNumber)
+                    FOREIGN KEY (RoomNumber, HotelID) REFERENCES Room(RoomNumber, HotelID)
                     );";
 
         public static readonly string createBooking = @"CREATE TABLE IF NOT EXISTS Booking(

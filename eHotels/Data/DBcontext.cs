@@ -15,7 +15,7 @@ namespace Data
         {
             _logger = logger;
             // Initialize the DataSource immediately so it's ready for testing
-            string connectionString = "Host=ep-sweet-glitter-a8ag8fj1-pooler.eastus2.azure.neon.tech; Database=neondb; Username=neondb_owner; Password=npg_cU7jafXmtI5k; SSL Mode=VerifyFull; Channel Binding=Require;";
+            string connectionString = "Host=ep-sweet-glitter-a8ag8fj1-pooler.eastus2.azure.neon.tech; Database=neondb; Username=neondb_owner; Password=npg_cU7jafXmtI5k; SSL Mode=VerifyFull; Channel Binding=Require;Include Error Detail=true;";
             db = NpgsqlDataSource.Create(connectionString);
         }
 
@@ -95,7 +95,7 @@ namespace Data
 
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
-                if (hotelChains == null || rooms == null || hotels == null || accounts == null || employees == null)
+                if (hotelChains == null || rooms == null || hotels == null || accounts == null || employees==null)
                 {
                     return false;
                 }
@@ -115,11 +115,13 @@ namespace Data
                 await this.ExecuteAsync(CreateString.createRenting);
                 await this.ExecuteAsync(CreateString.createCustomer);
 
+
                 await this.ExecuteAsync(@"
                     ALTER TABLE Hotel DROP CONSTRAINT IF EXISTS fk_hotel_manager;
                     ALTER TABLE Hotel ADD CONSTRAINT fk_hotel_manager FOREIGN KEY (Manager) REFERENCES Employee(SSN);
                     ALTER TABLE Employee DROP CONSTRAINT IF EXISTS fk_employee_hotel;
                     ALTER TABLE Employee ADD CONSTRAINT fk_employee_hotel FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID);");
+
 
                 await this.ExecuteAsync(CreateString.createHotelEmail);
                 await this.ExecuteAsync(CreateString.createHotelPhone);
@@ -156,6 +158,7 @@ namespace Data
                                               new { acc.Email, acc.Username, acc.Password });
                 }
 
+
                 foreach (var emp in employees)
                 {
                     await this.ExecuteAsync(@"INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country) 
@@ -181,6 +184,8 @@ namespace Data
                                               ON CONFLICT (HotelID) DO NOTHING;",
                                               new { hotel.HotelID, hotel.ChainID, hotel.Name, hotel.PostalCode, hotel.Stars, hotel.Manager, hotel.Description });
                 }
+
+                await using var conn = await db.OpenConnectionAsync();
 
                 foreach (var room in rooms)
                 {
