@@ -135,6 +135,7 @@
     flex-direction: column;
     width: 100%;
     margin: 0.75em;
+    margin-bottom: 0.05em;
 }
 
 .price-range{
@@ -169,19 +170,41 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap:10px;
+    gap: 5px;
 }
 
 .address{
-    font-family: serif;
-    font-style: italic;
+    font-size: small;
+    color: #595959;
+}
+
+.total-capacity-chain{
+    font-size: small;
     color: #595959;
 }
 
 .description{
-    font-family: serif;
+    font-size: small;
     color: #595959;
 }
+
+.hotel-amenities{
+    font-size: small;
+    color: #595959;
+}
+
+.room-amenities{
+    margin-top: 10px;
+}
+
+.line-break{
+    background-color: #5959597f;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+
 
 .button-region{
     display: flex;
@@ -204,6 +227,8 @@
     border-width: 1px;
     border-color: #3c3b3d;
     background-color: rgb(130, 110, 161);
+    box-shadow: 0px 1px  #4f435d;
+
     transition: background-color 0.1s ease-in, transform 0.15s ease-in;
 }
 
