@@ -1,0 +1,177 @@
+[
+  {
+    "PostalCode": "10022",
+    "StreetNum": 101,
+    "StreetName": "Park Avenue",
+    "Province": "New York",
+    "Country": "USA"
+  },
+  {
+    "PostalCode": "60611",
+    "StreetNum": 500,
+    "StreetName": "Michigan Avenue",
+    "Province": "Illinois",
+    "Country": "USA"
+  },
+  {
+    "PostalCode": "33139",
+    "StreetNum": 1200,
+    "StreetName": "Collins Avenue",
+    "Province": "Florida",
+    "Country": "USA"
+  },
+  {
+    "PostalCode": "M5J 1B1",
+    "StreetNum": 88,
+    "StreetName": "Wellington Street",
+    "Province": "Ontario",
+    "Country": "Canada"
+  },
+  {
+    "PostalCode": "H2X 3L8",
+    "StreetNum": 350,
+    "StreetName": "Rue Saint-Denis",
+    "Province": "Quebec",
+    "Country": "Canada"
+  },
+  {
+    "PostalCode": "06400",
+    "StreetNum": 46,
+    "StreetName": "Boulevard de la Croisette",
+    "Province": "Cannes",
+    "Country": "France"
+  },
+  {
+    "PostalCode": "06000",
+    "StreetNum": 1,
+    "StreetName": "Promenade des Anglais",
+    "Province": "Nice",
+    "Country": "France"
+  },
+  {
+    "PostalCode": "08007",
+    "StreetNum": 5,
+    "StreetName": "Passeig de Gràcia",
+    "Province": "Barcelona",
+    "Country": "Spain"
+  },
+  {
+    "PostalCode": "20000",
+    "StreetNum": 2,
+    "StreetName": "Stradun",
+    "Province": "Dubrovnik",
+    "Country": "Croatia"
+  },
+  {
+    "PostalCode": "1250-001",
+    "StreetNum": 120,
+    "StreetName": "Avenida da Liberdade",
+    "Province": "Lisbon",
+    "Country": "Portugal"
+  },
+  {
+    "PostalCode": "8001",
+    "StreetNum": 9,
+    "StreetName": "Bahnhofstrasse",
+    "Province": "Zurich",
+    "Country": "Switzerland"
+  },
+  {
+    "PostalCode": "3920",
+    "StreetNum": 15,
+    "StreetName": "Bahnhofstrasse",
+    "Province": "Zermatt",
+    "Country": "Switzerland"
+  },
+  {
+    "PostalCode": "1204",
+    "StreetNum": 30,
+    "StreetName": "Quai du Général-Guisan",
+    "Province": "Geneva",
+    "Country": "Switzerland"
+  },
+  {
+    "PostalCode": "6002",
+    "StreetNum": 6,
+    "StreetName": "Schweizerhofquai",
+    "Province": "Lucerne",
+    "Country": "Switzerland"
+  },
+  {
+    "PostalCode": "3800",
+    "StreetNum": 20,
+    "StreetName": "Höheweg",
+    "Province": "Interlaken",
+    "Country": "Switzerland"
+  },
+  {
+    "PostalCode": "W1K 4DG",
+    "StreetNum": 23,
+    "StreetName": "Brook Street",
+    "Province": "London",
+    "Country": "UK"
+  },
+  {
+    "PostalCode": "EH2 2EQ",
+    "StreetNum": 1,
+    "StreetName": "Princes Street",
+    "Province": "Edinburgh",
+    "Country": "UK"
+  },
+  {
+    "PostalCode": "OX1 2LW",
+    "StreetNum": 4,
+    "StreetName": "Beaumont Street",
+    "Province": "Oxford",
+    "Country": "UK"
+  },
+  {
+    "PostalCode": "BA2 4ED",
+    "StreetNum": 99,
+    "StreetName": "Great Pulteney Street",
+    "Province": "Bath",
+    "Country": "UK"
+  },
+  {
+    "PostalCode": "YO1 7DT",
+    "StreetNum": 10,
+    "StreetName": "Museum Street",
+    "Province": "York",
+    "Country": "UK"
+  },
+  {
+    "PostalCode": "018970",
+    "StreetNum": 1,
+    "StreetName": "Bayfront Avenue",
+    "Province": "Singapore",
+    "Country": "Singapore"
+  },
+  {
+    "PostalCode": "238859",
+    "StreetNum": 290,
+    "StreetName": "Orchard Road",
+    "Province": "Singapore",
+    "Country": "Singapore"
+  },
+  {
+    "PostalCode": "160-0023",
+    "StreetNum": 2,
+    "StreetName": "Nishi-Shinjuku",
+    "Province": "Tokyo",
+    "Country": "Japan"
+  },
+  {
+    "PostalCode": "10600",
+    "StreetNum": 48,
+    "StreetName": "Charoen Nakhon Road",
+    "Province": "Bangkok",
+    "Country": "Thailand"
+  },
+  {
+    "PostalCode": "2000",
+    "StreetNum": 61,
+    "StreetName": "Macquarie Street",
+    "Province": "Sydney",
+    "Country": "Australia"
+  }
+]
