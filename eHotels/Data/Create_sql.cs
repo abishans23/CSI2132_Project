@@ -12,7 +12,6 @@ namespace Data
                     Description VARCHAR(200),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode),
                     FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID),
-                    FOREIGN KEY (Manager) REFERENCES Employee(SSN)
                     );";
 
         public static readonly string createHotelChain = @"CREATE TABLE IF NOT EXISTS HotelChain (
@@ -91,7 +90,6 @@ namespace Data
                     Email VARCHAR(30) NOT NULL CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode),
                     FOREIGN KEY (Email) REFERENCES Account(Email),
-                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
                     );";
 
         public static readonly string createRoom = @"CREATE TABLE IF NOT EXISTS Room(
