@@ -38,9 +38,6 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> SignIn(string username, string password, string emailAddress, string action)
     {
-
-
-
         ModelState.Clear();
         Console.WriteLine(emailAddress + " " + username + " " + password + " " + action);
 
@@ -51,10 +48,29 @@ public class HomeController : Controller
 
         if (action == "Login")
         {
-                    var  d = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail",new {findEmail=emailAddress});
-        var accountList=d.ToList();
-        Console.WriteLine(accountList[0].Password);
+            var queryResult = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail", new {findEmail=emailAddress});
+            var accountList = queryResult.ToList();
+
+            if (accountList.Count < 1)
+            {
+                ModelState.AddModelError("", "account doesn't exist");
+                return View("SignIn");
+            }
+
+            var accountInfo = accountList[0];
+
+            if (accountInfo.Email != emailAddress || accountInfo.Username != username || accountInfo.Password != password)
+            {
+                ModelState.AddModelError("", "account doesn't exist");
+                return View("SignIn");
+            }
+
             return View("SignIn");
+        }
+
+        if (action == "SignIn")
+        {
+            
         }
 
         return View("Index");
