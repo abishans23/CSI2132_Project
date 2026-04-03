@@ -17,14 +17,35 @@
 
     <div class="booking-overlay" style="display: none;">
         <div class="booking-info">
+            <button class="close-button">X</button>
             <div class="booking-title">Booking Information</div>
             <div class="line-break"></div>
-            <div class="hotel-info">Hotel Name, Room capacity, View</div>
+            <div class="booking-hotel-info">Hotel Name, Room capacity, View</div>
+
             <select class="id-select">
                 <option selected>choose id Type</option>
                 <option>SSN</option>
                 <option>Drivers License</option>
             </select>
+
+            <input class="booking-text-input" type="text" placeholder="ID Number"/>
+            <input class="booking-text-input" type="text" placeholder="First Name"/>
+            <input class="booking-text-input" type="text" placeholder="Last Name"/>
+            <div class="address-input-holder">
+                <input class="booking-text-input" type="text" placeholder="street number"/>
+                <input class="booking-text-input" type="text" placeholder="street name"/>
+                <input class="booking-text-input" type="text" placeholder="province"/>
+                <input class="booking-text-input" type="text" placeholder="country"/>
+                <input class="booking-text-input" type="text" placeholder="postal code"/>
+            </div>
+
+            <div class="booking-dates">
+                <input class="booking-text-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" value="@Context.Request.Query["startDate"]"/>
+                <input class="booking-text-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" value="@Context.Request.Query["endDate"]"/>
+            </div>
+
+            <input class="booking-text-input" type="text" placeholder="Phone number"/>
+            <button class="book-room-button">Book!!</button>
         </div>
     </div>
 
@@ -133,6 +154,11 @@
             bookButtons[i].onclick = function(){
                 overlay.style.display = "block";
             }
+        }
+
+        let closeButton = document.querySelector(".close-button");
+        closeButton.onclick = function(){
+            overlay.style.display = "none";
         }
 
     </script>

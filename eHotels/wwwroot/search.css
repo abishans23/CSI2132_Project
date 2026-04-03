@@ -3,7 +3,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(128, 128, 128, 0.394);
+    background-color: rgba(86, 86, 86, 0.5);
     display: flex;
     justify-content: center;
     align-content: center;
@@ -20,6 +20,43 @@
     padding-top: 1em;
     padding-left: 1em;
     padding-right: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.close-button{
+    position: fixed;
+    color: white;
+    width: 2em;
+    height: 2em;
+    float: left;
+    border-radius: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #3c3b3d;
+    background-color: rgb(221, 117, 117);
+}
+
+.close-button:hover{
+    cursor: pointer;
+}
+
+.booking-dates{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+}
+
+.booking-dates input{
+    width: 100%;
+}
+
+.booking-hotel-info{
+    font-family: serif;
+    font-style: italic;
 }
 
 .booking-title{
@@ -28,7 +65,64 @@
     font-weight: bold;
     text-align: center;
     font-style: italic;
-    margin-bottom: 0.25em;
+}
+
+.book-room-button{
+    border-width: 1px;
+    border-color: rgb(113, 69, 116);
+    background-color: rgb(115, 164, 242);
+    border-radius: 0.5em;
+    border-style: solid;
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+    padding:0.4em;
+    transition: background-color 0.1s ease-in, transform 0.15s ease-in;
+}
+
+.book-room-button:hover{
+    cursor: pointer;
+    background-color: rgb(94, 141, 216);
+    transform: scale(1.02) translateY(-3px);
+}
+
+.book-room-button:active{
+    background-color: rgb(142, 182, 247);
+    transform: scale(0.97);
+}
+
+.book-room-button:hover{
+    cursor: pointer;
+}
+
+.address-input-holder{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+.id-select{
+    height: 2.5em;
+    border-radius: 0.5em;
+    border-color: rgb(113, 69, 116);
+}
+
+.id-select:focus{
+    outline: none;
+}
+
+.booking-text-input{
+    height: 2.5em;
+    border-width: 1px;
+    border-color: rgb(113, 69, 116);
+    border-style: solid;
+    border-radius: 0.5em;
+    padding-left: 5px;
+}
+
+.booking-text-input:focus{
+    outline: none;
 }
 
 .filters-holder{

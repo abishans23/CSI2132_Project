@@ -9,11 +9,12 @@ class Address{
     public string Country{get;set;}
 
     public Address(){}
-    public Address(string postalCode, int StreetNumber, string StreetName, string Province){
+    public Address(string postalCode, int StreetNumber, string StreetName, string Province, string Country){
         this.PostalCode = postalCode;
         this.StreetNumber = StreetNumber;
         this.StreetName = StreetName;
         this.Province = Province;
+        this.Country = Country;
     }
 
 }
