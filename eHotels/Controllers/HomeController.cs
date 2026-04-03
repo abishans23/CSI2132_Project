@@ -16,14 +16,14 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Search(String search, String area, String capacity, String startDate, String endDate)
+    public IActionResult Search(string search, string area, string capacity, string startDate, string endDate)
     {
         Console.WriteLine(search + area + capacity + startDate + endDate);
         return View();
     }
 
     [HttpPost]
-    public IActionResult SignIn(String username, String password, string email, String action)
+    public IActionResult SignIn(string username, string password, string email, string action)
     {
         ModelState.Clear();
             Console.WriteLine(email + " " + username + " " + password + " " + action);
@@ -38,8 +38,6 @@ public class HomeController : Controller
             ModelState.AddModelError("", "u dont exist :(");
             return View("SignIn");
         }
-
-        // Account T = new Account(em)
 
         return View("Index");
     }
