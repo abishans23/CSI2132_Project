@@ -38,9 +38,7 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> SignIn(string username, string password, string emailAddress, string action)
     {
-        var  d = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail",new {findEmail=emailAddress});
-        var accountList=d.ToList();
-        Console.WriteLine(accountList[0].Password);
+
 
 
         ModelState.Clear();
@@ -53,7 +51,9 @@ public class HomeController : Controller
 
         if (action == "Login")
         {
-            
+                    var  d = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail",new {findEmail=emailAddress});
+        var accountList=d.ToList();
+        Console.WriteLine(accountList[0].Password);
             return View("SignIn");
         }
 
