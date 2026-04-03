@@ -39,6 +39,7 @@ public class HomeController : Controller
     {
         ModelState.Clear();
         Console.WriteLine(email + " " + username + " " + password + " " + action);
+        
 
         if (username == null || password == null || email == null){
             ModelState.AddModelError("", "username, password and email can not be empty");
