@@ -50,6 +50,81 @@
     "Password": "Password123!"
   },
   {
+  "Email": "vsingathi@meridian.com",
+  "Username": "vsingathi_mgr",
+  "Password": "Password123!"
+  },
+  {
+    "Email": "cblue@meridian.com",
+    "Username": "cblue_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "avader@meridian.com",
+    "Username": "avader_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "spalpatine@meridian.com",
+    "Username": "spalpatine_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "ggrievous@meridian.com",
+    "Username": "ggrievous_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "cdooku@azure.com",
+    "Username": "cdooku_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "kren@azure.com",
+    "Username": "kren_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "gthrawn@azure.com",
+    "Username": "gthrawn_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "mtarkin@azure.com",
+    "Username": "mtarkin_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "aventress@azure.com",
+    "Username": "aventress_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "sopress@azure.com",
+    "Username": "sopress_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "dmaul@azure.com",
+    "Username": "dmaul_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "dkrennic@azure.com",
+    "Username": "dkrennic_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "cphasma@azure.com",
+    "Username": "cphasma_mgr",
+    "Password": "Password123!"
+  },
+  {
+    "Email": "ssnoke@azure.com",
+    "Username": "ssnoke_mgr",
+    "Password": "Password123!"
+  },
+  {
     "Email": "jdoe@meridian.com",
     "Username": "jdoe_concierge",
     "Password": "Password123!"

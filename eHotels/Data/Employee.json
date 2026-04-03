@@ -90,6 +90,141 @@
     "Email": "jsilva@azure.com"
   },
   {
+  "SSN": "100-000-011",
+  "FirstName": "Viveksingathi",
+  "LastName": "Singathi",
+  "PostalCode": "560001",
+  "Position": "Manager",
+  "HotelID": 11,
+  "Email": "vsingathi@meridian.com"
+  },
+  {
+    "SSN": "100-000-012",
+    "FirstName": "Charlie",
+    "LastName": "Blue",
+    "PostalCode": "85001",
+    "Position": "Manager",
+    "HotelID": 12,
+    "Email": "cblue@meridian.com"
+  },
+  {
+    "SSN": "100-000-013",
+    "FirstName": "Anakin",
+    "LastName": "Vader",
+    "PostalCode": "94105",
+    "Position": "Manager",
+    "HotelID": 13,
+    "Email": "avader@meridian.com"
+  },
+  {
+    "SSN": "100-000-014",
+    "FirstName": "Sheev",
+    "LastName": "Palpatine",
+    "PostalCode": "20001",
+    "Position": "Manager",
+    "HotelID": 14,
+    "Email": "spalpatine@meridian.com"
+  },
+  {
+    "SSN": "100-000-015",
+    "FirstName": "General",
+    "LastName": "Grievous",
+    "PostalCode": "30301",
+    "Position": "Manager",
+    "HotelID": 15,
+    "Email": "ggrievous@meridian.com"
+  },
+  {
+    "SSN": "100-000-016",
+    "FirstName": "Count",
+    "LastName": "Dooku",
+    "PostalCode": "33101",
+    "Position": "Manager",
+    "HotelID": 16,
+    "Email": "cdooku@azure.com"
+  },
+  {
+    "SSN": "100-000-017",
+    "FirstName": "Kylo",
+    "LastName": "Ren",
+    "PostalCode": "60601",
+    "Position": "Manager",
+    "HotelID": 17,
+    "Email": "kren@azure.com"
+  },
+  {
+    "SSN": "100-000-018",
+    "FirstName": "Grand",
+    "LastName": "Thrawn",
+    "PostalCode": "98101",
+    "Position": "Manager",
+    "HotelID": 18,
+    "Email": "gthrawn@azure.com"
+  },
+  {
+    "SSN": "100-000-019",
+    "FirstName": "Moff",
+    "LastName": "Tarkin",
+    "PostalCode": "90001",
+    "Position": "Manager",
+    "HotelID": 19,
+    "Email": "mtarkin@azure.com"
+  },
+  {
+    "SSN": "100-000-020",
+    "FirstName": "Asajj",
+    "LastName": "Ventress",
+    "PostalCode": "75201",
+    "Position": "Manager",
+    "HotelID": 20,
+    "Email": "aventress@azure.com"
+  },
+  {
+    "SSN": "100-000-021",
+    "FirstName": "Savage",
+    "LastName": "Opress",
+    "PostalCode": "85001",
+    "Position": "Manager",
+    "HotelID": 21,
+    "Email": "sopress@azure.com"
+  },
+  {
+    "SSN": "100-000-022",
+    "FirstName": "Darth",
+    "LastName": "Maul",
+    "PostalCode": "77001",
+    "Position": "Manager",
+    "HotelID": 22,
+    "Email": "dmaul@azure.com"
+  },
+  {
+    "SSN": "100-000-023",
+    "FirstName": "Director",
+    "LastName": "Krennic",
+    "PostalCode": "10001",
+    "Position": "Manager",
+    "HotelID": 23,
+    "Email": "dkrennic@azure.com"
+  },
+  {
+    "SSN": "100-000-024",
+    "FirstName": "Captain",
+    "LastName": "Phasma",
+    "PostalCode": "V5K0A1",
+    "Position": "Manager",
+    "HotelID": 24,
+    "Email": "cphasma@azure.com"
+  },
+  {
+    "SSN": "100-000-025",
+    "FirstName": "Supreme",
+    "LastName": "Snoke",
+    "PostalCode": "K1A0B1",
+    "Position": "Manager",
+    "HotelID": 25,
+    "Email": "ssnoke@azure.com"
+  },
+  {
     "SSN": "200-000-001",
     "FirstName": "John",
     "LastName": "Doe",

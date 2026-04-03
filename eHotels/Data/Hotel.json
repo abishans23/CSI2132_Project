@@ -5,7 +5,7 @@
     "Name": "Meridian Grand New York",
     "PostalCode": "10022",
     "Stars": 5,
-    "Manager": "EMP001",
+    "Manager": "100-000-001",
     "Description": "A flagship five-star property in the heart of Midtown Manhattan, offering sweeping views of Central Park and world-class dining.",
     "Emails": [
       "nyc@meridianhotels.com"
@@ -42,7 +42,7 @@
     "Name": "Meridian Suites Chicago",
     "PostalCode": "60611",
     "Stars": 4,
-    "Manager": "EMP002",
+    "Manager": "100-000-002",
     "Description": "Elegant suites on the Magnificent Mile with easy access to the lakefront, museums, and Chicago's vibrant dining scene.",
     "Emails": [
       "chi@meridianhotels.com"
@@ -75,7 +75,7 @@
     "Name": "Meridian Palace Miami",
     "PostalCode": "33139",
     "Stars": 5,
-    "Manager": "EMP003",
+    "Manager": "100-000-003",
     "Description": "A beachfront resort on South Beach blending Art Deco heritage with modern luxury. Private beach access and a celebrity-favourite pool deck.",
     "Emails": [
       "mia@meridianhotels.com"
@@ -108,7 +108,7 @@
     "Name": "Meridian Tower Toronto",
     "PostalCode": "M5J1B1",
     "Stars": 4,
-    "Manager": "EMP004",
+    "Manager": "100-000-004",
     "Description": "A sleek downtown tower steps from the Financial District and the CN Tower, ideal for both business and leisure travellers.",
     "Emails": [
       "tor@meridianhotels.com"
@@ -137,7 +137,7 @@
     "Name": "Meridian Boutique Montreal",
     "PostalCode": "H2X3L8",
     "Stars": 3,
-    "Manager": "EMP005",
+    "Manager": "100-000-005",
     "Description": "A charming boutique hotel in the Plateau-Mont-Royal neighbourhood, surrounded by galleries, bistros, and the best of Montreal's cultural scene.",
     "Emails": [
       "mtl@meridianhotels.com"
@@ -162,7 +162,7 @@
     "Name": "Azure Riviera Cannes",
     "PostalCode": "06400",
     "Stars": 5,
-    "Manager": "EMP006",
+    "Manager": "100-000-006",
     "Description": "A palatial retreat on the Côte d'Azur, host to film stars during the festival season and discerning travellers year-round.",
     "Emails": [
       "cannes@azurecoast.com"
@@ -195,7 +195,7 @@
     "Name": "Azure Côte Nice",
     "PostalCode": "06000",
     "Stars": 4,
-    "Manager": "EMP007",
+    "Manager": "100-000-007",
     "Description": "Belle Époque elegance meets the Mediterranean on Nice's iconic Promenade. Walking distance to the Old Town and bustling Cours Saleya market.",
     "Emails": [
       "nice@azurecoast.com"
@@ -224,7 +224,7 @@
     "Name": "Azure Med Barcelona",
     "PostalCode": "08007",
     "Stars": 5,
-    "Manager": "EMP008",
+    "Manager": "100-000-008",
     "Description": "Set in a restored Modernista building on Passeig de Gràcia, steps from the Sagrada Família and Picasso Museum.",
     "Emails": [
       "bcn@azurecoast.com"
@@ -253,7 +253,7 @@
     "Name": "Azure Adriatic Dubrovnik",
     "PostalCode": "20000",
     "Stars": 4,
-    "Manager": "EMP009",
+    "Manager": "100-000-009",
     "Description": "A historic hotel within the Old Town walls of Dubrovnik, offering stunning Adriatic views and access to the city's UNESCO heritage sites.",
     "Emails": [
       "dbv@azurecoast.com"
@@ -278,7 +278,7 @@
     "Name": "Azure Garden Lisbon",
     "PostalCode": "12500",
     "Stars": 3,
-    "Manager": "EMP010",
+    "Manager": "100-000-010",
     "Description": "A stylish mid-century property on Lisbon's grand boulevard, with lush courtyard gardens and a terrace overlooking the avenue.",
     "Emails": [
       "lis@azurecoast.com"
@@ -303,7 +303,7 @@
     "Name": "Summit Alpine Zurich",
     "PostalCode": "8001",
     "Stars": 5,
-    "Manager": "EMP011",
+    "Manager": "100-000-011",
     "Description": "A landmark property on Zurich's most exclusive shopping street, overlooking Lake Zurich and the Alps.",
     "Emails": [
       "zur@summitpeak.com"
@@ -332,7 +332,7 @@
     "Name": "Summit Glacier Zermatt",
     "PostalCode": "3920",
     "Stars": 5,
-    "Manager": "EMP012",
+    "Manager": "100-000-012",
     "Description": "A car-free alpine sanctuary at the foot of the Matterhorn. Direct gondola access, a celebrated ski-in/ski-out lounge, and glacier views from every room.",
     "Emails": [
       "zrm@summitpeak.com"
@@ -361,7 +361,7 @@
     "Name": "Summit City Geneva",
     "PostalCode": "1204",
     "Stars": 4,
-    "Manager": "EMP013",
+    "Manager": "100-000-013",
     "Description": "A refined lakeside hotel on the Rive Gauche, ideal for diplomats and international business travellers. Walking distance to the UN and CERN.",
     "Emails": [
       "gva@summitpeak.com"
@@ -386,7 +386,7 @@
     "Name": "Summit Heritage Lucerne",
     "PostalCode": "6002",
     "Stars": 4,
-    "Manager": "EMP014",
+    "Manager": "100-000-014",
     "Description": "A 19th-century grand hotel overlooking Lake Lucerne and the Chapel Bridge. Wagner and Tolstoy once stayed here.",
     "Emails": [
       "lux@summitpeak.com"
@@ -411,7 +411,7 @@
     "Name": "Summit Inn Interlaken",
     "PostalCode": "3800",
     "Stars": 3,
-    "Manager": "EMP015",
+    "Manager": "100-000-015",
     "Description": "A cosy mountain inn between Lakes Thun and Brienz, popular with hikers, paragliders, and adventure travellers heading to the Jungfrau region.",
     "Emails": [
       "int@summitpeak.com"
@@ -436,7 +436,7 @@
     "Name": "Heritage Grand London Mayfair",
     "PostalCode": "W1K4DG",
     "Stars": 5,
-    "Manager": "EMP016",
+    "Manager": "100-000-016",
     "Description": "A Georgian townhouse hotel in the heart of Mayfair, blending 18th-century grandeur with contemporary British design. Two streets from Bond Street.",
     "Emails": [
       "lon@heritagegrand.com"
@@ -465,7 +465,7 @@
     "Name": "Heritage Royal Edinburgh",
     "PostalCode": "EH22EQ",
     "Stars": 5,
-    "Manager": "EMP017",
+    "Manager": "100-000-017",
     "Description": "A Victorian landmark facing Edinburgh Castle and the gardens of Princes Street, with baronial interiors and sweeping views of the Old Town.",
     "Emails": [
       "edi@heritagegrand.com"
@@ -494,7 +494,7 @@
     "Name": "Heritage Manor Oxford",
     "PostalCode": "OX12LP",
     "Stars": 4,
-    "Manager": "EMP018",
+    "Manager": "100-000-018",
     "Description": "A neoclassical hotel opposite the Ashmolean Museum, beloved by academics, visiting fellows, and discerning travellers exploring the University city.",
     "Emails": [
       "oxf@heritagegrand.com"
@@ -519,7 +519,7 @@
     "Name": "Heritage Townhouse Bath",
     "PostalCode": "BA24EB",
     "Stars": 4,
-    "Manager": "EMP019",
+    "Manager": "100-000-019",
     "Description": "A perfectly preserved Georgian townhouse on Bath's grandest street, moments from the Roman Baths and the Jane Austen Centre.",
     "Emails": [
       "bth@heritagegrand.com"
@@ -544,7 +544,7 @@
     "Name": "Heritage Inn York",
     "PostalCode": "YO17DD",
     "Stars": 3,
-    "Manager": "EMP020",
+    "Manager": "100-000-020",
     "Description": "A cheerful inn in the shadow of York Minster, on a cobbled street lined with independent shops and Viking-era archaeology.",
     "Emails": [
       "yor@heritagegrand.com"
@@ -565,7 +565,7 @@
     "Name": "Pacific Horizon Marina Singapore",
     "PostalCode": "018970",
     "Stars": 5,
-    "Manager": "EMP021",
+    "Manager": "100-000-021",
     "Description": "An iconic tower hotel overlooking Marina Bay Sands and the glittering Singapore skyline. Infinity pool on the 57th floor.",
     "Emails": [
       "sin@pacifichorizon.com"
@@ -598,7 +598,7 @@
     "Name": "Pacific Horizon Orchard",
     "PostalCode": "238859",
     "Stars": 4,
-    "Manager": "EMP022",
+    "Manager": "100-000-022",
     "Description": "A contemporary city hotel on Singapore's premier shopping strip, ideal for leisure travellers and families visiting Sentosa and the Gardens by the Bay.",
     "Emails": [
       "orc@pacifichorizon.com"
@@ -623,7 +623,7 @@
     "Name": "Pacific Horizon Tokyo Shinjuku",
     "PostalCode": "160023",
     "Stars": 5,
-    "Manager": "EMP023",
+    "Manager": "100-000-023",
     "Description": "A skyscraper hotel in Shinjuku's high-rise district with breathtaking views of Mount Fuji on clear mornings. Award-winning Japanese kaiseki dining.",
     "Emails": [
       "tyo@pacifichorizon.com"
@@ -652,7 +652,7 @@
     "Name": "Pacific Horizon Bangkok Riverside",
     "PostalCode": "10600",
     "Stars": 4,
-    "Manager": "EMP024",
+    "Manager": "100-000-024",
     "Description": "A riverside resort on the Chao Phraya, with private boat transfers to the Grand Palace, Wat Pho, and Bangkok's famous floating markets.",
     "Emails": [
       "bkk@pacifichorizon.com"
@@ -681,7 +681,7 @@
     "Name": "Pacific Horizon Sydney Harbour",
     "PostalCode": "2000",
     "Stars": 5,
-    "Manager": "EMP025",
+    "Manager": "100-000-025",
     "Description": "A five-star icon overlooking the Sydney Opera House and Harbour Bridge from the Royal Botanic Gardens edge. A bucket-list destination in itself.",
     "Emails": [
       "syd@pacifichorizon.com"
