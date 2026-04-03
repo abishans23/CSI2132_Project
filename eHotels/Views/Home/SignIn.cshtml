@@ -14,9 +14,10 @@
 
 <body>
     <div class="main">
-        <form asp-action="SignIn" asp-controller="Home" method="post">
+        <form asp-action="SignIn" method="post">
             <div class="login-container">
                 <div class="name-holder">NAME</div>
+                <div asp-validation-summary="All" class="error-msg"></div>
                 <input name="username" class="username" type="text" placeholder="Username"/>
                 <input name="password" class="password" type="password" placeholder="Password"/>
                 <button name="action" value="Login" class="login">Login</button>

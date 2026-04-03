@@ -51,7 +51,6 @@ html, body{
 .name-holder{
     font-size: 3em;
     text-align: center;
-    margin-bottom: 0.5em;
     margin-top: 0.5em;
     color: white;
     font-family: serif;
@@ -156,4 +155,32 @@ html, body{
 .sign-in:active{
     background-color: rgb(84, 129, 200);
     transform: scale(0.95);
+}
+
+.error-msg{
+    height: 1.5em;
+    width: 100%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color:#33293e;
+    font-size: small;
+    font-family: serif;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-msg ul{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.error-msg li{
+    text-align: center;
+    margin: 0;
+
 }

@@ -26,7 +26,20 @@ public class HomeController : Controller
     public IActionResult SignIn(String username, String password, String action)
     {
         Console.WriteLine(username + " " + password + " " + action);
-        return View();
+        ModelState.Clear();
+
+        if (username == null || password == null){
+            ModelState.AddModelError("", "username and password can't be empty");
+            return View("SignIn");
+        }
+
+        if (true)
+        {
+            ModelState.AddModelError("", "u dont exist :(");
+            return View("SignIn");
+        }
+
+        return View("Index");
     }
 
     public IActionResult CheckIn()
