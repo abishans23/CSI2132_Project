@@ -26,7 +26,7 @@ public class HomeController : Controller
     public IActionResult SignIn(string username, string password, string email, string action)
     {
         ModelState.Clear();
-            Console.WriteLine(email + " " + username + " " + password + " " + action);
+        Console.WriteLine(email + " " + username + " " + password + " " + action);
 
         if (username == null || password == null || email == null){
             ModelState.AddModelError("", "username, password and email can not be empty");
