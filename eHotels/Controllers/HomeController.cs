@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using eHotels.Models;
 using Data;
+using Npgsql;
 
 namespace eHotels.Controllers;
 
@@ -46,7 +47,10 @@ public class HomeController : Controller
         }
 
         if (action == "Login")
-        {
+        {   
+            string accountQuery = "SELECT * From Account Where Email = {email}";
+
+            NpgsqlCommand cmd = new NpgsqlCommand();
             ModelState.AddModelError("", "u dont exist :(");
             return View("SignIn");
         }
