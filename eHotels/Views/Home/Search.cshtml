@@ -14,9 +14,17 @@
 </head>
 
 <body>
-    <div class="booking-overlay">
+
+    <div class="booking-overlay" style="display: none;">
         <div class="booking-info">
-            <div class="booking-title">Book Room</div>
+            <div class="booking-title">Booking Information</div>
+            <div class="line-break"></div>
+            <div class="hotel-info">Hotel Name, Room capacity, View</div>
+            <select class="id-select">
+                <option selected>choose id Type</option>
+                <option>SSN</option>
+                <option>Drivers License</option>
+            </select>
         </div>
     </div>
 
@@ -117,5 +125,16 @@
         </div>
 
     </div>
+
+    <script>
+        let bookButtons = document.getElementsByClassName("book-button");
+        let overlay = document.querySelector(".booking-overlay")
+        for (let i = 0; i < bookButtons.length; i++){
+            bookButtons[i].onclick = function(){
+                overlay.style.display = "block";
+            }
+        }
+
+    </script>
 
 </body>

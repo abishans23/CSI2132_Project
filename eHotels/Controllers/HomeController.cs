@@ -36,7 +36,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult SignIn(string username, string password, string email, string action)
+    public async Task<IActionResult> SignIn(string username, string password, string email, string action)
     {
         ModelState.Clear();
         Console.WriteLine(email + " " + username + " " + password + " " + action);
@@ -48,10 +48,9 @@ public class HomeController : Controller
 
         if (action == "Login")
         {   
-            string accountQuery = "SELECT * From Account Where Email = {email}";
+            // Task<IEnumerable<Account>> d = _db.QueryAsync<int>("SELECT * From Account Where Email = {email}");
 
-            NpgsqlCommand cmd = new NpgsqlCommand();
-            ModelState.AddModelError("", "u dont exist :(");
+
             return View("SignIn");
         }
 

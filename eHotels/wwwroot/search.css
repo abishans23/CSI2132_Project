@@ -1,5 +1,38 @@
+.booking-overlay{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.394);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-index: 99;
+}
+
+.booking-info{
+    height: 40em;
+    width: 28em;
+    margin: auto;
+    background-color: rgb(240, 240, 240);
+    border-radius: 1em;
+    border: solid 2px rgb(113, 69, 116);
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.booking-title{
+    color: rgb(19, 19, 19);
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 0.25em;
+}
+
 .filters-holder{
-    margin-top: 1em;
+    margin-top: 0.25em;
     margin-bottom: 2em;
     padding-left: 20px;
     padding-right: 20px;
@@ -219,9 +252,3 @@
     background-color: rgb(186, 170, 211);
     transform: scale(0.97);
 }
-
-/* .booking-overlay{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-} */
