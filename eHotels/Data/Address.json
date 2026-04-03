@@ -1,177 +1,42 @@
 [
-  {
-    "PostalCode": "10022",
-    "StreetNum": 101,
-    "StreetName": "Park Avenue",
-    "Province": "New York",
-    "Country": "USA"
-  },
-  {
-    "PostalCode": "60611",
-    "StreetNum": 500,
-    "StreetName": "Michigan Avenue",
-    "Province": "Illinois",
-    "Country": "USA"
-  },
-  {
-    "PostalCode": "33139",
-    "StreetNum": 1200,
-    "StreetName": "Collins Avenue",
-    "Province": "Florida",
-    "Country": "USA"
-  },
-  {
-    "PostalCode": "M5J1B1",
-    "StreetNum": 88,
-    "StreetName": "Wellington Street",
-    "Province": "Ontario",
-    "Country": "Canada"
-  },
-  {
-    "PostalCode": "H2X3L8",
-    "StreetNum": 350,
-    "StreetName": "Rue Saint-Denis",
-    "Province": "Quebec",
-    "Country": "Canada"
-  },
-  {
-    "PostalCode": "06400",
-    "StreetNum": 46,
-    "StreetName": "Boulevard de la Croisette",
-    "Province": "Cannes",
-    "Country": "France"
-  },
-  {
-    "PostalCode": "06000",
-    "StreetNum": 1,
-    "StreetName": "Promenade des Anglais",
-    "Province": "Nice",
-    "Country": "France"
-  },
-  {
-    "PostalCode": "08007",
-    "StreetNum": 5,
-    "StreetName": "Passeig de Gràcia",
-    "Province": "Barcelona",
-    "Country": "Spain"
-  },
-  {
-    "PostalCode": "20000",
-    "StreetNum": 2,
-    "StreetName": "Stradun",
-    "Province": "Dubrovnik",
-    "Country": "Croatia"
-  },
-  {
-    "PostalCode": "125001",
-    "StreetNum": 120,
-    "StreetName": "Avenida da Liberdade",
-    "Province": "Lisbon",
-    "Country": "Portugal"
-  },
-  {
-    "PostalCode": "8001",
-    "StreetNum": 9,
-    "StreetName": "Bahnhofstrasse",
-    "Province": "Zurich",
-    "Country": "Switzerland"
-  },
-  {
-    "PostalCode": "3920",
-    "StreetNum": 15,
-    "StreetName": "Bahnhofstrasse",
-    "Province": "Zermatt",
-    "Country": "Switzerland"
-  },
-  {
-    "PostalCode": "1204",
-    "StreetNum": 30,
-    "StreetName": "Quai du Général-Guisan",
-    "Province": "Geneva",
-    "Country": "Switzerland"
-  },
-  {
-    "PostalCode": "6002",
-    "StreetNum": 6,
-    "StreetName": "Schweizerhofquai",
-    "Province": "Lucerne",
-    "Country": "Switzerland"
-  },
-  {
-    "PostalCode": "3800",
-    "StreetNum": 20,
-    "StreetName": "Höheweg",
-    "Province": "Interlaken",
-    "Country": "Switzerland"
-  },
-  {
-    "PostalCode": "W1K4DG",
-    "StreetNum": 23,
-    "StreetName": "Brook Street",
-    "Province": "London",
-    "Country": "UK"
-  },
-  {
-    "PostalCode": "EH22EQ",
-    "StreetNum": 1,
-    "StreetName": "Princes Street",
-    "Province": "Edinburgh",
-    "Country": "UK"
-  },
-  {
-    "PostalCode": "OX12LW",
-    "StreetNum": 4,
-    "StreetName": "Beaumont Street",
-    "Province": "Oxford",
-    "Country": "UK"
-  },
-  {
-    "PostalCode": "BA24ED",
-    "StreetNum": 99,
-    "StreetName": "Great Pulteney Street",
-    "Province": "Bath",
-    "Country": "UK"
-  },
-  {
-    "PostalCode": "YO17DT",
-    "StreetNum": 10,
-    "StreetName": "Museum Street",
-    "Province": "York",
-    "Country": "UK"
-  },
-  {
-    "PostalCode": "018970",
-    "StreetNum": 1,
-    "StreetName": "Bayfront Avenue",
-    "Province": "Singapore",
-    "Country": "Singapore"
-  },
-  {
-    "PostalCode": "238859",
-    "StreetNum": 290,
-    "StreetName": "Orchard Road",
-    "Province": "Singapore",
-    "Country": "Singapore"
-  },
-  {
-    "PostalCode": "160023",
-    "StreetNum": 2,
-    "StreetName": "Nishi-Shinjuku",
-    "Province": "Tokyo",
-    "Country": "Japan"
-  },
-  {
-    "PostalCode": "10600",
-    "StreetNum": 48,
-    "StreetName": "Charoen Nakhon Road",
-    "Province": "Bangkok",
-    "Country": "Thailand"
-  },
-  {
-    "PostalCode": "2000",
-    "StreetNum": 61,
-    "StreetName": "Macquarie Street",
-    "Province": "Sydney",
-    "Country": "Australia"
-  }
+  { "HotelID": 1, "PostalCode": "10022", "StreetNum": 101, "StreetName": "Park Avenue", "Province": "New York", "Country": "USA" },
+  { "HotelID": 2, "PostalCode": "60611", "StreetNum": 500, "StreetName": "Michigan Avenue", "Province": "Illinois", "Country": "USA" },
+  { "HotelID": 3, "PostalCode": "33139", "StreetNum": 1200, "StreetName": "Collins Avenue", "Province": "Florida", "Country": "USA" },
+  { "HotelID": 4, "PostalCode": "M5J1B1", "StreetNum": 88, "StreetName": "Wellington Street", "Province": "Ontario", "Country": "Canada" },
+  { "HotelID": 5, "PostalCode": "H2W1S8", "StreetNum": 350, "StreetName": "Rue Saint-Denis", "Province": "Quebec", "Country": "Canada" },
+  { "HotelID": 6, "PostalCode": "06400", "StreetNum": 45, "StreetName": "Boulevard de la Croisette", "Province": "Cannes", "Country": "France" },
+  { "HotelID": 7, "PostalCode": "06400", "StreetNum": 58, "StreetName": "Rue d'Antibes", "Province": "Cannes", "Country": "France" },
+  { "HotelID": 8, "PostalCode": "75001", "StreetNum": 228, "StreetName": "Rue de Rivoli", "Province": "Paris", "Country": "France" },
+  { "HotelID": 9, "PostalCode": "75001", "StreetNum": 15, "StreetName": "Place Vendôme", "Province": "Paris", "Country": "France" },
+  { "HotelID": 10, "PostalCode": "10115", "StreetNum": 77, "StreetName": "Friedrichstrasse", "Province": "Berlin", "Country": "Germany" },
+  { "HotelID": 11, "PostalCode": "8001", "StreetNum": 21, "StreetName": "Bahnhofstrasse", "Province": "Zurich", "Country": "Switzerland" },
+  { "HotelID": 12, "PostalCode": "8001", "StreetNum": 44, "StreetName": "Talstrasse", "Province": "Zurich", "Country": "Switzerland" },
+  { "HotelID": 13, "PostalCode": "6002", "StreetNum": 4, "StreetName": "Pilatusstrasse", "Province": "Lucerne", "Country": "Switzerland" },
+  { "HotelID": 14, "PostalCode": "6002", "StreetNum": 12, "StreetName": "Haldenstrasse", "Province": "Lucerne", "Country": "Switzerland" },
+  { "HotelID": 15, "PostalCode": "50674", "StreetNum": 12, "StreetName": "Habsburgerring", "Province": "Cologne", "Country": "Germany" },
+  { "HotelID": 16, "PostalCode": "W1K4DG", "StreetNum": 23, "StreetName": "Brook Street", "Province": "London", "Country": "UK" },
+  { "HotelID": 17, "PostalCode": "W1K4DG", "StreetNum": 45, "StreetName": "Park Lane", "Province": "London", "Country": "UK" },
+  { "HotelID": 18, "PostalCode": "CB21TQ", "StreetNum": 4, "StreetName": "Granta Place", "Province": "Cambridge", "Country": "UK" },
+  { "HotelID": 19, "PostalCode": "BA11LZ", "StreetNum": 1, "StreetName": "Royal Crescent", "Province": "Bath", "Country": "UK" },
+  { "HotelID": 20, "PostalCode": "YO17JF", "StreetNum": 10, "StreetName": "Station Road", "Province": "York", "Country": "UK" },
+  { "HotelID": 21, "PostalCode": "018970", "StreetNum": 10, "StreetName": "Bayfront Avenue", "Province": "Singapore", "Country": "Singapore" },
+  { "HotelID": 22, "PostalCode": "018970", "StreetNum": 2, "StreetName": "Raffles Boulevard", "Province": "Singapore", "Country": "Singapore" },
+  { "HotelID": 23, "PostalCode": "100007", "StreetNum": 1, "StreetName": "East Chang'an Avenue", "Province": "Beijing", "Country": "China" },
+  { "HotelID": 24, "PostalCode": "2000", "StreetNum": 2, "StreetName": "George Street", "Province": "Sydney", "Country": "Australia" },
+  { "HotelID": 25, "PostalCode": "2000", "StreetNum": 88, "StreetName": "Pitt Street", "Province": "Sydney", "Country": "Australia" },
+  { "HotelID": 26, "PostalCode": "10022", "StreetNum": 768, "StreetName": "Fifth Avenue", "Province": "New York", "Country": "USA" },
+  { "HotelID": 27, "PostalCode": "02108", "StreetNum": 15, "StreetName": "Beacon Street", "Province": "Massachusetts", "Country": "USA" },
+  { "HotelID": 28, "PostalCode": "K1P5M2", "StreetNum": 1, "StreetName": "Rideau Street", "Province": "Ontario", "Country": "Canada" },
+  { "HotelID": 29, "PostalCode": "06400", "StreetNum": 73, "StreetName": "La Croisette", "Province": "Cannes", "Country": "France" },
+  { "HotelID": 30, "PostalCode": "13000", "StreetNum": 1, "StreetName": "Quai du Port", "Province": "Marseille", "Country": "France" },
+  { "HotelID": 31, "PostalCode": "69001", "StreetNum": 20, "StreetName": "Place Bellecour", "Province": "Lyon", "Country": "France" },
+  { "HotelID": 32, "PostalCode": "8001", "StreetNum": 10, "StreetName": "Börsenstrasse", "Province": "Zurich", "Country": "Switzerland" },
+  { "HotelID": 33, "PostalCode": "1201", "StreetNum": 9, "StreetName": "Quai du Mont-Blanc", "Province": "Geneva", "Country": "Switzerland" },
+  { "HotelID": 34, "PostalCode": "6000", "StreetNum": 1, "StreetName": "Bahnhofplatz", "Province": "Lucerne", "Country": "Switzerland" },
+  { "HotelID": 35, "PostalCode": "W1K4DG", "StreetNum": 84, "StreetName": "Mount Street", "Province": "London", "Country": "UK" },
+  { "HotelID": 36, "PostalCode": "EH11BB", "StreetNum": 1, "StreetName": "Princes Street", "Province": "Edinburgh", "Country": "UK" },
+  { "HotelID": 37, "PostalCode": "G11XW", "StreetNum": 11, "StreetName": "George Square", "Province": "Glasgow", "Country": "UK" },
+  { "HotelID": 38, "PostalCode": "018970", "StreetNum": 101, "StreetName": "Marina Gardens Drive", "Province": "Singapore", "Country": "Singapore" },
+  { "HotelID": 39, "PostalCode": "6008216", "StreetNum": 680, "StreetName": "Higashishiokoji-cho", "Province": "Kyoto", "Country": "Japan" },
+  { "HotelID": 40, "PostalCode": "2000", "StreetNum": 176, "StreetName": "Cumberland Street", "Province": "Sydney", "Country": "Australia" }
 ]
