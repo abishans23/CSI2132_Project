@@ -46,10 +46,11 @@ public class HomeController : Controller
             return View("SignIn");
         }
 
+        var queryResult = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail", new {findEmail=emailAddress});
+        var accountList = queryResult.ToList();
+
         if (action == "Login")
         {
-            var queryResult = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail", new {findEmail=emailAddress});
-            var accountList = queryResult.ToList();
 
             if (accountList.Count < 1)
             {
@@ -68,12 +69,20 @@ public class HomeController : Controller
             return View("SignIn");
         }
 
-        if (action == "SignIn")
+        if (action == "SignUp")
         {
-            
+            if (accountList.Count > 1)
+            {
+                ModelState.AddModelError("", "account with email already exists!");
+                return View("SignIn");
+            }
+
+            await _db.ExecuteAsync(@"INSERT INTO Account VALUES (@emailAddress, @username, @password)", new{emailAddress, username, password});
+
+            return View("Index");
         }
 
-        return View("Index");
+        return View("SignIn");
     }
 
     public IActionResult CheckIn()
