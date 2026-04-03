@@ -40,7 +40,7 @@ public class HomeController : Controller
     {
         var  d = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail",new {findEmail=emailAddress});
         var accountList=d.ToList();
-        Console.WriteLine(accountList[0].Username);
+        Console.WriteLine(accountList[0].Password);
 
 
         ModelState.Clear();
