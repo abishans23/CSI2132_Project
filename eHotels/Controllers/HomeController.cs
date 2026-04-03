@@ -23,21 +23,23 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult SignIn(String username, String password, String action)
+    public IActionResult SignIn(String username, String password, string email, String action)
     {
-        Console.WriteLine(username + " " + password + " " + action);
         ModelState.Clear();
+            Console.WriteLine(email + " " + username + " " + password + " " + action);
 
-        if (username == null || password == null){
-            ModelState.AddModelError("", "username and password can't be empty");
+        if (username == null || password == null || email == null){
+            ModelState.AddModelError("", "username, password and email can not be empty");
             return View("SignIn");
         }
 
-        if (true)
+        if (action == "Login")
         {
             ModelState.AddModelError("", "u dont exist :(");
             return View("SignIn");
         }
+
+        // Account T = new Account(em)
 
         return View("Index");
     }

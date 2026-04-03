@@ -59,6 +59,16 @@ html, body{
     text-shadow: 1px 1px #1e1923c8;
 }
 
+.email-address{
+    margin: 10px;
+    height: 3em;
+    border-radius: 1em;
+    border-style: solid;
+    border-color: #4f435d;
+    border-width: 1px;
+    padding-left: 10px;
+}
+
 .username{
     margin: 10px;
     height: 3em;
@@ -160,8 +170,8 @@ html, body{
 .error-msg{
     height: 1.5em;
     width: 100%;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
     color:#33293e;
     font-size: small;
     font-family: serif;
