@@ -1,0 +1,95 @@
+.search-bar{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.search-bar form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hotel-search{
+    height: 2.5em;
+    width: 30em;
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color: rgb(113, 69, 116);
+    margin-right: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.area{
+    height: 2.5em;
+    width: 5em;
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color: rgb(113, 69, 116);
+    margin-right: 3px;
+    margin-left: 3px;
+    padding-left: 5px;
+}
+
+.capacity{
+    height: 2.5em;
+    width: 5.2em;
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color: rgb(113, 69, 116);
+    margin-right: 3px;
+    margin-left: 3px;
+    padding-left: 5px;
+}
+
+.start-date{
+    height: 2.5em;
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color: rgb(113, 69, 116);
+    margin-right: 3x;
+    margin-left: 3px;
+    padding-left: 5px;
+}
+
+.end-date{
+    height: 2.5em;
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color: rgb(113, 69, 116);
+    margin-right: 3px;
+    margin-left: 3px;
+    padding-left: 5px;
+}
+
+.submit{
+    height: 3em;
+    width: 3em;
+    border-radius: 100%;
+    border-style: solid;
+    border-color: rgb(113, 69, 116);
+    margin-right: 3px;
+    margin-left: 3px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit:hover{
+    cursor: pointer;
+}
+
+.search-img{
+    height: 3em;
+}
+
+.search-img:hover{
+    filter: brightness(0.75);
+}
+
+.search-img:active{
+    filter: brightness(0.9);
+}

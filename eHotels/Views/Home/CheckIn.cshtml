@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - eHotels</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/checkIn.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="main">
+            <div class="check-in-container">
+                <div class="check-in-title">Check In</div>
+                <div class="check-in-options">
+                    <button class="manual-check-in">In Person Check In</button>
+                    <button class="transfer-booking">Transfer Booking</button>
+                </div>
+
+                <form asp-action="CheckIn" asp-controller="Home" method="post">
+                    
+                </form>
+                
+            </div>
+    </div>
+</body>

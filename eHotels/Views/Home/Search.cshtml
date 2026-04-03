@@ -1,0 +1,121 @@
+@{
+    ViewData["Title"] = "Search";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - eHotels</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/searchBar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/search.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="booking-overlay">
+        <div class="booking-info">
+            <div class="booking-title">Book Room</div>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <form action="/Home/Search" method="get">
+            <input class="hotel-search" type="text" name="search" placeholder="Search Hotels..." value="@Context.Request.Query["search"]"/>
+            <input class="area" type="text" name="area" placeholder="Area" value="@Context.Request.Query["area"]"/>
+            <input class="capacity" type="number" name="capacity" placeholder="Capacity" value="@Context.Request.Query["capacity"]"/>
+            <input class="start-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" value="@Context.Request.Query["startDate"]"/>
+            <input class="end-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" value="@Context.Request.Query["endDate"]"/>
+            <button class="submit">
+                <img class="search-img" src="https://static.vecteezy.com/system/resources/thumbnails/009/652/218/small/magnifying-glass-icon-isolated-on-white-background-search-illustration-vector.jpg" />
+            </button>
+        </form>
+    </div>
+
+    <div class="filters-holder">
+        <div class="filters-title">Filters:</div>
+
+        <div class="select-holder">
+            <div class="select-title">Rating:</div>
+            <select class="option-select">
+                <option selected>Any</option>
+                <option>1⭐</option>
+                <option>2⭐</option>
+                <option>3⭐</option>
+                <option>4⭐</option>
+                <option>5⭐</option>
+            </select>
+        </div>
+
+        <div class="select-holder">
+            <div class="select-title">View:</div>
+            <select class="option-select">
+                <option selected>Any</option>
+                <option>Sea</option>
+                <option>Land</option>
+                <option>Grass</option>
+            </select>
+        </div>
+
+        <div class="select-holder">
+            <div class="select-title">Price Range:</div>
+            <input class="price-input" min="1" max="999" type="number" placeholder="min"/>
+            -
+            <input class="price-input" min="1" max="999" type="number" placeholder="max"/>
+        </div>
+
+        <div class="select-holder">
+            <div class="select-title">Total Rooms:</div>
+            <input class="rooms-input" min="1" max="10000" type="number" placeholder="min"/>
+            -
+            <input class="rooms-input" min="1" max="10000" type="number" placeholder="max"/>
+        </div>
+
+        <div class="select-holder">
+            <div class="select-title">Sort:</div>
+            <select class="option-select">
+                <option selected>Default</option>
+                <option>Price</option>
+                <option>Name</option>
+                <option>Stars</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="results-holder">
+        <div class="search-result">
+            <img class="hotel-image" src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg" />
+            <div class="info-holder">
+                <div class="main-info">
+                    <div class="hotel-name">HOTEL NAME</div>
+                    <div class="stars">67 ⭐</div>
+                    <div class="price-range">420$-4200$</div>
+                </div>
+
+                <div class="line-break"></div>
+
+                <div class="result-body-holder">
+                    <div class="other-info">
+                        <div class="address">Address: Earth oewuhcowehuwehoiwnxowibxowxbnoiwenxioewxn</div>
+                        <div class="total-capacity-chain">6969 rooms, chain chain chain chain</div>
+                        <div class="description">blah blah blah blah blah blah blah blah blah blah blah blah </div>
+                        <div class="hotel-amenities">Hotel Amenities: living, jumping, eating</div>
+                        <div class="room-capacity">Room Capacity: 67 67</div>
+                        <div class="room-view">Room View: rocks</div>
+                        <div class="room-amenities">Room Amenities: funny stuff</div>
+                    </div>
+
+                    <div class="button-region">
+
+                        <button class="book-button">Book Room</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>

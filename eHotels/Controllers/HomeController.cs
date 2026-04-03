@@ -23,6 +23,42 @@ public class HomeController : Controller
     }
 
 
+    public IActionResult SignIn()
+    {
+        return View();
+    }
+
+    public IActionResult Search(string search, string area, string capacity, string startDate, string endDate)
+    {
+        Console.WriteLine(search + area + capacity + startDate + endDate);
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult SignIn(string username, string password, string email, string action)
+    {
+        ModelState.Clear();
+        Console.WriteLine(email + " " + username + " " + password + " " + action);
+
+        if (username == null || password == null || email == null){
+            ModelState.AddModelError("", "username, password and email can not be empty");
+            return View("SignIn");
+        }
+
+        if (action == "Login")
+        {
+            ModelState.AddModelError("", "u dont exist :(");
+            return View("SignIn");
+        }
+
+        return View("Index");
+    }
+
+    public IActionResult CheckIn()
+    {
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();

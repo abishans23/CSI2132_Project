@@ -1,0 +1,78 @@
+body{
+    background-image: linear-gradient(#8b76a5ff, #e07fe6ff);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: serif;
+}
+
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.check-in-container{
+    width: 20em;
+    background-color: #ebebeb5a;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #4f435d;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10em;
+    padding: 10px;
+    border-radius: 20px;
+    transform: scale(1.15);
+    gap: 10px;
+
+    /* box-shadow: 20px 20px #4f435d69;
+
+    animation-name: shadowAnim;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards; */
+}
+
+.check-in-title{
+    text-align: center;
+    color: white;
+    font-weight: medium;
+    font-size: xx-large;
+}
+
+.check-in-options{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+.check-in-options button{
+    height: 2.5em;
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color: #4f435d;
+    border-width: 1px;
+    background-color: #6193e6ff;
+    color: white;
+    font-family: serif;
+    font-weight: bold;
+    
+    transition: background-color 0.1s ease-in;
+    box-shadow: 0px 1px  #4f435d;
+}
+
+.check-in-options button:hover{
+    cursor: pointer;
+    background-color: rgb(115, 164, 242);
+}
+
+
+.check-in-options button:active{
+    background-color: rgb(84, 129, 200);
+}
