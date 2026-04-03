@@ -36,20 +36,24 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> SignIn(string username, string password, string email, string action)
+    public async Task<IActionResult> SignIn(string username, string password, string emailAddress, string action)
     {
-        ModelState.Clear();
-        Console.WriteLine(email + " " + username + " " + password + " " + action);
+        var  d = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail",new {findEmail=emailAddress});
+        var accountList=d.ToList();
+        Console.WriteLine(accountList[0].Username);
 
-        if (username == null || password == null || email == null){
+
+        ModelState.Clear();
+        Console.WriteLine(emailAddress + " " + username + " " + password + " " + action);
+
+        if (username == null || password == null || emailAddress == null){
             ModelState.AddModelError("", "username, password and email can not be empty");
             return View("SignIn");
         }
 
         if (action == "Login")
         {   
-            // Task<IEnumerable<Account>> d = _db.QueryAsync<int>("SELECT * From Account Where Email = {email}");
-
+            
 
             return View("SignIn");
         }
