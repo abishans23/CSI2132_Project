@@ -14,6 +14,12 @@
 </head>
 
 <body>
+    <div class="booking-overlay">
+        <div class="booking-info">
+            <div class="booking-title">Book Room</div>
+        </div>
+    </div>
+
     <div class="search-bar">
         <form action="/Home/Search" method="get">
             <input class="hotel-search" type="text" name="search" placeholder="Search Hotels..." value="@Context.Request.Query["search"]"/>
