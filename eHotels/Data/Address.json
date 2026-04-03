@@ -21,14 +21,14 @@
     "Country": "USA"
   },
   {
-    "PostalCode": "M5J 1B1",
+    "PostalCode": "M5J1B1",
     "StreetNum": 88,
     "StreetName": "Wellington Street",
     "Province": "Ontario",
     "Country": "Canada"
   },
   {
-    "PostalCode": "H2X 3L8",
+    "PostalCode": "H2X3L8",
     "StreetNum": 350,
     "StreetName": "Rue Saint-Denis",
     "Province": "Quebec",
@@ -63,7 +63,7 @@
     "Country": "Croatia"
   },
   {
-    "PostalCode": "1250-001",
+    "PostalCode": "125001",
     "StreetNum": 120,
     "StreetName": "Avenida da Liberdade",
     "Province": "Lisbon",
@@ -105,35 +105,35 @@
     "Country": "Switzerland"
   },
   {
-    "PostalCode": "W1K 4DG",
+    "PostalCode": "W1K4DG",
     "StreetNum": 23,
     "StreetName": "Brook Street",
     "Province": "London",
     "Country": "UK"
   },
   {
-    "PostalCode": "EH2 2EQ",
+    "PostalCode": "EH22EQ",
     "StreetNum": 1,
     "StreetName": "Princes Street",
     "Province": "Edinburgh",
     "Country": "UK"
   },
   {
-    "PostalCode": "OX1 2LW",
+    "PostalCode": "OX12LW",
     "StreetNum": 4,
     "StreetName": "Beaumont Street",
     "Province": "Oxford",
     "Country": "UK"
   },
   {
-    "PostalCode": "BA2 4ED",
+    "PostalCode": "BA24ED",
     "StreetNum": 99,
     "StreetName": "Great Pulteney Street",
     "Province": "Bath",
     "Country": "UK"
   },
   {
-    "PostalCode": "YO1 7DT",
+    "PostalCode": "YO17DT",
     "StreetNum": 10,
     "StreetName": "Museum Street",
     "Province": "York",
@@ -154,7 +154,7 @@
     "Country": "Singapore"
   },
   {
-    "PostalCode": "160-0023",
+    "PostalCode": "160023",
     "StreetNum": 2,
     "StreetName": "Nishi-Shinjuku",
     "Province": "Tokyo",

@@ -14,7 +14,6 @@ namespace Data
         public DBContext(ILogger<DBContext> logger)
         {
             _logger = logger;
-            // Initialize the DataSource immediately so it's ready for testing
             string connectionString = "Host=ep-sweet-glitter-a8ag8fj1-pooler.eastus2.azure.neon.tech; Database=neondb; Username=neondb_owner; Password=npg_cU7jafXmtI5k; SSL Mode=VerifyFull; Channel Binding=Require;Include Error Detail=true;";
             db = NpgsqlDataSource.Create(connectionString);
         }
@@ -81,10 +80,11 @@ namespace Data
                 fileData.Add(File.ReadAllText(path));
             }
 
-            var options = new JsonSerializerOptions { 
+            var options = new JsonSerializerOptions
+            {
                 PropertyNameCaseInsensitive = true,
                 NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString
-            }; 
+            };
 
             var hotels = JsonSerializer.Deserialize<List<Hotel>>(fileData[0], options);
             var hotelChains = JsonSerializer.Deserialize<List<HotelChain>>(fileData[1], options);
@@ -95,15 +95,14 @@ namespace Data
 
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
-                if (hotelChains == null || rooms == null || hotels == null || accounts == null || employees==null)
-                {
+                if (hotelChains == null || rooms == null || hotels == null || accounts == null || employees == null)
                     return false;
-                }
 
-                await this.ExecuteAsync("ALTER TABLE Address ALTER COLUMN PostalCode TYPE VARCHAR(10);");
-                await this.ExecuteAsync("ALTER TABLE HotelChain ALTER COLUMN PostalCode TYPE VARCHAR(10);");
-                await this.ExecuteAsync("ALTER TABLE Hotel ALTER COLUMN PostalCode TYPE VARCHAR(10);");
-                await this.ExecuteAsync("ALTER TABLE Employee ALTER COLUMN PostalCode TYPE VARCHAR(10);");
+                await this.ExecuteAsync(@"
+                    DROP TABLE IF EXISTS RentedRoom, RentingTenant, CustBooking, RoomBooking,
+                    RoomAmenity, RoomProblem, Review, HotelAmenity, HotelImage,
+                    HotelChainPhone, HotelChainEmail, HotelPhone, HotelEmail, Room,
+                    Employee, Hotel, Customer, Renting, Booking, Account, HotelChain, Address CASCADE;");
 
                 await this.ExecuteAsync(CreateString.createAddress);
                 await this.ExecuteAsync(CreateString.createAccount);
@@ -114,15 +113,6 @@ namespace Data
                 await this.ExecuteAsync(CreateString.createBooking);
                 await this.ExecuteAsync(CreateString.createRenting);
                 await this.ExecuteAsync(CreateString.createCustomer);
-
-
-                await this.ExecuteAsync(@"
-                    ALTER TABLE Hotel DROP CONSTRAINT IF EXISTS fk_hotel_manager;
-                    ALTER TABLE Hotel ADD CONSTRAINT fk_hotel_manager FOREIGN KEY (Manager) REFERENCES Employee(SSN);
-                    ALTER TABLE Employee DROP CONSTRAINT IF EXISTS fk_employee_hotel;
-                    ALTER TABLE Employee ADD CONSTRAINT fk_employee_hotel FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID);");
-
-
                 await this.ExecuteAsync(CreateString.createHotelEmail);
                 await this.ExecuteAsync(CreateString.createHotelPhone);
                 await this.ExecuteAsync(CreateString.createHotelChainEmail);
@@ -139,60 +129,78 @@ namespace Data
 
                 foreach (var chain in hotelChains)
                 {
-                    await this.ExecuteAsync(@"INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country) 
-                                              VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown') 
-                                              ON CONFLICT (PostalCode) DO NOTHING;",
-                                              new { chain.PostalCode });
+                    await this.ExecuteAsync(@"
+                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country)
+                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown')
+                        ON CONFLICT (PostalCode) DO NOTHING;",
+                        new { chain.PostalCode });
 
-                    await this.ExecuteAsync(@"INSERT INTO HotelChain (ChainID, Name, PostalCode) 
-                                              VALUES (@ChainID, @Name, @PostalCode)
-                                              ON CONFLICT (ChainID) DO NOTHING;",
-                                              new { chain.ChainID, chain.Name, chain.PostalCode });
+                    await this.ExecuteAsync(@"
+                        INSERT INTO HotelChain (ChainID, Name, PostalCode)
+                        VALUES (@ChainID, @Name, @PostalCode)
+                        ON CONFLICT (ChainID) DO NOTHING;",
+                        new { chain.ChainID, chain.Name, chain.PostalCode });
                 }
 
                 foreach (var acc in accounts)
                 {
-                    await this.ExecuteAsync(@"INSERT INTO Account (Email, Username, Password) 
-                                              VALUES (@Email, @Username, @Password)
-                                              ON CONFLICT (Email) DO NOTHING;",
-                                              new { acc.Email, acc.Username, acc.Password });
-                }
-
-
-                foreach (var emp in employees)
-                {
-                    await this.ExecuteAsync(@"INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country) 
-                                              VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown') 
-                                              ON CONFLICT (PostalCode) DO NOTHING;",
-                                              new { emp.PostalCode });
-
-                    await this.ExecuteAsync(@"INSERT INTO Employee (SSN, FirstName, LastName, PostalCode, Position, HotelID, Email) 
-                                              VALUES (@SSN, @FirstName, @LastName, @PostalCode, @Position, @HotelID, @Email)
-                                              ON CONFLICT (SSN) DO NOTHING;",
-                                              new { emp.SSN, emp.FirstName, emp.LastName, emp.PostalCode, emp.Position, emp.HotelID, emp.Email });
+                    await this.ExecuteAsync(@"
+                        INSERT INTO Account (Email, Username, Password)
+                        VALUES (@Email, @Username, @Password)
+                        ON CONFLICT (Email) DO NOTHING;",
+                        new { acc.Email, acc.Username, acc.Password });
                 }
 
                 foreach (var hotel in hotels)
                 {
-                    await this.ExecuteAsync(@"INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country) 
-                                              VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown') 
-                                              ON CONFLICT (PostalCode) DO NOTHING;",
-                                              new { hotel.PostalCode });
+                    await this.ExecuteAsync(@"
+                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country)
+                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown')
+                        ON CONFLICT (PostalCode) DO NOTHING;",
+                        new { hotel.PostalCode });
 
-                    await this.ExecuteAsync(@"INSERT INTO Hotel (HotelID, ChainID, Name, PostalCode, Stars, Manager, Description) 
-                                              VALUES (@HotelID, @ChainID, @Name, @PostalCode, @Stars, @Manager, @Description)
-                                              ON CONFLICT (HotelID) DO NOTHING;",
-                                              new { hotel.HotelID, hotel.ChainID, hotel.Name, hotel.PostalCode, hotel.Stars, hotel.Manager, hotel.Description });
+                    await this.ExecuteAsync(@"
+                        INSERT INTO Hotel (HotelID, ChainID, Name, PostalCode, Stars, Manager, Description)
+                        VALUES (@HotelID, @ChainID, @Name, @PostalCode, @Stars, NULL, @Description)
+                        ON CONFLICT (HotelID) DO NOTHING;",
+                        new { hotel.HotelID, hotel.ChainID, hotel.Name, hotel.PostalCode, hotel.Stars, hotel.Description });
                 }
 
-                await using var conn = await db.OpenConnectionAsync();
+                foreach (var emp in employees)
+                {
+                    await this.ExecuteAsync(@"
+                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country)
+                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown')
+                        ON CONFLICT (PostalCode) DO NOTHING;",
+                        new { emp.PostalCode });
+
+                    await this.ExecuteAsync(@"
+                        INSERT INTO Employee (SSN, FirstName, LastName, PostalCode, Position, HotelID, Email)
+                        VALUES (@SSN, @FirstName, @LastName, @PostalCode, @Position, @HotelID, @Email)
+                        ON CONFLICT (SSN) DO NOTHING;",
+                        new { emp.SSN, emp.FirstName, emp.LastName, emp.PostalCode, emp.Position, emp.HotelID, emp.Email });
+                }
 
                 foreach (var room in rooms)
                 {
-                    await this.ExecuteAsync(@"INSERT INTO Room (RoomNumber, HotelID, Price, Capacity, View, Extendable) 
-                                              VALUES (@RoomNumber, @HotelID, @Price, @Capacity, @View, @Extendable)
-                                              ON CONFLICT (RoomNumber, HotelID) DO NOTHING;",
-                                              new { room.RoomNumber, room.HotelID, room.Price, room.Capacity, room.View, room.Extendable });
+                    await this.ExecuteAsync(@"
+                        INSERT INTO Room (RoomNumber, HotelID, Price, Capacity, View, Extendable)
+                        VALUES (@RoomNumber, @HotelID, @Price, @Capacity, @View, @Extendable)
+                        ON CONFLICT (RoomNumber, HotelID) DO NOTHING;",
+                        new { room.RoomNumber, room.HotelID, room.Price, room.Capacity, room.View, room.Extendable });
+                }
+
+                await this.ExecuteAsync(@"
+                    ALTER TABLE Hotel DROP CONSTRAINT IF EXISTS fk_hotel_manager;
+                    ALTER TABLE Hotel ADD CONSTRAINT fk_hotel_manager FOREIGN KEY (Manager) REFERENCES Employee(SSN);
+                    ALTER TABLE Employee DROP CONSTRAINT IF EXISTS fk_employee_hotel;
+                    ALTER TABLE Employee ADD CONSTRAINT fk_employee_hotel FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID);");
+
+                foreach (var hotel in hotels)
+                {
+                    await this.ExecuteAsync(@"
+                        UPDATE Hotel SET Manager = @Manager WHERE HotelID = @HotelID;",
+                        new { hotel.Manager, hotel.HotelID });
                 }
 
                 return true;
