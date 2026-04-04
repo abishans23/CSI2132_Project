@@ -85,7 +85,7 @@
             </div>
         </div>
 
-        <div class="form-overlay" id="register-customer-form">
+        <div class="form-overlay" id="register-customer-form" style="display: none;">
             <div class="form-container">
                 <button class="close-button">X</button>
                 <div class="form-title">Register Customer</div>
@@ -116,7 +116,37 @@
             </div>
         </div>
         
-
-
     </div>
+
+    <script>
+        let inPersonCheckInButton = document.querySelector(".manual-check-in");
+        let checkInForm = document.getElementById("check-in-form");
+
+        let transferBookingButton = document.querySelector(".transfer-booking");
+        let transferForm = document.getElementById("transfer-form");
+
+        let registerCustomerButton = document.querySelector(".register-customer");
+        let registerForm = document.getElementById("register-customer-form");
+
+        let buttons = [inPersonCheckInButton, transferBookingButton, registerCustomerButton];
+        let forms = [checkInForm, transferForm, registerForm];
+
+        for (let i = 0; i < buttons.length; i++){
+            let b = buttons[i];
+            let f = forms[i]
+
+            b.onclick = function(){
+                f.style.display = "block";
+            }
+
+            f.querySelector(".submit-button").onclick = function(){
+                f.style.display = "none";
+            }
+
+            f.querySelector(".close-button").onclick = function(){
+                f.style.display = "none";
+            }
+        }
+
+    </script>
 </body>
