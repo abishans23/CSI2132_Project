@@ -43,7 +43,7 @@ public class HomeController : Controller
     {
         HttpContext.Session.SetString("Email", "");
         HttpContext.Session.SetString("Username", "");
-        return View("Index");
+        return RedirectToAction("Index");
     }
 
     public IActionResult Search(string search, string area, string capacity, string startDate, string endDate)
@@ -63,8 +63,8 @@ public class HomeController : Controller
             return View("SignIn");
         }
 
-        string accountQuery = "SELECT * From Account Where Email = @findEmail";
-        var queryResult = await _db.QueryAsync<Account>(accountQuery, new {findEmail=emailAddress});
+        // string accountQuery = "SELECT * From Account Where Email = @findEmail";
+        var queryResult = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail", new {findEmail=emailAddress});
         var accountList = queryResult.ToList();
 
         if (action == "Login")
@@ -95,13 +95,12 @@ public class HomeController : Controller
 
             await _db.ExecuteAsync(@"INSERT INTO Account VALUES (@emailAddress, @username, @password)", new{emailAddress, username, password});
 
-            return View("Index");
         }
 
         HttpContext.Session.SetString("Email", emailAddress);
         HttpContext.Session.SetString("Username", username);
 
-        return View("Index");
+        return RedirectToAction("Index");
     }
 
     public IActionResult CheckIn()
