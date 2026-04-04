@@ -25,7 +25,12 @@ public class HomeController : Controller
         Console.WriteLine("current user: " + HttpContext.Session.GetString("Email") + " " + HttpContext.Session.GetString("Username"));
         
         await _db.OpenConnection();
-        return View();
+
+        var chainsQueryResult = await _db.QueryAsync<string>("SELECT Name FROM HotelChain");
+        var chainsNames = chainsQueryResult.ToList();
+        Console.WriteLine(chainsNames[0]);
+
+        return View(chainsNames);
     }
 
 
