@@ -11,14 +11,15 @@
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/searchBar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/search.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/form.css" asp-append-version="true" />
 </head>
 
 <body>
 
-    <div class="booking-overlay" style="display: none;">
-        <div class="booking-info">
+    <div class="form-overlay" style="display: none;">
+        <div class="form-container">
             <button class="close-button">X</button>
-            <div class="booking-title">Booking Information</div>
+            <div class="form-title">Booking Information</div>
             <div class="line-break"></div>
             <div class="booking-hotel-info">Hotel Name, Room capacity, View</div>
 
@@ -29,24 +30,25 @@
                 <option>Passport</option>
             </select>
 
-            <input class="booking-text-input" type="text" placeholder="ID Number"/>
-            <input class="booking-text-input" type="text" placeholder="First Name"/>
-            <input class="booking-text-input" type="text" placeholder="Last Name"/>
-            <div class="address-input-holder">
-                <input class="booking-text-input" type="text" placeholder="street number"/>
-                <input class="booking-text-input" type="text" placeholder="street name"/>
-                <input class="booking-text-input" type="text" placeholder="province"/>
-                <input class="booking-text-input" type="text" placeholder="country"/>
-                <input class="booking-text-input" type="text" placeholder="postal code"/>
+            <input type="text" placeholder="ID Number"/>
+            <input type="text" placeholder="First Name"/>
+            <input type="text" placeholder="Last Name"/>
+
+            <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
+                <input type="text" placeholder="street number"/>
+                <input type="text" placeholder="street name"/>
+                <input type="text" placeholder="province"/>
+                <input type="text" placeholder="country"/>
+                <input type="text" placeholder="postal code"/>
             </div>
 
-            <div class="booking-dates">
-                <input class="booking-text-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" value="@Context.Request.Query["startDate"]"/>
-                <input class="booking-text-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" value="@Context.Request.Query["endDate"]"/>
+            <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
+                <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" value="@Context.Request.Query["startDate"]"/>
+                <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" value="@Context.Request.Query["endDate"]"/>
             </div>
 
-            <input class="booking-text-input" type="text" placeholder="Phone number"/>
-            <button class="book-room-button">Book!!</button>
+            <input type="text" placeholder="Phone number"/>
+            <button class="submit-button">Book!!</button>
         </div>
     </div>
 
@@ -150,10 +152,10 @@
 
     <script>
         let bookButtons = document.getElementsByClassName("book-button");
-        let overlay = document.querySelector(".booking-overlay")
+        let overlay = document.querySelector(".form-overlay")
         for (let i = 0; i < bookButtons.length; i++){
             bookButtons[i].onclick = function(){
-                let hotelName = 
+                @* let hotelName *@
                 overlay.style.display = "block";
             }
         }
