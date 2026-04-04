@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +15,7 @@
     <div class="main">
         <div class="check-in-container">
             <div class="check-in-title">Check In</div>
-                            <div class="line-break"></div>
+            <div class="line-break"></div>
 
             <div class="check-in-options">
                 <button class="manual-check-in">In Person Check In</button>
@@ -22,8 +23,9 @@
                 <button class="register-customer">Register Customer</button>
             </div>
             <div class="check-in-info">
-                For in person check-ins, if a customer has not been registered, please register them first 
-                and then check them in after. If a customer made a booking themselves then they have already been registered by
+                For in person check-ins, if a customer has not been registered, please register them first
+                and then check them in after. If a customer made a booking themselves then they have already been
+                registered by
                 the system, so the booking may be transferred into a renting.
             </div>
         </div>
@@ -36,8 +38,8 @@
                 <div class="line-break"></div>
                 
                 <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
-                    <input type="text" placeholder="HotelID"/>
-                    <input type="number" placeholder="Room Number"/>
+                    <input type="text" placeholder="HotelID" />
+                    <input type="number" placeholder="Room Number" />
                 </div>
 
                 <select class="id-select">
@@ -47,11 +49,13 @@
                     <option>Passport</option>
                 </select>
 
-                <input type="text" placeholder="ID Number"/>
+                <input type="text" placeholder="ID Number" />
 
                 <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
-                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date"/>
-                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date"/>
+                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate"
+                           placeholder="Start Date" />
+                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate"
+                           placeholder="End Date" />
                 </div>
 
                 <select class="payment-method-select">
@@ -79,7 +83,7 @@
                     <option>Passport</option>
                 </select>
 
-                <input type="text" placeholder="ID Number"/>
+                <input type="text" placeholder="ID Number" />
 
                 <select class="payment-method-select">
                     <option selected>Choose Payment Method</option>
@@ -94,34 +98,34 @@
 
         @* form to register a customer into the database *@
         <div class="form-overlay" id="register-customer-form" style="display: none;">
-            <div class="form-container">
-                <button class="close-button">X</button>
+            <form class="form-container" asp-action="RegisterCustomer" method="post">
+                <button type="button" class="close-button">X</button>
                 <div class="form-title">Register Customer</div>
                 <div class="line-break"></div>
 
-                <select class="id-select">
+                <select name="idType" class="id-select">
                     <option selected>choose id Type</option>
                     <option>SSN</option>
                     <option>Drivers License</option>
                     <option>Passport</option>
                 </select>
 
-                <input type="text" placeholder="ID Number"/>
-                <input type="text" placeholder="First Name"/>
-                <input type="text" placeholder="Last Name"/>
+                <input name="idNumber" type="text" placeholder="ID Number" />
+                <input name="firstName" type="text" placeholder="First Name" />
+                <input name="lastName" type="text" placeholder="Last Name" />
 
                 <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
-                    <input type="text" placeholder="street number"/>
-                    <input type="text" placeholder="street name"/>
-                    <input type="text" placeholder="province"/>
-                    <input type="text" placeholder="country"/>
-                    <input type="text" placeholder="postal code"/>
+                    <input name="streetNumber" type="text" placeholder="street number" />
+                    <input name="streetName" type="text" placeholder="street name" />
+                    <input name="province" type="text" placeholder="province" />
+                    <input name="country" type="text" placeholder="country" />
+                    <input name="postalCode" type="text" placeholder="postal code" />
                 </div>
 
-                <input type="tel" placeholder="Phone number"/>
+                <input name="phoneNumber" type="tel" placeholder="Phone number" />
 
-                <button class="submit-button">Register</button>
-            </div>
+                <button type="submit" class="submit-button">Register</button>
+            </form>
         </div>
         
     </div>
@@ -139,17 +143,17 @@
         let buttons = [inPersonCheckInButton, transferBookingButton, registerCustomerButton];
         let forms = [checkInForm, transferForm, registerForm];
 
-        for (let i = 0; i < buttons.length; i++){
-            let b = buttons[i];
-            let f = forms[i]
+        for (let i = 0; i < buttons.length; i++) {
+        let b = buttons[i];
+        let f = forms[i]
 
-            b.onclick = function(){
-                f.style.display = "block";
-            }
+        b.onclick = function () {
+        f.style.display = "block";
+        }
 
-            f.querySelector(".close-button").onclick = function(){
-                f.style.display = "none";
-            }
+        f.querySelector(".close-button").onclick = function () {
+        f.style.display = "none";
+        }
         }
     </script>
 
