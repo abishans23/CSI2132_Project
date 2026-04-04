@@ -102,7 +102,7 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    public async void InsertAddress(int streetNumber, string streetName, string province, string postalCode, string country)
+    public async Task InsertAddress(int streetNumber, string streetName, string province, string postalCode, string country)
     {
         var result = await _db.ExecuteAsync(@"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)", 
             new{streetNumber, streetName, postalCode, province, country});
@@ -124,14 +124,13 @@ public class HomeController : Controller
     public async Task<IActionResult> RegisterCustomer(string idType, string idNumber, string firstName, string lastName, int streetNumber,
         string streetName, string province, string country, string postalCode, string phoneNumber)
     {
-        InsertAddress(streetNumber, streetName, province, postalCode, country);
-        DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+        await InsertAddress(streetNumber, streetName, province, postalCode, country);
         
         var customerInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Customer VALUES (@idType, @idNumber, @firstName, @lastName, @registrationDate, @phoneNumber, @postalCode)",
             new{idType, idNumber, firstName, lastName, registrationDate=DateTime.Now, phoneNumber, postalCode});
         
-        return View("CheckIn");
+        return RedirectToAction("CheckIn");
     }
     
 
