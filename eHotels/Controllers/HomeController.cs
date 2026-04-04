@@ -1,8 +1,10 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using eHotels.Models;
 using Data;
 using Npgsql;
+using System.Net;
 
 namespace eHotels.Controllers;
 
@@ -19,6 +21,9 @@ public class HomeController : Controller
     {
         //TODO::remove since only debug code
         //TODO::fix performance issue
+
+        Console.WriteLine(HttpContext.Session.GetString("Email"));
+        
         await _db.OpenConnection();
         return View();
     }
@@ -51,7 +56,6 @@ public class HomeController : Controller
 
         if (action == "Login")
         {
-
             if (accountList.Count < 1)
             {
                 ModelState.AddModelError("", "account doesn't exist");
@@ -65,20 +69,20 @@ public class HomeController : Controller
                 ModelState.AddModelError("", "account doesn't exist");
                 return View("SignIn");
             }
-
-            return View("SignIn");
+            
+            return View("Index");
         }
 
         if (action == "SignUp")
         {
-            if (accountList.Count > 1)
+            HttpContext.Session.SetString("Email", emailAddress);
+            if (accountList.Count > 0)
             {
                 ModelState.AddModelError("", "account with email already exists!");
                 return View("SignIn");
             }
 
             await _db.ExecuteAsync(@"INSERT INTO Account VALUES (@emailAddress, @username, @password)", new{emailAddress, username, password});
-
             return View("Index");
         }
 
@@ -94,9 +98,6 @@ public class HomeController : Controller
     {
         return View();
     }
-
-    
-
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

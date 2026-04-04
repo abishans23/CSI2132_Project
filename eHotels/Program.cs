@@ -1,5 +1,5 @@
 using Data;
-
+using Microsoft.AspNetCore.Http;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Logging.AddConsole();
 builder.Logging.AddDebug();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 //Dependency inject the database
 builder.Services.AddSingleton<DBContext>();
@@ -19,8 +21,6 @@ using(var scope = app.Services.CreateScope())
     await db.SeedDatabase();
 }
 
-
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -31,7 +31,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
+app.UseSession();
 
 app.UseAuthorization();
 
