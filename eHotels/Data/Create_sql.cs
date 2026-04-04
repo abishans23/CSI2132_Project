@@ -144,7 +144,7 @@ namespace Data
                     RegistrationDate DATE NOT NULL,
                     PhoneNumber VARCHAR(10) NOT NULL,
                     PostalCode VARCHAR(6) NOT NULL,
-                    Email VARCHAR(30) NOT NULL UNIQUE CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
+                    Email VARCHAR(30) UNIQUE CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
                     PRIMARY KEY (IDType, IDNumber),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode)
                     );";
