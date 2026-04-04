@@ -22,7 +22,7 @@ public class HomeController : Controller
         //TODO::remove since only debug code
         //TODO::fix performance issue
 
-        Console.WriteLine(HttpContext.Session.GetString("Email"));
+        Console.WriteLine("current user: " + HttpContext.Session.GetString("Email") + " " + HttpContext.Session.GetString("Username"));
         
         await _db.OpenConnection();
         return View();
@@ -32,6 +32,13 @@ public class HomeController : Controller
     public IActionResult SignIn()
     {
         return View();
+    }
+
+    public IActionResult LogOut()
+    {
+        HttpContext.Session.SetString("Email", "");
+        HttpContext.Session.SetString("Username", "");
+        return View("Index");
     }
 
     public IActionResult Search(string search, string area, string capacity, string startDate, string endDate)
@@ -69,13 +76,11 @@ public class HomeController : Controller
                 ModelState.AddModelError("", "account doesn't exist");
                 return View("SignIn");
             }
-            
-            return View("Index");
+
         }
 
         if (action == "SignUp")
         {
-            HttpContext.Session.SetString("Email", emailAddress);
             if (accountList.Count > 0)
             {
                 ModelState.AddModelError("", "account with email already exists!");
@@ -83,10 +88,14 @@ public class HomeController : Controller
             }
 
             await _db.ExecuteAsync(@"INSERT INTO Account VALUES (@emailAddress, @username, @password)", new{emailAddress, username, password});
+
             return View("Index");
         }
 
-        return View("SignIn");
+        HttpContext.Session.SetString("Email", emailAddress);
+        HttpContext.Session.SetString("Username", username);
+
+        return View("Index");
     }
 
     public IActionResult CheckIn()
