@@ -3,24 +3,65 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - eHotels</title>
+    <title>@ViewData["Title"]Check In</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/checkIn.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/form.css" asp-append-version="true" />
+
 </head>
 
 <body>
     <div class="main">
-            <div class="check-in-container">
-                <div class="check-in-title">Check In</div>
-                <div class="check-in-options">
-                    <button class="manual-check-in">In Person Check In</button>
-                    <button class="transfer-booking">Transfer Booking</button>
+        <div class="check-in-container">
+            <div class="check-in-title">Check In</div>
+            <div class="check-in-options">
+                <button class="manual-check-in">In Person Check In</button>
+                <button class="transfer-booking">Transfer Booking</button>
+                <button class="register-customer">Register Customer</button>
+            </div>
+
+            <form asp-action="CheckIn" asp-controller="Home" method="post">
+                
+            </form>
+            
+        </div>
+
+        <div class="form-overlay">
+            <div class="form-container">
+                <button class="close-button">X</button>
+                <div class="form-title">In Person Check In</div>
+                <div class="line-break"></div>
+                
+                <div class="room-info-holder">
+                    <input class="form-text-input" type="text" placeholder="HotelID"/>
+                    <input class="form-text-input" type="number" placeholder="Room Number"/>
                 </div>
 
-                <form asp-action="CheckIn" asp-controller="Home" method="post">
-                    
-                </form>
-                
+                <select class="id-select">
+                    <option selected>choose id Type</option>
+                    <option>SSN</option>
+                    <option>Drivers License</option>
+                    <option>Passport</option>
+                </select>
+
+                <input class="form-text-input" type="text" placeholder="ID Number"/>
+
+                <div class="booking-dates">
+                    <input class="form-text-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date"/>
+                    <input class="form-text-input" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" />
+                </div>
+
+                <select class="payment-method-select">
+                    <option selected>Choose Payment Method</option>
+                    <option>Credit</option>
+                    <option>Debit</option>
+                    <option>Cash</option>
+                </select>
+
+                <button class="submit-button">Check In</button>
             </div>
+        </div>
+
+
     </div>
 </body>

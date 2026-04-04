@@ -18,7 +18,7 @@ html, body{
 }
 
 .check-in-container{
-    width: 20em;
+    width: 25em;
     background-color: #f6f6f6;
     border-width: 1px;
     border-style: solid;
@@ -30,13 +30,6 @@ html, body{
     border-radius: 20px;
     transform: scale(1.15);
     gap: 10px;
-
-    /* box-shadow: 20px 20px #4f435d69;
-
-    animation-name: shadowAnim;
-    animation-duration: 0.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards; */
 }
 
 .check-in-title{

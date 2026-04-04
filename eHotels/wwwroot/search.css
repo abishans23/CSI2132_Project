@@ -11,7 +11,6 @@
 }
 
 .booking-info{
-    height: 40em;
     width: 28em;
     margin: auto;
     background-color: rgb(240, 240, 240);
@@ -89,10 +88,6 @@
 .book-room-button:active{
     background-color: rgb(142, 182, 247);
     transform: scale(0.97);
-}
-
-.book-room-button:hover{
-    cursor: pointer;
 }
 
 .address-input-holder{
@@ -308,7 +303,6 @@
     width: 100%;
     margin-bottom: 0.5em;
 }
-
 
 
 .button-region{
