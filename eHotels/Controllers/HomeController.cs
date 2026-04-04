@@ -104,20 +104,8 @@ public class HomeController : Controller
 
     public async Task InsertAddress(int streetNumber, string streetName, string province, string postalCode, string country)
     {
-        var result = await _db.ExecuteAsync(@"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)", 
+        await _db.ExecuteAsync(@"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)", 
             new{streetNumber, streetName, postalCode, province, country});
-        
-        if (result == 0)
-        {
-            Console.WriteLine("Address already exists!");
-        } else if (result == 1)
-        {
-            Console.WriteLine("Address added!");
-        } else
-        {
-            Console.WriteLine("unknown error!");
-        }
-
     }
 
     [HttpPost]
@@ -129,6 +117,11 @@ public class HomeController : Controller
         var customerInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Customer VALUES (@idType, @idNumber, @firstName, @lastName, @registrationDate, @phoneNumber, @postalCode)",
             new{idType, idNumber, firstName, lastName, registrationDate=DateTime.Now, phoneNumber, postalCode});
+
+        if (customerInsertResult == 0)
+        {
+            Console.WriteLine("Customer Already exits!");
+        }
         
         return RedirectToAction("CheckIn");
     }
