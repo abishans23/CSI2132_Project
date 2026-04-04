@@ -26,9 +26,9 @@ public class HomeController : Controller
         
         await _db.OpenConnection();
 
-        var chainsQueryResult = await _db.QueryAsync<string>("SELECT Name FROM HotelChain");
+        string chainQuery = "SELECT Name FROM HotelChain";
+        var chainsQueryResult = await _db.QueryAsync<string>(chainQuery);
         var chainsNames = chainsQueryResult.ToList();
-        Console.WriteLine(chainsNames[0]);
 
         return View(chainsNames);
     }
@@ -63,7 +63,8 @@ public class HomeController : Controller
             return View("SignIn");
         }
 
-        var queryResult = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail", new {findEmail=emailAddress});
+        string accountQuery = "SELECT * From Account Where Email = @findEmail";
+        var queryResult = await _db.QueryAsync<Account>(accountQuery, new {findEmail=emailAddress});
         var accountList = queryResult.ToList();
 
         if (action == "Login")
