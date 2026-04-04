@@ -14,10 +14,17 @@
     <div class="main">
         <div class="check-in-container">
             <div class="check-in-title">Check In</div>
+                            <div class="line-break"></div>
+
             <div class="check-in-options">
                 <button class="manual-check-in">In Person Check In</button>
                 <button class="transfer-booking">Transfer Booking</button>
                 <button class="register-customer">Register Customer</button>
+            </div>
+            <div class="check-in-info">
+                For in person check-ins, if a customer has not been registered, please register them first 
+                and then check them in after. If a customer made a booking themselves then they have already been registered by
+                the system, so the booking may be transferred into a renting.
             </div>
         </div>
 
@@ -85,6 +92,7 @@
             </div>
         </div>
 
+        @* form to register a customer into the database *@
         <div class="form-overlay" id="register-customer-form" style="display: none;">
             <div class="form-container">
                 <button class="close-button">X</button>
@@ -147,6 +155,6 @@
                 f.style.display = "none";
             }
         }
-
     </script>
+
 </body>

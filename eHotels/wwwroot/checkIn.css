@@ -69,3 +69,13 @@ html, body{
 .check-in-options button:active{
     background-color: rgb(157, 139, 183);
 }
+
+.check-in-info{
+    font-style: italic;
+    font-family: serif;
+    text-align: center;
+    color: #414141;
+    font-size: small;
+    margin-top: 0.5em;
+    padding: 0.5em;
+}
