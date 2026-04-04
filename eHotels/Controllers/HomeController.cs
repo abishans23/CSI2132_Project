@@ -103,6 +103,15 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
+    [HttpPost]
+    public async Task<IActionResult> RegisterCustomer(string idType, string idNumber, string firstName, string lastName, string streetNumber,
+        string streetName, string province, string country, string postalCode, string phoneNumber)
+    {
+        
+        return View();
+    }
+    
+
     public IActionResult CheckIn()
     {
         return View();

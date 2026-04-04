@@ -89,6 +89,7 @@
     border-style: solid;
     border-radius: 0.5em;
     box-sizing: border-box;
+    padding-left: 5px;
 }
 
 .form-container input:focus{
