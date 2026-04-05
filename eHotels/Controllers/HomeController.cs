@@ -59,6 +59,10 @@ public class HomeController : Controller
                 "SELECT * From (Room NATURAL JOIN (Hotel NATURAL JOIN Address) NATURAL JOIN HotelChain)"
             );
 
+        var realRoomsQueryResult = await _db.QueryAsync<dynamic>(
+                "  "
+            );
+
         var availableRooms = roomsQueryResult.ToList();
         var roomAmenities = new Dictionary<int, string>();
 
@@ -68,11 +72,6 @@ public class HomeController : Controller
                 "SELECT amenity From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId",
                 new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
             );
-
-            if (roomAmenityQueryResult == null)
-            {
-                continue;
-            }
             
             var roomAmenitiesList = roomAmenityQueryResult.ToList();
             string roomAmenitiesString = roomAmenitiesList.Count > 0 ? roomAmenitiesList[0] : "";
