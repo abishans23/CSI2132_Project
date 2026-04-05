@@ -113,3 +113,10 @@
     width: 100%;
     gap: 1em;
 }
+
+.form-list-holder{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    overflow: scroll;
+}

@@ -63,9 +63,43 @@
     cursor: pointer;
 }
 
-.line-break{
-    background-color: #5959597f;
-    height: 1px;
+.item-holder{
     width: 100%;
-    margin-bottom: 0.5em;
+    display: flex;
+    box-sizing: border-box;
+    gap: 0.5em;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+.item-name{
+    font-family: serif;
+    font-style: oblique;
+    font-weight: bold;
+    font-size: large;
+}
+
+.edit-item{
+    margin-left: auto;
+    background-color: rgb(89, 157, 100);
+}
+
+.delete-item{
+    background-color: rgb(189, 105, 105);
+}
+
+.item-holder button{
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(53, 46, 65);
+    padding: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 0.5em;
+    font-family: serif;
+}
+
+.item-holder button:hover{
+    cursor: pointer;
 }
