@@ -69,19 +69,27 @@ public class HomeController : Controller
                 new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
             );
 
-            var roomAmenities = roomAmenityQueryResult.ToList();
-            string roomAmenitiesString = roomAmenities.Count != 0 ? roomAmenities[0] : "";
+            if (roomAmenityQueryResult == null)
+            {
+                continue;
+            }
+            
+            var roomAmenitiesList = roomAmenityQueryResult.ToList();
+            string roomAmenitiesString = roomAmenitiesList.Count > 0 ? roomAmenitiesList[0] : "";
 
-            for (var i = 1; i < roomAmenitiesString.Count; i++)
+            for (var i = 1; i < roomAmenitiesList.Count; i++)
             {
                 roomAmenitiesString += ", " + roomAmenities[i];
             }
 
             roomAmenities[r.roomnumber] = roomAmenitiesString;
 
-            
+            if (roomAmenities.Count > 0)
+            {
+                Console.WriteLine("ahhh");
+            }
 
-            Console.WriteLine(roomAmenities[r.roomnumber].Count);
+            // Console.WriteLine(roomAmenities[r.roomnumber].Count);
 
         }
 
