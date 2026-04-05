@@ -1,8 +1,8 @@
 [
   {
     "ChainID": 1,
-    "Name": "L'Hotel",
-    "PostalCode": "10022",
+    "ChainName": "L'Hotel",
+    "ChainPostalCode": "10022",
     "Emails": [
       "contact@lesteen.com",
       "service@lesteen.com",
@@ -15,8 +15,8 @@
   },
   {
     "ChainID": 2,
-    "Name": "Le Germain Resorts",
-    "PostalCode": "06400",
+    "ChainName": "Le Germain Resorts",
+    "ChainPostalCode": "06400",
     "Emails": [
       "info@legermain.com",
       "service@legermain.com",
@@ -30,8 +30,8 @@
   },
   {
     "ChainID": 3,
-    "Name": "Summit Peak Hotels",
-    "PostalCode": "8001",
+    "ChainName": "Summit Peak Hotels",
+    "ChainPostalCode": "8001",
     "Emails": [
       "corporate@summitpeak.com",
       "media@summitpeak.com"
@@ -42,8 +42,8 @@
   },
   {
     "ChainID": 4,
-    "Name": "Heritage Grand Group",
-    "PostalCode": "W1K4DG",
+    "ChainName": "Heritage Grand Group",
+    "ChainPostalCode": "W1K4DG",
     "Emails": [
       "hq@heritagegrand.com",
       "partners@heritagegrand.com"
@@ -54,8 +54,8 @@
   },
   {
     "ChainID": 5,
-    "Name": "Pacific Horizon Co.",
-    "PostalCode": "018970",
+    "ChainName": "Pacific Horizon Co.",
+    "ChainPostalCode": "018970",
     "Emails": [
       "info@pacifichorizon.com",
       "hr@pacifichorizon.com"

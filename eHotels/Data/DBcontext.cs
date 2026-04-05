@@ -136,7 +136,7 @@ namespace Data
                 // await this.ExecuteAsync(CreateString.createRoom);
                 // await this.ExecuteAsync(CreateString.createBooking);
                 // await this.ExecuteAsync(CreateString.createRenting);
-                 await this.ExecuteAsync(CreateString.createCustomer);
+                // await this.ExecuteAsync(CreateString.createCustomer);
                 // await this.ExecuteAsync(CreateString.createHotelEmail);
                 // await this.ExecuteAsync(CreateString.createHotelPhone);
                 // await this.ExecuteAsync(CreateString.createHotelChainEmail);
@@ -155,15 +155,15 @@ namespace Data
                 {
                     await this.ExecuteAsync(@"
                         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country)
-                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown')
-                        ON CONFLICT (PostalCode) DO NOTHING;",
-                        new { chain.PostalCode });
+                        VALUES (0, 'Unknown', @ChainPostalCode, 'Unknown', 'Unknown')
+                        ON CONFLICT (ChainPostalCode) DO NOTHING;",
+                        new { chain.ChainPostalCode });
 
                     await this.ExecuteAsync(@"
-                        INSERT INTO HotelChain (ChainID, Name, PostalCode)
-                        VALUES (@ChainID, @Name, @PostalCode)
+                        INSERT INTO HotelChain (ChainID, ChainName, PostalCode)
+                        VALUES (@ChainID, @ChainName, @PostalCode)
                         ON CONFLICT (ChainID) DO NOTHING;",
-                        new { chain.ChainID, chain.Name, chain.PostalCode });
+                        new { chain.ChainID, chain.ChainName, chain.ChainPostalCode });
                 }
 
                 foreach (var acc in accounts)
