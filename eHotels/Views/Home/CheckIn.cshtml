@@ -13,6 +13,7 @@
 
 <body>
     <div class="main">
+
         <div class="check-in-container">
             <div class="check-in-title">Check In</div>
             <div class="line-break"></div>
@@ -32,41 +33,39 @@
 
         @* form to manually check in custumer (must register customer first if not registered) *@
         <div class="form-overlay" id="check-in-form" style="display: none;">
-            <div class="form-container">
-                <button class="close-button">X</button>
+            <form class="form-container">
+                <button type="button" class="close-button">X</button>
                 <div class="form-title">In Person Check In</div>
                 <div class="line-break"></div>
                 
                 <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
-                    <input type="text" placeholder="HotelID" />
-                    <input type="number" placeholder="Room Number" />
+                    <input name="hotelId" type="text" placeholder="HotelID" />
+                    <input name="roomNumber" type="number" placeholder="Room Number" />
                 </div>
 
-                <select class="id-select">
+                <select name="idType" class="id-select">
                     <option selected>choose id Type</option>
                     <option>SSN</option>
                     <option>Drivers License</option>
                     <option>Passport</option>
                 </select>
 
-                <input type="text" placeholder="ID Number" />
+                <input name="idNumber" type="text" placeholder="ID Number" />
 
                 <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
-                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate"
-                           placeholder="Start Date" />
-                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate"
-                           placeholder="End Date" />
+                    <input name="startDate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" />
+                    <input name="endDate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" />
                 </div>
 
-                <select class="payment-method-select">
+                <select name="payementMethod" class="payment-method-select">
                     <option selected>Choose Payment Method</option>
                     <option>Credit</option>
                     <option>Debit</option>
                     <option>Cash</option>
                 </select>
 
-                <button class="submit-button">Check In</button>
-            </div>
+                <button type="submit" class="submit-button">Check In</button>
+            </form>
         </div>
 
         @* form to tranfer a booking to a renting, actual tranferring is done by the database *@

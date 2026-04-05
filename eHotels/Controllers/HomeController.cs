@@ -180,6 +180,11 @@ public class HomeController : Controller
         
         return RedirectToAction("CheckIn");
     }
+
+    // public async Task<IActionResult> InPersonCheckIn(string a)
+    // {
+    //     RedirectToAction("CheckIn");
+    // }
     
 
     public IActionResult CheckIn()
