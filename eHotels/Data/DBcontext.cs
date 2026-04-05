@@ -99,8 +99,8 @@ namespace Data
                 if (hotelChains == null || rooms == null || hotels == null || accounts == null || employees == null)
                     return false;
 
-             await this.ExecuteAsync(@"
-                     DROP TABLE IF EXISTS Address,  CASCADE;");
+            //  await this.ExecuteAsync(@"
+            //          DROP TABLE IF EXISTS Address,  CASCADE;");
 
                 await this.ExecuteAsync(CreateString.createAddress);
                 await this.ExecuteAsync(CreateString.createAccount);
@@ -125,8 +125,8 @@ namespace Data
                 await this.ExecuteAsync(CreateString.createCustBooking);
                 await this.ExecuteAsync(CreateString.createRentingTenant);
 
-                await this.ExecuteAsync(@"
-                    DROP TABLE IF EXISTS CUSTOMER CASCADE;");
+                // await this.ExecuteAsync(@"
+                //     DROP TABLE IF EXISTS CUSTOMER CASCADE;");
 
                 // await this.ExecuteAsync(CreateString.createAddress);
                 // await this.ExecuteAsync(CreateString.createAccount);

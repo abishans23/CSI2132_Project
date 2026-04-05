@@ -27,6 +27,7 @@ namespace Data
                     PostalCode VARCHAR(6) NOT NULL,
                     Province VARCHAR(10) NOT NULL,
                     Country VARCHAR(20) NOT NULL,
+                    City VARCHAR(20),
                     PRIMARY KEY(PostalCode)
                     );";
 
