@@ -65,9 +65,14 @@ public class HomeController : Controller
         {
             // Console.WriteLine(r);
 
-            var roomAmmenities = await _db.QueryAsync<dynamic>(
-                "SELECT * From RoomAmmenities WHERE roomnumber = "
+            var roomAmenityQueryResult = await _db.QueryAsync<dynamic>(
+                "SELECT * From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId ",
+                new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
             );
+
+            var roomAmenities = roomAmenityQueryResult.ToList();
+            Console.WriteLine(roomAmenities.Count);
+
 
         }
 
