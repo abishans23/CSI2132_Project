@@ -60,23 +60,34 @@ public class HomeController : Controller
             );
 
         var availableRooms = roomsQueryResult.ToList();
+        var roomAmenities = new Dictionary<int, string>();
 
         foreach(var r in availableRooms)
         {
-            // Console.WriteLine(r);
-
-            var roomAmenityQueryResult = await _db.QueryAsync<dynamic>(
-                "SELECT * From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId ",
+            var roomAmenityQueryResult = await _db.QueryAsync<string>(
+                "SELECT amenity From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId",
                 new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
             );
 
             var roomAmenities = roomAmenityQueryResult.ToList();
-            Console.WriteLine(roomAmenities.Count);
+            string roomAmenitiesString = roomAmenities.Count != 0 ? roomAmenities[0] : "";
 
+            for (var i = 1; i < roomAmenitiesString.Count; i++)
+            {
+                roomAmenitiesString += ", " + roomAmenities[i];
+            }
+
+            roomAmenities[r.roomnumber] = roomAmenitiesString;
+
+            
+
+            Console.WriteLine(roomAmenities[r.roomnumber].Count);
 
         }
 
         ViewBag.availableRooms = availableRooms;
+        ViewBag.roomAmenities = roomAmenities;
+        
 
         return View();
     }
