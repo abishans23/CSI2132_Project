@@ -248,5 +248,13 @@ namespace Data
                 return true;
             }, _logger);
         }
+
+        public async Task<bool> GetColumnsAndTypes()
+        {
+            return await Utils.TryExecuteAsync<bool,DBContext>(async () =>
+            {
+                return true;
+            },_logger);
+        }
     }
 }
