@@ -124,7 +124,8 @@ namespace Data
             //     await this.ExecuteAsync(CreateString.createRentedRoom);
             //     await this.ExecuteAsync(CreateString.createCustBooking);
             //     await this.ExecuteAsync(CreateString.createRentingTenant);
-
+            //       await this.ExecuteAsync(CreateString.createArchivedBooking);
+             //      await this.ExecuteAsync(CreateString.createArchivedRenting);
                 // await this.ExecuteAsync(@"
                 //     DROP TABLE IF EXISTS CUSTOMER CASCADE;");
 
