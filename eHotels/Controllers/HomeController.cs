@@ -54,13 +54,22 @@ public class HomeController : Controller
     {
         Console.WriteLine(search + area + capacity + startDate + endDate);
 
-
         var roomsQueryResult = await _db.QueryAsync<dynamic>(
                 "SELECT * From (Room NATURAL JOIN (Hotel NATURAL JOIN Address) NATURAL JOIN HotelChain)"
             );
 
         var realRoomsQueryResult = await _db.QueryAsync<dynamic>(
-                "  "
+                "SELECT * FROM Room r " +
+                "JOIN Hotel h ON r.hotelid = h.hotelid" + 
+                "JOIN HotelChain hc ON h.chainid = hc.chainid" +
+                "JOIN Address a ON h.postalCode = a.postalCode" +
+                "JOIN RoomNum rn ON h.hotelid = rn.hotelid" + 
+                "WHERE (hc.chainname = @chainName OR @chainName = 'ANY') AND" +
+                "(a.city = @city OR @city = 'ANY') AND" +
+                "(r.view = @view OR @view = 'ANY') AND" +
+                "(@minPrice <= r.price AND r.price <= @maxPrice) AND" +
+                "(@minRoomCount <= rn.room_count AND rn.room_count <= @maxRoomCount) AND" +
+                ""
             );
 
         var availableRooms = roomsQueryResult.ToList();
