@@ -136,7 +136,8 @@ namespace Data
                 // await this.ExecuteAsync(CreateString.createRoom);
                 // await this.ExecuteAsync(CreateString.createBooking);
                 // await this.ExecuteAsync(CreateString.createRenting);
-            //     await this.ExecuteAsync(CreateString.createCustomer);
+                //  await this.ExecuteAsync(CreateString.createCustomer);
+                //  await this.ExecuteAsync(CreateString.createCustomer);
                 // await this.ExecuteAsync(CreateString.createHotelEmail);
                 // await this.ExecuteAsync(CreateString.createHotelPhone);
                 // await this.ExecuteAsync(CreateString.createHotelChainEmail);
