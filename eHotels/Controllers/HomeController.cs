@@ -12,9 +12,9 @@ public class HomeController : Controller
 {
     private DBContext _db;
 
-    public HomeController(DBContext db) 
+    public HomeController(DBContext db)
     {
-        _db = db; 
+        _db = db;
     }
 
     public async Task<IActionResult> Index()
@@ -23,7 +23,7 @@ public class HomeController : Controller
         //TODO::fix performance issue
 
         Console.WriteLine("current user: " + HttpContext.Session.GetString("Email") + " " + HttpContext.Session.GetString("Username"));
-        
+
         await _db.OpenConnection();
 
         string chainQuery = "SELECT ChainName FROM HotelChain";
@@ -62,18 +62,18 @@ public class HomeController : Controller
         var availableRooms = roomsQueryResult.ToList();
         var roomAmenities = new Dictionary<int, string>();
 
-        foreach(var r in availableRooms)
+        foreach (var r in availableRooms)
         {
             var roomAmenityQueryResult = await _db.QueryAsync<string>(
                 "SELECT amenity From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId",
-                new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
+                new { currentRoomNumber = r.roomnumber, currentHotelId = r.hotelid }
             );
 
             if (roomAmenityQueryResult == null)
             {
                 continue;
             }
-            
+
             var roomAmenitiesList = roomAmenityQueryResult.ToList();
             string roomAmenitiesString = roomAmenitiesList.Count > 0 ? roomAmenitiesList[0] : "";
 
@@ -95,7 +95,7 @@ public class HomeController : Controller
 
         ViewBag.availableRooms = availableRooms;
         ViewBag.roomAmenities = roomAmenities;
-        
+
 
         return View();
     }
@@ -106,14 +106,15 @@ public class HomeController : Controller
         ModelState.Clear();
         Console.WriteLine(emailAddress + " " + username + " " + password + " " + action);
 
-        if (username == null || password == null || emailAddress == null){
+        if (username == null || password == null || emailAddress == null)
+        {
             ModelState.AddModelError("", "username, password and email can not be empty");
             return View("SignIn");
         }
 
         var queryResult = await _db.QueryAsync<Account>(
-            "SELECT * From Account Where Email = @findEmail", 
-            new {findEmail=emailAddress}
+            "SELECT * From Account Where Email = @findEmail",
+            new { findEmail = emailAddress }
             );
         var accountList = queryResult.ToList();
 
@@ -144,8 +145,8 @@ public class HomeController : Controller
             }
 
             await _db.ExecuteAsync(
-                @"INSERT INTO Account VALUES (@emailAddress, @username, @password)", 
-                new{emailAddress, username, password}
+                @"INSERT INTO Account VALUES (@emailAddress, @username, @password)",
+                new { emailAddress, username, password }
                 );
 
         }
@@ -159,8 +160,8 @@ public class HomeController : Controller
     public async Task InsertAddress(int streetNumber, string streetName, string province, string postalCode, string country)
     {
         await _db.ExecuteAsync(
-            @"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)", 
-            new{streetNumber, streetName, postalCode, province, country}
+            @"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)",
+            new { streetNumber, streetName, postalCode, province, country }
             );
     }
 
@@ -169,19 +170,19 @@ public class HomeController : Controller
         string streetName, string province, string country, string postalCode, string phoneNumber)
     {
         await InsertAddress(streetNumber, streetName, province, postalCode, country);
-        
+
         var customerInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Customer VALUES (@idType, @idNumber, @firstName, @lastName, @registrationDate, @phoneNumber, @postalCode)",
-            new{idType, idNumber, firstName, lastName, registrationDate=DateTime.Now, phoneNumber, postalCode});
+            new { idType, idNumber, firstName, lastName, registrationDate = DateTime.Now, phoneNumber, postalCode });
 
         if (customerInsertResult == 0)
         {
             Console.WriteLine("Customer Already exits!");
         }
-        
+
         return RedirectToAction("CheckIn");
     }
-    
+
 
     public IActionResult CheckIn()
     {

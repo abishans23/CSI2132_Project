@@ -1,6 +1,6 @@
 namespace Data
 {
-    static class GetColumnsAndTypes
+    static class ColumnsAndTypes
     {
         public static readonly string GetHotel = @"SELECT column_name, data_type FROM information_schema.columns WHERE table_schema = 'public' AND table_name = 'hotel' ORDER BY ordinal_position;";
         

@@ -1,11 +1,12 @@
 using Npgsql;
 using Microsoft.Extensions.Logging;
+using System.Data.Common;
 
 namespace Data
 {
     public static class Utils
     {
-        public static async Task<T?> TryExecuteAsync<T,V>(Func<Task<T>> operation,ILogger<V> _logger)
+        public static async Task<T?> TryExecuteAsync<T, V>(Func<Task<T>> operation, ILogger<V> _logger)
         {
             try
             {
@@ -15,7 +16,7 @@ namespace Data
             {
                 // Catches all NpgSQL errors
                 _logger.LogError($"[Npgsql Error]: {ex.Message} (Code: {ex.SqlState})");
-                return default; 
+                return default;
             }
             catch (Exception ex)
             {
@@ -24,6 +25,16 @@ namespace Data
                 return default;
             }
         }
+
+        public static async Task<Dictionary<string, string>> MapSchemaToDictionary(DBContext db,string sql)
+        {
+            var result = await db.QueryAsync<dynamic>(sql, null);
+            return result.ToDictionary(
+                row => (string)row.column_name,
+                row => (string)row.data_type
+            );
+        }
+
 
     }
 }
