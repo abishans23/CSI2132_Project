@@ -181,10 +181,32 @@ public class HomeController : Controller
         return RedirectToAction("CheckIn");
     }
 
-    // public async Task<IActionResult> InPersonCheckIn(string a)
-    // {
-    //     RedirectToAction("CheckIn");
-    // }
+    [HttpPost]
+    public async Task<IActionResult> InPersonCheckIn(string hotelId, string roomNumber, string idType, string idNumber, 
+        string startDate, string endDate, int amount, string payementMethod)
+    {    
+        Console.WriteLine("WEOFWFPWPFHE");
+
+        var rentingInsertResult = await _db.ExecuteAsync(
+            @"INSERT INTO Renting (Status, StartDate, EndDate, PaymentMethod, Amount, ProcessedDate, RoomNumber, HotelId, IdType, IdNumber)" +
+            "VALUES (@status, @startDate, @endDate, @paymentMethod, @amount, @proccessedDate, @roomNumber, @hotelId, @idType, @idNumber)",
+            new{
+                status="Occupied", 
+                startDate=Convert.ToDateTime(startDate), 
+                endDate=Convert.ToDateTime(endDate),
+                paymentMethod=payementMethod, 
+                amount,
+                proccessedDate=DateTime.Now, 
+                roomNumber, 
+                hotelId, 
+                idType, 
+                idNumber
+                }
+            );
+
+
+        return RedirectToAction("CheckIn");
+    }
     
 
     public IActionResult CheckIn()

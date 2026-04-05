@@ -33,7 +33,7 @@
 
         @* form to manually check in custumer (must register customer first if not registered) *@
         <div class="form-overlay" id="check-in-form" style="display: none;">
-            <form class="form-container">
+            <form asp-action="InPersonCheckIn" method="post"  class="form-container">
                 <button type="button" class="close-button">X</button>
                 <div class="form-title">In Person Check In</div>
                 <div class="line-break"></div>
@@ -63,6 +63,8 @@
                     <option>Debit</option>
                     <option>Cash</option>
                 </select>
+
+                <input name="amount" type="number" placeholder="Total Price" />
 
                 <button type="submit" class="submit-button">Check In</button>
             </form>
