@@ -185,8 +185,6 @@ public class HomeController : Controller
     public async Task<IActionResult> InPersonCheckIn(int hotelId, int roomNumber, string idType, string idNumber, 
         string startDate, string endDate, int amount, string payementMethod)
     {    
-        Console.WriteLine("WEOFWFPWPFHE");
-
         var rentingInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Renting (Status, StartDate, EndDate, PaymentMethod, Amount, ProcessedDate, RoomNumber, HotelId, IdType, IdNumber)" +
             "VALUES (@status, @startDate, @endDate, @paymentMethod, @amount, @proccessedDate, @roomNumber, @hotelId, @idType, @idNumber)",
@@ -203,12 +201,15 @@ public class HomeController : Controller
                 idNumber
                 }
             );
-
+        
+        if (rentingInsertResult != 1)
+        {
+            Console.WriteLine("Error inserting renting");
+        }
 
         return RedirectToAction("CheckIn");
     }
     
-
     public IActionResult CheckIn()
     {
         return View();
