@@ -17,7 +17,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     box-sizing: border-box;
-    padding: 5em;
+    padding-left: 5em;
+    padding-right: 5em;
+    margin-top: 3em;
     gap: 5em;
     overflow:auto;
 }
