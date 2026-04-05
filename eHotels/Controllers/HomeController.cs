@@ -79,14 +79,14 @@ public class HomeController : Controller
 
             for (var i = 1; i < roomAmenitiesList.Count; i++)
             {
-                roomAmenitiesString += ", " + roomAmenities[i];
+                roomAmenitiesString += ", " + roomAmenitiesList[i];
             }
 
             roomAmenities[r.roomnumber] = roomAmenitiesString;
 
             if (roomAmenities.Count > 0)
             {
-                Console.WriteLine("ahhh");
+                Console.WriteLine(roomAmenitiesString);
             }
 
             // Console.WriteLine(roomAmenities[r.roomnumber].Count);

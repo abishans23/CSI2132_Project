@@ -137,11 +137,10 @@
                             <div class="hotel-amenities">Hotel Amenities: living, jumping, eating</div>
                             <div class="room-capacity">Room Number: @roomInfo.roomnumber, Room Capacity: @roomInfo.capacity</div>
                             <div class="room-view">Room View: @roomInfo.view</div>
-                            <div class="room-amenities">Room Amenities: funny stuff</div>
+                            <div class="room-amenities">Room Amenities: @ViewBag.roomAmenities[@roomInfo.roomnumber]</div>
                         </div>
 
                         <div class="button-region">
-
                             <button class="book-button">Book Room</button>
                         </div>
                     </div>
