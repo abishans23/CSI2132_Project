@@ -117,6 +117,39 @@
     </div>
 
     <div class="results-holder">
+        @foreach (var roomInfo in ViewBag.availableRooms){
+            <div class="search-result">
+                <img class="hotel-image" src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg" />
+                <div class="info-holder">
+                    <div class="main-info">
+                        <div class="hotel-name">@roomInfo.name</div>
+                        <div class="stars">@roomInfo.stars ⭐</div>
+                        <div class="price-range">@roomInfo.price$ / day</div>
+                    </div>
+
+                    <div class="line-break"></div>
+
+                    <div class="result-body-holder">
+                        <div class="other-info">
+                            <div class="address">Address: @roomInfo.streetnum, @roomInfo.streetname, @roomInfo.city, @roomInfo.province, @roomInfo.country, @roomInfo.postalcode</div>
+                            <div class="total-capacity-chain">6969 rooms, @roomInfo.chainname</div>
+                            <div class="description">@roomInfo.description </div>
+                            <div class="hotel-amenities">Hotel Amenities: living, jumping, eating</div>
+                            <div class="room-capacity">Room Number: @roomInfo.roomnumber, Room Capacity: @roomInfo.capacity</div>
+                            <div class="room-view">Room View: @roomInfo.view</div>
+                            <div class="room-amenities">Room Amenities: funny stuff</div>
+                        </div>
+
+                        <div class="button-region">
+
+                            <button class="book-button">Book Room</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
         <div class="search-result">
             <img class="hotel-image" src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg" />
             <div class="info-holder">

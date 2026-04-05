@@ -11,5 +11,7 @@ public class HotelChain
         this.ChainID = chainID;
         this.ChainName = ChainName;
         this.ChainPostalCode = ChainPostalCode;
+
+
     }
 }

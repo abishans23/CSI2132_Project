@@ -26,7 +26,7 @@ public class HomeController : Controller
         
         await _db.OpenConnection();
 
-        string chainQuery = "SELECT Name FROM HotelChain";
+        string chainQuery = "SELECT ChainName FROM HotelChain";
         var chainsQueryResult = await _db.QueryAsync<string>(chainQuery);
         var chainsNames = chainsQueryResult.ToList();
 
@@ -55,13 +55,24 @@ public class HomeController : Controller
         Console.WriteLine(search + area + capacity + startDate + endDate);
 
 
-        var roomsQueryResult = await _db.QueryAsync<Room>(
-            "SELECT * From Room"
+        var roomsQueryResult = await _db.QueryAsync<dynamic>(
+                "SELECT * From (Room NATURAL JOIN (Hotel NATURAL JOIN Address) NATURAL JOIN HotelChain)"
             );
 
         var availableRooms = roomsQueryResult.ToList();
 
-        Console.WriteLine(availableRooms[0].RoomNumber);
+        foreach(var r in availableRooms)
+        {
+            // Console.WriteLine(r);
+
+            var roomAmmenities = await _db.QueryAsync<dynamic>(
+                "SELECT * From RoomAmmenities WHERE roomnumber = "
+            );
+
+        }
+
+        ViewBag.availableRooms = availableRooms;
+
         return View();
     }
 
