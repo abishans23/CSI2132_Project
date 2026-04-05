@@ -182,7 +182,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> InPersonCheckIn(string hotelId, string roomNumber, string idType, string idNumber, 
+    public async Task<IActionResult> InPersonCheckIn(int hotelId, int roomNumber, string idType, string idNumber, 
         string startDate, string endDate, int amount, string payementMethod)
     {    
         Console.WriteLine("WEOFWFPWPFHE");
