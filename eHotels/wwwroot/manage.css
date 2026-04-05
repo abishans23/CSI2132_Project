@@ -1,14 +1,14 @@
 .page-title-holder{
     font-family: serif;
-    font-size: xx-large;
+    font-size: 3em;
     font-weight: bold;
     font-style: oblique;
     color: #595959;
     box-sizing: border-box;
     width: 100%;
-    padding-left: 2.5em;
-    padding-right: 2.5em;
-    padding-top: 1em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-top: 0.5em;
 }
 
 .items-holder{

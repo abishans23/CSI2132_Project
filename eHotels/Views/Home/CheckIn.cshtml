@@ -71,29 +71,29 @@
 
         @* form to tranfer a booking to a renting, actual tranferring is done by the database *@
         <div class="form-overlay" id="transfer-form" style="display: none;">
-            <div class="form-container">
-                <button class="close-button">X</button>
+            <form class="form-container">
+                <button type="button" class="close-button">X</button>
                 <div class="form-title">Transfer Booking</div>
                 <div class="line-break"></div>
 
-                <select class="id-select">
+                <select name="idType" class="id-select">
                     <option selected>Choose Customer Id Type</option>
                     <option>SSN</option>
                     <option>Drivers License</option>
                     <option>Passport</option>
                 </select>
 
-                <input type="text" placeholder="ID Number" />
+                <input name="idNumber" type="text" placeholder="ID Number" />
 
-                <select class="payment-method-select">
+                <select name="paymentMethod" class="payment-method-select">
                     <option selected>Choose Payment Method</option>
                     <option>Credit</option>
                     <option>Debit</option>
                     <option>Cash</option>
                 </select>
 
-                <button class="submit-button">Transfer Booking</button>
-            </div>
+                <button type="submit" class="submit-button">Transfer Booking</button>
+            </form>
         </div>
 
         @* form to register a customer into the database *@
