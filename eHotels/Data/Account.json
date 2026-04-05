@@ -1,172 +1,42 @@
 [
-  {
-    "Email": "asmith@meridian.com",
-    "Username": "asmith_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "bjohnson@meridian.com",
-    "Username": "bjohnson_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "cdavis@meridian.com",
-    "Username": "cdavis_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "dprince@meridian.com",
-    "Username": "dprince_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "jdupont@meridian.com",
-    "Username": "jdupont_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "pgagnon@azure.com",
-    "Username": "pgagnon_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "aboucher@azure.com",
-    "Username": "aboucher_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "cruiz@azure.com",
-    "Username": "cruiz_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "lmodric@azure.com",
-    "Username": "lmodric_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "jsilva@azure.com",
-    "Username": "jsilva_mgr",
-    "Password": "Password123!"
-  },
-  {
-  "Email": "vsingathi@meridian.com",
-  "Username": "vsingathi_mgr",
-  "Password": "Password123!"
-  },
-  {
-    "Email": "cblue@meridian.com",
-    "Username": "cblue_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "avader@meridian.com",
-    "Username": "avader_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "spalpatine@meridian.com",
-    "Username": "spalpatine_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "ggrievous@meridian.com",
-    "Username": "ggrievous_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "cdooku@azure.com",
-    "Username": "cdooku_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "kren@azure.com",
-    "Username": "kren_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "gthrawn@azure.com",
-    "Username": "gthrawn_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "mtarkin@azure.com",
-    "Username": "mtarkin_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "aventress@azure.com",
-    "Username": "aventress_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "sopress@azure.com",
-    "Username": "sopress_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "dmaul@azure.com",
-    "Username": "dmaul_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "dkrennic@azure.com",
-    "Username": "dkrennic_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "cphasma@azure.com",
-    "Username": "cphasma_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "ssnoke@azure.com",
-    "Username": "ssnoke_mgr",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "jdoe@meridian.com",
-    "Username": "jdoe_concierge",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "janedoe@meridian.com",
-    "Username": "janedoe_reception",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "pparker@meridian.com",
-    "Username": "spidey_reception",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "tstark@meridian.com",
-    "Username": "ironman_rest",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "bwayne@meridian.com",
-    "Username": "batman_reception",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "ckent@meridian.com",
-    "Username": "superman_clean",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "wmaximoff@meridian.com",
-    "Username": "scarlet_rest",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "nromanoff@meridian.com",
-    "Username": "blackwidow_concierge",
-    "Password": "Password123!"
-  },
-  {
-    "Email": "srogers@meridian.com",
-    "Username": "cap_reception",
-    "Password": "Password123!"
-  }
+  { "Email": "asmith@meridian.com", "Username": "asmith_mgr", "Password": "Password123!" },
+  { "Email": "bjohnson@meridian.com", "Username": "bjohnson_mgr", "Password": "Password123!" },
+  { "Email": "cdavis@meridian.com", "Username": "cdavis_mgr", "Password": "Password123!" },
+  { "Email": "dprince@meridian.com", "Username": "dprince_mgr", "Password": "Password123!" },
+  { "Email": "enorton@meridian.com", "Username": "enorton_mgr", "Password": "Password123!" },
+  { "Email": "fgallagher@legermain.com", "Username": "fgallagher_mgr", "Password": "Password123!" },
+  { "Email": "gmiller@legermain.com", "Username": "gmiller_mgr", "Password": "Password123!" },
+  { "Email": "habbott@legermain.com", "Username": "habbott_mgr", "Password": "Password123!" },
+  { "Email": "imalcolm@legermain.com", "Username": "imalcolm_mgr", "Password": "Password123!" },
+  { "Email": "jroberts@legermain.com", "Username": "jroberts_mgr", "Password": "Password123!" },
+  { "Email": "khart@summitpeak.com", "Username": "khart_mgr", "Password": "Password123!" },
+  { "Email": "lpalmer@summitpeak.com", "Username": "lpalmer_mgr", "Password": "Password123!" },
+  { "Email": "mwazowski@summitpeak.com", "Username": "mwazowski_mgr", "Password": "Password123!" },
+  { "Email": "nsayers@summitpeak.com", "Username": "nsayers_mgr", "Password": "Password123!" },
+  { "Email": "oisaac@summitpeak.com", "Username": "oisaac_mgr", "Password": "Password123!" },
+  { "Email": "pquill@heritage.com", "Username": "pquill_mgr", "Password": "Password123!" },
+  { "Email": "qbeck@heritage.com", "Username": "qbeck_mgr", "Password": "Password123!" },
+  { "Email": "rreid@heritage.com", "Username": "rreid_mgr", "Password": "Password123!" },
+  { "Email": "srogers@heritage.com", "Username": "srogers_mgr", "Password": "Password123!" },
+  { "Email": "tstark@heritage.com", "Username": "tstark_mgr", "Password": "Password123!" },
+  { "Email": "ucorbero@pacific.com", "Username": "ucorbero_mgr", "Password": "Password123!" },
+  { "Email": "vstone@pacific.com", "Username": "vstone_mgr", "Password": "Password123!" },
+  { "Email": "wmaximoff@pacific.com", "Username": "wmaximoff_mgr", "Password": "Password123!" },
+  { "Email": "xcage@pacific.com", "Username": "xcage_mgr", "Password": "Password123!" },
+  { "Email": "yshahidi@pacific.com", "Username": "yshahidi_mgr", "Password": "Password123!" },
+  { "Email": "zkravitz@meridian.com", "Username": "zkravitz_mgr", "Password": "Password123!" },
+  { "Email": "amorgan@meridian.com", "Username": "amorgan_mgr", "Password": "Password123!" },
+  { "Email": "bwilliamson@meridian.com", "Username": "bwilliamson_mgr", "Password": "Password123!" },
+  { "Email": "csmith@legermain.com", "Username": "csmith_mgr", "Password": "Password123!" },
+  { "Email": "dlinde@legermain.com", "Username": "dlinde_mgr", "Password": "Password123!" },
+  { "Email": "epiaf@legermain.com", "Username": "epiaf_mgr", "Password": "Password123!" },
+  { "Email": "fclinton@summitpeak.com", "Username": "fclinton_mgr", "Password": "Password123!" },
+  { "Email": "grivia@summitpeak.com", "Username": "grivia_mgr", "Password": "Password123!" },
+  { "Email": "hpotter@summitpeak.com", "Username": "hpotter_mgr", "Password": "Password123!" },
+  { "Email": "iwest@heritage.com", "Username": "iwest_mgr", "Password": "Password123!" },
+  { "Email": "jmarston@heritage.com", "Username": "jmarston_mgr", "Password": "Password123!" },
+  { "Email": "kbishop@heritage.com", "Username": "kbishop_mgr", "Password": "Password123!" },
+  { "Email": "lkennedy@pacific.com", "Username": "lkennedy_mgr", "Password": "Password123!" },
+  { "Email": "mjane@pacific.com", "Username": "mjane_mgr", "Password": "Password123!" },
+  { "Email": "ndrake@pacific.com", "Username": "ndrake_mgr", "Password": "Password123!" }
 ]

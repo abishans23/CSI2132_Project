@@ -19,6 +19,8 @@ using(var scope = app.Services.CreateScope())
 {
     var db=scope.ServiceProvider.GetRequiredService<DBContext>();
     await db.SeedDatabase();
+    //startup function to generate all types and columns of each function
+    await db.GetColumnsAndTypes();
 }
 
 // Configure the HTTP request pipeline.
