@@ -26,7 +26,7 @@ public class HomeController : Controller
         
         await _db.OpenConnection();
 
-        string chainQuery = "SELECT Name FROM HotelChain";
+        string chainQuery = "SELECT ChainName FROM HotelChain";
         var chainsQueryResult = await _db.QueryAsync<string>(chainQuery);
         var chainsNames = chainsQueryResult.ToList();
 
