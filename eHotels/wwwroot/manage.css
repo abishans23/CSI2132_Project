@@ -21,7 +21,7 @@
     padding-right: 5em;
     margin-top: 3em;
     gap: 5em;
-    overflow:auto;
+    overflow: auto;
 }
 
 .db-item{
@@ -68,8 +68,13 @@
     display: flex;
     box-sizing: border-box;
     gap: 0.5em;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    background-color: #e6e6e6;
+    border-radius: 0.5em;
+    border: 1px solid rgb(53, 46, 65);
 }
 
 .item-name{
@@ -77,6 +82,7 @@
     font-style: oblique;
     font-weight: bold;
     font-size: large;
+    color: #373737;
 }
 
 .edit-item{
