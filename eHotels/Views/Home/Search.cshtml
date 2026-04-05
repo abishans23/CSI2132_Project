@@ -11,12 +11,44 @@
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/searchBar.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/search.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/form.css" asp-append-version="true" />
 </head>
 
 <body>
-    <div class="booking-overlay">
-        <div class="booking-info">
-            <div class="booking-title">Book Room</div>
+
+    <div class="form-overlay" style="display: none;">
+        <div class="form-container">
+            <button class="close-button">X</button>
+            <div class="form-title">Booking Information</div>
+            <div class="line-break"></div>
+            <div class="booking-hotel-info">Hotel Name, Room capacity, View</div>
+
+            <select class="id-select">
+                <option selected>choose id Type</option>
+                <option>SSN</option>
+                <option>Drivers License</option>
+                <option>Passport</option>
+            </select>
+
+            <input type="text" placeholder="ID Number"/>
+            <input type="text" placeholder="First Name"/>
+            <input type="text" placeholder="Last Name"/>
+
+            <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
+                <input type="text" placeholder="street number"/>
+                <input type="text" placeholder="street name"/>
+                <input type="text" placeholder="province"/>
+                <input type="text" placeholder="country"/>
+                <input type="text" placeholder="postal code"/>
+            </div>
+
+            <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
+                <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" value="@Context.Request.Query["startDate"]"/>
+                <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="endDate" placeholder="End Date" value="@Context.Request.Query["endDate"]"/>
+            </div>
+
+            <input type="text" placeholder="Phone number"/>
+            <button class="submit-button">Book!!</button>
         </div>
     </div>
 
@@ -85,6 +117,39 @@
     </div>
 
     <div class="results-holder">
+        @foreach (var roomInfo in ViewBag.availableRooms){
+            <div class="search-result">
+                <img class="hotel-image" src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg" />
+                <div class="info-holder">
+                    <div class="main-info">
+                        <div class="hotel-name">@roomInfo.name</div>
+                        <div class="stars">@roomInfo.stars ⭐</div>
+                        <div class="price-range">@roomInfo.price$ / day</div>
+                    </div>
+
+                    <div class="line-break"></div>
+
+                    <div class="result-body-holder">
+                        <div class="other-info">
+                            <div class="address">Address: @roomInfo.streetnum, @roomInfo.streetname, @roomInfo.city, @roomInfo.province, @roomInfo.country, @roomInfo.postalcode</div>
+                            <div class="total-capacity-chain">6969 rooms, @roomInfo.chainname</div>
+                            <div class="description">@roomInfo.description </div>
+                            <div class="hotel-amenities">Hotel Amenities: living, jumping, eating</div>
+                            <div class="room-capacity">Room Number: @roomInfo.roomnumber, Room Capacity: @roomInfo.capacity</div>
+                            <div class="room-view">Room View: @roomInfo.view</div>
+                            <div class="room-amenities">Room Amenities: funny stuff</div>
+                        </div>
+
+                        <div class="button-region">
+
+                            <button class="book-button">Book Room</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
         <div class="search-result">
             <img class="hotel-image" src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg" />
             <div class="info-holder">
@@ -117,5 +182,21 @@
         </div>
 
     </div>
+
+    <script>
+        let bookButtons = document.getElementsByClassName("book-button");
+        let overlay = document.querySelector(".form-overlay")
+        for (let i = 0; i < bookButtons.length; i++){
+            bookButtons[i].onclick = function(){
+                @* let hotelName *@
+                overlay.style.display = "block";
+            }
+        }
+
+        let closeButton = document.querySelector(".close-button");
+        closeButton.onclick = function(){
+            overlay.style.display = "none";
+        }
+    </script>
 
 </body>

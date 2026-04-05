@@ -10,17 +10,21 @@
     <link rel="stylesheet" href="~/styles.css" asp-append-version="true" />
 </head>
 
-<body style="margin: 0;">
-
     <header>
 
         <ul class="nav-bar nav-bar-expand-sm nav-bar-toggleable-sm">
             <li class="nav-iteml"><a class="nav-link">LOGO</a></li>
             <li class="nav-iteml"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            <li class="nav-iteml"><a class="nav-link">My Bookings</a></li>
-            <li class="nav-itemr"><a class="nav-link"  asp-area="" asp-controller="Home" asp-action="SignIn">Sign In</a></li>
+
+            @if (Context.Session.GetString("Email") != "" && Context.Session.GetString("Email") != null){
+                <li class="nav-iteml"><a class="nav-link">My Bookings</a></li>
+                <li class="nav-itemr"><a class="nav-link"  asp-area="" asp-controller="Home" asp-action="LogOut">Log Out</a></li>
+            } else {
+                <li class="nav-itemr"><a class="nav-link"  asp-area="" asp-controller="Home" asp-action="SignIn">Sign In</a></li>
+            }
+            
             <li class="nav-itemr"><a class="nav-link" asp-controller="Home" asp-action="CheckIn">Check In</a></li>
-            <li class="nav-itemr"><a class="nav-link">Manage</a></li>
+            <li class="nav-itemr"><a class="nav-link" asp-controller="Home" asp-action="Manage">Manage</a></li>
         </ul>
 
     </header>
@@ -36,5 +40,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     
-</body>
+
 </html>

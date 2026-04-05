@@ -1,0 +1,111 @@
+.page-title-holder{
+    font-family: serif;
+    font-size: 3em;
+    font-weight: bold;
+    font-style: oblique;
+    color: #595959;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-top: 0.5em;
+}
+
+.items-holder{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    box-sizing: border-box;
+    padding-left: 5em;
+    padding-right: 5em;
+    margin-top: 3em;
+    gap: 5em;
+    overflow: auto;
+}
+
+.db-item{
+    background-color: #fBfBfB;
+    border: solid;
+    border-radius: 1em;
+    border-width: 1px;
+    border-color: #90869f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75em;
+    padding: 1em;
+}
+
+.item-title{
+    font-style: serif;
+    font-size: xx-large;
+    font-weight: bold;
+    color: #595959;
+}
+
+.items-holder button{
+    width: 100%;
+    font-size: large;
+    font-family: serif;
+    padding: 0.125em;
+    background-color: #86789cff;
+    color: white;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(53, 46, 65);
+    border-radius: 0.5em;
+    box-shadow: 0px 1px  #4f435d;
+}
+
+.items-holder button:hover{
+    cursor: pointer;
+}
+
+.item-holder{
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    gap: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    background-color: #e6e6e6;
+    border-radius: 0.5em;
+    border: 1px solid rgb(53, 46, 65);
+}
+
+.item-name{
+    font-family: serif;
+    font-style: oblique;
+    font-weight: bold;
+    font-size: large;
+    color: #373737;
+}
+
+.edit-item{
+    margin-left: auto;
+    background-color: rgb(89, 157, 100);
+}
+
+.delete-item{
+    background-color: rgb(189, 105, 105);
+}
+
+.item-holder button{
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(53, 46, 65);
+    padding: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 0.5em;
+    font-family: serif;
+}
+
+.item-holder button:hover{
+    cursor: pointer;
+}

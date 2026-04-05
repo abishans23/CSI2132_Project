@@ -6,7 +6,7 @@ namespace Data
                     HotelID INT PRIMARY KEY CHECK(HotelID >=0),
                     ChainID INT CHECK(ChainID >= 0),
                     Name VARCHAR(50) NOT NULL,
-                    PostalCode VARCHAR(10) NOT NULL,
+                    PostalCode VARCHAR(6) NOT NULL,
                     Stars INT CHECK (Stars BETWEEN 1 AND 5),
                     Manager VARCHAR(20),
                     Description VARCHAR(200),
@@ -16,17 +16,18 @@ namespace Data
 
         public static readonly string createHotelChain = @"CREATE TABLE IF NOT EXISTS HotelChain (
                     ChainID INT CHECK(ChainID >= 0) PRIMARY KEY,
-                    Name VARCHAR(50) NOT NULL,
-                    PostalCode VARCHAR(10) NOT NULL,
-                    FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode)
+                    ChainName VARCHAR(50) NOT NULL,
+                    ChainPostalCode VARCHAR(6) NOT NULL,
+                    FOREIGN KEY (ChainPostalCode) REFERENCES Address(PostalCode)
                     );";
 
         public static readonly string createAddress = @"CREATE TABLE IF NOT EXISTS Address (
                     StreetNum INT NOT NULL,
                     StreetName VARCHAR(50) NOT NULL,
-                    PostalCode VARCHAR(10) NOT NULL,
+                    PostalCode VARCHAR(6) NOT NULL,
                     Province VARCHAR(10) NOT NULL,
                     Country VARCHAR(20) NOT NULL,
+                    City VARCHAR(20),
                     PRIMARY KEY(PostalCode)
                     );";
 
@@ -84,7 +85,7 @@ namespace Data
                     SSN VARCHAR(20) PRIMARY KEY,
                     FirstName VARCHAR(20) NOT NULL,
                     LastName VARCHAR(20) NOT NULL,
-                    PostalCode VARCHAR(10) NOT NULL,
+                    PostalCode VARCHAR(6) NOT NULL,
                     Position VARCHAR(20) CHECK(Position IN('Manager', 'Concierge', 'Receptionist', 'Cleaning', 'Restaurant')) NOT NULL,
                     HotelID INT NOT NULL CHECK(HotelID >= 0),
                     Email VARCHAR(30) NOT NULL CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
@@ -124,7 +125,13 @@ namespace Data
                     BookingDate DATE NOT NULL,
                     Status VARCHAR(20) NOT NULL CHECK(Status IN ('Cancelled', 'Scheduled', 'Occupied')),
                     StartDate DATE NOT NULL,
-                    EndDate DATE NOT NULL
+                    EndDate DATE NOT NULL,
+                    RoomNumber INT NOT NULL,
+                    HotelID INT NOT NULL,
+                    IDType VARCHAR(30) NOT NULL,
+                    IDNumber VARCHAR(30) NOT NULL,
+                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID),
+                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
                     );";
 
         public static readonly string createRoomBooking = @"CREATE TABLE IF NOT EXISTS RoomBooking(
@@ -143,8 +150,8 @@ namespace Data
                     LastName VARCHAR(20) NOT NULL,
                     RegistrationDate DATE NOT NULL,
                     PhoneNumber VARCHAR(10) NOT NULL,
-                    PostalCode VARCHAR(10) NOT NULL,
-                    Email VARCHAR(30) NOT NULL UNIQUE CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
+                    PostalCode VARCHAR(6) NOT NULL,
+                    Email VARCHAR(30) UNIQUE CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
                     PRIMARY KEY (IDType, IDNumber),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode)
                     );";
@@ -166,7 +173,13 @@ namespace Data
                     InvoiceNumber INT,
                     PaymentMethod VARCHAR(20) NOT NULL,
                     Amount INT NOT NULL,
-                    ProcessedDate DATE NOT NULL
+                    ProcessedDate DATE NOT NULL,
+                    RoomNumber INT NOT NULL,
+                    HotelID INT NOT NULL,
+                    IDType VARCHAR(30) NOT NULL,
+                    IDNumber VARCHAR(30) NOT NULL,
+                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID),
+                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
                     );";
 
         public static readonly string createRentingTenant = @"CREATE TABLE IF NOT EXISTS RentingTenant(
