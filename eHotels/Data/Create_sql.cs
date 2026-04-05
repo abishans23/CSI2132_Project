@@ -16,9 +16,9 @@ namespace Data
 
         public static readonly string createHotelChain = @"CREATE TABLE IF NOT EXISTS HotelChain (
                     ChainID INT CHECK(ChainID >= 0) PRIMARY KEY,
-                    Name VARCHAR(50) NOT NULL,
-                    PostalCode VARCHAR(6) NOT NULL,
-                    FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode)
+                    ChainName VARCHAR(50) NOT NULL,
+                    ChainPostalCode VARCHAR(6) NOT NULL,
+                    FOREIGN KEY (ChainPostalCode) REFERENCES Address(PostalCode)
                     );";
 
         public static readonly string createAddress = @"CREATE TABLE IF NOT EXISTS Address (
