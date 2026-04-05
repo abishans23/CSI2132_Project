@@ -54,13 +54,22 @@ public class HomeController : Controller
     {
         Console.WriteLine(search + area + capacity + startDate + endDate);
 
-
         var roomsQueryResult = await _db.QueryAsync<dynamic>(
                 "SELECT * From (Room NATURAL JOIN (Hotel NATURAL JOIN Address) NATURAL JOIN HotelChain)"
             );
 
         var realRoomsQueryResult = await _db.QueryAsync<dynamic>(
-                "  "
+                "SELECT * FROM Room r " +
+                "JOIN Hotel h ON r.hotelid = h.hotelid" + 
+                "JOIN HotelChain hc ON h.chainid = hc.chainid" +
+                "JOIN Address a ON h.postalCode = a.postalCode" +
+                "JOIN RoomNum rn ON h.hotelid = rn.hotelid" + 
+                "WHERE (hc.chainname = @chainName OR @chainName = 'ANY') AND" +
+                "(a.city = @city OR @city = 'ANY') AND" +
+                "(r.view = @view OR @view = 'ANY') AND" +
+                "(@minPrice <= r.price AND r.price <= @maxPrice) AND" +
+                "(@minRoomCount <= rn.room_count AND rn.room_count <= @maxRoomCount) AND" +
+                ""
             );
 
         var availableRooms = roomsQueryResult.ToList();
@@ -182,11 +191,9 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> InPersonCheckIn(string hotelId, string roomNumber, string idType, string idNumber, 
+    public async Task<IActionResult> InPersonCheckIn(int hotelId, int roomNumber, string idType, string idNumber, 
         string startDate, string endDate, int amount, string payementMethod)
     {    
-        Console.WriteLine("WEOFWFPWPFHE");
-
         var rentingInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Renting (Status, StartDate, EndDate, PaymentMethod, Amount, ProcessedDate, RoomNumber, HotelId, IdType, IdNumber)" +
             "VALUES (@status, @startDate, @endDate, @paymentMethod, @amount, @proccessedDate, @roomNumber, @hotelId, @idType, @idNumber)",
@@ -203,12 +210,15 @@ public class HomeController : Controller
                 idNumber
                 }
             );
-
+        
+        if (rentingInsertResult != 1)
+        {
+            Console.WriteLine("Error inserting renting");
+        }
 
         return RedirectToAction("CheckIn");
     }
     
-
     public IActionResult CheckIn()
     {
         return View();
