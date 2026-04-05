@@ -50,9 +50,18 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult Search(string search, string area, string capacity, string startDate, string endDate)
+    public async Task<IActionResult> Search(string search, string area, string capacity, string startDate, string endDate)
     {
         Console.WriteLine(search + area + capacity + startDate + endDate);
+
+
+        var roomsQueryResult = await _db.QueryAsync<Room>(
+            "SELECT * From Room"
+            );
+
+        var availableRooms = roomsQueryResult.ToList();
+
+        Console.WriteLine(availableRooms[0].RoomNumber);
         return View();
     }
 
