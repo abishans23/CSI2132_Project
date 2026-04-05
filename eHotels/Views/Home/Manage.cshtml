@@ -1,0 +1,78 @@
+@{
+    ViewData["Title"] = "Manage";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - eHotels</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/manage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/form.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <div class="form-overlay">
+
+        <div class="form-container">
+            <button class="close-button">X</button>
+            <div class="form-title">Edit</div>
+            <div class="line-break"></div>
+            <div class="form-list-holder">
+                <div class="item-holder">
+                    <div class="item-name">Hotel 1 hotel ID</div>
+                    <button class="edit-item">Edit</button>
+                    <button class="delete-item">Delete</button>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page-title-holder">
+        <div class="page-title">Manage Database</div>
+        <div class="line-break"></div>
+    </div>
+    
+    <div class="items-holder">
+        <div class="db-item">
+            <div class="item-title">Chains</div>
+            <div class="line-break"></div>
+            <button>Edit</button>
+            <button>Add</button>
+        </div>
+
+        <div class="db-item">
+            <div class="item-title">Hotels</div>
+            <div class="line-break"></div>
+            <button>Edit</button>
+            <button>Add</button>
+        </div>
+
+        <div class="db-item">
+            <div class="item-title">Employees</div>
+            <div class="line-break"></div>
+            <button>Edit</button>
+            <button>Add</button>
+        </div>
+
+        <div class="db-item">
+            <div class="item-title">Rooms</div>
+            <div class="line-break"></div>
+            <button>Edit</button>
+            <button>Add</button>
+        </div>
+
+        <div class="db-item">
+            <div class="item-title">Room Problems</div>
+            <div class="line-break"></div>
+            <button>Edit</button>
+            <button>Add</button>
+        </div>
+    </div>
+    
+</body>
