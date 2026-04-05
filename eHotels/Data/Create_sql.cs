@@ -125,7 +125,13 @@ namespace Data
                     BookingDate DATE NOT NULL,
                     Status VARCHAR(20) NOT NULL CHECK(Status IN ('Cancelled', 'Scheduled', 'Occupied')),
                     StartDate DATE NOT NULL,
-                    EndDate DATE NOT NULL
+                    EndDate DATE NOT NULL,
+                    RoomNumber INT NOT NULL,
+                    HotelID INT NOT NULL,
+                    IDType VARCHAR(30) NOT NULL,
+                    IDNumber VARCHAR(30) NOT NULL,
+                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID),
+                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
                     );";
 
         public static readonly string createRoomBooking = @"CREATE TABLE IF NOT EXISTS RoomBooking(
@@ -167,7 +173,13 @@ namespace Data
                     InvoiceNumber INT,
                     PaymentMethod VARCHAR(20) NOT NULL,
                     Amount INT NOT NULL,
-                    ProcessedDate DATE NOT NULL
+                    ProcessedDate DATE NOT NULL,
+                    RoomNumber INT NOT NULL,
+                    HotelID INT NOT NULL,
+                    IDType VARCHAR(30) NOT NULL,
+                    IDNumber VARCHAR(30) NOT NULL,
+                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID),
+                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
                     );";
 
         public static readonly string createRentingTenant = @"CREATE TABLE IF NOT EXISTS RentingTenant(
