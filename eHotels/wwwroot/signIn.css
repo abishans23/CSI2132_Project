@@ -10,11 +10,11 @@ html, body{
 }
 
 .main{
+    margin-top: auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: calc(100vh - 4em);
 }
 
 .login-container{
@@ -25,7 +25,6 @@ html, body{
     border-color: #4f435d;
     display: flex;
     flex-direction: column;
-    margin-top: 11em;
     padding: 10px;
     border-radius: 20px;
     transform: scale(1.15);

@@ -39,6 +39,10 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Manage()
+    {
+        return View();
+    }
     public IActionResult LogOut()
     {
         HttpContext.Session.SetString("Email", "");
@@ -63,7 +67,10 @@ public class HomeController : Controller
             return View("SignIn");
         }
 
-        var queryResult = await _db.QueryAsync<Account>("SELECT * From Account Where Email = @findEmail", new {findEmail=emailAddress});
+        var queryResult = await _db.QueryAsync<Account>(
+            "SELECT * From Account Where Email = @findEmail", 
+            new {findEmail=emailAddress}
+            );
         var accountList = queryResult.ToList();
 
         if (action == "Login")
@@ -92,7 +99,10 @@ public class HomeController : Controller
                 return View("SignIn");
             }
 
-            await _db.ExecuteAsync(@"INSERT INTO Account VALUES (@emailAddress, @username, @password)", new{emailAddress, username, password});
+            await _db.ExecuteAsync(
+                @"INSERT INTO Account VALUES (@emailAddress, @username, @password)", 
+                new{emailAddress, username, password}
+                );
 
         }
 
@@ -104,8 +114,10 @@ public class HomeController : Controller
 
     public async Task InsertAddress(int streetNumber, string streetName, string province, string postalCode, string country)
     {
-        await _db.ExecuteAsync(@"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)", 
-            new{streetNumber, streetName, postalCode, province, country});
+        await _db.ExecuteAsync(
+            @"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)", 
+            new{streetNumber, streetName, postalCode, province, country}
+            );
     }
 
     [HttpPost]
