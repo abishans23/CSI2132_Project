@@ -157,6 +157,54 @@
     ]
   },
   {
+    "HotelID": 26,
+    "ChainID": 1,
+    "Name": "Meridian Plaza New York",
+    "PostalCode": "10022",
+    "Stars": 5,
+    "Manager": "100-000-026",
+    "Description": "A secondary luxury hub in NYC to fulfill local density requirements.",
+    "Emails": [
+      "plaza-nyc@meridianhotels.com"
+    ],
+    "PhoneNumbers": [
+      "2125551006"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 27,
+    "ChainID": 1,
+    "Name": "Meridian Urban Boston",
+    "PostalCode": "02108",
+    "Stars": 4,
+    "Manager": "100-000-027",
+    "Description": "Modern city living in the heart of Boston.",
+    "Emails": [
+      "bos@meridianhotels.com"
+    ],
+    "PhoneNumbers": [
+      "6175551007"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 28,
+    "ChainID": 1,
+    "Name": "Meridian Gateway Ottawa",
+    "PostalCode": "K1P1A1",
+    "Stars": 3,
+    "Manager": "100-000-028",
+    "Description": "Convenient access to Canada's capital.",
+    "Emails": [
+      "ott@meridianhotels.com"
+    ],
+    "PhoneNumbers": [
+      "6135551008"
+    ],
+    "Amenities": []
+  },
+  {
     "HotelID": 6,
     "ChainID": 2,
     "Name": "Azure Riviera Cannes",
@@ -298,6 +346,54 @@
     ]
   },
   {
+    "HotelID": 29,
+    "ChainID": 2,
+    "Name": "Azure Port Cannes",
+    "PostalCode": "06400",
+    "Stars": 5,
+    "Manager": "100-000-029",
+    "Description": "Harbour-side luxury for the yachting crowd.",
+    "Emails": [
+      "port@azurecoast.com"
+    ],
+    "PhoneNumbers": [
+      "3345552006"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 30,
+    "ChainID": 2,
+    "Name": "Azure Marseille",
+    "PostalCode": "13001",
+    "Stars": 4,
+    "Manager": "100-000-030",
+    "Description": "Chic Mediterranean vibes in Marseille.",
+    "Emails": [
+      "mar@azurecoast.com"
+    ],
+    "PhoneNumbers": [
+      "3345552007"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 31,
+    "ChainID": 2,
+    "Name": "Azure Monaco",
+    "PostalCode": "98000",
+    "Stars": 5,
+    "Manager": "100-000-031",
+    "Description": "Prestige in the Principality.",
+    "Emails": [
+      "mon@azurecoast.com"
+    ],
+    "PhoneNumbers": [
+      "3775552008"
+    ],
+    "Amenities": []
+  },
+  {
     "HotelID": 11,
     "ChainID": 3,
     "Name": "Summit Alpine Zurich",
@@ -431,6 +527,54 @@
     ]
   },
   {
+    "HotelID": 32,
+    "ChainID": 3,
+    "Name": "Summit View Zurich",
+    "PostalCode": "8001",
+    "Stars": 5,
+    "Manager": "100-000-032",
+    "Description": "Second luxury option in Zurich.",
+    "Emails": [
+      "view@summitpeak.com"
+    ],
+    "PhoneNumbers": [
+      "41445553006"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 33,
+    "ChainID": 3,
+    "Name": "Summit Basel",
+    "PostalCode": "4051",
+    "Stars": 4,
+    "Manager": "100-000-033",
+    "Description": "Ideal for Art Basel attendees.",
+    "Emails": [
+      "bsl@summitpeak.com"
+    ],
+    "PhoneNumbers": [
+      "41615553007"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 34,
+    "ChainID": 3,
+    "Name": "Summit Lausanne",
+    "PostalCode": "1003",
+    "Stars": 3,
+    "Manager": "100-000-034",
+    "Description": "Olympic city comfort.",
+    "Emails": [
+      "laus@summitpeak.com"
+    ],
+    "PhoneNumbers": [
+      "41215553008"
+    ],
+    "Amenities": []
+  },
+  {
     "HotelID": 16,
     "ChainID": 4,
     "Name": "Heritage Grand London Mayfair",
@@ -558,6 +702,54 @@
         "AmenityDesc": "Real ales, pork pies, and live folk music on Fridays"
       }
     ]
+  },
+  {
+    "HotelID": 35,
+    "ChainID": 4,
+    "Name": "Heritage Mews London",
+    "PostalCode": "W1K4DG",
+    "Stars": 5,
+    "Manager": "100-000-035",
+    "Description": "Discrete luxury in a Mayfair mews.",
+    "Emails": [
+      "mews@heritagegrand.com"
+    ],
+    "PhoneNumbers": [
+      "44205554006"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 36,
+    "ChainID": 4,
+    "Name": "Heritage Cambridge",
+    "PostalCode": "CB21ST",
+    "Stars": 4,
+    "Manager": "100-000-036",
+    "Description": "Scholarly elegance in Cambridge.",
+    "Emails": [
+      "cam@heritagegrand.com"
+    ],
+    "PhoneNumbers": [
+      "4412235554007"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 37,
+    "ChainID": 4,
+    "Name": "Heritage Brighton",
+    "PostalCode": "BN11AA",
+    "Stars": 3,
+    "Manager": "100-000-037",
+    "Description": "Classic seaside stay.",
+    "Emails": [
+      "btn@heritagegrand.com"
+    ],
+    "PhoneNumbers": [
+      "4412735554008"
+    ],
+    "Amenities": []
   },
   {
     "HotelID": 21,
@@ -707,5 +899,53 @@
         "AmenityDesc": "Floor-to-ceiling harbour windows and personal training"
       }
     ]
+  },
+  {
+    "HotelID": 38,
+    "ChainID": 5,
+    "Name": "Pacific Horizon Bay Singapore",
+    "PostalCode": "018970",
+    "Stars": 5,
+    "Manager": "100-000-038",
+    "Description": "Secondary luxury tower in Singapore.",
+    "Emails": [
+      "bay@pacifichorizon.com"
+    ],
+    "PhoneNumbers": [
+      "6565555006"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 39,
+    "ChainID": 5,
+    "Name": "Pacific Horizon Kyoto",
+    "PostalCode": "6008216",
+    "Stars": 4,
+    "Manager": "100-000-039",
+    "Description": "Traditional spirit in modern Kyoto.",
+    "Emails": [
+      "kyo@pacifichorizon.com"
+    ],
+    "PhoneNumbers": [
+      "81755555007"
+    ],
+    "Amenities": []
+  },
+  {
+    "HotelID": 40,
+    "ChainID": 5,
+    "Name": "Pacific Horizon Phuket",
+    "PostalCode": "83000",
+    "Stars": 3,
+    "Manager": "100-000-040",
+    "Description": "Beachside value in Phuket.",
+    "Emails": [
+      "hkt@pacifichorizon.com"
+    ],
+    "PhoneNumbers": [
+      "66765555008"
+    ],
+    "Amenities": []
   }
 ]

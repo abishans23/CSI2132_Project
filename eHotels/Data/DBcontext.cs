@@ -99,8 +99,8 @@ namespace Data
                 if (hotelChains == null || rooms == null || hotels == null || accounts == null || employees == null)
                     return false;
 
-            //   await this.ExecuteAsync(@"
-            //           DROP TABLE IF EXISTS Renting,  CASCADE;");
+                //   await this.ExecuteAsync(@"
+                //           DROP TABLE IF EXISTS Renting,  CASCADE;");
 
             //     await this.ExecuteAsync(CreateString.createAddress);
             //     await this.ExecuteAsync(CreateString.createAccount);
@@ -126,6 +126,29 @@ namespace Data
             //     await this.ExecuteAsync(CreateString.createRentingTenant);
             //       await this.ExecuteAsync(CreateString.createArchivedBooking);
              //      await this.ExecuteAsync(CreateString.createArchivedRenting);
+                //     await this.ExecuteAsync(CreateString.createAddress);
+                //     await this.ExecuteAsync(CreateString.createAccount);
+                //     await this.ExecuteAsync(CreateString.createHotelChain);
+                //     await this.ExecuteAsync(CreateString.createHotel);
+                //     await this.ExecuteAsync(CreateString.createEmployee);
+                //     await this.ExecuteAsync(CreateString.createRoom);
+                //    await this.ExecuteAsync(CreateString.createBooking);
+                //      await this.ExecuteAsync(CreateString.createRenting);
+                //     await this.ExecuteAsync(CreateString.createCustomer);
+                //     await this.ExecuteAsync(CreateString.createHotelEmail);
+                //     await this.ExecuteAsync(CreateString.createHotelPhone);
+                //     await this.ExecuteAsync(CreateString.createHotelChainEmail);
+                //     await this.ExecuteAsync(CreateString.createHotelChainPhone);
+                //     await this.ExecuteAsync(CreateString.createHotelImage);
+                //     await this.ExecuteAsync(CreateString.createHotelAmenity);
+                //     await this.ExecuteAsync(CreateString.createReview);
+                //     await this.ExecuteAsync(CreateString.createRoomProblem);
+                //     await this.ExecuteAsync(CreateString.createRoomAmenity);
+                //     await this.ExecuteAsync(CreateString.createRoomBooking);
+                //     await this.ExecuteAsync(CreateString.createRentedRoom);
+                //     await this.ExecuteAsync(CreateString.createCustBooking);
+                //     await this.ExecuteAsync(CreateString.createRentingTenant);
+
                 // await this.ExecuteAsync(@"
                 //     DROP TABLE IF EXISTS CUSTOMER CASCADE;");
 
@@ -246,6 +269,33 @@ namespace Data
                 //         new { hotel.Manager, hotel.HotelID });
                 // }
 
+                return true;
+            }, _logger);
+        }
+
+
+        public async Task<bool> GetColumnsAndTypes()
+        {
+            return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
+            {
+                TableColumnsAndTypes.Hotel = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotel);
+                TableColumnsAndTypes.HotelChain = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChain);
+                TableColumnsAndTypes.Address = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetAddress);
+                TableColumnsAndTypes.HotelEmail = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelEmail);
+                TableColumnsAndTypes.HotelPhone = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelPhone);
+                TableColumnsAndTypes.HotelChainEmail = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChainEmail);
+                TableColumnsAndTypes.HotelChainPhone = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChainPhone);
+                TableColumnsAndTypes.HotelImage = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelImage);
+                TableColumnsAndTypes.HotelAmenity = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelAmenity);
+                TableColumnsAndTypes.Account = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetAccount);
+                TableColumnsAndTypes.Employee = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetEmployee);
+                TableColumnsAndTypes.Room = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRoom);
+                TableColumnsAndTypes.RoomProblem = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRoomProblem);
+                TableColumnsAndTypes.RoomAmenity = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRoomAmenity);
+                TableColumnsAndTypes.Booking = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetBooking);
+                TableColumnsAndTypes.Customer = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetCustomer);
+                TableColumnsAndTypes.Renting = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRenting);
+                TableColumnsAndTypes.Review = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetReview);
                 return true;
             }, _logger);
         }

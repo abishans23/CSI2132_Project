@@ -60,16 +60,32 @@ public class HomeController : Controller
 
         var realRoomsQueryResult = await _db.QueryAsync<dynamic>(
                 "SELECT * FROM Room r " +
-                "JOIN Hotel h ON r.hotelid = h.hotelid" + 
-                "JOIN HotelChain hc ON h.chainid = hc.chainid" +
-                "JOIN Address a ON h.postalCode = a.postalCode" +
-                "JOIN RoomNum rn ON h.hotelid = rn.hotelid" + 
-                "WHERE (hc.chainname = @chainName OR @chainName = 'ANY') AND" +
-                "(a.city = @city OR @city = 'ANY') AND" +
-                "(r.view = @view OR @view = 'ANY') AND" +
-                "(@minPrice <= r.price AND r.price <= @maxPrice) AND" +
-                "(@minRoomCount <= rn.room_count AND rn.room_count <= @maxRoomCount) AND" +
-                ""
+                "JOIN Hotel h ON r.hotelid = h.hotelid " + 
+                "JOIN HotelChain hc ON h.chainid = hc.chainid " +
+                "JOIN Address a ON h.postalCode = a.postalCode " +
+                "JOIN RoomNum rn ON h.hotelid = rn.hotelid " + 
+
+                "WHERE (hc.chainname = @chainName OR @chainName = 'ANY') AND " +
+                "(a.city = @city OR @city = 'ANY') AND " +
+                "(r.view = @view OR @view = 'ANY') AND " +
+                "(@minPrice <= r.price AND r.price <= @maxPrice) AND " +
+                "(@minRoomCount <= rn.room_count AND rn.room_count <= @maxRoomCount) AND " +
+                "(h.stars = @stars OR @stars = -1) AND " + 
+
+                "NOT EXISTS (" +
+                    "SELECT * FROM Booking b " +
+                    "WHERE b.roomnumber = r.roomnumber " + 
+                    "AND DATE @startDate <= b.EndDate " +
+                    "AND DATE @endDate >= b.StartDate " +
+                ") " +
+
+                "AND NOT EXISTS ( " + 
+                    "SELECT * FROM Renting rt " +
+                    "WHERE rt.roomnumber = r.roomnumber " + 
+                    "AND DATE @startDate <= rt.EndDate " +
+                    "AND DATE '2029-12-31' >= rt.StartDate " +
+                ");",
+                new{}
             );
 
         var availableRooms = roomsQueryResult.ToList();
@@ -91,11 +107,6 @@ public class HomeController : Controller
             }
 
             roomAmenities[r.roomnumber] = roomAmenitiesString;
-
-            if (roomAmenities.Count > 0)
-            {
-                Console.WriteLine(roomAmenitiesString);
-            }
 
             // Console.WriteLine(roomAmenities[r.roomnumber].Count);
 
@@ -180,7 +191,16 @@ public class HomeController : Controller
         
         var customerInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Customer VALUES (@idType, @idNumber, @firstName, @lastName, @registrationDate, @phoneNumber, @postalCode)",
-            new{idType, idNumber, firstName, lastName, registrationDate=DateTime.Now, phoneNumber, postalCode});
+            new{
+                idType, 
+                idNumber, 
+                firstName, 
+                lastName, 
+                registrationDate=DateTime.Now, 
+                phoneNumber, 
+                postalCode
+                }
+            );
 
         if (customerInsertResult == 0)
         {
