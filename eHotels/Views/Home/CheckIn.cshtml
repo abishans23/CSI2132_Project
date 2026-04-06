@@ -77,19 +77,19 @@
                 <div class="form-title">Transfer Booking</div>
                 <div class="line-break"></div>
                 
-                <input type="text" placeholder="HotelID" />
-                <select name="idType" class="id-select">
+                <input type="text" id="booking-hotelid" placeholder="HotelID" />
+                <select name="idType" id="booking-id-type" class="id-select">
                     <option selected>Choose Customer Id Type</option>
                     <option>SSN</option>
                     <option>Drivers License</option>
                     <option>Passport</option>
                 </select>
 
-                <input name="idNumber" type="text" placeholder="ID Number" />
+                <input name="idNumber" id="booking-id-number" type="text" placeholder="ID Number" />
 
-                <button type="button" class="submit-button" style="background-color:rgb(130, 110, 161);">Find Booking</button>
+                <button type="button" id="find-booking" class="submit-button" style="background-color:rgb(130, 110, 161);">Find Booking</button>
 
-                <div class="transfer-info" style="text-align: center;">Loading booking...</div>
+                <div class="transfer-info" id="found-booking-info" style="text-align: center;">Loading booking...</div>
 
                 <select name="paymentMethod" class="payment-method-select">
                     <option selected>Choose Payment Method</option>
@@ -152,17 +152,30 @@
         let buttons = [inPersonCheckInButton, transferBookingButton, registerCustomerButton];
         let forms = [checkInForm, transferForm, registerForm];
 
+        let findBookingButton = document.getElementById("find-booking");
+        let foundBookingInfo = document.getElementById("found-booking-info");
+
+        findBookingButton.onclick = async function(){
+            let bookingHotelId = document.getElementById("booking-hotelid").getAttribute("value");
+            let bookingIdType = document.getElementById("booking-id-type").getAttribute("value");
+            let bookingIdNumber = document.getElementById("booking-id-number").getAttribute("value");
+            
+            let response = await fetch("/Home/GetBooking?hotelId=${bookingHotelId}&idType=${bookingIdType}&idNumber=${bookingIdNumber}");
+            
+            console.log(response.json());
+        }
+
         for (let i = 0; i < buttons.length; i++) {
-        let b = buttons[i];
-        let f = forms[i]
+            let b = buttons[i];
+            let f = forms[i]
 
-        b.onclick = function () {
-        f.style.display = "block";
-        }
+            b.onclick = function() {
+                f.style.display = "block";
+            }
 
-        f.querySelector(".close-button").onclick = function () {
-        f.style.display = "none";
-        }
+            f.querySelector(".close-button").onclick = function () {
+                f.style.display = "none";
+            }
         }
     </script>
 
