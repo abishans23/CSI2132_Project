@@ -235,6 +235,7 @@ public class HomeController : Controller
         return RedirectToAction("CheckIn");
     }
 
+    //insert the renting for an in-person check in
     [HttpPost]
     public async Task<IActionResult> InPersonCheckIn(int hotelId, int roomNumber, string idType, string idNumber, 
         string startDate, string endDate, int amount, string payementMethod)
@@ -290,6 +291,11 @@ public class HomeController : Controller
 
         return View("Search");
     }
+
+    // public async GetBooking(int hotelId, string idType, string idNumber)
+    // {
+    //     var bookingQueryResult = await _db.QueryAsync<Booking>("");
+    // }
     
     public IActionResult CheckIn()
     {
