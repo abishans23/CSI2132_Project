@@ -26,13 +26,28 @@ namespace Data
             }
         }
 
-        public static async Task<Dictionary<string, string>> MapSchemaToDictionary(DBContext db,string sql)
+        public static async Task<Dictionary<string, string>> MapSchemaToDictionary(DBContext db, string sql)
         {
             var result = await db.QueryAsync<dynamic>(sql, null);
             return result.ToDictionary(
                 row => (string)row.column_name,
                 row => (string)row.data_type
             );
+        }
+
+        //build Update SQL querries
+        public static async Task<string> BuildUpdate(string table, Dictionary<string, string> columns)
+        {
+            //string idValue = columns["id"]; // extract id
+            int idValue=1;
+
+            var setColumns = columns
+                .Where(c => c.Key.ToLower() != "id")
+                .Select(c => $"{c.Key} = @{c.Key}");
+
+            string setClause = string.Join(", ", setColumns);
+
+            return $"UPDATE {table} SET {setClause} WHERE id = {idValue}";
         }
 
 
