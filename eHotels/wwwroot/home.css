@@ -75,6 +75,8 @@ html, body {
 }
 
 .chain{
+    display: flex;
+    flex-direction: column;
     color: white;
     height: 100%;
     width: 100%;
@@ -85,4 +87,8 @@ html, body {
     font-style: italic;
     margin-bottom: 1em;
     opacity: 0.85;
+}
+
+.average-stars{
+    font-size: large;
 }

@@ -26,8 +26,9 @@ public class HomeController : Controller
         
         await _db.OpenConnection();
 
-        string chainQuery = "SELECT ChainName FROM HotelChain";
-        var chainsQueryResult = await _db.QueryAsync<string>(chainQuery);
+        //aggregation query
+        string chainQuery = "SELECT ChainName, ROUND(AVG(Stars),2) as AvgStars FROM HotelChain NATURAL JOIN Hotel GROUP BY ChainID";
+        var chainsQueryResult = await _db.QueryAsync<dynamic>(chainQuery);
         var chainsNames = chainsQueryResult.ToList();
 
         return View(chainsNames);
