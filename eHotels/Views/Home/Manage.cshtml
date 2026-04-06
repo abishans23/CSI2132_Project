@@ -70,8 +70,6 @@
             Room:["roomnumber","hotelid"], 
             Roomamenity:["roomnumber","hotelid","amenity"], 
             Roomproblem:["roomnumber","hotelid","problem"]
-
-            
         };
 
         let dbItems = document.getElementsByClassName("db-item");
@@ -98,12 +96,16 @@
                     for (let i = 0; i < data.rows.length; i++){
                         console.log(data.rows[i]);
 
-                        let primaryKeyString = ""
-                        
+                        let keys = primaryKeys[schemaName];
+                        let primaryKeyString = keys[0] + ": " + data.rows[i][keys[0]];
+
+                        for (let k = 1; k < keys.length; k++){
+                            primaryKeyString += ", " + keys[k] + ": " + data.rows[i][keys[k]] ;
+                        }
 
                         let rowHTML = 
                         '<div class="item-holder">' + 
-                            '<div class="item-name">' + "xxxxxx" + '</div>'+
+                            '<div class="item-name">' + primaryKeyString + '</div>'+
                             '<button class="edit-item">Edit</button>' +
                             '<button class="delete-item">Delete</button>' +
                             '<div class="primary-keys" value="" style="display: none;"></div>'+
