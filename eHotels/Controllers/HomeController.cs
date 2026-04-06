@@ -224,21 +224,9 @@ public class HomeController : Controller
             );
     }
 
-    [HttpPost]
-    public async Task<IActionResult> RegisterCustomer(string idType, string idNumber, string firstName, string lastName, int streetNumber,
-        string streetName, string city, string province, string country, string postalCode, string phoneNumber)
-    {
-        await InsertAddress(streetNumber, streetName, city, province, country, postalCode);
-        await InsertCustomer(idType, idNumber, firstName, lastName, postalCode, phoneNumber, null);
-        
-        return RedirectToAction("CheckIn");
-    }
-
-    //insert the renting for an in-person check in
-    [HttpPost]
-    public async Task<IActionResult> InPersonCheckIn(int hotelId, int roomNumber, string idType, string idNumber, 
+    public async Task InsertRenting(int hotelId, int roomNumber, string idType, string idNumber, 
         string startDate, string endDate, int amount, string payementMethod)
-    {    
+    {
         var rentingInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Renting (Status, StartDate, EndDate, PaymentMethod, Amount, ProcessedDate, RoomNumber, HotelId, IdType, IdNumber)" +
             "VALUES (@status, @startDate, @endDate, @paymentMethod, @amount, @proccessedDate, @roomNumber, @hotelId, @idType, @idNumber)",
@@ -255,12 +243,24 @@ public class HomeController : Controller
                 idNumber
                 }
             );
-        
-        if (rentingInsertResult != 1)
-        {
-            Console.WriteLine("Error inserting renting");
-        }
+    }
 
+    [HttpPost]
+    public async Task<IActionResult> RegisterCustomer(string idType, string idNumber, string firstName, string lastName, int streetNumber,
+        string streetName, string city, string province, string country, string postalCode, string phoneNumber)
+    {
+        await InsertAddress(streetNumber, streetName, city, province, country, postalCode);
+        await InsertCustomer(idType, idNumber, firstName, lastName, postalCode, phoneNumber, null);
+        
+        return RedirectToAction("CheckIn");
+    }
+
+    //insert the renting for an in-person check in
+    [HttpPost]
+    public async Task<IActionResult> InPersonCheckIn(int hotelId, int roomNumber, string idType, string idNumber, 
+        string startDate, string endDate, int amount, string payementMethod)
+    {    
+        await InsertRenting(hotelId, roomNumber, idType, idNumber, startDate, endDate, amount, payementMethod);
         return RedirectToAction("CheckIn");
     }
 
@@ -291,10 +291,9 @@ public class HomeController : Controller
         return RedirectToAction("Search");
     }
 
-    //find a customers booking ata a specified hotel
+    //find a customers booking at a a specified hotel
     public async Task<IActionResult> GetBooking(int hotelId, string idType, string idNumber)
     {
-        Console.WriteLine(idType + " " + idNumber);
         var bookingQueryResult = await _db.QueryAsync<dynamic>(
             "SELECT * FROM BOOKING WHERE hotelid = @hotelId AND idtype = @idType AND idnumber = @idNumber;",
             new
@@ -319,9 +318,26 @@ public class HomeController : Controller
         return Json(new {BookingInfo});
     }
 
-    public IActionResult TransferBooking(int hotelId)
+    public async Task<IActionResult> TransferBooking(int hotelId, string idType, string idNumber, string paymentMethod, int amount)
     {
-        
+
+        var bookingQueryResult = await _db.QueryAsync<dynamic>(
+            "SELECT * FROM BOOKING WHERE hotelid = @hotelId AND idtype = @idType AND idnumber = @idNumber;",
+            new
+            {
+                hotelId,
+                idType,
+                idNumber
+            });
+
+        var foundBookings = bookingQueryResult.ToList();
+
+        if (foundBookings.Count < 1) {return View("CheckIn");}
+
+        var booking = foundBookings[0];
+
+        await InsertRenting(hotelId, booking.roomnumber, idType, idNumber, Convert.ToString(booking.startdate),  Convert.ToString(booking.enddate), amount, paymentMethod);
+
         return View("CheckIn");
     }
     
