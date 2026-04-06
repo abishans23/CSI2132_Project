@@ -203,8 +203,8 @@
             bookButton.onclick = function(){
                 overlay.style.display = "block";
                 overlay.querySelector(".booking-hotel-info").innerHTML = "Hotel Name: " + hotelName + "&nbsp; &nbsp; Capacity: " + capacity + "&nbsp; &nbsp; Room Number: " + roomNumber + "<br> price: " + price + "$ / day";
-                overlay.querySelector(".hotel-id-input-holder").setAttribute("value") = hotelId;
-                overlay.querySelector(".room-number-input-holder").setAttribute("value") = roomNumber;
+                overlay.querySelector(".hotel-id-input-holder").setAttribute("value", hotelId);
+                overlay.querySelector(".room-number-input-holder").setAttribute("value", roomNumber);
             }
 
         }
