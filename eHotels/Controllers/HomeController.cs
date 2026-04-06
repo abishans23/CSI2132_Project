@@ -5,6 +5,8 @@ using eHotels.Models;
 using Data;
 using Npgsql;
 using System.Net;
+using System.ComponentModel.Design;
+using System.Text.Json.Nodes;
 
 namespace eHotels.Controllers;
 
@@ -69,10 +71,14 @@ public class HomeController : Controller
         return Json(new {rows});
     }
 
-    // public async Task<IActionResult> DeleteRow()
-    // {
-        
-    // }
+    public IActionResult DeleteRow(string tableName, string primaryKeys)
+    {
+        Console.Write("RECIVED KEYS: ");
+        var keys = JsonArray.Parse(primaryKeys);
+        Console.WriteLine(keys["email"]);
+
+        return Json(new{});
+    }
     
     public IActionResult LogOut()
     {

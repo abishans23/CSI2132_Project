@@ -108,7 +108,7 @@
                         }
 
                         let rowHTML = 
-                        '<div class="item-holder" primary-keys=\'' + JSON.stringify(rowPrimaryKeys) +  '\'>' +
+                        '<div class="item-holder" table-name=\'' + schemaName + '\' primary-keys=\'' + JSON.stringify(rowPrimaryKeys) +  '\'>' +
                             '<div class="item-name">' + primaryKeyString + '</div>'+
                             '<button class="edit-item">Edit</button>' +
                             '<button class="delete-item">Delete</button>' +
@@ -121,10 +121,11 @@
                     let deleteButtons = formListHolder.getElementsByClassName("delete-item");
 
                     for (let d = 0; d < deleteButtons.length; d++){
-                        deleteButtons[d].onclick = function(){
+                        deleteButtons[d].onclick = async function(){
                             let itemHolder = deleteButtons[d].closest(".item-holder");
                             let objectPrimaryKeys = itemHolder.getAttribute("primary-keys");
-                            console.log(objectPrimaryKeys);
+                            
+                            let deleteResponse = await fetch("/Home/DeleteRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys));
                         }
                     }
                    
