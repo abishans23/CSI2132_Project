@@ -57,7 +57,7 @@ public class HomeController : Controller
     {
         var tableDataQueryResult = await _db.QueryAsync<dynamic>(
                 "SELECT * FROM " + tableName
-            );
+            ); 
         
         var rows = tableDataQueryResult.ToList();
 
@@ -68,7 +68,7 @@ public class HomeController : Controller
     {
         Console.Write("RECIVED KEYS: ");
         var keys = JsonArray.Parse(primaryKeys);
-        Console.WriteLine(keys["email"]);
+        
 
         return Json(new{success=true});
     }

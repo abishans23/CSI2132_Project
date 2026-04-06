@@ -115,28 +115,29 @@
                             '<div class="primary-keys" value="" style="display: none;"></div>'+
                         '</div>'
 
-                        formListHolder.innerHTML += rowHTML;
-                    }
+                        let tempDiv = document.createElement("div");
+                        tempDiv.innerHTML += rowHTML;
+                        let initItem = tempDiv.firstChild;
+                        formListHolder.appendChild(initItem);
 
-                    let deleteButtons = formListHolder.getElementsByClassName("delete-item");
+                        let deleteButton = initItem.querySelector(".delete-item");
 
-                    for (let d = 0; d < deleteButtons.length; d++){
-                        deleteButtons[d].onclick = async function(){
-                            let itemHolder = deleteButtons[d].closest(".item-holder");
-                            let objectPrimaryKeys = itemHolder.getAttribute("primary-keys");
+                        deleteButton.onclick = async function(){
+                            let objectPrimaryKeys = JSON.stringify(rowPrimaryKeys);
                             
                             let deleteResponse = await fetch("/Home/DeleteRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys));
 
                             deleteResponse.json().then(succ => {
                                 if (succ.success == true){
-                                    console.log("DELETED")
+                                    initItem.remove();
+                                    console.log("DELETED");
                                 } else {
                                     console.log("EROR DELETEING")
                                 }
                             })
                         }
-                    }
-                   
+
+                    } 
                 });
 
                 formTitle.innerHTML = "Edit " + name
