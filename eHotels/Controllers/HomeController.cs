@@ -53,11 +53,6 @@ public class HomeController : Controller
     public async Task<IActionResult> Search(string search, string area, int capacity, string startDate, string endDate, 
         string? view, int? minPrice, int? maxPrice, int? minRoomCount, int? maxRoomCount, int? stars)
     {
-
-        // var roomsQueryResult = await _db.QueryAsync<dynamic>(
-        //         "SELECT * From (Room NATURAL JOIN (Hotel NATURAL JOIN Address) NATURAL JOIN HotelChain)"
-        //     );
-
         //set up default values for search query if not inserted by the user, we use 'ANY' in place for any null strings where 
         // any row is valid. Similar for -1 for integer values and 0001-01-01 for dates
         search = search == null ? "ANY" : search;
@@ -141,14 +136,11 @@ public class HomeController : Controller
 
             roomAmenities[r.roomnumber] = roomAmenitiesString;
 
-            // Console.WriteLine(roomAmenities[r.roomnumber].Count);
-
         }
 
         ViewBag.availableRooms = availableRooms;
         ViewBag.roomAmenities = roomAmenities;
         
-
         return View();
     }
 
@@ -271,6 +263,12 @@ public class HomeController : Controller
 
         return RedirectToAction("CheckIn");
     }
+
+    [HttpPost]
+    // public async Task<IAsyncResult> CreateBooking()
+    // {
+    //     return View("Search");
+    // }
     
     public IActionResult CheckIn()
     {
