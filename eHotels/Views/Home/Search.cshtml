@@ -119,7 +119,7 @@
 
     <div class="results-holder">
         @foreach (var roomInfo in ViewBag.availableRooms){
-            <div class="search-result">
+            <div class="search-result" hotel-name=@(roomInfo.name) capacity=@(roomInfo.capacity)  hotel-id=@(roomInfo.hotelid) room-number=@(roomInfo.roomnumber)>
                 <img class="hotel-image" src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg" />
                 <div class="info-holder">
                     <div class="main-info">
