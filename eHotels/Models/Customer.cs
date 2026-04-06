@@ -22,6 +22,7 @@ class Customer{
         this.RegistrationDate = registrationDate;
         this.PhoneNumber = phoneNumber;
         this.PostalCode = postalCode;
+        this.Email = email;
     }
     
     
