@@ -26,7 +26,7 @@ public class HomeController : Controller
         
         await _db.OpenConnection();
 
-        //aggregation query
+        //aggregation query. Show the chains and their average stars across all hotels they own on front page
         string chainQuery = "SELECT ChainName, ROUND(AVG(Stars),2) as AvgStars FROM HotelChain NATURAL JOIN Hotel GROUP BY ChainID";
         var chainsQueryResult = await _db.QueryAsync<dynamic>(chainQuery);
         var chainsData = chainsQueryResult.ToList();
