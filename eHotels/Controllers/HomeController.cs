@@ -120,7 +120,6 @@ public class HomeController : Controller
 
         foreach(var r in availableRooms)
         {
-            // Console.WriteLine(r);
             var roomAmenityQueryResult = await _db.QueryAsync<string>(
                 "SELECT amenity From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId",
                 new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
