@@ -17,26 +17,30 @@
 <body>
 
     <div class="form-overlay" style="display: none;">
-        <div class="form-container">
-            <button class="close-button">X</button>
+        <form class="form-container">
+            <button type="button" class="close-button">X</button>
             <div class="form-title">Booking Information</div>
             <div class="line-break"></div>
             <div class="booking-hotel-info">Hotel Name, Room capacity, View</div>
 
-            <select class="id-select">
+            <input class="hotel-id-input-holder" name="hotelId" type="number" value=0 style="display: none;" />
+            <input class="room-number-input-holder" name="roomNumber" type="number" value=0 style="display: none;" />
+
+            <select name="idType" class="id-select">
                 <option selected>choose id Type</option>
                 <option>SSN</option>
                 <option>Drivers License</option>
                 <option>Passport</option>
             </select>
 
-            <input type="text" placeholder="ID Number"/>
-            <input type="text" placeholder="First Name"/>
-            <input type="text" placeholder="Last Name"/>
+            <input name="idNumber" type="text" placeholder="ID Number"/>
+            <input name="firstName" type="text" placeholder="First Name"/>
+            <input name="lastName" type="text" placeholder="Last Name"/>
 
             <div class="inline-inputs" style="grid-template-columns: 1fr 1fr;">
-                <input type="text" placeholder="street number"/>
+                <input name="streetNumber" type="text" placeholder="street number"/>
                 <input type="text" placeholder="street name"/>
+                <input type="text" placeholder="city"/>
                 <input type="text" placeholder="province"/>
                 <input type="text" placeholder="country"/>
                 <input type="text" placeholder="postal code"/>
@@ -48,8 +52,8 @@
             </div>
 
             <input type="text" placeholder="Phone number"/>
-            <button class="submit-button">Book!!</button>
-        </div>
+            <button type="submit" class="submit-button">Book!</button>
+        </form>
     </div>
 
     <div class="search-bar">
@@ -119,7 +123,7 @@
 
     <div class="results-holder">
         @foreach (var roomInfo in ViewBag.availableRooms){
-            <div class="search-result" hotel-name=@(roomInfo.name) capacity=@(roomInfo.capacity)  hotel-id=@(roomInfo.hotelid) room-number=@(roomInfo.roomnumber)>
+            <div class="search-result" hotel-name=@(roomInfo.name) capacity=@(roomInfo.capacity)  hotel-id=@(roomInfo.hotelid) room-number=@(roomInfo.roomnumber) price=@(roomInfo.price)>
                 <img class="hotel-image" src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg" />
                 <div class="info-holder">
                     <div class="main-info">
@@ -149,7 +153,7 @@
             </div>
         }
 
-        <div class="search-result">
+        @* <div class="search-result">
             <img class="hotel-image" src="https://t3.ftcdn.net/jpg/10/22/24/80/360_F_1022248039_7LDxHRi3Mlt9BK3wzLBUGZp9XAO1gt2s.jpg" />
             <div class="info-holder">
                 <div class="main-info">
@@ -178,18 +182,31 @@
                 </div>
 
             </div>
-        </div>
+        </div> *@
 
     </div>
 
+    @* set up ui functionality for search results and booking rooms *@
     <script>
-        let bookButtons = document.getElementsByClassName("book-button");
-        let overlay = document.querySelector(".form-overlay")
-        for (let i = 0; i < bookButtons.length; i++){
-            bookButtons[i].onclick = function(){
-                @* let hotelName *@
+        let searchResults = document.getElementsByClassName("search-result");
+        let overlay = document.querySelector(".form-overlay");
+
+        for (let i = 0; i < searchResults.length; i++){
+            let bookButton = searchResults[i].querySelector(".book-button");
+
+            let hotelName = searchResults[i].getAttribute("hotel-name");
+            let capacity = searchResults[i].getAttribute("capacity");
+            let hotelId = searchResults[i].getAttribute("hotel-id");
+            let roomNumber = searchResults[i].getAttribute("room-number");
+            let price = searchResults[i].getAttribute("price");
+
+            bookButton.onclick = function(){
                 overlay.style.display = "block";
+                overlay.querySelector(".booking-hotel-info").innerHTML = "Hotel Name: " + hotelName + "&nbsp; &nbsp; Capacity: " + capacity + "&nbsp; &nbsp; Room Number: " + roomNumber + "<br> price: " + price + "$ / day";
+                overlay.querySelector(".hotel-id-input-holder").setAttribute("value") = hotelId;
+                overlay.querySelector(".room-number-input-holder").setAttribute("value") = roomNumber;
             }
+
         }
 
         let closeButton = document.querySelector(".close-button");
