@@ -102,6 +102,30 @@ namespace Data
                 //   await this.ExecuteAsync(@"
                 //           DROP TABLE IF EXISTS Renting,  CASCADE;");
 
+            //     await this.ExecuteAsync(CreateString.createAddress);
+            //     await this.ExecuteAsync(CreateString.createAccount);
+            //     await this.ExecuteAsync(CreateString.createHotelChain);
+            //     await this.ExecuteAsync(CreateString.createHotel);
+            //     await this.ExecuteAsync(CreateString.createEmployee);
+            //     await this.ExecuteAsync(CreateString.createRoom);
+             //    await this.ExecuteAsync(CreateString.createBooking);
+           //      await this.ExecuteAsync(CreateString.createRenting);
+            //     await this.ExecuteAsync(CreateString.createCustomer);
+            //     await this.ExecuteAsync(CreateString.createHotelEmail);
+            //     await this.ExecuteAsync(CreateString.createHotelPhone);
+            //     await this.ExecuteAsync(CreateString.createHotelChainEmail);
+            //     await this.ExecuteAsync(CreateString.createHotelChainPhone);
+            //     await this.ExecuteAsync(CreateString.createHotelImage);
+            //     await this.ExecuteAsync(CreateString.createHotelAmenity);
+            //     await this.ExecuteAsync(CreateString.createReview);
+            //     await this.ExecuteAsync(CreateString.createRoomProblem);
+            //     await this.ExecuteAsync(CreateString.createRoomAmenity);
+            //     await this.ExecuteAsync(CreateString.createRoomBooking);
+            //     await this.ExecuteAsync(CreateString.createRentedRoom);
+            //     await this.ExecuteAsync(CreateString.createCustBooking);
+            //     await this.ExecuteAsync(CreateString.createRentingTenant);
+            //       await this.ExecuteAsync(CreateString.createArchivedBooking);
+             //      await this.ExecuteAsync(CreateString.createArchivedRenting);
                 //     await this.ExecuteAsync(CreateString.createAddress);
                 //     await this.ExecuteAsync(CreateString.createAccount);
                 //     await this.ExecuteAsync(CreateString.createHotelChain);
@@ -244,6 +268,15 @@ namespace Data
                 //         UPDATE Hotel SET Manager = @Manager WHERE HotelID = @HotelID;",
                 //         new { hotel.Manager, hotel.HotelID });
                 // }
+                // await this.ExecuteAsync(@"
+                // ALTER TABLE Booking
+                // ADD CONSTRAINT chk_date CHECK(StartDate <= EndDate)
+                // ");
+
+                // await this.ExecuteAsync(@"
+                // ALTER TABLE Renting
+                // ADD CONSTRAINT chk_date CHECK(StartDate <= EndDate)
+                // ");
 
                 return true;
             }, _logger);

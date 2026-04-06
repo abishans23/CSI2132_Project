@@ -22,6 +22,6 @@ class Booking
         this.RoomNumber = roomNumber;
         this.HotelID = hotelID;
         this.IDType = IDType;
-        this.IdNumber = IdNumber;
+        this.IdNumber = IDNumber;
     }
 }

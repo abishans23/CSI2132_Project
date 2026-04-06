@@ -13,10 +13,8 @@ namespace Data
         public string Description { get; set; }
         public string FileName { get; set; }
         public string ImageDesc { get; set; }
-        public string City{get;set;}
 
         //Amenity Array
-        public List<HotelAmenity> amenity=new List<HotelAmenity>();
         
         public Hotel() { }
 

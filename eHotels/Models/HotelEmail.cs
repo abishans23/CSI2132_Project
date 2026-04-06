@@ -11,7 +11,7 @@ public class HotelEmail
 
     public HotelEmail(){}
 
-    public HotelEmail(int HotelEmail,string Email)
+    public HotelEmail(int HotelID,string Email)
     {
         this.HotelID=HotelID;
         this.Email=Email;

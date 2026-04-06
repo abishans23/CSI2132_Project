@@ -170,7 +170,6 @@ namespace Data
                     Status VARCHAR(20) NOT NULL CHECK(Status IN ('Occupied', 'Cancelled', 'Finished')),
                     StartDate DATE NOT NULL,
                     EndDate DATE NOT NULL,
-                    InvoiceNumber INT,
                     PaymentMethod VARCHAR(20) NOT NULL,
                     Amount INT NOT NULL,
                     ProcessedDate DATE NOT NULL,
@@ -210,5 +209,24 @@ namespace Data
                     FOREIGN KEY (Email) REFERENCES Customer(Email),
                     FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
                     );";
+
+        public static readonly string createArchivedBooking = @"CREATE TABLE IF NOT EXISTS ArchivedBooking(
+	                ArchivedBookingID INT NOT NULL CHECK(ArchivedBookingID >=0) PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    HotelID INT CHECK(HotelID >=0),
+                    BookingDate DATE,
+                    Status VARCHAR(20) NOT NULL CHECK(Status IN ('Cancelled', 'Scheduled', 'Occupied')),
+                    StartDate DATE,
+                    EndDate DATE,
+                    FOREIGN KEY(HotelID) REFERENCES Hotel
+                );";
+
+        public static readonly string createArchivedRenting = @"CREATE TABLE IF NOT EXISTS ArchivedRenting(
+                    ArchivedRentingID INT  CHECK(ArchivedRentingID >=0) PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    Status VARCHAR(20) NOT NULL CHECK(Status IN ('Occupied', 'Cancelled', 'Finished')),
+                    HotelID INT CHECK(HotelID >=0),
+                    StartDate DATE NOT NULL,
+                    EndDate DATE NOT NULL,
+                    FOREIGN KEY(HotelID) REFERENCES Hotel
+                );";
     }
 }
