@@ -68,6 +68,12 @@ public class HomeController : Controller
 
         return Json(new {rows});
     }
+
+    // public async Task<IActionResult> DeleteRow()
+    // {
+        
+    // }
+    
     public IActionResult LogOut()
     {
         HttpContext.Session.SetString("Email", "");

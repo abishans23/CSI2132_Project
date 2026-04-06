@@ -98,13 +98,17 @@
 
                         let keys = primaryKeys[schemaName];
                         let primaryKeyString = keys[0] + ": " + data.rows[i][keys[0]];
+                        let rowPrimaryKeys = {};
+
+                        rowPrimaryKeys[keys[0]] = data.rows[i][keys[0]]
 
                         for (let k = 1; k < keys.length; k++){
-                            primaryKeyString += ", " + keys[k] + ": " + data.rows[i][keys[k]] ;
+                            primaryKeyString += ", " + keys[k] + ": " + data.rows[i][keys[k]];
+                            rowPrimaryKeys[keys[k]] = data.rows[i][keys[k]];
                         }
 
                         let rowHTML = 
-                        '<div class="item-holder">' + 
+                        '<div class="item-holder" primary-keys=\'' + JSON.stringify(rowPrimaryKeys) +  '\'>' +
                             '<div class="item-name">' + primaryKeyString + '</div>'+
                             '<button class="edit-item">Edit</button>' +
                             '<button class="delete-item">Delete</button>' +
@@ -118,13 +122,13 @@
 
                     for (let d = 0; d < deleteButtons.length; d++){
                         deleteButtons[d].onclick = function(){
-                            console.log("DELETE")
+                            let itemHolder = deleteButtons[d].closest(".item-holder");
+                            let objectPrimaryKeys = itemHolder.getAttribute("primary-keys");
+                            console.log(objectPrimaryKeys);
                         }
                     }
                    
                 });
-
-
 
                 formTitle.innerHTML = "Edit " + name
                 formOverlay.style.display = "block"
