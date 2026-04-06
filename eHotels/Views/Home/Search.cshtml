@@ -84,9 +84,10 @@
             <div class="select-title">View:</div>
             <select name="view" form="search-form" class="option-select">
                 <option value="ANY" selected="@(Context.Request.Query["view"] == "ANY" ? "selected" : null)">Any</option>
-                <option>Sea</option>
-                <option>Land</option>
-                <option>Grass</option>
+                <option selected="@(Context.Request.Query["view"] == "Sea" ? "selected" : null)">Sea</option>
+                <option selected="@(Context.Request.Query["view"] == "Beach Front" ? "selected" : null)">Beach Front</option>
+                <option selected="@(Context.Request.Query["view"] == "Garden" ? "selected" : null)">Garden</option>
+                <option selected="@(Context.Request.Query["view"] == "City" ? "selected" : null)">City</option>
             </select>
         </div>
 
