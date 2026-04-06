@@ -200,11 +200,11 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    public async Task InsertAddress(int streetNumber, string streetName, string province, string country, string postalCode)
+    public async Task InsertAddress(int streetNumber, string streetName, string city, string province, string country, string postalCode)
     {
         await _db.ExecuteAsync(
-            @"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)", 
-            new{streetNumber, streetName, postalCode, province, country}
+            @"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country, @city)", 
+            new{streetNumber, streetName, postalCode, province, country, city}
             );
     }
 
@@ -227,9 +227,9 @@ public class HomeController : Controller
 
     [HttpPost]
     public async Task<IActionResult> RegisterCustomer(string idType, string idNumber, string firstName, string lastName, int streetNumber,
-        string streetName, string province, string country, string postalCode, string phoneNumber)
+        string streetName, string city, string province, string country, string postalCode, string phoneNumber)
     {
-        await InsertAddress(streetNumber, streetName, province, country, postalCode);
+        await InsertAddress(streetNumber, streetName, city, province, country, postalCode);
         await InsertCustomer(idType, idNumber, firstName, lastName, postalCode, phoneNumber, null);
         
         return RedirectToAction("CheckIn");
@@ -271,7 +271,7 @@ public class HomeController : Controller
         string lastName, int streetNumber, string streetName, string city, string province, string country, string postalCode,
         string startDate, string endDate, string phoneNumber)
     {
-        await InsertAddress(streetNumber, streetName, province, country, postalCode);
+        await InsertAddress(streetNumber, streetName, city, province, country, postalCode);
         await InsertCustomer(idType, idNumber, firstName, lastName, postalCode, phoneNumber, HttpContext.Session.GetString("Email"));
 
         var bookingInsertResult = await _db.ExecuteAsync(
@@ -279,7 +279,7 @@ public class HomeController : Controller
                 VALUES (@bookingDate, @status, @startDate, @endDate, @roomNumber, @hotelId, @idType, @idNumber)",
             new{
                 bookingDate=DateTime.Now,
-                status="booked",
+                status="Active",
                 startDate=Convert.ToDateTime(startDate),
                 endDate=Convert.ToDateTime(endDate),
                 roomNumber,
@@ -289,7 +289,7 @@ public class HomeController : Controller
             }
         );
 
-        return View("Search");
+        return RedirectToAction("Search");
     }
 
     // public async GetBooking(int hotelId, string idType, string idNumber)
