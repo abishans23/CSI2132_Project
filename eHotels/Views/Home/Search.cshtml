@@ -54,7 +54,7 @@
 
     <div class="search-bar">
         <form id="search-form" action="/Home/Search" method="get">
-            <input class="hotel-search" type="text" name="search" placeholder="Search Hotels..." value="@Context.Request.Query["search"]"/>
+            <input class="hotel-search" type="text" name="search" placeholder="Search Hotel Chain..." value="@Context.Request.Query["search"]"/>
             <input class="area" type="text" name="area" placeholder="Area" value="@Context.Request.Query["area"]"/>
             <input class="capacity" type="number" name="capacity" placeholder="Capacity" value="@Context.Request.Query["capacity"]"/>
             <input class="start-date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="startDate" placeholder="Start Date" value="@Context.Request.Query["startDate"]"/>
@@ -71,19 +71,19 @@
         <div class="select-holder">
             <div class="select-title">Rating:</div>
             <select name="stars" form="search-form" class="option-select">
-                <option value=0 selected>Any</option>
-                <option value=1 >1⭐</option>
-                <option value=2 >2⭐</option>
-                <option value=3 >3⭐</option>
-                <option value=4 >4⭐</option>
-                <option value=5 >5⭐</option>
+                <option value=0 selected="@(Context.Request.Query["stars"] == "0" ? "selected" : null)">Any</option>
+                <option value=1 selected="@(Context.Request.Query["stars"] == "1" ? "selected" : null)">1⭐</option>
+                <option value=2 selected="@(Context.Request.Query["stars"] == "2" ? "selected" : null)">2⭐</option>
+                <option value=3 selected="@(Context.Request.Query["stars"] == "3" ? "selected" : null)">3⭐</option>
+                <option value=4 selected="@(Context.Request.Query["stars"] == "4" ? "selected" : null)">4⭐</option>
+                <option value=5 selected="@(Context.Request.Query["stars"] == "5" ? "selected" : null)">5⭐</option>
             </select>
         </div>
 
         <div class="select-holder">
             <div class="select-title">View:</div>
             <select name="view" form="search-form" class="option-select">
-                <option value="ANY" selected>Any</option>
+                <option value="ANY" selected="@(Context.Request.Query["view"] == "ANY" ? "selected" : null)">Any</option>
                 <option>Sea</option>
                 <option>Land</option>
                 <option>Grass</option>
@@ -92,16 +92,16 @@
 
         <div class="select-holder">
             <div class="select-title">Price Range:</div>
-            <input name="minPrice" form="search-form" class="price-input" min="1" max="999" type="number" placeholder="min"/>
+            <input name="minPrice" form="search-form" value="@Context.Request.Query["minPrice"]" class="price-input" min="1" max="999" type="number" placeholder="min"/>
             -
-            <input name="maxPrice" form="search-form" class="price-input" min="1" max="999" type="number" placeholder="max"/>
+            <input name="maxPrice" form="search-form" value="@Context.Request.Query["maxPrice"]" class="price-input" min="1" max="999" type="number" placeholder="max"/>
         </div>
 
         <div class="select-holder">
             <div class="select-title">Total Rooms:</div>
-            <input name="minRoomCount" form="search-form" class="rooms-input" min="1" max="10000" type="number" placeholder="min"/>
+            <input name="minRoomCount" form="search-form" value="@Context.Request.Query["minRoomCount"]" class="rooms-input" min="1" max="10000" type="number" placeholder="min"/>
             -
-            <input name="maxRoomCount" form="search-form" class="rooms-input" min="1" max="10000" type="number" placeholder="max"/>
+            <input name="maxRoomCount" form="search-form" value="@Context.Request.Query["maxRoomCount"]" class="rooms-input" min="1" max="10000" type="number" placeholder="max"/>
         </div>
 
         <div class="select-holder">
