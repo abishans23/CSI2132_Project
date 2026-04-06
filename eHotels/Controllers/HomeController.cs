@@ -50,28 +50,32 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    public async Task<IActionResult> Search(string search, string area, int capacity, string startDate, string endDate)
+    public async Task<IActionResult> Search(string search, string area, int capacity, string startDate, string endDate, 
+        string? view, int? minPrice, int? maxPrice, int? minRoomCount, int? maxRoomCount, int? stars)
     {
 
         // var roomsQueryResult = await _db.QueryAsync<dynamic>(
         //         "SELECT * From (Room NATURAL JOIN (Hotel NATURAL JOIN Address) NATURAL JOIN HotelChain)"
         //     );
 
+        //set up default values for search query if not inserted by the user, we use 'ANY' in place for any null strings where 
+        // any row is valid and -1 for integer values
         search = search == null ? "ANY" : search;
         area = area == null ? "ANY" : area;
         capacity = capacity == 0 ?  -1 : capacity;
         startDate = startDate == null ? "0001-01-01" : startDate;
         endDate = endDate == null ? "9999-12-31" : endDate;
 
+        view = view == null ? "ANY" : view;
+        minPrice = minPrice == null ? 0 : minPrice;
+        maxPrice = maxPrice == null ? 99999 : maxPrice;
+        minRoomCount = minRoomCount == null ? 0 : minRoomCount;
+        maxRoomCount = maxRoomCount == null ? 999999 : maxRoomCount;
+        stars = stars == null ? -1 : stars;
+
         Console.WriteLine(search + area + capacity + startDate + endDate);
 
-        var view = "ANY";
-        var minPrice = 0;
-        var maxPrice = 99999;
-        var minRoomCount = 0;
-        var maxRoomCount = 999999;
-        var stars = -1;
-
+        //run search query
         var roomsQueryResult = await _db.QueryAsync<dynamic>(
                 "SELECT * FROM Room r " +
                 "JOIN Hotel h ON r.hotelid = h.hotelid " + 
@@ -85,21 +89,21 @@ public class HomeController : Controller
                 "(r.capacity = @capacity OR @capacity = -1) AND " +
                 "(@minPrice <= r.price AND r.price <= @maxPrice) AND " +
                 "(@minRoomCount <= rn.room_count AND rn.room_count <= @maxRoomCount) AND " +
-                "(h.stars = @stars OR @stars = -1)  ",
+                "(h.stars = @stars OR @stars = -1) AND " +
 
-                // "NOT EXISTS (" +
-                //     "SELECT * FROM Booking b " +
-                //     "WHERE b.roomnumber = r.roomnumber " + 
-                //     "AND @startDate <= b.EndDate " +
-                //     "AND @endDate >= b.StartDate " +
-                // ") " +
-
-                // "AND NOT EXISTS ( " + 
-                //     "SELECT * FROM Renting rt " +
-                //     "WHERE rt.roomnumber = r.roomnumber " + 
-                //     "AND @startDate <= rt.EndDate " +
-                //     "AND @endDate >= rt.StartDate " +
-                // ");",
+                "NOT EXISTS (" +
+                    "SELECT * FROM Booking b " +
+                    "WHERE b.roomnumber = r.roomnumber " + 
+                    "AND @startDate <= b.EndDate " +
+                    "AND @endDate >= b.StartDate " +
+                ") " +
+                
+                "AND NOT EXISTS ( " + 
+                    "SELECT * FROM Renting rt " +
+                    "WHERE rt.roomnumber = r.roomnumber " + 
+                    "AND @startDate <= rt.EndDate " +
+                    "AND @endDate >= rt.StartDate " +
+                ");",
                 new{
                     chainName=search, 
                     city=area,
