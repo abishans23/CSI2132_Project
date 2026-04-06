@@ -87,10 +87,11 @@
         for (let i = 0; i < dbItems.length; i++){
 
             let name = dbItems[i].querySelector(".item-title").innerHTML;
+            let schemaName =  name.replaceAll(' ', '');
             dbItems[i].querySelector(".edit-button").onclick = async function(){
                 formListHolder.innerHTML = ""
                 
-                let response = await fetch("/Home/GetTableRows?tableName=" + name.replaceAll(' ', ''));
+                let response = await fetch("/Home/GetTableRows?tableName=" + schemaName);
 
                 response.json().then(data => {
 
