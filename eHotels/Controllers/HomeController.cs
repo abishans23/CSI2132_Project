@@ -50,15 +50,28 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    public async Task<IActionResult> Search(string search, string area, string capacity, string startDate, string endDate)
+    public async Task<IActionResult> Search(string search, string area, int capacity, string startDate, string endDate, 
+        string? view, int? minPrice, int? maxPrice, int? minRoomCount, int? maxRoomCount, int? stars)
     {
+        //set up default values for search query if not inserted by the user, we use 'ANY' in place for any null strings where 
+        // any row is valid. Similar for -1 for integer values and 0001-01-01 for dates
+        search = search == null ? "ANY" : search;
+        area = area == null ? "ANY" : area;
+        capacity = capacity == 0 ?  -1 : capacity;
+        startDate = startDate == null ? "0001-01-01" : startDate;
+        endDate = endDate == null ? "0001-01-01" : endDate;
+
+        view = view == null ? "ANY" : view;
+        minPrice = minPrice == null ? 0 : minPrice;
+        maxPrice = maxPrice == null ? 99999 : maxPrice;
+        minRoomCount = minRoomCount == null ? 0 : minRoomCount;
+        maxRoomCount = maxRoomCount == null ? 999999 : maxRoomCount;
+        stars = (stars == null || stars == 0) ? -1 : stars;
+
         Console.WriteLine(search + area + capacity + startDate + endDate);
 
+        //run search query
         var roomsQueryResult = await _db.QueryAsync<dynamic>(
-                "SELECT * From (Room NATURAL JOIN (Hotel NATURAL JOIN Address) NATURAL JOIN HotelChain)"
-            );
-
-        var realRoomsQueryResult = await _db.QueryAsync<dynamic>(
                 "SELECT * FROM Room r " +
                 "JOIN Hotel h ON r.hotelid = h.hotelid " + 
                 "JOIN HotelChain hc ON h.chainid = hc.chainid " +
@@ -68,24 +81,38 @@ public class HomeController : Controller
                 "WHERE (hc.chainname = @chainName OR @chainName = 'ANY') AND " +
                 "(a.city = @city OR @city = 'ANY') AND " +
                 "(r.view = @view OR @view = 'ANY') AND " +
+                "(r.capacity = @capacity OR @capacity = -1) AND " +
                 "(@minPrice <= r.price AND r.price <= @maxPrice) AND " +
                 "(@minRoomCount <= rn.room_count AND rn.room_count <= @maxRoomCount) AND " +
-                "(h.stars = @stars OR @stars = -1) AND " + 
+                "(h.stars = @stars OR @stars = -1) AND " +
 
-                "NOT EXISTS (" +
+                "(NOT EXISTS (" +
                     "SELECT * FROM Booking b " +
                     "WHERE b.roomnumber = r.roomnumber " + 
-                    "AND DATE @startDate <= b.EndDate " +
-                    "AND DATE @endDate >= b.StartDate " +
-                ") " +
-
-                "AND NOT EXISTS ( " + 
+                    "AND @startDate <= b.EndDate " +
+                    "AND @endDate >= b.StartDate " +
+                ") OR @startDate = '0001-01-01') " +
+                
+                "AND (NOT EXISTS ( " + 
                     "SELECT * FROM Renting rt " +
                     "WHERE rt.roomnumber = r.roomnumber " + 
-                    "AND DATE @startDate <= rt.EndDate " +
-                    "AND DATE '2029-12-31' >= rt.StartDate " +
-                ");",
-                new{}
+                    "AND @startDate <= rt.EndDate " +
+                    "AND @endDate >= rt.StartDate " +
+                ") OR @endDate = '0001-01-01');",
+
+                new{
+                    chainName=search, 
+                    city=area,
+                    view=view,
+                    capacity=capacity,
+                    minPrice=minPrice,
+                    maxPrice=maxPrice,
+                    minRoomCount=minRoomCount,
+                    maxRoomCount=maxRoomCount,
+                    stars=stars,
+                    startDate=Convert.ToDateTime(startDate),
+                    endDate=Convert.ToDateTime(endDate)
+                }
             );
 
         var availableRooms = roomsQueryResult.ToList();
@@ -93,6 +120,7 @@ public class HomeController : Controller
 
         foreach(var r in availableRooms)
         {
+            // Console.WriteLine(r);
             var roomAmenityQueryResult = await _db.QueryAsync<string>(
                 "SELECT amenity From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId",
                 new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
@@ -108,14 +136,11 @@ public class HomeController : Controller
 
             roomAmenities[r.roomnumber] = roomAmenitiesString;
 
-            // Console.WriteLine(roomAmenities[r.roomnumber].Count);
-
         }
 
         ViewBag.availableRooms = availableRooms;
         ViewBag.roomAmenities = roomAmenities;
         
-
         return View();
     }
 
@@ -175,7 +200,7 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    public async Task InsertAddress(int streetNumber, string streetName, string province, string postalCode, string country)
+    public async Task InsertAddress(int streetNumber, string streetName, string province, string country, string postalCode)
     {
         await _db.ExecuteAsync(
             @"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)", 
@@ -183,14 +208,10 @@ public class HomeController : Controller
             );
     }
 
-    [HttpPost]
-    public async Task<IActionResult> RegisterCustomer(string idType, string idNumber, string firstName, string lastName, int streetNumber,
-        string streetName, string province, string country, string postalCode, string phoneNumber)
+    public async Task InsertCustomer(string idType, string idNumber, string firstName, string lastName, string postalCode, string phoneNumber, string? email)
     {
-        await InsertAddress(streetNumber, streetName, province, postalCode, country);
-        
         var customerInsertResult = await _db.ExecuteAsync(
-            @"INSERT INTO Customer VALUES (@idType, @idNumber, @firstName, @lastName, @registrationDate, @phoneNumber, @postalCode)",
+            @"INSERT INTO Customer VALUES (@idType, @idNumber, @firstName, @lastName, @registrationDate, @phoneNumber, @postalCode, @email)",
             new{
                 idType, 
                 idNumber, 
@@ -198,18 +219,23 @@ public class HomeController : Controller
                 lastName, 
                 registrationDate=DateTime.Now, 
                 phoneNumber, 
-                postalCode
+                postalCode,
+                email= email==null? "NULL" : email
                 }
             );
+    }
 
-        if (customerInsertResult == 0)
-        {
-            Console.WriteLine("Customer Already exits!");
-        }
+    [HttpPost]
+    public async Task<IActionResult> RegisterCustomer(string idType, string idNumber, string firstName, string lastName, int streetNumber,
+        string streetName, string province, string country, string postalCode, string phoneNumber)
+    {
+        await InsertAddress(streetNumber, streetName, province, country, postalCode);
+        await InsertCustomer(idType, idNumber, firstName, lastName, postalCode, phoneNumber, null);
         
         return RedirectToAction("CheckIn");
     }
 
+    //insert the renting for an in-person check in
     [HttpPost]
     public async Task<IActionResult> InPersonCheckIn(int hotelId, int roomNumber, string idType, string idNumber, 
         string startDate, string endDate, int amount, string payementMethod)
@@ -238,6 +264,38 @@ public class HomeController : Controller
 
         return RedirectToAction("CheckIn");
     }
+
+    //insert booking for the customer in the DB. Also insert the customer into the DB.
+    [HttpPost]
+    public async Task<IActionResult> CreateBooking(int hotelId, int roomNumber, string idType, string idNumber, string firstName, 
+        string lastName, int streetNumber, string streetName, string city, string province, string country, string postalCode,
+        string startDate, string endDate, string phoneNumber)
+    {
+        await InsertAddress(streetNumber, streetName, province, country, postalCode);
+        await InsertCustomer(idType, idNumber, firstName, lastName, postalCode, phoneNumber, HttpContext.Session.GetString("Email"));
+
+        var bookingInsertResult = await _db.ExecuteAsync(
+            @"INSERT INTO Booking (BookingDate, Status, StartDate, EndDate, RoomNumber, HotelId, IdType, IdNumber) 
+                VALUES (@bookingDate, @status, @startDate, @endDate, @roomNumber, @hotelId, @idType, @idNumber)",
+            new{
+                bookingDate=DateTime.Now,
+                status="booked",
+                startDate=Convert.ToDateTime(startDate),
+                endDate=Convert.ToDateTime(endDate),
+                roomNumber,
+                hotelId,
+                idType,
+                idNumber
+            }
+        );
+
+        return View("Search");
+    }
+
+    // public async GetBooking(int hotelId, string idType, string idNumber)
+    // {
+    //     var bookingQueryResult = await _db.QueryAsync<Booking>("");
+    // }
     
     public IActionResult CheckIn()
     {

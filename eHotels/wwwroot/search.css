@@ -1,6 +1,7 @@
 .booking-hotel-info{
     font-family: serif;
     font-style: italic;
+    text-align: center;
 }
 
 .filters-holder{
@@ -222,4 +223,12 @@
 .book-button:active{
     background-color: rgb(186, 170, 211);
     transform: scale(0.97);
+}
+
+.room-capacity{
+    font-weight: bold;
+}
+
+.room-amenities{
+    font-weight: bold;
 }
