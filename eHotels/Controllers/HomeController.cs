@@ -42,7 +42,31 @@ public class HomeController : Controller
 
     public IActionResult Manage()
     {
+        string[] allTables = new string[] {"Account", "Address", "Archived Booking", "Archived Renting", "Booking", "Customer",
+            "Customer", "Employee", "Hotel", "Hotel Chain Email", "Hotel Chain Phone", "Hotel Email", "Hotel Phone",
+            "Renting", "Review", "Room", "Room Amenity", "Room Problem"};
+        
+        ViewBag.TableNames = allTables;
+
         return View();
+    }
+
+    public async Task<IActionResult> GetTableRows(string tableName)
+    {
+        var tableDataQueryResult = await _db.QueryAsync<dynamic>(
+                "SELECT * FROM " + tableName
+            );
+        
+        var rows = tableDataQueryResult.ToList();
+
+        // foreach (var r in rows)
+        // {
+        //     Console.WriteLine(r);
+        // }
+
+        // ViewBag.tableRows = rows;
+
+        return Json(new {rows});
     }
     public IActionResult LogOut()
     {
@@ -71,7 +95,7 @@ public class HomeController : Controller
 
         Console.WriteLine(search + area + capacity + startDate + endDate);
 
-        //run search query
+        //run search query (nested query)
         var roomsQueryResult = await _db.QueryAsync<dynamic>(
                 "SELECT * FROM Room r " +
                 "JOIN Hotel h ON r.hotelid = h.hotelid " + 
