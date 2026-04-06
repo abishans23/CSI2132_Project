@@ -59,12 +59,13 @@ public class HomeController : Controller
         //     );
 
         //set up default values for search query if not inserted by the user, we use 'ANY' in place for any null strings where 
-        // any row is valid and -1 for integer values
+        // any row is valid. Similar for -1 for integer values and 0001-01-01 for dates
+        
         search = search == null ? "ANY" : search;
         area = area == null ? "ANY" : area;
         capacity = capacity == 0 ?  -1 : capacity;
         startDate = startDate == null ? "0001-01-01" : startDate;
-        endDate = endDate == null ? "9999-12-31" : endDate;
+        endDate = endDate == null ? "0001-01-01" : endDate;
 
         view = view == null ? "ANY" : view;
         minPrice = minPrice == null ? 0 : minPrice;
@@ -91,29 +92,30 @@ public class HomeController : Controller
                 "(@minRoomCount <= rn.room_count AND rn.room_count <= @maxRoomCount) AND " +
                 "(h.stars = @stars OR @stars = -1) AND " +
 
-                "NOT EXISTS (" +
+                "(NOT EXISTS (" +
                     "SELECT * FROM Booking b " +
                     "WHERE b.roomnumber = r.roomnumber " + 
                     "AND @startDate <= b.EndDate " +
                     "AND @endDate >= b.StartDate " +
-                ") " +
+                ") OR @startDate = '0001-01-01') " +
                 
-                "AND NOT EXISTS ( " + 
+                "AND (NOT EXISTS ( " + 
                     "SELECT * FROM Renting rt " +
                     "WHERE rt.roomnumber = r.roomnumber " + 
                     "AND @startDate <= rt.EndDate " +
                     "AND @endDate >= rt.StartDate " +
-                ");",
+                ") OR @endDate = '0001-01-01');",
+
                 new{
                     chainName=search, 
                     city=area,
-                    view,
-                    capacity,
-                    minPrice,
-                    maxPrice,
-                    minRoomCount,
-                    maxRoomCount,
-                    stars,
+                    view=view,
+                    capacity=capacity,
+                    minPrice=minPrice,
+                    maxPrice=maxPrice,
+                    minRoomCount=minRoomCount,
+                    maxRoomCount=maxRoomCount,
+                    stars=stars,
                     startDate=Convert.ToDateTime(startDate),
                     endDate=Convert.ToDateTime(endDate)
                 }
