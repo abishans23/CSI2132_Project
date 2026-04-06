@@ -170,7 +170,6 @@ namespace Data
                     Status VARCHAR(20) NOT NULL CHECK(Status IN ('Occupied', 'Cancelled', 'Finished')),
                     StartDate DATE NOT NULL,
                     EndDate DATE NOT NULL,
-                    InvoiceNumber INT,
                     PaymentMethod VARCHAR(20) NOT NULL,
                     Amount INT NOT NULL,
                     ProcessedDate DATE NOT NULL,
