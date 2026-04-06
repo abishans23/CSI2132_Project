@@ -61,13 +61,6 @@ public class HomeController : Controller
         
         var rows = tableDataQueryResult.ToList();
 
-        // foreach (var r in rows)
-        // {
-        //     Console.WriteLine(r);
-        // }
-
-        // ViewBag.tableRows = rows;
-
         return Json(new {rows});
     }
 
@@ -77,7 +70,7 @@ public class HomeController : Controller
         var keys = JsonArray.Parse(primaryKeys);
         Console.WriteLine(keys["email"]);
 
-        return Json(new{});
+        return Json(new{success=true});
     }
     
     public IActionResult LogOut()

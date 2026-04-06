@@ -126,6 +126,14 @@
                             let objectPrimaryKeys = itemHolder.getAttribute("primary-keys");
                             
                             let deleteResponse = await fetch("/Home/DeleteRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys));
+
+                            deleteResponse.json().then(succ => {
+                                if (succ.success == true){
+                                    console.log("DELETED")
+                                } else {
+                                    console.log("EROR DELETEING")
+                                }
+                            })
                         }
                     }
                    
