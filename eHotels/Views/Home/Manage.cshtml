@@ -52,8 +52,25 @@
     </div>
 
     <script>
-        let primaryKeys = {
+        const primaryKeys = {
             Hotel: ["hotelid"],
+            Account:["email"],
+            Address:["postalcode"],
+            Archivedbooking:["archivedbookingid"],
+            Archivedrenting:["archivedrentingid"], 
+            Booking:["bookingid"], 
+            Customer:["idtype","idnumber"], 
+            Employee:["ssn"], 
+            Hotelchain:["chainid"], 
+            Hotelchainemail:["chainid","email"], 
+            Hotelchainphone:["chainid","phonenumber"], 
+            Hotelmail:["hotelid","email"], 
+            Hotelphone:["hotelid","phonenumber"], 
+            Renting:["rentingid"], 
+            Room:["roomnumber","hotelid"], 
+            Roomamenity:["roomnumber","hotelid","amenity"], 
+            Roomproblem:["roomnumber","hotelid","problem"]
+
             
         };
 
