@@ -72,12 +72,12 @@
 
         @* form to tranfer a booking to a renting, actual tranferring is done by the database *@
         <div class="form-overlay" id="transfer-form" style="display: none;">
-            <form class="form-container">
+            <form asp-action="TransferBooking" class="form-container">
                 <button type="button" class="close-button">X</button>
                 <div class="form-title">Transfer Booking</div>
                 <div class="line-break"></div>
                 
-                <input type="text" id="booking-hotelid" placeholder="HotelID" />
+                <input type="number" name="hotelId" id="booking-hotelid" placeholder="HotelID" />
                 <select name="idType" id="booking-id-type" class="id-select">
                     <option selected>Choose Customer Id Type</option>
                     <option>SSN</option>
@@ -155,14 +155,19 @@
         let findBookingButton = document.getElementById("find-booking");
         let foundBookingInfo = document.getElementById("found-booking-info");
 
+        //find the booking in the transfer booking form
         findBookingButton.onclick = async function(){
-            let bookingHotelId = document.getElementById("booking-hotelid").getAttribute("value");
-            let bookingIdType = document.getElementById("booking-id-type").getAttribute("value");
-            let bookingIdNumber = document.getElementById("booking-id-number").getAttribute("value");
+            let bookingHotelId = document.getElementById("booking-hotelid").value;
+            let bookingIdType = document.getElementById("booking-id-type").value;
+            let bookingIdNumber = document.getElementById("booking-id-number").value;
             
-            let response = await fetch("/Home/GetBooking?hotelId=${bookingHotelId}&idType=${bookingIdType}&idNumber=${bookingIdNumber}");
+            let response = await fetch("/Home/GetBooking?hotelId=" + bookingHotelId + "&idType=" + bookingIdType + 
+                "&idNumber=" + bookingIdNumber);
             
-            console.log(response.json());
+            response.json().then(data => {
+                foundBookingInfo.innerHTML = data.bookingInfo;
+            })
+
         }
 
         for (let i = 0; i < buttons.length; i++) {

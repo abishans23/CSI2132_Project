@@ -278,7 +278,7 @@ public class HomeController : Controller
                 VALUES (@bookingDate, @status, @startDate, @endDate, @roomNumber, @hotelId, @idType, @idNumber)",
             new{
                 bookingDate=DateTime.Now,
-                status="Active",
+                status="Scheduled",
                 startDate=Convert.ToDateTime(startDate),
                 endDate=Convert.ToDateTime(endDate),
                 roomNumber,
@@ -291,9 +291,11 @@ public class HomeController : Controller
         return RedirectToAction("Search");
     }
 
+    //find a customers booking ata a specified hotel
     public async Task<IActionResult> GetBooking(int hotelId, string idType, string idNumber)
     {
-        var bookingQueryResult = await _db.QueryAsync<Booking>(
+        Console.WriteLine(idType + " " + idNumber);
+        var bookingQueryResult = await _db.QueryAsync<dynamic>(
             "SELECT * FROM BOOKING WHERE hotelid = @hotelId AND idtype = @idType AND idnumber = @idNumber;",
             new
             {
@@ -303,10 +305,24 @@ public class HomeController : Controller
             });
 
         var foundBookings = bookingQueryResult.ToList();
-        var BookingInfo = "infooooo";
-        ViewBag.BookingInfo = foundBookings.Count > 0 ? BookingInfo : "No Booking Exists";
+        var BookingInfo = "";
+
+        if (foundBookings.Count > 0)
+        {
+            var booking = foundBookings[0];
+            BookingInfo = "Room number: " + booking.roomnumber + ", Start Date: " +  booking.startdate + ", End Date: " + booking.enddate;
+        } else
+        {
+            BookingInfo = "No booking exists..";
+        }
 
         return Json(new {BookingInfo});
+    }
+
+    public IActionResult TransferBooking(int hotelId)
+    {
+        
+        return View("CheckIn");
     }
     
     public IActionResult CheckIn()
