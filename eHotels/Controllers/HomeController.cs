@@ -60,7 +60,6 @@ public class HomeController : Controller
 
         //set up default values for search query if not inserted by the user, we use 'ANY' in place for any null strings where 
         // any row is valid. Similar for -1 for integer values and 0001-01-01 for dates
-        
         search = search == null ? "ANY" : search;
         area = area == null ? "ANY" : area;
         capacity = capacity == 0 ?  -1 : capacity;
@@ -72,7 +71,7 @@ public class HomeController : Controller
         maxPrice = maxPrice == null ? 99999 : maxPrice;
         minRoomCount = minRoomCount == null ? 0 : minRoomCount;
         maxRoomCount = maxRoomCount == null ? 999999 : maxRoomCount;
-        stars = stars == null ? -1 : stars;
+        stars = (stars == null || stars == 0) ? -1 : stars;
 
         Console.WriteLine(search + area + capacity + startDate + endDate);
 

@@ -53,7 +53,7 @@
     </div>
 
     <div class="search-bar">
-        <form action="/Home/Search" method="get">
+        <form id="search-form" action="/Home/Search" method="get">
             <input class="hotel-search" type="text" name="search" placeholder="Search Hotels..." value="@Context.Request.Query["search"]"/>
             <input class="area" type="text" name="area" placeholder="Area" value="@Context.Request.Query["area"]"/>
             <input class="capacity" type="number" name="capacity" placeholder="Capacity" value="@Context.Request.Query["capacity"]"/>
@@ -70,20 +70,20 @@
 
         <div class="select-holder">
             <div class="select-title">Rating:</div>
-            <select class="option-select">
-                <option selected>Any</option>
-                <option>1⭐</option>
-                <option>2⭐</option>
-                <option>3⭐</option>
-                <option>4⭐</option>
-                <option>5⭐</option>
+            <select name="stars" form="search-form" class="option-select">
+                <option value=0 selected>Any</option>
+                <option value=1 >1⭐</option>
+                <option value=2 >2⭐</option>
+                <option value=3 >3⭐</option>
+                <option value=4 >4⭐</option>
+                <option value=5 >5⭐</option>
             </select>
         </div>
 
         <div class="select-holder">
             <div class="select-title">View:</div>
-            <select class="option-select">
-                <option selected>Any</option>
+            <select name="view" form="search-form" class="option-select">
+                <option value="ANY" selected>Any</option>
                 <option>Sea</option>
                 <option>Land</option>
                 <option>Grass</option>
@@ -92,16 +92,16 @@
 
         <div class="select-holder">
             <div class="select-title">Price Range:</div>
-            <input class="price-input" min="1" max="999" type="number" placeholder="min"/>
+            <input name="minPrice" form="search-form" class="price-input" min="1" max="999" type="number" placeholder="min"/>
             -
-            <input class="price-input" min="1" max="999" type="number" placeholder="max"/>
+            <input name="maxPrice" form="search-form" class="price-input" min="1" max="999" type="number" placeholder="max"/>
         </div>
 
         <div class="select-holder">
             <div class="select-title">Total Rooms:</div>
-            <input class="rooms-input" min="1" max="10000" type="number" placeholder="min"/>
+            <input name="minRoomCount" form="search-form" class="rooms-input" min="1" max="10000" type="number" placeholder="min"/>
             -
-            <input class="rooms-input" min="1" max="10000" type="number" placeholder="max"/>
+            <input name="maxRoomCount" form="search-form" class="rooms-input" min="1" max="10000" type="number" placeholder="max"/>
         </div>
 
         <div class="select-holder">
