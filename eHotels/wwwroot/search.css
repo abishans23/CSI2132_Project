@@ -223,3 +223,11 @@
     background-color: rgb(186, 170, 211);
     transform: scale(0.97);
 }
+
+.room-capacity{
+    font-weight: bold;
+}
+
+.room-amenities{
+    font-weight: bold;
+}

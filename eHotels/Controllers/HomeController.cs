@@ -50,15 +50,29 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    public async Task<IActionResult> Search(string search, string area, string capacity, string startDate, string endDate)
+    public async Task<IActionResult> Search(string search, string area, int capacity, string startDate, string endDate)
     {
+
+        // var roomsQueryResult = await _db.QueryAsync<dynamic>(
+        //         "SELECT * From (Room NATURAL JOIN (Hotel NATURAL JOIN Address) NATURAL JOIN HotelChain)"
+        //     );
+
+        search = search == null ? "ANY" : search;
+        area = area == null ? "ANY" : area;
+        capacity = capacity == 0 ?  -1 : capacity;
+        startDate = startDate == null ? "0001-01-01" : startDate;
+        endDate = endDate == null ? "9999-12-31" : endDate;
+
         Console.WriteLine(search + area + capacity + startDate + endDate);
 
-        var roomsQueryResult = await _db.QueryAsync<dynamic>(
-                "SELECT * From (Room NATURAL JOIN (Hotel NATURAL JOIN Address) NATURAL JOIN HotelChain)"
-            );
+        var view = "ANY";
+        var minPrice = 0;
+        var maxPrice = 99999;
+        var minRoomCount = 0;
+        var maxRoomCount = 999999;
+        var stars = -1;
 
-        var realRoomsQueryResult = await _db.QueryAsync<dynamic>(
+        var roomsQueryResult = await _db.QueryAsync<dynamic>(
                 "SELECT * FROM Room r " +
                 "JOIN Hotel h ON r.hotelid = h.hotelid " + 
                 "JOIN HotelChain hc ON h.chainid = hc.chainid " +
@@ -68,24 +82,37 @@ public class HomeController : Controller
                 "WHERE (hc.chainname = @chainName OR @chainName = 'ANY') AND " +
                 "(a.city = @city OR @city = 'ANY') AND " +
                 "(r.view = @view OR @view = 'ANY') AND " +
+                "(r.capacity = @capacity OR @capacity = -1) AND " +
                 "(@minPrice <= r.price AND r.price <= @maxPrice) AND " +
                 "(@minRoomCount <= rn.room_count AND rn.room_count <= @maxRoomCount) AND " +
-                "(h.stars = @stars OR @stars = -1) AND " + 
+                "(h.stars = @stars OR @stars = -1)  ",
 
-                "NOT EXISTS (" +
-                    "SELECT * FROM Booking b " +
-                    "WHERE b.roomnumber = r.roomnumber " + 
-                    "AND DATE @startDate <= b.EndDate " +
-                    "AND DATE @endDate >= b.StartDate " +
-                ") " +
+                // "NOT EXISTS (" +
+                //     "SELECT * FROM Booking b " +
+                //     "WHERE b.roomnumber = r.roomnumber " + 
+                //     "AND @startDate <= b.EndDate " +
+                //     "AND @endDate >= b.StartDate " +
+                // ") " +
 
-                "AND NOT EXISTS ( " + 
-                    "SELECT * FROM Renting rt " +
-                    "WHERE rt.roomnumber = r.roomnumber " + 
-                    "AND DATE @startDate <= rt.EndDate " +
-                    "AND DATE '2029-12-31' >= rt.StartDate " +
-                ");",
-                new{}
+                // "AND NOT EXISTS ( " + 
+                //     "SELECT * FROM Renting rt " +
+                //     "WHERE rt.roomnumber = r.roomnumber " + 
+                //     "AND @startDate <= rt.EndDate " +
+                //     "AND @endDate >= rt.StartDate " +
+                // ");",
+                new{
+                    chainName=search, 
+                    city=area,
+                    view,
+                    capacity,
+                    minPrice,
+                    maxPrice,
+                    minRoomCount,
+                    maxRoomCount,
+                    stars,
+                    startDate=Convert.ToDateTime(startDate),
+                    endDate=Convert.ToDateTime(endDate)
+                }
             );
 
         var availableRooms = roomsQueryResult.ToList();
@@ -93,6 +120,7 @@ public class HomeController : Controller
 
         foreach(var r in availableRooms)
         {
+            // Console.WriteLine(r);
             var roomAmenityQueryResult = await _db.QueryAsync<string>(
                 "SELECT amenity From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId",
                 new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
