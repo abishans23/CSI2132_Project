@@ -35,19 +35,21 @@ namespace Data
             );
         }
 
-        //build Update SQL querries
-        public static async Task<string> BuildUpdate(string table, Dictionary<string, string> columns)
+        //build Update SQL querries TODO::IF THERE IS A BUG MAYBE HERE
+        public static string BuildUpdate(string table,Dictionary<string, string> columns,IEnumerable<string> primaryKeys)
         {
-            //string idValue = columns["id"]; // extract id
-            int idValue=1;
-
             var setColumns = columns
-                .Where(c => c.Key.ToLower() != "id")
+                .Where(c => !primaryKeys.Contains(c.Key, StringComparer.OrdinalIgnoreCase))
                 .Select(c => $"{c.Key} = @{c.Key}");
 
             string setClause = string.Join(", ", setColumns);
 
-            return $"UPDATE {table} SET {setClause} WHERE id = {idValue}";
+            var whereColumns = primaryKeys
+                .Select(k => $"{k} = @{k}");
+
+            string whereClause = string.Join(" AND ", whereColumns);
+
+            return $"UPDATE {table} SET {setClause} WHERE {whereClause}";
         }
 
 

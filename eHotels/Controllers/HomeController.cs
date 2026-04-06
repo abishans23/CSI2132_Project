@@ -26,8 +26,8 @@ public class HomeController : Controller
 
         await _db.OpenConnection();
 
-        string sql = await Utils.BuildUpdate("hotel", TableColumnsAndTypes.Hotel);
-        Console.WriteLine(sql);
+        //string sql = Utils.BuildUpdate("hotel",TableColumnsAndTypes.Hotel,new[] { "hotelid","chainid" });
+        //Console.WriteLine(sql);
 
         string chainQuery = "SELECT ChainName FROM HotelChain";
         var chainsQueryResult = await _db.QueryAsync<string>(chainQuery);
