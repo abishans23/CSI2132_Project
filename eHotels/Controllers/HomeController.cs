@@ -12,9 +12,9 @@ public class HomeController : Controller
 {
     private DBContext _db;
 
-    public HomeController(DBContext db) 
+    public HomeController(DBContext db)
     {
-        _db = db; 
+        _db = db;
     }
 
     public async Task<IActionResult> Index()
@@ -23,7 +23,7 @@ public class HomeController : Controller
         //TODO::fix performance issue
 
         Console.WriteLine("current user: " + HttpContext.Session.GetString("Email") + " " + HttpContext.Session.GetString("Username"));
-        
+
         await _db.OpenConnection();
 
         string chainQuery = "SELECT ChainName FROM HotelChain";
@@ -50,14 +50,14 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
-    public async Task<IActionResult> Search(string search, string area, int capacity, string startDate, string endDate, 
+    public async Task<IActionResult> Search(string search, string area, int capacity, string startDate, string endDate,
         string? view, int? minPrice, int? maxPrice, int? minRoomCount, int? maxRoomCount, int? stars)
     {
         //set up default values for search query if not inserted by the user, we use 'ANY' in place for any null strings where 
         // any row is valid. Similar for -1 for integer values and 0001-01-01 for dates
         search = search == null ? "ANY" : search;
         area = area == null ? "ANY" : area;
-        capacity = capacity == 0 ?  -1 : capacity;
+        capacity = capacity == 0 ? -1 : capacity;
         startDate = startDate == null ? "0001-01-01" : startDate;
         endDate = endDate == null ? "0001-01-01" : endDate;
 
@@ -73,10 +73,10 @@ public class HomeController : Controller
         //run search query
         var roomsQueryResult = await _db.QueryAsync<dynamic>(
                 "SELECT * FROM Room r " +
-                "JOIN Hotel h ON r.hotelid = h.hotelid " + 
+                "JOIN Hotel h ON r.hotelid = h.hotelid " +
                 "JOIN HotelChain hc ON h.chainid = hc.chainid " +
                 "JOIN Address a ON h.postalCode = a.postalCode " +
-                "JOIN RoomNum rn ON h.hotelid = rn.hotelid " + 
+                "JOIN RoomNum rn ON h.hotelid = rn.hotelid " +
 
                 "WHERE (hc.chainname = @chainName OR @chainName = 'ANY') AND " +
                 "(a.city = @city OR @city = 'ANY') AND " +
@@ -88,44 +88,45 @@ public class HomeController : Controller
 
                 "(NOT EXISTS (" +
                     "SELECT * FROM Booking b " +
-                    "WHERE b.roomnumber = r.roomnumber " + 
+                    "WHERE b.roomnumber = r.roomnumber " +
                     "AND @startDate <= b.EndDate " +
                     "AND @endDate >= b.StartDate " +
                 ") OR @startDate = '0001-01-01') " +
-                
-                "AND (NOT EXISTS ( " + 
+
+                "AND (NOT EXISTS ( " +
                     "SELECT * FROM Renting rt " +
-                    "WHERE rt.roomnumber = r.roomnumber " + 
+                    "WHERE rt.roomnumber = r.roomnumber " +
                     "AND @startDate <= rt.EndDate " +
                     "AND @endDate >= rt.StartDate " +
                 ") OR @endDate = '0001-01-01');",
 
-                new{
-                    chainName=search, 
-                    city=area,
-                    view=view,
-                    capacity=capacity,
-                    minPrice=minPrice,
-                    maxPrice=maxPrice,
-                    minRoomCount=minRoomCount,
-                    maxRoomCount=maxRoomCount,
-                    stars=stars,
-                    startDate=Convert.ToDateTime(startDate),
-                    endDate=Convert.ToDateTime(endDate)
+                new
+                {
+                    chainName = search,
+                    city = area,
+                    view = view,
+                    capacity = capacity,
+                    minPrice = minPrice,
+                    maxPrice = maxPrice,
+                    minRoomCount = minRoomCount,
+                    maxRoomCount = maxRoomCount,
+                    stars = stars,
+                    startDate = Convert.ToDateTime(startDate),
+                    endDate = Convert.ToDateTime(endDate)
                 }
             );
 
         var availableRooms = roomsQueryResult.ToList();
         var roomAmenities = new Dictionary<int, string>();
 
-        foreach(var r in availableRooms)
+        foreach (var r in availableRooms)
         {
             // Console.WriteLine(r);
             var roomAmenityQueryResult = await _db.QueryAsync<string>(
                 "SELECT amenity From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId",
-                new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
+                new { currentRoomNumber = r.roomnumber, currentHotelId = r.hotelid }
             );
-            
+
             var roomAmenitiesList = roomAmenityQueryResult.ToList();
             string roomAmenitiesString = roomAmenitiesList.Count > 0 ? roomAmenitiesList[0] : "";
 
@@ -140,7 +141,7 @@ public class HomeController : Controller
 
         ViewBag.availableRooms = availableRooms;
         ViewBag.roomAmenities = roomAmenities;
-        
+
         return View();
     }
 
@@ -150,14 +151,15 @@ public class HomeController : Controller
         ModelState.Clear();
         Console.WriteLine(emailAddress + " " + username + " " + password + " " + action);
 
-        if (username == null || password == null || emailAddress == null){
+        if (username == null || password == null || emailAddress == null)
+        {
             ModelState.AddModelError("", "username, password and email can not be empty");
             return View("SignIn");
         }
 
         var queryResult = await _db.QueryAsync<Account>(
-            "SELECT * From Account Where Email = @findEmail", 
-            new {findEmail=emailAddress}
+            "SELECT * From Account Where Email = @findEmail",
+            new { findEmail = emailAddress }
             );
         var accountList = queryResult.ToList();
 
@@ -188,8 +190,8 @@ public class HomeController : Controller
             }
 
             await _db.ExecuteAsync(
-                @"INSERT INTO Account VALUES (@emailAddress, @username, @password)", 
-                new{emailAddress, username, password}
+                @"INSERT INTO Account VALUES (@emailAddress, @username, @password)",
+                new { emailAddress, username, password }
                 );
 
         }
@@ -203,8 +205,8 @@ public class HomeController : Controller
     public async Task InsertAddress(int streetNumber, string streetName, string province, string country, string postalCode)
     {
         await _db.ExecuteAsync(
-            @"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)", 
-            new{streetNumber, streetName, postalCode, province, country}
+            @"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country)",
+            new { streetNumber, streetName, postalCode, province, country }
             );
     }
 
@@ -212,16 +214,17 @@ public class HomeController : Controller
     {
         var customerInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Customer VALUES (@idType, @idNumber, @firstName, @lastName, @registrationDate, @phoneNumber, @postalCode, @email)",
-            new{
-                idType, 
-                idNumber, 
-                firstName, 
-                lastName, 
-                registrationDate=DateTime.Now, 
-                phoneNumber, 
+            new
+            {
+                idType,
+                idNumber,
+                firstName,
+                lastName,
+                registrationDate = DateTime.Now,
+                phoneNumber,
                 postalCode,
-                email= email==null? "NULL" : email
-                }
+                email = email == null ? "NULL" : email
+            }
             );
     }
 
@@ -231,31 +234,32 @@ public class HomeController : Controller
     {
         await InsertAddress(streetNumber, streetName, province, country, postalCode);
         await InsertCustomer(idType, idNumber, firstName, lastName, postalCode, phoneNumber, null);
-        
+
         return RedirectToAction("CheckIn");
     }
 
     [HttpPost]
-    public async Task<IActionResult> InPersonCheckIn(int hotelId, int roomNumber, string idType, string idNumber, 
+    public async Task<IActionResult> InPersonCheckIn(int hotelId, int roomNumber, string idType, string idNumber,
         string startDate, string endDate, int amount, string payementMethod)
-    {    
+    {
         var rentingInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Renting (Status, StartDate, EndDate, PaymentMethod, Amount, ProcessedDate, RoomNumber, HotelId, IdType, IdNumber)" +
             "VALUES (@status, @startDate, @endDate, @paymentMethod, @amount, @proccessedDate, @roomNumber, @hotelId, @idType, @idNumber)",
-            new{
-                status="Occupied", 
-                startDate=Convert.ToDateTime(startDate), 
-                endDate=Convert.ToDateTime(endDate),
-                paymentMethod=payementMethod, 
+            new
+            {
+                status = "Occupied",
+                startDate = Convert.ToDateTime(startDate),
+                endDate = Convert.ToDateTime(endDate),
+                paymentMethod = payementMethod,
                 amount,
-                proccessedDate=DateTime.Now, 
-                roomNumber, 
-                hotelId, 
-                idType, 
+                proccessedDate = DateTime.Now,
+                roomNumber,
+                hotelId,
+                idType,
                 idNumber
-                }
+            }
             );
-        
+
         if (rentingInsertResult != 1)
         {
             Console.WriteLine("Error inserting renting");
@@ -266,7 +270,7 @@ public class HomeController : Controller
 
     //insert booking for the customer in the DB. Also insert the customer into the DB.
     [HttpPost]
-    public async Task<IActionResult> CreateBooking(int hotelId, int roomNumber, string idType, string idNumber, string firstName, 
+    public async Task<IActionResult> CreateBooking(int hotelId, int roomNumber, string idType, string idNumber, string firstName,
         string lastName, int streetNumber, string streetName, string city, string province, string country, string postalCode,
         string startDate, string endDate, string phoneNumber)
     {
@@ -276,11 +280,12 @@ public class HomeController : Controller
         var bookingInsertResult = await _db.ExecuteAsync(
             @"INSERT INTO Booking (BookingDate, Status, StartDate, EndDate, RoomNumber, HotelId, IdType, IdNumber) 
                 VALUES (@bookingDate, @status, @startDate, @endDate, @roomNumber, @hotelId, @idType, @idNumber)",
-            new{
-                bookingDate=DateTime.Now,
-                status="booked",
-                startDate=Convert.ToDateTime(startDate),
-                endDate=Convert.ToDateTime(endDate),
+            new
+            {
+                bookingDate = DateTime.Now,
+                status = "booked",
+                startDate = Convert.ToDateTime(startDate),
+                endDate = Convert.ToDateTime(endDate),
                 roomNumber,
                 hotelId,
                 idType,
@@ -290,7 +295,7 @@ public class HomeController : Controller
 
         return View("Search");
     }
-    
+
     public IActionResult CheckIn()
     {
         return View();
