@@ -268,6 +268,15 @@ namespace Data
                 //         UPDATE Hotel SET Manager = @Manager WHERE HotelID = @HotelID;",
                 //         new { hotel.Manager, hotel.HotelID });
                 // }
+                // await this.ExecuteAsync(@"
+                // ALTER TABLE Booking
+                // ADD CONSTRAINT chk_date CHECK(StartDate <= EndDate)
+                // ");
+
+                // await this.ExecuteAsync(@"
+                // ALTER TABLE Renting
+                // ADD CONSTRAINT chk_date CHECK(StartDate <= EndDate)
+                // ");
 
                 return true;
             }, _logger);
