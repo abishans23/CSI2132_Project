@@ -291,10 +291,23 @@ public class HomeController : Controller
         return RedirectToAction("Search");
     }
 
-    // public async GetBooking(int hotelId, string idType, string idNumber)
-    // {
-    //     var bookingQueryResult = await _db.QueryAsync<Booking>("");
-    // }
+    public async Task<IActionResult> GetBooking(int hotelId, string idType, string idNumber)
+    {
+        var bookingQueryResult = await _db.QueryAsync<Booking>(
+            "SELECT * FROM BOOKING WHERE hotelid = @hotelId AND idtype = @idType AND idnumber = @idNumber;",
+            new
+            {
+                hotelId,
+                idType,
+                idNumber
+            });
+
+        var foundBookings = bookingQueryResult.ToList();
+        var BookingInfo = "infooooo";
+        ViewBag.BookingInfo = foundBookings.Count > 0 ? BookingInfo : "No Booking Exists";
+
+        return Json(new {BookingInfo});
+    }
     
     public IActionResult CheckIn()
     {
