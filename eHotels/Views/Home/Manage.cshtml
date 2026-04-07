@@ -38,13 +38,15 @@
             <button class="close-button">X</button>
             <div class="form-title">Edit Hotels</div>
             <div class="line-break"></div>
+
             <div class="form-list-holder">
                 <div class="input-holder">
                     <div class="input-name">input</div>
                     <input class="input" />
                 </div>
             </div>
-            <button class="submit-button">Add</button>
+
+            <button id="add-db-item" class="submit-button">Add</button>
         </div>
 
     </div>
@@ -106,13 +108,24 @@
             editItemForm.style.display = "none";
         }
 
+        document.getElementById("add-db-item").onclick = function(){
+            let values = editFormListHolder.getElementsByClassName("input-holder");
+
+            for (let inp = 0; inp < values.length; inp++){
+                let inpName = values[inp].querySelector(".input-name").innerHTML;
+                let inpValue = values[inp].querySelector(".input").value;
+                
+                console.log(inpName + " : " + inpValue);
+            }
+        }
+
         for (let i = 0; i < dbItems.length; i++){
             let name = dbItems[i].querySelector(".item-title").innerHTML;
             let schemaName =  name.replaceAll(' ', '');
             let addButton = dbItems[i].querySelector(".add-item");
 
             addButton.onclick = async function(){
-                editFormListHolder.innerHTML = "";
+                editFormListHolder.innerHTML = '';
                 editItemFormTitle.innerHTML = "Add " + name;
                 editItemForm.style.display = "block";
 
@@ -124,8 +137,8 @@
                         let tmpDiv = document.createElement("div");
                         tmpDiv.innerHTML += 
                         '<div class="input-holder">' +
-                            '<div class="input-name">' + data[k] + '</div>'+
-                            '<input class="input" />'+
+                            '<div class="input-name" id="DB-DATA">' + data[k] + '</div>' +
+                            '<input class="input" id="DB-INPUT" />'+
                         '</div>'
 
                         let initElem = tmpDiv.firstChild;
