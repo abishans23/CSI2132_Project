@@ -134,14 +134,6 @@ namespace Data
                     FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
                     );";
 
-        public static readonly string createRoomBooking = @"CREATE TABLE IF NOT EXISTS RoomBooking(
-                    BookingID INT NOT NULL CHECK (BookingID >= 0),
-                    RoomNumber INT NOT NULL,
-                    HotelID INT NOT NULL CHECK(HotelID >= 0),
-                    PRIMARY KEY (BookingID, RoomNumber, HotelID),
-                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNumber, HotelID),
-                    FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
-                    );";
 
         public static readonly string createCustomer = @"CREATE TABLE IF NOT EXISTS Customer(
                     IDType VARCHAR(30),
@@ -156,14 +148,7 @@ namespace Data
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode)
                     );";
 
-        public static readonly string createCustBooking = @"CREATE TABLE IF NOT EXISTS CustBooking(
-                    BookingID INT CHECK (BookingID >= 0),
-                    IDType VARCHAR(30),
-                    IDNumber VARCHAR(30),
-                    PRIMARY KEY (BookingID, IDType, IDNumber),
-                    FOREIGN KEY (BookingID) REFERENCES Booking(BookingID),
-                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
-                    );";
+
 
         public static readonly string createRenting = @"CREATE TABLE IF NOT EXISTS Renting(
                     RentingID INT CHECK(RentingID >=0) PRIMARY KEY,
@@ -181,23 +166,7 @@ namespace Data
                     FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
                     );";
 
-        public static readonly string createRentingTenant = @"CREATE TABLE IF NOT EXISTS RentingTenant(
-                    RentingID INT CHECK(RentingID >= 0),
-                    IDType VARCHAR(30),
-                    IDNumber VARCHAR(30),
-                    PRIMARY KEY(RentingID, IDType, IDNumber),
-                    FOREIGN KEY(RentingID) REFERENCES Renting(RentingID),
-                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
-                    );";
 
-        public static readonly string createRentedRoom = @"CREATE TABLE IF NOT EXISTS RentedRoom(
-                    RentingID INT CHECK(RentingID >= 0),
-                    RoomNumber INT,
-                    HotelID INT CHECK(HotelID >= 0),
-                    PRIMARY KEY (RentingID, RoomNumber, HotelID),
-                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room (RoomNumber, HotelID),
-                    FOREIGN KEY(RentingID) REFERENCES Renting(RentingID)
-                    );";
 
         public static readonly string createReview = @"CREATE TABLE IF NOT EXISTS Review(
                     Email VARCHAR(30) NOT NULL CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
