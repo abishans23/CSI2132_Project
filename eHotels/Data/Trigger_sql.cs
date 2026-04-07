@@ -2,40 +2,76 @@ namespace Data
 {
     static class TriggerString
     {
-        public static readonly string bookingconflict = @"CREATE TRIGGER checkIntersection BEFORE INSERT ON Booking
-                    FOR EACH ROW BEGIN
-                    IF EXISTS(
-                        SELECT 1 FROM Booking
-                        WHERE NEW.HotelId = HotelId AND NEW.Roomnumber = Roomnumber AND NEW.startDate <= endDate AND NEW.endDate >= startDate status = ‘Scheduled’
-                    )
-                    OR
-                    IF EXISTS(
-                        SELECT 1 FROM Renting
-                        WHERE NEW.HotelId = HotelId AND NEW.Roomnumber = Roomnumber AND NEW.startDate <= endDate AND NEW.endDate >= startDate AND status = ‘Active’
-                    )
-
-                    THEN SIGNAL SQLSTATE ‘45000’
-                    SET MESSAGE TEXT ‘booking time intersects another persons booking time’;
+        public static readonly string bookingconflict = @"CREATE OR REPLACE FUNCTION fn_check_booking_intersection()
+                    RETURNS TRIGGER AS $$
+                    BEGIN
+                        IF EXISTS (
+                            SELECT 1 FROM Booking
+                            WHERE HotelId = NEW.HotelId 
+                            AND Roomnumber = NEW.Roomnumber 
+                            AND NEW.startDate <= endDate 
+                            AND NEW.endDate >= startDate 
+                            AND status = 'Scheduled'
+                        ) 
+                        OR EXISTS (
+                            SELECT 1 FROM Renting
+                            WHERE HotelId = NEW.HotelId 
+                            AND Roomnumber = NEW.Roomnumber 
+                            AND NEW.startDate <= endDate 
+                            AND NEW.endDate >= startDate 
+                            AND status = 'Occupied'
+                        )
+                        THEN
+                            RAISE EXCEPTION 'Booking time intersects another persons booking time'
+                            USING ERRCODE = '45000';
                         END IF;
+
+                        RETURN NEW;
                     END;
+                    $$ LANGUAGE plpgsql;
+
+                    DROP TRIGGER IF EXISTS checkIntersection ON Booking;
+
+                    CREATE TRIGGER checkIntersection
+                    BEFORE INSERT OR UPDATE ON Booking 
+                    FOR EACH ROW
+                    EXECUTE FUNCTION fn_check_booking_intersection();
                     ";
         
-        public static readonly string rentingconflict = @"CREATE TRIGGER checkIntersection BEFORE INSERT ON Renting
-                    FOR EACH ROW BEGIN
-                    IF EXISTS(
-                        SELECT 1 FROM Booking
-                        WHERE NEW.HotelId = HotelId AND NEW.Roomnumber = Roomnumber AND NEW.startDate <= endDate AND NEW.endDate >= startDate AND status = ‘Scheduled’
-                    )
-                    OR
-                    IF EXISTS(
-                        SELECT 1 FROM Renting
-                        WHERE NEW.HotelId = HotelId AND NEW.Roomnumber = Roomnumber AND NEW.startDate <= endDate AND NEW.endDate >= startDate AND status = ‘Active’
-                    )
-
-                    THEN SIGNAL SQLSTATE ‘45000’
-                    SET MESSAGE TEXT ‘booking time intersects another persons booking time’;
+        public static readonly string rentingconflict = @"CREATE OR REPLACE FUNCTION fn_check_renting_intersection()
+                    RETURNS TRIGGER AS $$
+                    BEGIN
+                        IF EXISTS (
+                            SELECT 1 FROM Booking
+                            WHERE HotelId = NEW.HotelId 
+                            AND Roomnumber = NEW.Roomnumber 
+                            AND NEW.startDate <= endDate 
+                            AND NEW.endDate >= startDate 
+                            AND status = 'Scheduled'
+                        ) 
+                        OR EXISTS (
+                            SELECT 1 FROM Renting
+                            WHERE HotelId = NEW.HotelId 
+                            AND Roomnumber = NEW.Roomnumber 
+                            AND NEW.startDate <= endDate 
+                            AND NEW.endDate >= startDate 
+                            AND status = 'Occupied'
+                        )
+                        THEN
+                            RAISE EXCEPTION 'Renting time intersects another persons renting time'
+                            USING ERRCODE = '45000';
                         END IF;
+
+                        RETURN NEW;
                     END;
+                    $$ LANGUAGE plpgsql;
+
+                    DROP TRIGGER IF EXISTS checkIntersection ON Renting;
+
+                    CREATE TRIGGER checkIntersection
+                    BEFORE INSERT ON Renting 
+                    FOR EACH ROW
+                    EXECUTE FUNCTION fn_check_renting_intersection();
                     ";
 
         public static readonly string deletebooking = @"CREATE OR REPLACE FUNCTION archive_and_delete_booking()
