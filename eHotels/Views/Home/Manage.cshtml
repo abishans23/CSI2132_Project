@@ -121,6 +121,7 @@
                         formListHolder.appendChild(initItem);
 
                         let deleteButton = initItem.querySelector(".delete-item");
+                        let editButton = initItem.querySelector(".edit-item");
 
                         deleteButton.onclick = async function(){
                             let objectPrimaryKeys = JSON.stringify(rowPrimaryKeys);

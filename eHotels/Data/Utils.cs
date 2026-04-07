@@ -52,6 +52,17 @@ namespace Data
             return $"UPDATE {table} SET {setClause} WHERE {whereClause}";
         }
 
+        public static string BuildDelete(string table,IEnumerable<string> primaryKeys)
+        {
+
+            var whereColumns = primaryKeys
+                .Select(k => $"{k} = @{k}");
+
+            string whereClause = string.Join(" AND ", whereColumns);
+
+            return $"DELETE FROM {table} WHERE {whereClause}";
+        }
+
 
     }
 }
