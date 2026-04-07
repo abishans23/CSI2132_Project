@@ -25,7 +25,8 @@ public class HomeController : Controller
         //TODO::remove since only debug code
         //TODO::fix performance issue
 
-        Console.WriteLine("current user: " + HttpContext.Session.GetString("Email") + " " + HttpContext.Session.GetString("Username"));
+        // Console.WriteLine("current user: " + HttpContext.Session.GetString("Email") + " " + HttpContext.Session.GetString("Username"));
+        var email = HttpContext.Session.GetString("Email");
         
         await _db.OpenConnection();
 
@@ -33,6 +34,36 @@ public class HomeController : Controller
         string chainQuery = "SELECT ChainName, ROUND(AVG(Stars),2) as AvgStars FROM HotelChain NATURAL JOIN Hotel GROUP BY ChainID";
         var chainsQueryResult = await _db.QueryAsync<dynamic>(chainQuery);
         var chainsData = chainsQueryResult.ToList();
+
+        if (email == null) { return View(chainsData); }
+
+        // check if user is a employee
+        var managerQueryResult = await _db.QueryAsync<dynamic>(
+            "SELECT * FROM (Employee NATURAL JOIN Hotel) WHERE Email = @email",
+            new{email}
+        );
+
+        if (managerQueryResult.ToList().Count > 0)
+        {
+            ViewBag.Manager = true;
+            Console.WriteLine("Manager");
+            return View(chainsData);
+        }
+
+        // check if user is a manager
+        var employeeQueryResult = await _db.QueryAsync<dynamic>(
+            "SELECT * FROM Employee WHERE Email = @email",
+            new{email}
+        );
+
+        if (employeeQueryResult.ToList().Count > 0)
+        {
+            ViewBag.Employee = true;
+            Console.WriteLine("EMPLOYEEEEEEEEEEEE");
+        }
+
+
+        
         
         return View(chainsData);
     }
@@ -43,6 +74,7 @@ public class HomeController : Controller
         return View();
     }
 
+    // returns all the tables that the manage dashboard will show
     public IActionResult Manage()
     {
         string[] allTables = new string[] {"Account", "Address", "Archived Booking", "Archived Renting", "Booking",
@@ -251,7 +283,7 @@ public class HomeController : Controller
         await _db.ExecuteAsync(
                 @updateQuery
             );
-            
+
         Console.WriteLine("Update Query: " + updateQuery);
         
         return Json(new{success=true});
@@ -334,6 +366,7 @@ public class HomeController : Controller
 
         foreach(var r in availableRooms)
         {
+            // query to find a room's amenities
             var roomAmenityQueryResult = await _db.QueryAsync<string>(
                 "SELECT amenity From RoomAmenity WHERE roomnumber = @currentRoomNumber AND hotelid = @currentHotelId",
                 new{currentRoomNumber = r.roomnumber, currentHotelId=r.hotelid}
@@ -368,10 +401,12 @@ public class HomeController : Controller
             return View("SignIn");
         }
 
+        //query user account
         var queryResult = await _db.QueryAsync<Account>(
             "SELECT * From Account Where Email = @findEmail", 
             new {findEmail=emailAddress}
             );
+        
         var accountList = queryResult.ToList();
 
         if (action == "Login")
