@@ -67,9 +67,10 @@ public class HomeController : Controller
     public IActionResult DeleteRow(string tableName, string primaryKeys)
     {
         Console.Write("RECIVED KEYS: ");
-        var keys = JsonNode.Parse(primaryKeys).AsArray().Select(x => x.GetValue<string>());
+        Console.WriteLine(JsonNode.Parse(primaryKeys));
+        // var keys = JsonNode.Parse(primaryKeys).AsArray().Select(x => x.GetValue<string>());
 
-        Console.WriteLine(Utils.BuildDelete(tableName, keys));
+        // Console.WriteLine(Utils.BuildDelete(tableName, keys));
 
         
 
