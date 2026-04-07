@@ -152,8 +152,20 @@
             addItemForm.style.display = "none";
         }
 
+        @* update row values when editing *@
         editFormSumbitButton.onclick = async function(){
-            console.log("UPDATE NOW EEEE")
+            let values = editFormListHolder.getElementsByClassName("input-holder");
+            let JSONData = {};
+
+            for (let inp = 0; inp < values.length; inp++){
+                let inpName = values[inp].querySelector(".input-name").innerHTML;
+                let inpValue = values[inp].querySelector(".input").value;
+                JSONData[inpName] = inpValue;
+            }
+
+            let updateResponse = await fetch("/Home/UpdateRow?tableName=" + addItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSON.stringify(JSONData)));
+
+            editItemForm.style.display = "none";
         }
 
         for (let i = 0; i < dbItems.length; i++){

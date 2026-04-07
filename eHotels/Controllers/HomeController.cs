@@ -218,6 +218,7 @@ public class HomeController : Controller
 
     public IActionResult UpdateRow(string tableName, string values)
     {
+        Console.WriteLine(tableName + values);
         return Json(new{success=true});
     }
     
