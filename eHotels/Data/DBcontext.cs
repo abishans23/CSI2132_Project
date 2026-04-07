@@ -282,7 +282,7 @@ namespace Data
                 TableColumnsAndTypes.HotelChainEmail = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChainEmail);
                 TableColumnsAndTypes.HotelChainPhone = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChainPhone);
                 TableColumnsAndTypes.HotelImage = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelImage);
-                TableColumnsAndTypes.HotelAmenity = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelAmenity);
+                // TableColumnsAndTypes.HotelAmenity = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelAmenity);
                 TableColumnsAndTypes.Account = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetAccount);
                 TableColumnsAndTypes.Employee = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetEmployee);
                 TableColumnsAndTypes.Room = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRoom);

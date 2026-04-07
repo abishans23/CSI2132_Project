@@ -34,9 +34,7 @@ public class HomeController : Controller
         string chainQuery = "SELECT ChainName, ROUND(AVG(Stars),2) as AvgStars FROM HotelChain NATURAL JOIN Hotel GROUP BY ChainID";
         var chainsQueryResult = await _db.QueryAsync<dynamic>(chainQuery);
         var chainsData = chainsQueryResult.ToList();
-
         
-
         return View(chainsData);
     }
 
@@ -70,13 +68,13 @@ public class HomeController : Controller
 
     public async Task<IActionResult> GetSchema(string tableName)
     {   
-        var T = TableColumnsAndTypes.Hotel;
+        var disct = convertToDict(tableName);
 
-        string[] JSONData = new string[T.Count];
+        string[] JSONData = new string[disct.Count];
         
         var i = 0;
 
-        foreach (var col in T)
+        foreach (var col in disct)
         {
             JSONData[i++] = col.Key;
         }

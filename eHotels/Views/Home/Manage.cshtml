@@ -32,7 +32,7 @@
 
     </div>
 
-    <div class="form-overlay" schema-name="" id="edit-item-form" style="display: none;">
+    <div class="form-overlay" schema-name="" id="add-item-form" style="display: none;">
 
         <div class="form-container" style="max-height: 80vh;">
             <button class="close-button">X</button>
@@ -47,6 +47,25 @@
             </div>
 
             <button id="add-db-item" class="submit-button"></button>
+        </div>
+
+    </div>
+
+    <div class="form-overlay" schema-name="" id="edit-item-form" style="display: none;">
+
+        <div class="form-container" style="max-height: 80vh;">
+            <button class="close-button">X</button>
+            <div class="form-title">Edit Hotels</div>
+            <div class="line-break"></div>
+
+            <div class="form-list-holder">
+                <div class="input-holder">
+                    <div class="input-name">input</div>
+                    <input class="input" />
+                </div>
+            </div>
+
+            <button id="confirm-edit-db-item" class="submit-button">Confirm</button>
         </div>
 
     </div>
@@ -96,21 +115,26 @@
         let closeButton = document.querySelector(".close-button");
         let formTitle = document.querySelector(".form-title");
 
+        let addItemForm = document.getElementById("add-item-form");
+        let addItemFormTitle = addItemForm.querySelector(".form-title");
+        let addFormListHolder = addItemForm.querySelector(".form-list-holder");
+        let addFormSumbitButton = addItemForm.querySelector(".submit-button");
+
         let editItemForm = document.getElementById("edit-item-form");
         let editItemFormTitle = editItemForm.querySelector(".form-title");
         let editFormListHolder = editItemForm.querySelector(".form-list-holder");
         let editFormSumbitButton = editItemForm.querySelector(".submit-button");
-        
+
         viewEditFormOverlay.querySelector(".close-button").onclick = function(){
             viewEditFormOverlay.style.display = "none";
         }
 
-        editItemForm.querySelector(".close-button").onclick = function(){
-            editItemForm.style.display = "none";
+        addItemForm.querySelector(".close-button").onclick = function(){
+            addItemForm.style.display = "none";
         }
 
-        document.getElementById("add-db-item").onclick = async function(){
-            let values = editFormListHolder.getElementsByClassName("input-holder");
+        addFormSumbitButton.onclick = async function(){
+            let values = addFormListHolder.getElementsByClassName("input-holder");
             let JSONData = {};
 
             for (let inp = 0; inp < values.length; inp++){
@@ -119,9 +143,9 @@
                 JSONData[inpName] = inpValue;
             }
 
-            let insertResponse = await fetch("/Home/InsertTable?tableName=" + editItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSON.stringify(JSONData)));
+            let insertResponse = await fetch("/Home/InsertTable?tableName=" + addItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSON.stringify(JSONData)));
 
-            editItemForm.style.display = "none";
+            addItemForm.style.display = "none";
         }
 
         for (let i = 0; i < dbItems.length; i++){
@@ -130,13 +154,13 @@
             let addButton = dbItems[i].querySelector(".add-item");
 
             addButton.onclick = async function(){
-                editFormListHolder.innerHTML = '';
-                editItemFormTitle.innerHTML = "Add " + name;
-                editItemForm.style.display = "block";
+                addFormListHolder.innerHTML = '';
+                addItemFormTitle.innerHTML = "Add " + name;
+                addItemForm.style.display = "block";
 
-                editFormSumbitButton.innerHTML = "Add";
+                addFormSumbitButton.innerHTML = "Add";
 
-                editItemForm.setAttribute("schema-name", schemaName);
+                addItemForm.setAttribute("schema-name", schemaName);
 
                 let response = await fetch("/Home/GetSchema?tableName=" + schemaName);
 
@@ -151,7 +175,7 @@
                         '</div>'
 
                         let initElem = tmpDiv.firstChild;
-                        editFormListHolder.appendChild(initElem);
+                        addFormListHolder.appendChild(initElem);
                         
                     }
 
@@ -220,9 +244,6 @@
                             editFormSumbitButton.innerHTML = "Confirm";
 
                             editItemForm.setAttribute("schema-name", schemaName);
-
-                            @* let getRowResponse = await fetch("/Home/GetRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys)); *@
-                            @* console.log("get fetch req: ") *@
 
                             let schemaResponse = await fetch("/Home/GetSchema?tableName=" + schemaName);
 
