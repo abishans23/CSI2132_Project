@@ -109,6 +109,12 @@ public class HomeController : Controller
 
         return Json(new{success=true});
     }
+
+    public IActionResult InsertTable(string tableName, string primaryKeys)
+    {
+        
+        return Json(new{});
+    }
     
     public IActionResult LogOut()
     {

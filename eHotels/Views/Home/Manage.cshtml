@@ -108,15 +108,22 @@
             editItemForm.style.display = "none";
         }
 
-        document.getElementById("add-db-item").onclick = function(){
+        document.getElementById("add-db-item").onclick = async function(){
             let values = editFormListHolder.getElementsByClassName("input-holder");
+            let JSONData = {};
 
             for (let inp = 0; inp < values.length; inp++){
                 let inpName = values[inp].querySelector(".input-name").innerHTML;
                 let inpValue = values[inp].querySelector(".input").value;
-                
-                console.log(inpName + " : " + inpValue);
+                JSONData[inpName] = inpValue;
             }
+
+            let insertResponse = await fetch("/Home/InsertTable?tableName=" + schemaName + "&data=" + encodeURIComponent(JSON.stringify(JSONData)));
+
+            console.log(JSONData);
+
+
+
         }
 
         for (let i = 0; i < dbItems.length; i++){
