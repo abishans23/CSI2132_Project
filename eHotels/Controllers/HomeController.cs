@@ -70,7 +70,6 @@ public class HomeController : Controller
 
     public async Task<IActionResult> GetSchema(string tableName)
     {   
-        
         var T = TableColumnsAndTypes.Hotel;
         string[] JSONData = new string[T.Count];
         

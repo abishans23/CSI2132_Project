@@ -21,7 +21,7 @@
             <button class="close-button">X</button>
             <div class="form-title">Edit Hotels</div>
             <div class="line-break"></div>
-            <div class="form-list-holder">
+            <div class="form-list-holder" id="view-form-list-holder">
                 <div class="item-holder">
                     <div class="item-name">Hotel 1 hotel ID</div>
                     <button class="edit-item">Edit</button>
@@ -90,12 +90,13 @@
 
         let dbItems = document.getElementsByClassName("db-item");
         let viewEditFormOverlay = document.getElementById("view-edit-form");
-        let formListHolder = document.querySelector(".form-list-holder");
+        let formListHolder = document.getElementById("view-form-list-holder");
         let closeButton = document.querySelector(".close-button");
         let formTitle = document.querySelector(".form-title");
 
         let editItemForm = document.getElementById("edit-item-form");
         let editItemFormTitle = editItemForm.querySelector(".form-title");
+        let editFormListHolder = editItemForm.querySelector(".form-list-holder")
         
         viewEditFormOverlay.querySelector(".close-button").onclick = function(){
             viewEditFormOverlay.style.display = "none";
@@ -111,6 +112,7 @@
             let addButton = dbItems[i].querySelector(".add-item");
 
             addButton.onclick = async function(){
+                editFormListHolder.innerHTML = "";
                 editItemFormTitle.innerHTML = "Add " + name;
                 editItemForm.style.display = "block";
 
@@ -119,6 +121,15 @@
                 response.json().then(data => {
                     
                     for (let k = 0; k < data.length; k++){
+                        let tmpDiv = document.createElement("div");
+                        tmpDiv.innerHTML += 
+                        '<div class="input-holder">' +
+                            '<div class="input-name">' + data[k] + '</div>'+
+                            '<input class="input" />'+
+                        '</div>'
+
+                        let initElem = tmpDiv.firstChild;
+                        editFormListHolder.appendChild(initElem);
                         
                     }
 
