@@ -22,8 +22,6 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        //TODO::remove since only debug code
-        //TODO::fix performance issue
 
         // Console.WriteLine("current user: " + HttpContext.Session.GetString("Email") + " " + HttpContext.Session.GetString("Username"));
         var email = HttpContext.Session.GetString("Email");
