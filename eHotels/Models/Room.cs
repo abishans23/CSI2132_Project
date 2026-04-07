@@ -2,14 +2,14 @@ public class Room
 {
     public int HotelID { get; set; }
     public int RoomNumber { get; set; }
-    public float Price { get; set; }
+    public decimal Price { get; set; }
     public int Capacity { get; set; }
     public string View { get; set; }
     public bool Extendable { get; set; }
 
     public Room() { }
 
-    public Room(int hotelID, int roomNumber, float price, int capacity, string view, bool extendable)
+    public Room(int hotelID, int roomNumber, decimal price, int capacity, string view, bool extendable)
     {
         this.HotelID = hotelID;
         this.RoomNumber = roomNumber;

@@ -11,14 +11,14 @@ class Renting
     public DateOnly ProcessedDate{get;set;}
 
     public string IDType{get;set;}
-    public int IDNumber{get;set;}
+    public string IDNumber{get;set;}
 
     public int HotelID{get;set;}
     public int RoomNumber{get;set;}
 
     public Renting(){}
 
-    public Renting(int rentingID, string status, DateOnly startDate, DateOnly endDate, string paymentMethod, int amount, DateOnly processedDate, string idType, int idNumber, int hotelID, int roomNumber)
+    public Renting(int rentingID, string status, DateOnly startDate, DateOnly endDate, string paymentMethod, int amount, DateOnly processedDate, string idType, string idNumber, int hotelID, int roomNumber)
     {
         this.RentingID = rentingID;
         this.Status = status;
