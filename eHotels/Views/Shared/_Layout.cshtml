@@ -22,17 +22,14 @@
                 <li class="nav-itemr"><a class="nav-link"  asp-area="" asp-controller="Home" asp-action="SignIn">Sign In</a></li>
             }
 
-            @* @if (ViewBag.Employee == "true" || ViewBag.Manager == "true"){
+            @if (Context.Session.GetString("Employee") == "true" || Context.Session.GetString("Manager") == "true"){
                 <li class="nav-itemr"><a class="nav-link" asp-controller="Home" asp-action="CheckIn">Check In</a></li>
             }
 
-            @if (ViewBag.Manager == "true"){
-                
+            @if (Context.Session.GetString("Manager") == "true"){
                 <li class="nav-itemr"><a class="nav-link" asp-controller="Home" asp-action="Manage">Manage</a></li>
-            } *@
+            }
             
-            <li class="nav-itemr"><a class="nav-link" asp-controller="Home" asp-action="CheckIn">Check In</a></li>
-            <li class="nav-itemr"><a class="nav-link" asp-controller="Home" asp-action="Manage">Manage</a></li>
         </ul>
 
     </header>

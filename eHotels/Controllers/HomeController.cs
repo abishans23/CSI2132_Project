@@ -37,19 +37,23 @@ public class HomeController : Controller
 
         if (email == null) { return View(chainsData); }
 
-        // check if user is a employee
+        // check if user is a manager
         var managerQueryResult = await _db.QueryAsync<dynamic>(
-            "SELECT * FROM (Employee NATURAL JOIN Hotel) WHERE Email = @email",
+            "SELECT * FROM (Employee JOIN Hotel ON Manager = SSN) WHERE Email = @email",
             new{email}
         );
 
         if (managerQueryResult.ToList().Count > 0)
         {
-            ViewBag.Manager = "true";
+            HttpContext.Session.SetString("Manager", "true");
             return View(chainsData);
         }
+        else
+        {
+            HttpContext.Session.SetString("Manager", "false");
+        }
 
-        // check if user is a manager
+        // check if user is a employee
         var employeeQueryResult = await _db.QueryAsync<dynamic>(
             "SELECT * FROM Employee WHERE Email = @email",
             new{email}
@@ -57,11 +61,11 @@ public class HomeController : Controller
 
         if (employeeQueryResult.ToList().Count > 0)
         {
-            ViewBag.Employee = "true";
+            HttpContext.Session.SetString("Employee", "true");
+        }  else
+        {
+            HttpContext.Session.SetString("Employee", "false");
         }
-
-
-        
         
         return View(chainsData);
     }
