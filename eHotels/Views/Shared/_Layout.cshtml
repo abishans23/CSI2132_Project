@@ -17,7 +17,6 @@
             <li class="nav-iteml"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
 
             @if (Context.Session.GetString("Email") != "" && Context.Session.GetString("Email") != null){
-                <li class="nav-iteml"><a class="nav-link">My Bookings</a></li>
                 <li class="nav-itemr"><a class="nav-link"  asp-area="" asp-controller="Home" asp-action="LogOut">Log Out</a></li>
             } else {
                 <li class="nav-itemr"><a class="nav-link"  asp-area="" asp-controller="Home" asp-action="SignIn">Sign In</a></li>
