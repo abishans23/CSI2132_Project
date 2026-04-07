@@ -110,10 +110,60 @@ public class HomeController : Controller
         return Json(new{success=true});
     }
 
-    public IActionResult InsertTable(string tableName, string primaryKeys)
+    public async Task<IActionResult> GetRow(string tableName, string primaryKeys)
     {
-        
-        return Json(new{});
+        var keys = JsonNode.Parse(primaryKeys).AsObject();
+        string selectQuery = "SELECT FROM " + tableName + " WHERE ";
+
+        foreach (var k in keys)
+        {
+            selectQuery += k.Key + " = '" + k.Value + "' AND ";
+        }
+
+        selectQuery = selectQuery.Remove(selectQuery.Length - 4) + ";";
+
+        var selectQueryResult = await _db.QueryAsync<dynamic>(selectQuery);
+
+        foreach (var val in selectQueryResult)
+        {
+            Console.WriteLine(val);
+        }
+
+        Console.WriteLine(selectQueryResult);
+
+
+        return Json(new{success=true});
+    }
+
+    public async Task<IActionResult> InsertTable(string tableName, string values)
+    {
+        Console.WriteLine(tableName + " " + values);
+
+        var valuePairs = JsonNode.Parse(values).AsObject();
+
+        string insertQuery = "INSERT INTO " + tableName + " VALUES (";
+
+        foreach (var v in valuePairs)
+        {
+            if (v.Value.ToString() == "")
+            {
+                insertQuery += "NULL, ";
+            }
+            else
+            {
+                insertQuery += "'" + v.Value + "', ";
+            }
+        }
+
+        insertQuery = insertQuery.Remove(insertQuery.Length - 2) + ");";
+
+        await _db.ExecuteAsync(
+                @insertQuery
+            );
+
+        Console.WriteLine(insertQuery);
+
+        return Json(new{success=true});
     }
     
     public IActionResult LogOut()
