@@ -101,6 +101,7 @@ namespace Data
                     END;
                     
                     $$ LANGUAGE plpgsql;
+                    DROP TRIGGER IF EXISTS deleteBooking ON Renting;
                     CREATE TRIGGER deleteBooking
                     AFTER INSERT ON Renting
                     FOR EACH ROW
