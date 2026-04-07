@@ -84,116 +84,116 @@ namespace Data
             {
                 // 2. Create Tables in Dependency Order
                 // Independent tables first
-                await ExecuteAsync(CreateString.createAddress);
-                await ExecuteAsync(CreateString.createAccount);
-                await ExecuteAsync(CreateString.createCustomer); // Must exist before Booking/Renting
+                // await ExecuteAsync(CreateString.createAddress);
+                // await ExecuteAsync(CreateString.createAccount);
+                // await ExecuteAsync(CreateString.createCustomer); // Must exist before Booking/Renting
                 
-                // Tables with Foreign Keys
-                await ExecuteAsync(CreateString.createHotelChain);
-                await ExecuteAsync(CreateString.createHotel);
-                await ExecuteAsync(CreateString.createEmployee);
-                await ExecuteAsync(CreateString.createRoom);
+                // // Tables with Foreign Keys
+                // await ExecuteAsync(CreateString.createHotelChain);
+                // await ExecuteAsync(CreateString.createHotel);
+                // await ExecuteAsync(CreateString.createEmployee);
+                // await ExecuteAsync(CreateString.createRoom);
                 
-                // Transactional tables
-                await ExecuteAsync(CreateString.createBooking);
-                await ExecuteAsync(CreateString.createRenting);
+                // // Transactional tables
+                // await ExecuteAsync(CreateString.createBooking);
+                // await ExecuteAsync(CreateString.createRenting);
                 
-                // Metadata/Attribute tables
-                await ExecuteAsync(CreateString.createHotelEmail);
-                await ExecuteAsync(CreateString.createHotelPhone);
-                await ExecuteAsync(CreateString.createHotelChainEmail);
-                await ExecuteAsync(CreateString.createHotelChainPhone);
-                await ExecuteAsync(CreateString.createHotelImage);
-                await ExecuteAsync(CreateString.createReview);
-                await ExecuteAsync(CreateString.createRoomProblem);
-                await ExecuteAsync(CreateString.createRoomAmenity);
-                await ExecuteAsync(CreateString.createArchivedBooking);
-                await ExecuteAsync(CreateString.createArchivedRenting);
+                // // Metadata/Attribute tables
+                // await ExecuteAsync(CreateString.createHotelEmail);
+                // await ExecuteAsync(CreateString.createHotelPhone);
+                // await ExecuteAsync(CreateString.createHotelChainEmail);
+                // await ExecuteAsync(CreateString.createHotelChainPhone);
+                // await ExecuteAsync(CreateString.createHotelImage);
+                // await ExecuteAsync(CreateString.createReview);
+                // await ExecuteAsync(CreateString.createRoomProblem);
+                // await ExecuteAsync(CreateString.createRoomAmenity);
+                // await ExecuteAsync(CreateString.createArchivedBooking);
+                // await ExecuteAsync(CreateString.createArchivedRenting);
 
-                // 3. Create Programmability Objects
-                await ExecuteAsync(TriggerString.bookingconflict);
-                await ExecuteAsync(TriggerString.deletebooking);
-                await ExecuteAsync(TriggerString.rentingconflict);
+                // // 3. Create Programmability Objects
+                // await ExecuteAsync(TriggerString.bookingconflict);
+                // await ExecuteAsync(TriggerString.deletebooking);
+                // await ExecuteAsync(TriggerString.rentingconflict);
 
-                await ExecuteAsync(IndexString.area);
-                await ExecuteAsync(IndexString.bookingdates);
-                await ExecuteAsync(IndexString.employeesInHotel);
-                await ExecuteAsync(IndexString.roomcapacity);
+                // await ExecuteAsync(IndexString.area);
+                // await ExecuteAsync(IndexString.bookingdates);
+                // await ExecuteAsync(IndexString.employeesInHotel);
+                // await ExecuteAsync(IndexString.roomcapacity);
 
-                await ExecuteAsync(ViewString.RoomNum);
-                await ExecuteAsync(ViewString.RoomNumCity);
+                // await ExecuteAsync(ViewString.RoomNum);
+                // await ExecuteAsync(ViewString.RoomNumCity);
 
                 // 4. Data Insertion
-                foreach (var chain in hotelChains ?? new())
-                {
-                    await ExecuteAsync(@"
-                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country, City)
-                        VALUES (0, 'Unknown', @ChainPostalCode, 'Unknown', 'Unknown', 'Unknown')
-                        ON CONFLICT (PostalCode) DO NOTHING;", new { chain.ChainPostalCode });
+                // foreach (var chain in hotelChains ?? new())
+                // {
+                //     await ExecuteAsync(@"
+                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country, City)
+                //         VALUES (0, 'Unknown', @ChainPostalCode, 'Unknown', 'Unknown', 'Unknown')
+                //         ON CONFLICT (PostalCode) DO NOTHING;", new { chain.ChainPostalCode });
 
-                    await ExecuteAsync(@"
-                        INSERT INTO HotelChain (ChainID, ChainName, ChainPostalCode)
-                        VALUES (@ChainID, @ChainName, @ChainPostalCode)
-                        ON CONFLICT (ChainID) DO NOTHING;", new { chain.ChainID, chain.ChainName, chain.ChainPostalCode });
-                }
+                //     await ExecuteAsync(@"
+                //         INSERT INTO HotelChain (ChainID, ChainName, ChainPostalCode)
+                //         VALUES (@ChainID, @ChainName, @ChainPostalCode)
+                //         ON CONFLICT (ChainID) DO NOTHING;", new { chain.ChainID, chain.ChainName, chain.ChainPostalCode });
+                // }
 
-                foreach (var acc in accounts ?? new())
-                {
-                    await ExecuteAsync(@"
-                        INSERT INTO Account (Email, Username, Password)
-                        VALUES (@Email, @Username, @Password)
-                        ON CONFLICT (Email) DO NOTHING;", new { acc.Email, acc.Username, acc.Password });
-                }
+                // foreach (var acc in accounts ?? new())
+                // {
+                //     await ExecuteAsync(@"
+                //         INSERT INTO Account (Email, Username, Password)
+                //         VALUES (@Email, @Username, @Password)
+                //         ON CONFLICT (Email) DO NOTHING;", new { acc.Email, acc.Username, acc.Password });
+                // }
 
-                foreach (var hotel in hotels ?? new())
-                {
-                    await ExecuteAsync(@"
-                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country, City)
-                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown', 'Unknown')
-                        ON CONFLICT (PostalCode) DO NOTHING;", new { hotel.PostalCode });
+                // foreach (var hotel in hotels ?? new())
+                // {
+                //     await ExecuteAsync(@"
+                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country, City)
+                //         VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown', 'Unknown')
+                //         ON CONFLICT (PostalCode) DO NOTHING;", new { hotel.PostalCode });
 
-                    await ExecuteAsync(@"
-                        INSERT INTO Hotel (HotelID, ChainID, Name, PostalCode, Stars, Manager, Description)
-                        VALUES (@HotelID, @ChainID, @Name, @PostalCode, @Stars, NULL, @Description)
-                        ON CONFLICT (HotelID) DO NOTHING;", new { hotel.HotelID, hotel.ChainID, hotel.Name, hotel.PostalCode, hotel.Stars, hotel.Description });
-                }
+                //     await ExecuteAsync(@"
+                //         INSERT INTO Hotel (HotelID, ChainID, Name, PostalCode, Stars, Manager, Description)
+                //         VALUES (@HotelID, @ChainID, @Name, @PostalCode, @Stars, NULL, @Description)
+                //         ON CONFLICT (HotelID) DO NOTHING;", new { hotel.HotelID, hotel.ChainID, hotel.Name, hotel.PostalCode, hotel.Stars, hotel.Description });
+                // }
 
-                foreach (var emp in employees ?? new())
-                {
-                    await ExecuteAsync(@"
-                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country, City)
-                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown', 'Unknown')
-                        ON CONFLICT (PostalCode) DO NOTHING;", new { emp.PostalCode });
+                // foreach (var emp in employees ?? new())
+                // {
+                //     await ExecuteAsync(@"
+                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country, City)
+                //         VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown', 'Unknown')
+                //         ON CONFLICT (PostalCode) DO NOTHING;", new { emp.PostalCode });
 
-                    await ExecuteAsync(@"
-                        INSERT INTO Employee (SSN, FirstName, LastName, PostalCode, Position, HotelID, Email)
-                        VALUES (@SSN, @FirstName, @LastName, @PostalCode, @Position, @HotelID, @Email)
-                        ON CONFLICT (SSN) DO NOTHING;", new { emp.SSN, emp.FirstName, emp.LastName, emp.PostalCode, emp.Position, emp.HotelID, emp.Email });
-                }
+                //     await ExecuteAsync(@"
+                //         INSERT INTO Employee (SSN, FirstName, LastName, PostalCode, Position, HotelID, Email)
+                //         VALUES (@SSN, @FirstName, @LastName, @PostalCode, @Position, @HotelID, @Email)
+                //         ON CONFLICT (SSN) DO NOTHING;", new { emp.SSN, emp.FirstName, emp.LastName, emp.PostalCode, emp.Position, emp.HotelID, emp.Email });
+                // }
 
-                foreach (var room in rooms ?? new())
-                {
-                    await ExecuteAsync(@"
-                        INSERT INTO Room (RoomNumber, HotelID, Price, Capacity, View, Extendable)
-                        VALUES (@RoomNumber, @HotelID, @Price, @Capacity, @View, @Extendable)
-                        ON CONFLICT (RoomNumber, HotelID) DO NOTHING;", new { room.RoomNumber, room.HotelID, room.Price, room.Capacity, room.View, room.Extendable });
-                }
+                // foreach (var room in rooms ?? new())
+                // {
+                //     await ExecuteAsync(@"
+                //         INSERT INTO Room (RoomNumber, HotelID, Price, Capacity, View, Extendable)
+                //         VALUES (@RoomNumber, @HotelID, @Price, @Capacity, @View, @Extendable)
+                //         ON CONFLICT (RoomNumber, HotelID) DO NOTHING;", new { room.RoomNumber, room.HotelID, room.Price, room.Capacity, room.View, room.Extendable });
+                // }
 
-                // 5. Finalize Relationships (Circular dependencies)
-                await ExecuteAsync(@"
-                    ALTER TABLE Hotel DROP CONSTRAINT IF EXISTS fk_hotel_manager;
-                    ALTER TABLE Hotel ADD CONSTRAINT fk_hotel_manager FOREIGN KEY (Manager) REFERENCES Employee(SSN);
-                    ALTER TABLE Employee DROP CONSTRAINT IF EXISTS fk_employee_hotel;
-                    ALTER TABLE Employee ADD CONSTRAINT fk_employee_hotel FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID);");
+                // // 5. Finalize Relationships (Circular dependencies)
+                // await ExecuteAsync(@"
+                //     ALTER TABLE Hotel DROP CONSTRAINT IF EXISTS fk_hotel_manager;
+                //     ALTER TABLE Hotel ADD CONSTRAINT fk_hotel_manager FOREIGN KEY (Manager) REFERENCES Employee(SSN);
+                //     ALTER TABLE Employee DROP CONSTRAINT IF EXISTS fk_employee_hotel;
+                //     ALTER TABLE Employee ADD CONSTRAINT fk_employee_hotel FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID);");
 
-                foreach (var hotel in hotels ?? new())
-                {
-                    if (!string.IsNullOrEmpty(hotel.Manager))
-                    {
-                        await ExecuteAsync(@"UPDATE Hotel SET Manager = @Manager WHERE HotelID = @HotelID;", 
-                            new { hotel.Manager, hotel.HotelID });
-                    }
-                }
+                // foreach (var hotel in hotels ?? new())
+                // {
+                //     if (!string.IsNullOrEmpty(hotel.Manager))
+                //     {
+                //         await ExecuteAsync(@"UPDATE Hotel SET Manager = @Manager WHERE HotelID = @HotelID;", 
+                //             new { hotel.Manager, hotel.HotelID });
+                //     }
+                // }
 
                 return true;
             }, _logger);
