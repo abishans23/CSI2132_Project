@@ -11,7 +11,7 @@ namespace Data
                     Manager VARCHAR(20),
                     Description VARCHAR(200),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode),
-                    FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID)
+                    FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID) ON DELETE CASCADE
                     );";
 
         public static readonly string createHotelChain = @"CREATE TABLE IF NOT EXISTS HotelChain (
@@ -90,7 +90,7 @@ namespace Data
                     HotelID INT NOT NULL CHECK(HotelID >= 0),
                     Email VARCHAR(30) NOT NULL CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
                     FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode),
-                    FOREIGN KEY (Email) REFERENCES Account(Email)
+                    FOREIGN KEY (Email) REFERENCES Account(Email) ON DELETE CASCADE
                     );";
 
         public static readonly string createRoom = @"CREATE TABLE IF NOT EXISTS Room(
@@ -101,7 +101,7 @@ namespace Data
                     View VARCHAR(30),
                     Extendable BOOL,
                     PRIMARY KEY (RoomNumber, HotelID),
-                    FOREIGN KEY (HotelID) REFERENCES Hotel (HotelID)
+                    FOREIGN KEY (HotelID) REFERENCES Hotel (HotelID) ON DELETE CASCADE
                     );";
 
         public static readonly string createRoomProblem = @"CREATE TABLE IF NOT EXISTS RoomProblem(
@@ -130,8 +130,8 @@ namespace Data
                     HotelID INT NOT NULL,
                     IDType VARCHAR(30) NOT NULL,
                     IDNumber VARCHAR(30) NOT NULL,
-                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID),
-                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
+                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID) ON DELETE CASCADE,
+                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber) ON DELETE CASCADE
                     );";
 
 
@@ -162,8 +162,8 @@ namespace Data
                     HotelID INT NOT NULL,
                     IDType VARCHAR(30) NOT NULL,
                     IDNumber VARCHAR(30) NOT NULL,
-                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID),
-                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber)
+                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID) ON DELETE CASCADE,
+                    FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber) ON DELETE CASCADE
                     );";
 
 
@@ -186,7 +186,7 @@ namespace Data
                     Status VARCHAR(20) NOT NULL CHECK(Status IN ('Cancelled', 'Scheduled', 'Occupied')),
                     StartDate DATE,
                     EndDate DATE,
-                    FOREIGN KEY(HotelID) REFERENCES Hotel
+                    FOREIGN KEY(HotelID) REFERENCES Hotel ON DELETE CASCADE
                 );";
 
         public static readonly string createArchivedRenting = @"CREATE TABLE IF NOT EXISTS ArchivedRenting(
@@ -195,7 +195,7 @@ namespace Data
                     HotelID INT CHECK(HotelID >=0),
                     StartDate DATE NOT NULL,
                     EndDate DATE NOT NULL,
-                    FOREIGN KEY(HotelID) REFERENCES Hotel
+                    FOREIGN KEY(HotelID) REFERENCES Hotel ON DELETE CASCADE
                 );";
     }
 }
