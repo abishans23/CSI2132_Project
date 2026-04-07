@@ -28,10 +28,13 @@ public class HomeController : Controller
         
         await _db.OpenConnection();
 
+
         //aggregation query. Show the chains and their average stars across all hotels they own on front page
         string chainQuery = "SELECT ChainName, ROUND(AVG(Stars),2) as AvgStars FROM HotelChain NATURAL JOIN Hotel GROUP BY ChainID";
         var chainsQueryResult = await _db.QueryAsync<dynamic>(chainQuery);
         var chainsData = chainsQueryResult.ToList();
+
+        
 
         return View(chainsData);
     }
@@ -64,14 +67,27 @@ public class HomeController : Controller
         return Json(new {rows});
     }
 
-    public IActionResult DeleteRow(string tableName, string primaryKeys)
+    public async Task<IActionResult> DeleteRow(string tableName, string primaryKeys)
     {
         Console.Write("RECIVED KEYS: ");
-        var keys = JsonNode.Parse(primaryKeys).AsArray().Select(x => x.GetValue<string>());
+        Console.WriteLine(JsonNode.Parse(primaryKeys));
+        //construct dynamic delete query given table name and primary key values
+        var keys = JsonNode.Parse(primaryKeys).AsObject();
 
-        Console.WriteLine(Utils.BuildDelete(tableName, keys));
+        string deleteQuery = "DELETE FROM " + tableName + " WHERE ";
 
-        
+        foreach (var k in keys)
+        {
+            deleteQuery += k.Key + " = '" + k.Value + "' AND ";
+        }
+
+        deleteQuery = deleteQuery.Remove(deleteQuery.Length - 4) + ";";
+
+        Console.WriteLine(deleteQuery);
+
+        await _db.ExecuteAsync(
+                @deleteQuery
+            );
 
         return Json(new{success=true});
     }
