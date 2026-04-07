@@ -64,15 +64,26 @@ public class HomeController : Controller
         return Json(new {rows});
     }
 
-    public IActionResult DeleteRow(string tableName, string primaryKeys)
+    public async Task<IActionResult> DeleteRow(string tableName, string primaryKeys)
     {
         Console.Write("RECIVED KEYS: ");
         Console.WriteLine(JsonNode.Parse(primaryKeys));
-        // var keys = JsonNode.Parse(primaryKeys).AsArray().Select(x => x.GetValue<string>());
+        var keys = JsonNode.Parse(primaryKeys).AsObject();
 
-        // Console.WriteLine(Utils.BuildDelete(tableName, keys));
+        string deleteQuery = "DELETE FROM " + tableName + " WHERE ";
 
-        
+        foreach (var k in keys)
+        {
+            deleteQuery += k.Key + " = '" + k.Value + "' AND ";
+        }
+
+        deleteQuery = deleteQuery.Remove(deleteQuery.Length - 4) + ";";
+
+        Console.WriteLine(deleteQuery);
+
+        await _db.ExecuteAsync(
+                @deleteQuery
+            );
 
         return Json(new{success=true});
     }
