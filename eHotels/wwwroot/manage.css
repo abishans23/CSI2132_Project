@@ -109,3 +109,18 @@
 .item-holder button:hover{
     cursor: pointer;
 }
+
+.input-holder{
+    display: flex;
+    gap: 1em;
+    padding: 0.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-name{
+    font-style: serif;
+    box-sizing: border-box;
+    font-size: large;
+    width: 5em;
+}
