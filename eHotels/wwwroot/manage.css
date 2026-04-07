@@ -120,5 +120,7 @@
 
 .input-name{
     font-style: serif;
-    font-size: x-large;
+    box-sizing: border-box;
+    font-size: large;
+    width: 5em;
 }

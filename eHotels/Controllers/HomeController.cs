@@ -71,6 +71,7 @@ public class HomeController : Controller
     public async Task<IActionResult> GetSchema(string tableName)
     {   
         var T = TableColumnsAndTypes.Hotel;
+
         string[] JSONData = new string[T.Count];
         
         var i = 0;
@@ -87,6 +88,7 @@ public class HomeController : Controller
     {
         Console.Write("RECIVED KEYS: ");
         Console.WriteLine(JsonNode.Parse(primaryKeys));
+        
         //construct dynamic delete query given table name and primary key values
         var keys = JsonNode.Parse(primaryKeys).AsObject();
 
