@@ -32,7 +32,7 @@
 
     </div>
 
-    <div class="form-overlay" id="edit-item-form" style="display: none;">
+    <div class="form-overlay" schema-name="" id="edit-item-form" style="display: none;">
 
         <div class="form-container" style="max-height: 80vh;">
             <button class="close-button">X</button>
@@ -118,12 +118,11 @@
                 JSONData[inpName] = inpValue;
             }
 
-            let insertResponse = await fetch("/Home/InsertTable?tableName=" + schemaName + "&data=" + encodeURIComponent(JSON.stringify(JSONData)));
-
             console.log(JSONData);
 
+            let insertResponse = await fetch("/Home/InsertTable?tableName=" + editItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSON.stringify(JSONData)));
 
-
+            editItemForm.style.display = "none";
         }
 
         for (let i = 0; i < dbItems.length; i++){
@@ -135,6 +134,8 @@
                 editFormListHolder.innerHTML = '';
                 editItemFormTitle.innerHTML = "Add " + name;
                 editItemForm.style.display = "block";
+
+                editItemForm.setAttribute("schema-name", schemaName);
 
                 let response = await fetch("/Home/GetSchema?tableName=" + schemaName);
 

@@ -110,10 +110,19 @@ public class HomeController : Controller
         return Json(new{success=true});
     }
 
-    public IActionResult InsertTable(string tableName, string primaryKeys)
+    public IActionResult InsertTable(string tableName, string values)
     {
-        
-        return Json(new{});
+        Console.WriteLine(tableName + " " + values);
+
+        var valuePAirs = JsonNode.Parse(primaryKeys).AsObject();
+
+        string insertQuery = "INSERT INTO " + tableName + " VALUES + (";
+
+        foreach (var v in values)
+        {
+            
+        }
+        return Json(new{success=true});
     }
     
     public IActionResult LogOut()
