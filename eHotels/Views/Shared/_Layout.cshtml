@@ -16,6 +16,7 @@
             <li class="nav-iteml"><a class="nav-name">RM</a></li>
             <li class="nav-iteml"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
 
+            @* show ui depending on if user is a manager or employee *@
             @if (Context.Session.GetString("Email") != "" && Context.Session.GetString("Email") != null){
                 <li class="nav-itemr"><a class="nav-link"  asp-area="" asp-controller="Home" asp-action="LogOut">Log Out</a></li>
             } else {
