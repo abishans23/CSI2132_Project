@@ -23,7 +23,7 @@ html, body{
   float: right;
 }
 
-.nav-link{
+.nav-link, .nav-name{
   display: block;
   color: white;
   text-align: center;
