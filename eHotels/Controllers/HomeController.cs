@@ -45,8 +45,7 @@ public class HomeController : Controller
 
         if (managerQueryResult.ToList().Count > 0)
         {
-            ViewBag.Manager = true;
-            Console.WriteLine("Manager");
+            ViewBag.Manager = "true";
             return View(chainsData);
         }
 
@@ -58,8 +57,7 @@ public class HomeController : Controller
 
         if (employeeQueryResult.ToList().Count > 0)
         {
-            ViewBag.Employee = true;
-            Console.WriteLine("EMPLOYEEEEEEEEEEEE");
+            ViewBag.Employee = "true";
         }
 
 
