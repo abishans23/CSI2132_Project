@@ -132,6 +132,10 @@
         addItemForm.querySelector(".close-button").onclick = function(){
             addItemForm.style.display = "none";
         }
+        
+        editItemForm.querySelector(".close-button").onclick = function(){
+            editItemForm.style.display = "none";
+        }
 
         addFormSumbitButton.onclick = async function(){
             let values = addFormListHolder.getElementsByClassName("input-holder");
@@ -146,6 +150,10 @@
             let insertResponse = await fetch("/Home/InsertTable?tableName=" + addItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSON.stringify(JSONData)));
 
             addItemForm.style.display = "none";
+        }
+
+        editFormSumbitButton.onclick = async function(){
+            console.log("UPDATE NOW EEEE")
         }
 
         for (let i = 0; i < dbItems.length; i++){

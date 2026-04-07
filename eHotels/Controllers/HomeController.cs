@@ -215,6 +215,11 @@ public class HomeController : Controller
 
         return Json(new{success=true});
     }
+
+    public IActionResult UpdateRow(string tableName, string values)
+    {
+        return Json(new{success=true});
+    }
     
     public IActionResult LogOut()
     {
