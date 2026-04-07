@@ -7,6 +7,7 @@ using Npgsql;
 using System.Net;
 using System.ComponentModel.Design;
 using System.Text.Json.Nodes;
+using System.Text.Json;
 
 namespace eHotels.Controllers;
 
@@ -67,10 +68,104 @@ public class HomeController : Controller
         return Json(new {rows});
     }
 
+    public async Task<IActionResult> GetSchema(string tableName)
+    {   
+        var T = TableColumnsAndTypes.Hotel;
+
+        string[] JSONData = new string[T.Count];
+        
+        var i = 0;
+
+        foreach (var col in T)
+        {
+            JSONData[i++] = col.Key;
+        }
+
+        return Json(JSONData);
+    }
+
+    public Dictionary<String, String> convertToDict(string tableName)
+    {
+        switch (tableName)
+        {
+            case "Hotel":
+                return TableColumnsAndTypes.Hotel;
+                break;
+            
+            case "HotelChain":
+                return TableColumnsAndTypes.HotelChain;
+                break;
+
+            case "Address":
+                return TableColumnsAndTypes.Address;
+                break;
+
+            case "HotelEmail":
+                return TableColumnsAndTypes.HotelEmail;
+                break;
+
+            case "HotelPhone":
+                return TableColumnsAndTypes.HotelPhone;
+                break;
+
+            case "HotelChainEmail":
+                return TableColumnsAndTypes.HotelChainEmail;
+                break;
+
+            case "HotelChainPhone":
+                return TableColumnsAndTypes.HotelChainPhone;
+                break;
+
+            case "HotelImage":
+                return TableColumnsAndTypes.HotelImage;
+                break;
+
+            case "Account":
+                return TableColumnsAndTypes.Account;
+                break;
+
+            case "Employee":
+                return TableColumnsAndTypes.Employee;
+                break;
+
+            case "Room":
+                return TableColumnsAndTypes.Room;
+                break;
+
+            case "RoomProblem":
+                return TableColumnsAndTypes.RoomProblem;
+                break;
+
+            case "RoomAmenity":
+                return TableColumnsAndTypes.RoomAmenity;
+                break;
+
+            case "Booking":
+                return TableColumnsAndTypes.Booking;
+                break;
+
+            case "Customer":
+                return TableColumnsAndTypes.Customer;
+                break;
+
+            case "Renting":
+                return TableColumnsAndTypes.Renting;
+                break;
+
+            case "Review":
+                return TableColumnsAndTypes.Review;
+                break;
+        }
+
+        return null;
+    }
+
+
     public async Task<IActionResult> DeleteRow(string tableName, string primaryKeys)
     {
         Console.Write("RECIVED KEYS: ");
         Console.WriteLine(JsonNode.Parse(primaryKeys));
+        
         //construct dynamic delete query given table name and primary key values
         var keys = JsonNode.Parse(primaryKeys).AsObject();
 
@@ -88,6 +183,62 @@ public class HomeController : Controller
         await _db.ExecuteAsync(
                 @deleteQuery
             );
+
+        return Json(new{success=true});
+    }
+
+    public async Task<IActionResult> GetRow(string tableName, string primaryKeys)
+    {
+        var keys = JsonNode.Parse(primaryKeys).AsObject();
+        string selectQuery = "SELECT FROM " + tableName + " WHERE ";
+
+        foreach (var k in keys)
+        {
+            selectQuery += k.Key + " = '" + k.Value + "' AND ";
+        }
+
+        selectQuery = selectQuery.Remove(selectQuery.Length - 4) + ";";
+
+        var selectQueryResult = await _db.QueryAsync<dynamic>(selectQuery);
+
+        foreach (var val in selectQueryResult)
+        {
+            Console.WriteLine(val);
+        }
+
+        Console.WriteLine(selectQueryResult);
+
+
+        return Json(new{success=true});
+    }
+
+    public async Task<IActionResult> InsertTable(string tableName, string values)
+    {
+        Console.WriteLine(tableName + " " + values);
+
+        var valuePairs = JsonNode.Parse(values).AsObject();
+
+        string insertQuery = "INSERT INTO " + tableName + " VALUES (";
+
+        foreach (var v in valuePairs)
+        {
+            if (v.Value.ToString() == "")
+            {
+                insertQuery += "NULL, ";
+            }
+            else
+            {
+                insertQuery += "'" + v.Value + "', ";
+            }
+        }
+
+        insertQuery = insertQuery.Remove(insertQuery.Length - 2) + ");";
+
+        await _db.ExecuteAsync(
+                @insertQuery
+            );
+
+        Console.WriteLine(insertQuery);
 
         return Json(new{success=true});
     }
@@ -253,7 +404,7 @@ public class HomeController : Controller
         //strip spaces
         string tmp = postalCode;
         postalCode = "";
-        foreach (char c in postalCode)
+        foreach (char c in tmp)
         {
             if (c != ' ')
             {

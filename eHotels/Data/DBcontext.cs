@@ -148,6 +148,18 @@ namespace Data
                 //     await this.ExecuteAsync(CreateString.createRentedRoom);
                 //     await this.ExecuteAsync(CreateString.createCustBooking);
                 //     await this.ExecuteAsync(CreateString.createRentingTenant);
+                
+                // await this.ExecuteAsync(TriggerString.bookingconflict);
+                // await this.ExecuteAsync(TriggerString.deletebooking);
+                // await this.ExecuteAsync(TriggerString.rentingconflict);
+
+                // await this.ExecuteAsync(IndexString.area);
+                // await this.ExecuteAsync(IndexString.bookingdates);
+                // await this.ExecuteAsync(IndexString.employeesInHotel);
+                // await this.ExecuteAsync(IndexString.roomcapacity);
+
+                // await this.ExecuteAsync(ViewString.RoomNum);
+                // await this.ExecuteAsync(ViewString.RoomNumCity);
 
                 // await this.ExecuteAsync(@"
                 //     DROP TABLE IF EXISTS CUSTOMER CASCADE;");

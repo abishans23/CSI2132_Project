@@ -18,8 +18,9 @@ namespace Data
         
         public Hotel() { }
 
-        public Hotel(int chainID, string name, int stars, string manager, string postalCode, string description, string fileName, string imageDesc)
+        public Hotel(int hotelID, int chainID, string name, int stars, string manager, string postalCode, string description, string fileName, string imageDesc)
         {
+            this.HotelID = hotelID;
             this.ChainID = chainID;
             this.Name = name;
             this.Stars = stars;

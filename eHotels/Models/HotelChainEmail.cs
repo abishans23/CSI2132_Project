@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 public class HotelChainEmail
 {
-    public uint ChainID{get;set;}
+    public int ChainID{get;set;}
 
     //make in email format
     [Required]
@@ -11,7 +11,7 @@ public class HotelChainEmail
 
     public HotelChainEmail(){}
 
-    public HotelChainEmail(uint ChainID,string Email)
+    public HotelChainEmail(int ChainID,string Email)
     {
         this.ChainID=ChainID;
         this.Email=Email;

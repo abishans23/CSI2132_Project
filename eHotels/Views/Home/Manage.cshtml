@@ -21,19 +21,35 @@
             <button class="close-button">X</button>
             <div class="form-title">Edit Hotels</div>
             <div class="line-break"></div>
-            <div class="form-list-holder">
+            <div class="form-list-holder" id="view-form-list-holder">
                 <div class="item-holder">
                     <div class="item-name">Hotel 1 hotel ID</div>
                     <button class="edit-item">Edit</button>
                     <button class="delete-item">Delete</button>
-                    <div class="primary-keys" value="" style="display: none;"></div>
                 </div>
             </div>
         </div>
 
     </div>
 
+    <div class="form-overlay" schema-name="" id="edit-item-form" style="display: none;">
 
+        <div class="form-container" style="max-height: 80vh;">
+            <button class="close-button">X</button>
+            <div class="form-title">Edit Hotels</div>
+            <div class="line-break"></div>
+
+            <div class="form-list-holder">
+                <div class="input-holder">
+                    <div class="input-name">input</div>
+                    <input class="input" />
+                </div>
+            </div>
+
+            <button id="add-db-item" class="submit-button"></button>
+        </div>
+
+    </div>
 
     <div class="page-title-holder">
         <div class="page-title">Manage Database</div>
@@ -63,32 +79,85 @@
             Booking:["bookingid"], 
             Customer:["idtype","idnumber"], 
             Employee:["ssn"], 
-            Hotelchain:["chainid"], 
-            Hotelchainemail:["chainid","email"], 
-            Hotelchainphone:["chainid","phonenumber"], 
-            Hotelmail:["hotelid","email"], 
-            Hotelphone:["hotelid","phonenumber"], 
+            HotelChain:["chainid"], 
+            HotelChainEmail:["chainid","email"], 
+            HotelChainPhone:["chainid","phonenumber"], 
+            HotelEmail:["hotelid","email"], 
+            HotelPhone:["hotelid","phonenumber"], 
             Renting:["rentingid"], 
             Room:["roomnumber","hotelid"], 
-            Roomamenity:["roomnumber","hotelid","amenity"], 
-            Roomproblem:["roomnumber","hotelid","problem"]
+            RoomAmenity:["roomnumber","hotelid","amenity"], 
+            RoomProblem:["roomnumber","hotelid","problem"]
         };
 
         let dbItems = document.getElementsByClassName("db-item");
         let viewEditFormOverlay = document.getElementById("view-edit-form");
-        let formListHolder = document.querySelector(".form-list-holder");
+        let formListHolder = document.getElementById("view-form-list-holder");
         let closeButton = document.querySelector(".close-button");
         let formTitle = document.querySelector(".form-title");
+
+        let editItemForm = document.getElementById("edit-item-form");
+        let editItemFormTitle = editItemForm.querySelector(".form-title");
+        let editFormListHolder = editItemForm.querySelector(".form-list-holder");
+        let editFormSumbitButton = editItemForm.querySelector(".submit-button");
         
         viewEditFormOverlay.querySelector(".close-button").onclick = function(){
             viewEditFormOverlay.style.display = "none";
         }
 
-        for (let i = 0; i < dbItems.length; i++){
+        editItemForm.querySelector(".close-button").onclick = function(){
+            editItemForm.style.display = "none";
+        }
 
+        document.getElementById("add-db-item").onclick = async function(){
+            let values = editFormListHolder.getElementsByClassName("input-holder");
+            let JSONData = {};
+
+            for (let inp = 0; inp < values.length; inp++){
+                let inpName = values[inp].querySelector(".input-name").innerHTML;
+                let inpValue = values[inp].querySelector(".input").value;
+                JSONData[inpName] = inpValue;
+            }
+
+            let insertResponse = await fetch("/Home/InsertTable?tableName=" + editItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSON.stringify(JSONData)));
+
+            editItemForm.style.display = "none";
+        }
+
+        for (let i = 0; i < dbItems.length; i++){
             let name = dbItems[i].querySelector(".item-title").innerHTML;
             let schemaName =  name.replaceAll(' ', '');
             let addButton = dbItems[i].querySelector(".add-item");
+
+            addButton.onclick = async function(){
+                editFormListHolder.innerHTML = '';
+                editItemFormTitle.innerHTML = "Add " + name;
+                editItemForm.style.display = "block";
+
+                editFormSumbitButton.innerHTML = "Add";
+
+                editItemForm.setAttribute("schema-name", schemaName);
+
+                let response = await fetch("/Home/GetSchema?tableName=" + schemaName);
+
+                response.json().then(data => {
+                    
+                    for (let k = 0; k < data.length; k++){
+                        let tmpDiv = document.createElement("div");
+                        tmpDiv.innerHTML += 
+                        '<div class="input-holder">' +
+                            '<div class="input-name" id="DB-DATA">' + data[k] + '</div>' +
+                            '<input class="input" id="DB-INPUT" />'+
+                        '</div>'
+
+                        let initElem = tmpDiv.firstChild;
+                        editFormListHolder.appendChild(initElem);
+                        
+                    }
+
+                })
+                
+            }
 
             dbItems[i].querySelector(".edit-button").onclick = async function(){
                 formListHolder.innerHTML = ""
@@ -126,20 +195,54 @@
 
                         let deleteButton = initItem.querySelector(".delete-item");
                         let editButton = initItem.querySelector(".edit-item");
+                        let objectPrimaryKeys = JSON.stringify(rowPrimaryKeys);
 
                         deleteButton.onclick = async function(){
-                            let objectPrimaryKeys = JSON.stringify(rowPrimaryKeys);
                             
                             let deleteResponse = await fetch("/Home/DeleteRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys));
 
                             deleteResponse.json().then(succ => {
                                 if (succ.success == true){
                                     initItem.remove();
+                                    tempDiv.remove();
                                     console.log("DELETED");
                                 } else {
                                     console.log("EROR DELETEING")
                                 }
                             })
+                        }
+
+                        //EDIT EXISTING INFO
+                        editButton.onclick = async function(){
+                            editFormListHolder.innerHTML = '';
+                            editItemFormTitle.innerHTML = "Edit " + name;
+                            editItemForm.style.display = "block";
+                            editFormSumbitButton.innerHTML = "Confirm";
+
+                            editItemForm.setAttribute("schema-name", schemaName);
+
+                            let getRowResponse = await fetch("/Home/GetRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys));
+                            @* console.log("get fetch req: ") *@
+
+                            let schemaResponse = await fetch("/Home/GetSchema?tableName=" + schemaName);
+
+                            schemaResponse.json().then(data => {
+                                
+                                for (let k = 0; k < data.length; k++){
+                                    let tmpDiv = document.createElement("div");
+                                    tmpDiv.innerHTML += 
+                                    '<div class="input-holder">' +
+                                        '<div class="input-name" id="DB-DATA">' + data[k] + '</div>' +
+                                        '<input class="input" id="DB-INPUT" />'+
+                                    '</div>'
+
+                                    let initElem = tmpDiv.firstChild;
+                                    editFormListHolder.appendChild(initElem);
+                                    
+                                }
+
+                            })
+
                         }
 
                     } 
