@@ -7,6 +7,7 @@ using Npgsql;
 using System.Net;
 using System.ComponentModel.Design;
 using System.Text.Json.Nodes;
+using System.Text.Json;
 
 namespace eHotels.Controllers;
 
@@ -65,6 +66,22 @@ public class HomeController : Controller
         var rows = tableDataQueryResult.ToList();
 
         return Json(new {rows});
+    }
+
+    public async Task<IActionResult> GetSchema(string tableName)
+    {   
+        
+        var T = TableColumnsAndTypes.Hotel;
+        string[] JSONData = new string[T.Count];
+        
+        var i = 0;
+
+        foreach (var col in T)
+        {
+            JSONData[i++] = col.Key;
+        }
+
+        return Json(JSONData);
     }
 
     public async Task<IActionResult> DeleteRow(string tableName, string primaryKeys)
@@ -253,7 +270,7 @@ public class HomeController : Controller
         //strip spaces
         string tmp = postalCode;
         postalCode = "";
-        foreach (char c in postalCode)
+        foreach (char c in tmp)
         {
             if (c != ' ')
             {

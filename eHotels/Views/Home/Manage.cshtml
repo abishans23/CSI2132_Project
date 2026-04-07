@@ -26,14 +26,28 @@
                     <div class="item-name">Hotel 1 hotel ID</div>
                     <button class="edit-item">Edit</button>
                     <button class="delete-item">Delete</button>
-                    <div class="primary-keys" value="" style="display: none;"></div>
                 </div>
             </div>
         </div>
 
     </div>
 
+    <div class="form-overlay" id="edit-item-form" style="display: none;">
 
+        <div class="form-container" style="max-height: 80vh;">
+            <button class="close-button">X</button>
+            <div class="form-title">Edit Hotels</div>
+            <div class="line-break"></div>
+            <div class="form-list-holder">
+                <div class="input-holder">
+                    <div class="input-name">input</div>
+                    <input class="input" />
+                </div>
+            </div>
+            <button class="submit-button">Add</button>
+        </div>
+
+    </div>
 
     <div class="page-title-holder">
         <div class="page-title">Manage Database</div>
@@ -79,16 +93,38 @@
         let formListHolder = document.querySelector(".form-list-holder");
         let closeButton = document.querySelector(".close-button");
         let formTitle = document.querySelector(".form-title");
+
+        let editItemForm = document.getElementById("edit-item-form");
+        let editItemFormTitle = editItemForm.querySelector(".form-title");
         
         viewEditFormOverlay.querySelector(".close-button").onclick = function(){
             viewEditFormOverlay.style.display = "none";
         }
 
-        for (let i = 0; i < dbItems.length; i++){
+        editItemForm.querySelector(".close-button").onclick = function(){
+            editItemForm.style.display = "none";
+        }
 
+        for (let i = 0; i < dbItems.length; i++){
             let name = dbItems[i].querySelector(".item-title").innerHTML;
             let schemaName =  name.replaceAll(' ', '');
             let addButton = dbItems[i].querySelector(".add-item");
+
+            addButton.onclick = async function(){
+                editItemFormTitle.innerHTML = "Add " + name;
+                editItemForm.style.display = "block";
+
+                let response = await fetch("/Home/GetSchema?tableName=" + schemaName);
+
+                response.json().then(data => {
+                    
+                    for (let k = 0; k < data.length; k++){
+                        
+                    }
+
+                })
+                
+            }
 
             dbItems[i].querySelector(".edit-button").onclick = async function(){
                 formListHolder.innerHTML = ""
@@ -135,6 +171,7 @@
                             deleteResponse.json().then(succ => {
                                 if (succ.success == true){
                                     initItem.remove();
+                                    tempDiv.remove();
                                     console.log("DELETED");
                                 } else {
                                     console.log("EROR DELETEING")
