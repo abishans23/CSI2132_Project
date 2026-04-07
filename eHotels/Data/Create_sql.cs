@@ -124,7 +124,7 @@ namespace Data
                     IDType VARCHAR(30) NOT NULL,
                     IDNumber VARCHAR(30) NOT NULL,
                     CHECK (StartDate <= EndDate),
-                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID) ON DELETE CASCADE,
+                    FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNumber, HotelID) ON DELETE CASCADE,
                     FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber) ON DELETE CASCADE
                     );";
 
@@ -170,7 +170,7 @@ namespace Data
                     Date DATE,
                     Comments VARCHAR(200),
                     PRIMARY KEY(Email, HotelID),
-                    FOREIGN KEY (Email) REFERENCES Customer(Email) ON DELETE CASCADE,
+                    FOREIGN KEY (Email) REFERENCES Account(Email) ON DELETE CASCADE,
                     FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID) ON DELETE CASCADE
                     );";
 

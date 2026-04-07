@@ -8,11 +8,11 @@ class Booking
     public int HotelID { get; set; }
     public int RoomNumber { get; set; }
     public string IDType{get;set;}
-    public int IdNumber{get;set;}
+    public string IdNumber{get;set;}
 
     public Booking(){}
 
-    public Booking(int bookingID, DateOnly bookingDate, string status, DateOnly startDate, DateOnly endDate, int roomNumber, int hotelID, string IDType, int IDNumber)
+    public Booking(int bookingID, DateOnly bookingDate, string status, DateOnly startDate, DateOnly endDate, int roomNumber, int hotelID, string IDType, string IDNumber)
     {
         this.BookingID = bookingID;
         this.BookingDate = bookingDate;
