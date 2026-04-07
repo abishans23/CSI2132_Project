@@ -35,28 +35,28 @@ namespace Data
                     HotelID INT CHECK(HotelID >= 0),
                     Email VARCHAR(30) CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
                     PRIMARY KEY (HotelID, Email),
-                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
+                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID) ON DELETE CASCADE
                     );";
 
         public static readonly string createHotelPhone = @"CREATE TABLE IF NOT EXISTS HotelPhone (
                     HotelID INT,
                     PhoneNumber VARCHAR(10),
                     PRIMARY KEY (HotelID, PhoneNumber),
-                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
+                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID) ON DELETE CASCADE
                     );";
 
         public static readonly string createHotelChainEmail = @"CREATE TABLE IF NOT EXISTS HotelChainEmail (
                     ChainID INT CHECK (ChainID >= 0),
                     Email VARCHAR(30) CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
                     PRIMARY KEY (ChainID, Email),
-                    FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID)
+                    FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID) ON DELETE CASCADE
                     );";
 
         public static readonly string createHotelChainPhone = @"CREATE TABLE IF NOT EXISTS HotelChainPhone (
                     ChainID INT CHECK (ChainID >= 0),
                     PhoneNumber VARCHAR(10),
                     PRIMARY KEY (ChainID, PhoneNumber),
-                    FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID)
+                    FOREIGN KEY (ChainID) REFERENCES HotelChain(ChainID) ON DELETE CASCADE
                     );";
 
         public static readonly string createHotelImage = @"CREATE TABLE IF NOT EXISTS HotelImage(
@@ -64,7 +64,7 @@ namespace Data
                     FileName VARCHAR(25),
                     ImageDesc VARCHAR(100),
                     PRIMARY KEY (HotelID, FileName),
-                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
+                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID) ON DELETE CASCADE
                     );";
 
         public static readonly string createHotelAmenity = @"CREATE TABLE IF NOT EXISTS HotelAmenity(
@@ -72,7 +72,7 @@ namespace Data
                     AmenityName VARCHAR(20),
                     AmenityDesc VARCHAR(100),
                     PRIMARY KEY (HotelID, AmenityName),
-                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
+                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID) ON DELETE CASCADE
                     );";
 
         public static readonly string createAccount = @"CREATE TABLE IF NOT EXISTS Account(
@@ -109,7 +109,7 @@ namespace Data
                     HotelID INT NOT NULL CHECK(HotelID >= 0),
                     Problem VARCHAR(40),
                     PRIMARY KEY (RoomNumber, HotelID, Problem),
-                    FOREIGN KEY (RoomNumber, HotelID) REFERENCES Room(RoomNumber, HotelID)
+                    FOREIGN KEY (RoomNumber, HotelID) REFERENCES Room(RoomNumber, HotelID) ON DELETE CASCADE
                     );";
 
         public static readonly string createRoomAmenity = @"CREATE TABLE IF NOT EXISTS RoomAmenity(
@@ -117,7 +117,7 @@ namespace Data
                     HotelID INT NOT NULL CHECK(HotelID >= 0),
                     Amenity VARCHAR(40),
                     PRIMARY KEY (RoomNumber, HotelID, Amenity),
-                    FOREIGN KEY (RoomNumber, HotelID) REFERENCES Room(RoomNumber, HotelID)
+                    FOREIGN KEY (RoomNumber, HotelID) REFERENCES Room(RoomNumber, HotelID) ON DELETE CASCADE
                     );";
 
         public static readonly string createBooking = @"CREATE TABLE IF NOT EXISTS Booking(
