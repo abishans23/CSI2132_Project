@@ -121,10 +121,6 @@
 
             let insertResponse = await fetch("/Home/InsertTable?tableName=" + editItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSON.stringify(JSONData)));
 
-            insertResponse.json().then(data => {
-                console.log(data);
-            })
-
             editItemForm.style.display = "none";
         }
 
@@ -228,7 +224,24 @@
                             let getRowResponse = await fetch("/Home/GetRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys));
                             @* console.log("get fetch req: ") *@
 
-                            
+                            let schemaResponse = await fetch("/Home/GetSchema?tableName=" + schemaName);
+
+                            schemaResponse.json().then(data => {
+                                
+                                for (let k = 0; k < data.length; k++){
+                                    let tmpDiv = document.createElement("div");
+                                    tmpDiv.innerHTML += 
+                                    '<div class="input-holder">' +
+                                        '<div class="input-name" id="DB-DATA">' + data[k] + '</div>' +
+                                        '<input class="input" id="DB-INPUT" />'+
+                                    '</div>'
+
+                                    let initElem = tmpDiv.firstChild;
+                                    editFormListHolder.appendChild(initElem);
+                                    
+                                }
+
+                            })
 
                         }
 
