@@ -110,31 +110,6 @@ public class HomeController : Controller
         return Json(new{success=true});
     }
 
-    public async Task<IActionResult> GetRow(string tableName, string primaryKeys)
-    {
-        var keys = JsonNode.Parse(primaryKeys).AsObject();
-        string selectQuery = "SELECT FROM " + tableName + " WHERE ";
-
-        foreach (var k in keys)
-        {
-            selectQuery += k.Key + " = '" + k.Value + "' AND ";
-        }
-
-        selectQuery = selectQuery.Remove(selectQuery.Length - 4) + ";";
-
-        var selectQueryResult = await _db.QueryAsync<dynamic>(selectQuery);
-
-        foreach (var val in selectQueryResult)
-        {
-            Console.WriteLine(val);
-        }
-
-        Console.WriteLine(selectQueryResult);
-
-
-        return Json(new{success=true});
-    }
-
     public async Task<IActionResult> InsertTable(string tableName, string values)
     {
         Console.WriteLine(tableName + " " + values);

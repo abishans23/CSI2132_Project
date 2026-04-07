@@ -221,7 +221,7 @@
 
                             editItemForm.setAttribute("schema-name", schemaName);
 
-                            let getRowResponse = await fetch("/Home/GetRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys));
+                            @* let getRowResponse = await fetch("/Home/GetRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys)); *@
                             @* console.log("get fetch req: ") *@
 
                             let schemaResponse = await fetch("/Home/GetSchema?tableName=" + schemaName);
@@ -233,7 +233,7 @@
                                     tmpDiv.innerHTML += 
                                     '<div class="input-holder">' +
                                         '<div class="input-name" id="DB-DATA">' + data[k] + '</div>' +
-                                        '<input class="input" id="DB-INPUT" />'+
+                                        '<input class="input" id="DB-INPUT" value="' + rowData.rows[i][data[k]] + '"/>'+
                                     '</div>'
 
                                     let initElem = tmpDiv.firstChild;
