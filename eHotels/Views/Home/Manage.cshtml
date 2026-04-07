@@ -118,9 +118,11 @@
                 JSONData[inpName] = inpValue;
             }
 
-            console.log(JSONData);
-
             let insertResponse = await fetch("/Home/InsertTable?tableName=" + editItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSON.stringify(JSONData)));
+
+            insertResponse.json().then(data => {
+                console.log(data);
+            })
 
             editItemForm.style.display = "none";
         }

@@ -110,18 +110,34 @@ public class HomeController : Controller
         return Json(new{success=true});
     }
 
-    public IActionResult InsertTable(string tableName, string values)
+    public async Task<IActionResult> InsertTable(string tableName, string values)
     {
         Console.WriteLine(tableName + " " + values);
 
-        var valuePAirs = JsonNode.Parse(primaryKeys).AsObject();
+        var valuePairs = JsonNode.Parse(values).AsObject();
 
-        string insertQuery = "INSERT INTO " + tableName + " VALUES + (";
+        string insertQuery = "INSERT INTO " + tableName + " VALUES (";
 
-        foreach (var v in values)
+        foreach (var v in valuePairs)
         {
-            
+            if (v.Value.ToString() == "")
+            {
+                insertQuery += "NULL, ";
+            }
+            else
+            {
+                insertQuery += "'" + v.Value + "', ";
+            }
         }
+
+        insertQuery = insertQuery.Remove(insertQuery.Length - 2) + ");";
+
+        await _db.ExecuteAsync(
+                @insertQuery
+            );
+
+        Console.WriteLine(insertQuery);
+
         return Json(new{success=true});
     }
     
