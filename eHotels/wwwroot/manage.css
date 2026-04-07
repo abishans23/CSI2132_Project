@@ -112,17 +112,23 @@
 
 .input-holder{
     display: flex;
+    flex: 0.2;
     gap: 1em;
     padding: 0.5em;
     justify-content: center;
     align-items: center;
 }
 
+.input-holder input{
+    min-width: 0;
+    width: 100%;
+}
+
 .input-name{
+    width: 50%;
     font-style: serif;
     box-sizing: border-box;
     font-size: large;
-    width: 5em;
 }
 
 .primary-key-holder{
