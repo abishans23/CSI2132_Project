@@ -98,7 +98,8 @@
 
         let editItemForm = document.getElementById("edit-item-form");
         let editItemFormTitle = editItemForm.querySelector(".form-title");
-        let editFormListHolder = editItemForm.querySelector(".form-list-holder")
+        let editFormListHolder = editItemForm.querySelector(".form-list-holder");
+        let editFormSumbitButton = editItemForm.querySelector(".submit-button");
         
         viewEditFormOverlay.querySelector(".close-button").onclick = function(){
             viewEditFormOverlay.style.display = "none";
@@ -111,6 +112,8 @@
         document.getElementById("add-db-item").onclick = async function(){
             let values = editFormListHolder.getElementsByClassName("input-holder");
             let JSONData = {};
+
+            editFormSumbitButton.innerHTML = "add";
 
             for (let inp = 0; inp < values.length; inp++){
                 let inpName = values[inp].querySelector(".input-name").innerHTML;
@@ -196,9 +199,9 @@
 
                         let deleteButton = initItem.querySelector(".delete-item");
                         let editButton = initItem.querySelector(".edit-item");
+                        let objectPrimaryKeys = JSON.stringify(rowPrimaryKeys);
 
                         deleteButton.onclick = async function(){
-                            let objectPrimaryKeys = JSON.stringify(rowPrimaryKeys);
                             
                             let deleteResponse = await fetch("/Home/DeleteRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys));
 
@@ -211,6 +214,22 @@
                                     console.log("EROR DELETEING")
                                 }
                             })
+                        }
+
+                        //EDIT EXISTING INFO
+                        editButton.onclick = async function(){
+                            editFormListHolder.innerHTML = '';
+                            editItemFormTitle.innerHTML = "Edit " + name;
+                            editItemForm.style.display = "block";
+                            editFormSumbitButton.innerHTML = "Confirm";
+
+                            editItemForm.setAttribute("schema-name", schemaName);
+
+                            let getRowResponse = await fetch("/Home/GetRow?tableName=" + schemaName + "&primaryKeys=" + encodeURIComponent(objectPrimaryKeys));
+                            @* console.log("get fetch req: ") *@
+
+                            
+
                         }
 
                     } 
