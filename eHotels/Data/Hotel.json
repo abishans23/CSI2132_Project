@@ -1,951 +1,362 @@
 [
-  {
-    "HotelID": 1,
-    "ChainID": 1,
-    "Name": "Meridian Grand New York",
-    "PostalCode": "10022",
-    "Stars": 5,
-    "Manager": "100-000-001",
-    "Description": "A flagship five-star property in the heart of Midtown Manhattan, offering sweeping views of Central Park and world-class dining.",
-    "Emails": [
-      "nyc@meridianhotels.com"
-    ],
-    "PhoneNumbers": [
-      "2125551001"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Rooftop Pool",
-        "AmenityDesc": "Heated infinity pool with panoramic city views"
-      },
-      {
-        "AmenityName": "Spa",
-        "AmenityDesc": "Full-service spa with 12 treatment rooms"
-      },
-      {
-        "AmenityName": "Fine Dining Restaurant",
-        "AmenityDesc": "Award-winning French-American cuisine"
-      },
-      {
-        "AmenityName": "Fitness Center",
-        "AmenityDesc": "24-hour gym with personal trainers on request"
-      },
-      {
-        "AmenityName": "Concierge Service",
-        "AmenityDesc": "Round-the-clock concierge assistance"
-      }
-    ]
-  },
-  {
-    "HotelID": 2,
-    "ChainID": 1,
-    "Name": "Meridian Suites Chicago",
-    "PostalCode": "60611",
-    "Stars": 4,
-    "Manager": "100-000-002",
-    "Description": "Elegant suites on the Magnificent Mile with easy access to the lakefront, museums, and Chicago's vibrant dining scene.",
-    "Emails": [
-      "chi@meridianhotels.com"
-    ],
-    "PhoneNumbers": [
-      "3125551002"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Indoor Pool",
-        "AmenityDesc": "Temperature-controlled lap pool"
-      },
-      {
-        "AmenityName": "Business Center",
-        "AmenityDesc": "Fully equipped conference rooms and co-working space"
-      },
-      {
-        "AmenityName": "Sky Lounge Bar",
-        "AmenityDesc": "Cocktail bar on the 34th floor with lake views"
-      },
-      {
-        "AmenityName": "Valet Parking",
-        "AmenityDesc": "24-hour valet and self-parking available"
-      }
-    ]
-  },
-  {
-    "HotelID": 3,
-    "ChainID": 1,
-    "Name": "Meridian Palace Miami",
-    "PostalCode": "33139",
-    "Stars": 5,
-    "Manager": "100-000-003",
-    "Description": "A beachfront resort on South Beach blending Art Deco heritage with modern luxury. Private beach access and a celebrity-favourite pool deck.",
-    "Emails": [
-      "mia@meridianhotels.com"
-    ],
-    "PhoneNumbers": [
-      "3055551003"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Private Beach",
-        "AmenityDesc": "Reserved beachfront with cabana service"
-      },
-      {
-        "AmenityName": "Outdoor Pool",
-        "AmenityDesc": "Olympic-length pool with poolside bar"
-      },
-      {
-        "AmenityName": "Spa",
-        "AmenityDesc": "Caribbean-inspired treatments and hot tub suites"
-      },
-      {
-        "AmenityName": "Waterfront Restaurant",
-        "AmenityDesc": "Fresh seafood and Latin-fusion menu"
-      }
-    ]
-  },
-  {
-    "HotelID": 4,
-    "ChainID": 1,
-    "Name": "Meridian Tower Toronto",
-    "PostalCode": "M5J1B1",
-    "Stars": 4,
-    "Manager": "100-000-004",
-    "Description": "A sleek downtown tower steps from the Financial District and the CN Tower, ideal for both business and leisure travellers.",
-    "Emails": [
-      "tor@meridianhotels.com"
-    ],
-    "PhoneNumbers": [
-      "4165551004"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Fitness Center",
-        "AmenityDesc": "State-of-the-art equipment and yoga studio"
-      },
-      {
-        "AmenityName": "Executive Lounge",
-        "AmenityDesc": "Private lounge with complimentary breakfast and evening refreshments"
-      },
-      {
-        "AmenityName": "Restaurant",
-        "AmenityDesc": "Canadian cuisine with locally sourced ingredients"
-      }
-    ]
-  },
-  {
-    "HotelID": 5,
-    "ChainID": 1,
-    "Name": "Meridian Boutique Montreal",
-    "PostalCode": "H2X3L8",
-    "Stars": 3,
-    "Manager": "100-000-005",
-    "Description": "A charming boutique hotel in the Plateau-Mont-Royal neighbourhood, surrounded by galleries, bistros, and the best of Montreal's cultural scene.",
-    "Emails": [
-      "mtl@meridianhotels.com"
-    ],
-    "PhoneNumbers": [
-      "5145551005"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Café",
-        "AmenityDesc": "In-house café serving specialty coffee and pastries"
-      },
-      {
-        "AmenityName": "Bicycle Rental",
-        "AmenityDesc": "Complimentary bikes for exploring the city"
-      }
-    ]
-  },
-  {
-    "HotelID": 26,
-    "ChainID": 1,
-    "Name": "Meridian Plaza New York",
-    "PostalCode": "10022",
-    "Stars": 5,
-    "Manager": "100-000-026",
-    "Description": "A secondary luxury hub in NYC to fulfill local density requirements.",
-    "Emails": [
-      "plaza-nyc@meridianhotels.com"
-    ],
-    "PhoneNumbers": [
-      "2125551006"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 27,
-    "ChainID": 1,
-    "Name": "Meridian Urban Boston",
-    "PostalCode": "02108",
-    "Stars": 4,
-    "Manager": "100-000-027",
-    "Description": "Modern city living in the heart of Boston.",
-    "Emails": [
-      "bos@meridianhotels.com"
-    ],
-    "PhoneNumbers": [
-      "6175551007"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 28,
-    "ChainID": 1,
-    "Name": "Meridian Gateway Ottawa",
-    "PostalCode": "K1P1A1",
-    "Stars": 3,
-    "Manager": "100-000-028",
-    "Description": "Convenient access to Canada's capital.",
-    "Emails": [
-      "ott@meridianhotels.com"
-    ],
-    "PhoneNumbers": [
-      "6135551008"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 6,
-    "ChainID": 2,
-    "Name": "Azure Riviera Cannes",
-    "PostalCode": "06400",
-    "Stars": 5,
-    "Manager": "100-000-006",
-    "Description": "A palatial retreat on the Côte d'Azur, host to film stars during the festival season and discerning travellers year-round.",
-    "Emails": [
-      "cannes@azurecoast.com"
-    ],
-    "PhoneNumbers": [
-      "3345552001"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Private Beach Club",
-        "AmenityDesc": "Exclusive beachfront with sun beds and champagne service"
-      },
-      {
-        "AmenityName": "Michelin-Star Restaurant",
-        "AmenityDesc": "Provençal seafood by a two-star chef"
-      },
-      {
-        "AmenityName": "Spa",
-        "AmenityDesc": "Talasso therapy and sea-mineral treatments"
-      },
-      {
-        "AmenityName": "Yacht Charter",
-        "AmenityDesc": "Arrangements for private yacht hire from the marina"
-      }
-    ]
-  },
-  {
-    "HotelID": 7,
-    "ChainID": 2,
-    "Name": "Azure Côte Nice",
-    "PostalCode": "06000",
-    "Stars": 4,
-    "Manager": "100-000-007",
-    "Description": "Belle Époque elegance meets the Mediterranean on Nice's iconic Promenade. Walking distance to the Old Town and bustling Cours Saleya market.",
-    "Emails": [
-      "nice@azurecoast.com"
-    ],
-    "PhoneNumbers": [
-      "3345552002"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Outdoor Pool",
-        "AmenityDesc": "Heated seawater pool with panoramic sea views"
-      },
-      {
-        "AmenityName": "Wine Bar",
-        "AmenityDesc": "Curated Provence wine cellar and tasting events"
-      },
-      {
-        "AmenityName": "Fitness Center",
-        "AmenityDesc": "Overlooking the sea with Pilates classes"
-      }
-    ]
-  },
-  {
-    "HotelID": 8,
-    "ChainID": 2,
-    "Name": "Azure Med Barcelona",
-    "PostalCode": "08007",
-    "Stars": 5,
-    "Manager": "100-000-008",
-    "Description": "Set in a restored Modernista building on Passeig de Gràcia, steps from the Sagrada Família and Picasso Museum.",
-    "Emails": [
-      "bcn@azurecoast.com"
-    ],
-    "PhoneNumbers": [
-      "34935552003"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Rooftop Terrace",
-        "AmenityDesc": "Open-air terrace with tapas bar and city views"
-      },
-      {
-        "AmenityName": "Spa",
-        "AmenityDesc": "Mediterranean-inspired therapies and hammam"
-      },
-      {
-        "AmenityName": "Art Gallery",
-        "AmenityDesc": "Rotating exhibitions by local Catalan artists"
-      }
-    ]
-  },
-  {
-    "HotelID": 9,
-    "ChainID": 2,
-    "Name": "Azure Adriatic Dubrovnik",
-    "PostalCode": "20000",
-    "Stars": 4,
-    "Manager": "100-000-009",
-    "Description": "A historic hotel within the Old Town walls of Dubrovnik, offering stunning Adriatic views and access to the city's UNESCO heritage sites.",
-    "Emails": [
-      "dbv@azurecoast.com"
-    ],
-    "PhoneNumbers": [
-      "385205552004"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Infinity Pool",
-        "AmenityDesc": "Cliffside pool overlooking the Adriatic Sea"
-      },
-      {
-        "AmenityName": "Restaurant",
-        "AmenityDesc": "Dalmatian seafood and regional wines"
-      }
-    ]
-  },
-  {
-    "HotelID": 10,
-    "ChainID": 2,
-    "Name": "Azure Garden Lisbon",
-    "PostalCode": "12500",
-    "Stars": 3,
-    "Manager": "100-000-010",
-    "Description": "A stylish mid-century property on Lisbon's grand boulevard, with lush courtyard gardens and a terrace overlooking the avenue.",
-    "Emails": [
-      "lis@azurecoast.com"
-    ],
-    "PhoneNumbers": [
-      "351215552005"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Courtyard Garden",
-        "AmenityDesc": "Tranquil garden with orange trees and fountain"
-      },
-      {
-        "AmenityName": "Rooftop Bar",
-        "AmenityDesc": "Sunset cocktails and fado music evenings"
-      }
-    ]
-  },
-  {
-    "HotelID": 29,
-    "ChainID": 2,
-    "Name": "Azure Port Cannes",
-    "PostalCode": "06400",
-    "Stars": 5,
-    "Manager": "100-000-029",
-    "Description": "Harbour-side luxury for the yachting crowd.",
-    "Emails": [
-      "port@azurecoast.com"
-    ],
-    "PhoneNumbers": [
-      "3345552006"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 30,
-    "ChainID": 2,
-    "Name": "Azure Marseille",
-    "PostalCode": "13001",
-    "Stars": 4,
-    "Manager": "100-000-030",
-    "Description": "Chic Mediterranean vibes in Marseille.",
-    "Emails": [
-      "mar@azurecoast.com"
-    ],
-    "PhoneNumbers": [
-      "3345552007"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 31,
-    "ChainID": 2,
-    "Name": "Azure Monaco",
-    "PostalCode": "98000",
-    "Stars": 5,
-    "Manager": "100-000-031",
-    "Description": "Prestige in the Principality.",
-    "Emails": [
-      "mon@azurecoast.com"
-    ],
-    "PhoneNumbers": [
-      "3775552008"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 11,
-    "ChainID": 3,
-    "Name": "Summit Alpine Zurich",
-    "PostalCode": "8001",
-    "Stars": 5,
-    "Manager": "100-000-011",
-    "Description": "A landmark property on Zurich's most exclusive shopping street, overlooking Lake Zurich and the Alps.",
-    "Emails": [
-      "zur@summitpeak.com"
-    ],
-    "PhoneNumbers": [
-      "41445553001"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Fine Dining",
-        "AmenityDesc": "Swiss-French cuisine with an 800-label wine cellar"
-      },
-      {
-        "AmenityName": "Spa",
-        "AmenityDesc": "Alpine herb treatments and heated pool"
-      },
-      {
-        "AmenityName": "Concierge Service",
-        "AmenityDesc": "Private banking, ski arrangement, and helicopter bookings"
-      }
-    ]
-  },
-  {
-    "HotelID": 12,
-    "ChainID": 3,
-    "Name": "Summit Glacier Zermatt",
-    "PostalCode": "3920",
-    "Stars": 5,
-    "Manager": "100-000-012",
-    "Description": "A car-free alpine sanctuary at the foot of the Matterhorn. Direct gondola access, a celebrated ski-in/ski-out lounge, and glacier views from every room.",
-    "Emails": [
-      "zrm@summitpeak.com"
-    ],
-    "PhoneNumbers": [
-      "41275553002"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Ski Storage",
-        "AmenityDesc": "Heated ski room with boot dryers"
-      },
-      {
-        "AmenityName": "Après-ski Lounge",
-        "AmenityDesc": "Fondue, raclette, and mulled wine fireside"
-      },
-      {
-        "AmenityName": "Spa",
-        "AmenityDesc": "Heated outdoor pool with Matterhorn views"
-      }
-    ]
-  },
-  {
-    "HotelID": 13,
-    "ChainID": 3,
-    "Name": "Summit City Geneva",
-    "PostalCode": "1204",
-    "Stars": 4,
-    "Manager": "100-000-013",
-    "Description": "A refined lakeside hotel on the Rive Gauche, ideal for diplomats and international business travellers. Walking distance to the UN and CERN.",
-    "Emails": [
-      "gva@summitpeak.com"
-    ],
-    "PhoneNumbers": [
-      "41225553003"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Business Center",
-        "AmenityDesc": "Private meeting rooms and interpretation services"
-      },
-      {
-        "AmenityName": "Lakeside Restaurant",
-        "AmenityDesc": "Swiss cuisine with views of Lake Geneva"
-      }
-    ]
-  },
-  {
-    "HotelID": 14,
-    "ChainID": 3,
-    "Name": "Summit Heritage Lucerne",
-    "PostalCode": "6002",
-    "Stars": 4,
-    "Manager": "100-000-014",
-    "Description": "A 19th-century grand hotel overlooking Lake Lucerne and the Chapel Bridge. Wagner and Tolstoy once stayed here.",
-    "Emails": [
-      "lux@summitpeak.com"
-    ],
-    "PhoneNumbers": [
-      "41415553004"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Classic Restaurant",
-        "AmenityDesc": "Traditional Swiss dishes in a Belle Époque dining hall"
-      },
-      {
-        "AmenityName": "Boat Dock",
-        "AmenityDesc": "Private dock for lake excursions and paddle-boat hire"
-      }
-    ]
-  },
-  {
-    "HotelID": 15,
-    "ChainID": 3,
-    "Name": "Summit Inn Interlaken",
-    "PostalCode": "3800",
-    "Stars": 3,
-    "Manager": "100-000-015",
-    "Description": "A cosy mountain inn between Lakes Thun and Brienz, popular with hikers, paragliders, and adventure travellers heading to the Jungfrau region.",
-    "Emails": [
-      "int@summitpeak.com"
-    ],
-    "PhoneNumbers": [
-      "41335553005"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Gear Storage",
-        "AmenityDesc": "Secure storage for skis, bikes, and hiking equipment"
-      },
-      {
-        "AmenityName": "Restaurant",
-        "AmenityDesc": "Hearty mountain cuisine with local Bernese specialties"
-      }
-    ]
-  },
-  {
-    "HotelID": 32,
-    "ChainID": 3,
-    "Name": "Summit View Zurich",
-    "PostalCode": "8001",
-    "Stars": 5,
-    "Manager": "100-000-032",
-    "Description": "Second luxury option in Zurich.",
-    "Emails": [
-      "view@summitpeak.com"
-    ],
-    "PhoneNumbers": [
-      "41445553006"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 33,
-    "ChainID": 3,
-    "Name": "Summit Basel",
-    "PostalCode": "4051",
-    "Stars": 4,
-    "Manager": "100-000-033",
-    "Description": "Ideal for Art Basel attendees.",
-    "Emails": [
-      "bsl@summitpeak.com"
-    ],
-    "PhoneNumbers": [
-      "41615553007"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 34,
-    "ChainID": 3,
-    "Name": "Summit Lausanne",
-    "PostalCode": "1003",
-    "Stars": 3,
-    "Manager": "100-000-034",
-    "Description": "Olympic city comfort.",
-    "Emails": [
-      "laus@summitpeak.com"
-    ],
-    "PhoneNumbers": [
-      "41215553008"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 16,
-    "ChainID": 4,
-    "Name": "Heritage Grand London Mayfair",
-    "PostalCode": "W1K4DG",
-    "Stars": 5,
-    "Manager": "100-000-016",
-    "Description": "A Georgian townhouse hotel in the heart of Mayfair, blending 18th-century grandeur with contemporary British design. Two streets from Bond Street.",
-    "Emails": [
-      "lon@heritagegrand.com"
-    ],
-    "PhoneNumbers": [
-      "44205554001"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Fine Dining",
-        "AmenityDesc": "Seasonal British tasting menu with a 1,000-bottle cellar"
-      },
-      {
-        "AmenityName": "Drawing Room",
-        "AmenityDesc": "Afternoon tea served daily in the original Georgian parlour"
-      },
-      {
-        "AmenityName": "Spa",
-        "AmenityDesc": "Aromatherapy and deep-tissue treatments"
-      }
-    ]
-  },
-  {
-    "HotelID": 17,
-    "ChainID": 4,
-    "Name": "Heritage Royal Edinburgh",
-    "PostalCode": "EH22EQ",
-    "Stars": 5,
-    "Manager": "100-000-017",
-    "Description": "A Victorian landmark facing Edinburgh Castle and the gardens of Princes Street, with baronial interiors and sweeping views of the Old Town.",
-    "Emails": [
-      "edi@heritagegrand.com"
-    ],
-    "PhoneNumbers": [
-      "441315554002"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Castle View Terrace",
-        "AmenityDesc": "Outdoor terrace overlooking the castle esplanade"
-      },
-      {
-        "AmenityName": "Whisky Bar",
-        "AmenityDesc": "Over 200 single malts and blended Scotch whiskies"
-      },
-      {
-        "AmenityName": "Fitness Center",
-        "AmenityDesc": "Victorian-styled gym and heated indoor pool"
-      }
-    ]
-  },
-  {
-    "HotelID": 18,
-    "ChainID": 4,
-    "Name": "Heritage Manor Oxford",
-    "PostalCode": "OX12LP",
-    "Stars": 4,
-    "Manager": "100-000-018",
-    "Description": "A neoclassical hotel opposite the Ashmolean Museum, beloved by academics, visiting fellows, and discerning travellers exploring the University city.",
-    "Emails": [
-      "oxf@heritagegrand.com"
-    ],
-    "PhoneNumbers": [
-      "4418655554003"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Library Lounge",
-        "AmenityDesc": "Quiet reading room with 2,000 volumes and a fire"
-      },
-      {
-        "AmenityName": "Garden Restaurant",
-        "AmenityDesc": "English garden dining and Sunday roasts"
-      }
-    ]
-  },
-  {
-    "HotelID": 19,
-    "ChainID": 4,
-    "Name": "Heritage Townhouse Bath",
-    "PostalCode": "BA24EB",
-    "Stars": 4,
-    "Manager": "100-000-019",
-    "Description": "A perfectly preserved Georgian townhouse on Bath's grandest street, moments from the Roman Baths and the Jane Austen Centre.",
-    "Emails": [
-      "bth@heritagegrand.com"
-    ],
-    "PhoneNumbers": [
-      "4412255554004"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Thermal Suite",
-        "AmenityDesc": "Access to Bath's famous natural thermal spa waters"
-      },
-      {
-        "AmenityName": "Tearoom",
-        "AmenityDesc": "Cream teas and Georgian pastries daily"
-      }
-    ]
-  },
-  {
-    "HotelID": 20,
-    "ChainID": 4,
-    "Name": "Heritage Inn York",
-    "PostalCode": "YO17DD",
-    "Stars": 3,
-    "Manager": "100-000-020",
-    "Description": "A cheerful inn in the shadow of York Minster, on a cobbled street lined with independent shops and Viking-era archaeology.",
-    "Emails": [
-      "yor@heritagegrand.com"
-    ],
-    "PhoneNumbers": [
-      "4419045554005"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Traditional Pub",
-        "AmenityDesc": "Real ales, pork pies, and live folk music on Fridays"
-      }
-    ]
-  },
-  {
-    "HotelID": 35,
-    "ChainID": 4,
-    "Name": "Heritage Mews London",
-    "PostalCode": "W1K4DG",
-    "Stars": 5,
-    "Manager": "100-000-035",
-    "Description": "Discrete luxury in a Mayfair mews.",
-    "Emails": [
-      "mews@heritagegrand.com"
-    ],
-    "PhoneNumbers": [
-      "44205554006"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 36,
-    "ChainID": 4,
-    "Name": "Heritage Cambridge",
-    "PostalCode": "CB21ST",
-    "Stars": 4,
-    "Manager": "100-000-036",
-    "Description": "Scholarly elegance in Cambridge.",
-    "Emails": [
-      "cam@heritagegrand.com"
-    ],
-    "PhoneNumbers": [
-      "4412235554007"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 37,
-    "ChainID": 4,
-    "Name": "Heritage Brighton",
-    "PostalCode": "BN11AA",
-    "Stars": 3,
-    "Manager": "100-000-037",
-    "Description": "Classic seaside stay.",
-    "Emails": [
-      "btn@heritagegrand.com"
-    ],
-    "PhoneNumbers": [
-      "4412735554008"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 21,
-    "ChainID": 5,
-    "Name": "Pacific Horizon Marina Singapore",
-    "PostalCode": "018970",
-    "Stars": 5,
-    "Manager": "100-000-021",
-    "Description": "An iconic tower hotel overlooking Marina Bay Sands and the glittering Singapore skyline. Infinity pool on the 57th floor.",
-    "Emails": [
-      "sin@pacifichorizon.com"
-    ],
-    "PhoneNumbers": [
-      "6565555001"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Sky Infinity Pool",
-        "AmenityDesc": "World-famous rooftop pool with 360-degree city and sea views"
-      },
-      {
-        "AmenityName": "Spa",
-        "AmenityDesc": "Asian holistic therapies and couple treatment suites"
-      },
-      {
-        "AmenityName": "Celebrity Restaurant",
-        "AmenityDesc": "Pan-Asian cuisine by a four-time award-winning chef"
-      },
-      {
-        "AmenityName": "Casino Access",
-        "AmenityDesc": "Direct passageway to the Marina Bay casino"
-      }
-    ]
-  },
-  {
-    "HotelID": 22,
-    "ChainID": 5,
-    "Name": "Pacific Horizon Orchard",
-    "PostalCode": "238859",
-    "Stars": 4,
-    "Manager": "100-000-022",
-    "Description": "A contemporary city hotel on Singapore's premier shopping strip, ideal for leisure travellers and families visiting Sentosa and the Gardens by the Bay.",
-    "Emails": [
-      "orc@pacifichorizon.com"
-    ],
-    "PhoneNumbers": [
-      "6565555002"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Outdoor Pool",
-        "AmenityDesc": "Tropical garden pool with poolside BBQ"
-      },
-      {
-        "AmenityName": "Food Hall",
-        "AmenityDesc": "Hawker-style dining featuring 12 Singaporean street food stalls"
-      }
-    ]
-  },
-  {
-    "HotelID": 23,
-    "ChainID": 5,
-    "Name": "Pacific Horizon Tokyo Shinjuku",
-    "PostalCode": "160023",
-    "Stars": 5,
-    "Manager": "100-000-023",
-    "Description": "A skyscraper hotel in Shinjuku's high-rise district with breathtaking views of Mount Fuji on clear mornings. Award-winning Japanese kaiseki dining.",
-    "Emails": [
-      "tyo@pacifichorizon.com"
-    ],
-    "PhoneNumbers": [
-      "8135555003"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Kaiseki Restaurant",
-        "AmenityDesc": "Multi-course traditional Japanese cuisine"
-      },
-      {
-        "AmenityName": "Onsen Spa",
-        "AmenityDesc": "Natural hot spring baths on the 48th floor"
-      },
-      {
-        "AmenityName": "Tea Ceremony Room",
-        "AmenityDesc": "Private tatami rooms for traditional tea ceremonies"
-      }
-    ]
-  },
-  {
-    "HotelID": 24,
-    "ChainID": 5,
-    "Name": "Pacific Horizon Bangkok Riverside",
-    "PostalCode": "10600",
-    "Stars": 4,
-    "Manager": "100-000-024",
-    "Description": "A riverside resort on the Chao Phraya, with private boat transfers to the Grand Palace, Wat Pho, and Bangkok's famous floating markets.",
-    "Emails": [
-      "bkk@pacifichorizon.com"
-    ],
-    "PhoneNumbers": [
-      "6625555004"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "River Pool",
-        "AmenityDesc": "Infinity pool overlooking the Chao Phraya River"
-      },
-      {
-        "AmenityName": "Thai Restaurant",
-        "AmenityDesc": "Royal Thai cuisine and cooking classes"
-      },
-      {
-        "AmenityName": "Private Boat Pier",
-        "AmenityDesc": "Complimentary shuttle boat to city temples and markets"
-      }
-    ]
-  },
-  {
-    "HotelID": 25,
-    "ChainID": 5,
-    "Name": "Pacific Horizon Sydney Harbour",
-    "PostalCode": "2000",
-    "Stars": 5,
-    "Manager": "100-000-025",
-    "Description": "A five-star icon overlooking the Sydney Opera House and Harbour Bridge from the Royal Botanic Gardens edge. A bucket-list destination in itself.",
-    "Emails": [
-      "syd@pacifichorizon.com"
-    ],
-    "PhoneNumbers": [
-      "6125555005"
-    ],
-    "Amenities": [
-      {
-        "AmenityName": "Harbour View Restaurant",
-        "AmenityDesc": "Modern Australian cuisine with an unobstructed Opera House view"
-      },
-      {
-        "AmenityName": "Spa",
-        "AmenityDesc": "Indigenous Australian treatments using native botanicals"
-      },
-      {
-        "AmenityName": "Rooftop Bar",
-        "AmenityDesc": "Sunset cocktails overlooking the Harbour Bridge"
-      },
-      {
-        "AmenityName": "Fitness Center",
-        "AmenityDesc": "Floor-to-ceiling harbour windows and personal training"
-      }
-    ]
-  },
-  {
-    "HotelID": 38,
-    "ChainID": 5,
-    "Name": "Pacific Horizon Bay Singapore",
-    "PostalCode": "018970",
-    "Stars": 5,
-    "Manager": "100-000-038",
-    "Description": "Secondary luxury tower in Singapore.",
-    "Emails": [
-      "bay@pacifichorizon.com"
-    ],
-    "PhoneNumbers": [
-      "6565555006"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 39,
-    "ChainID": 5,
-    "Name": "Pacific Horizon Kyoto",
-    "PostalCode": "6008216",
-    "Stars": 4,
-    "Manager": "100-000-039",
-    "Description": "Traditional spirit in modern Kyoto.",
-    "Emails": [
-      "kyo@pacifichorizon.com"
-    ],
-    "PhoneNumbers": [
-      "81755555007"
-    ],
-    "Amenities": []
-  },
-  {
-    "HotelID": 40,
-    "ChainID": 5,
-    "Name": "Pacific Horizon Phuket",
-    "PostalCode": "83000",
-    "Stars": 3,
-    "Manager": "100-000-040",
-    "Description": "Beachside value in Phuket.",
-    "Emails": [
-      "hkt@pacifichorizon.com"
-    ],
-    "PhoneNumbers": [
-      "66765555008"
-    ],
-    "Amenities": []
-  }
+    {
+        "hotelid": 1,
+        "chainid": 1,
+        "name": "Meridian Grand New York",
+        "postalcode": "10022",
+        "stars": 5,
+        "manager": "100-000-001",
+        "description": "A flagship five-star property in the heart of Midtown Manhattan, offering sweeping views of Central Park and world-class dining."
+    },
+    {
+        "hotelid": 2,
+        "chainid": 1,
+        "name": "Meridian Suites Chicago",
+        "postalcode": "60611",
+        "stars": 4,
+        "manager": "100-000-002",
+        "description": "Elegant suites on the Magnificent Mile with easy access to the lakefront, museums, and Chicago's vibrant dining scene."
+    },
+    {
+        "hotelid": 3,
+        "chainid": 1,
+        "name": "Meridian Palace Miami",
+        "postalcode": "33139",
+        "stars": 5,
+        "manager": "100-000-003",
+        "description": "A beachfront resort on South Beach blending Art Deco heritage with modern luxury. Private beach access and a celebrity-favourite pool deck."
+    },
+    {
+        "hotelid": 4,
+        "chainid": 1,
+        "name": "Meridian Tower Toronto",
+        "postalcode": "M5J1B1",
+        "stars": 4,
+        "manager": "100-000-004",
+        "description": "A sleek downtown tower steps from the Financial District and the CN Tower, ideal for both business and leisure travellers."
+    },
+    {
+        "hotelid": 5,
+        "chainid": 1,
+        "name": "Meridian Boutique Montreal",
+        "postalcode": "H2X3L8",
+        "stars": 3,
+        "manager": "100-000-005",
+        "description": "A charming boutique hotel in the Plateau-Mont-Royal neighbourhood, surrounded by galleries, bistros, and the best of Montreal's cultural scene."
+    },
+    {
+        "hotelid": 6,
+        "chainid": 2,
+        "name": "Azure Riviera Cannes",
+        "postalcode": "06400",
+        "stars": 5,
+        "manager": "100-000-006",
+        "description": "A palatial retreat on the Côte d'Azur, host to film stars during the festival season and discerning travellers year-round."
+    },
+    {
+        "hotelid": 7,
+        "chainid": 2,
+        "name": "Azure Côte Nice",
+        "postalcode": "06000",
+        "stars": 4,
+        "manager": "100-000-007",
+        "description": "Belle Époque elegance meets the Mediterranean on Nice's iconic Promenade. Walking distance to the Old Town and bustling Cours Saleya market."
+    },
+    {
+        "hotelid": 8,
+        "chainid": 2,
+        "name": "Azure Med Barcelona",
+        "postalcode": "08007",
+        "stars": 5,
+        "manager": "100-000-008",
+        "description": "Set in a restored Modernista building on Passeig de Gràcia, steps from the Sagrada Família and Picasso Museum."
+    },
+    {
+        "hotelid": 9,
+        "chainid": 2,
+        "name": "Azure Adriatic Dubrovnik",
+        "postalcode": "20000",
+        "stars": 4,
+        "manager": "100-000-009",
+        "description": "A historic hotel within the Old Town walls of Dubrovnik, offering stunning Adriatic views and access to the city's UNESCO heritage sites."
+    },
+    {
+        "hotelid": 10,
+        "chainid": 2,
+        "name": "Azure Garden Lisbon",
+        "postalcode": "12500",
+        "stars": 3,
+        "manager": "100-000-010",
+        "description": "A stylish mid-century property on Lisbon's grand boulevard, with lush courtyard gardens and a terrace overlooking the avenue."
+    },
+    {
+        "hotelid": 11,
+        "chainid": 3,
+        "name": "Summit Alpine Zurich",
+        "postalcode": "8001",
+        "stars": 5,
+        "manager": "100-000-011",
+        "description": "A landmark property on Zurich's most exclusive shopping street, overlooking Lake Zurich and the Alps."
+    },
+    {
+        "hotelid": 12,
+        "chainid": 3,
+        "name": "Summit Glacier Zermatt",
+        "postalcode": "3920",
+        "stars": 5,
+        "manager": "100-000-012",
+        "description": "A car-free alpine sanctuary at the foot of the Matterhorn. Direct gondola access, a celebrated ski-in/ski-out lounge, and glacier views from every room."
+    },
+    {
+        "hotelid": 13,
+        "chainid": 3,
+        "name": "Summit City Geneva",
+        "postalcode": "1204",
+        "stars": 4,
+        "manager": "100-000-013",
+        "description": "A refined lakeside hotel on the Rive Gauche, ideal for diplomats and international business travellers. Walking distance to the UN and CERN."
+    },
+    {
+        "hotelid": 14,
+        "chainid": 3,
+        "name": "Summit Heritage Lucerne",
+        "postalcode": "6002",
+        "stars": 4,
+        "manager": "100-000-014",
+        "description": "A 19th-century grand hotel overlooking Lake Lucerne and the Chapel Bridge. Wagner and Tolstoy once stayed here."
+    },
+    {
+        "hotelid": 15,
+        "chainid": 3,
+        "name": "Summit Inn Interlaken",
+        "postalcode": "3800",
+        "stars": 3,
+        "manager": "100-000-015",
+        "description": "A cosy mountain inn between Lakes Thun and Brienz, popular with hikers, paragliders, and adventure travellers heading to the Jungfrau region."
+    },
+    {
+        "hotelid": 16,
+        "chainid": 4,
+        "name": "Heritage Grand London Mayfair",
+        "postalcode": "W1K4DG",
+        "stars": 5,
+        "manager": "100-000-016",
+        "description": "A Georgian townhouse hotel in the heart of Mayfair, blending 18th-century grandeur with contemporary British design. Two streets from Bond Street."
+    },
+    {
+        "hotelid": 17,
+        "chainid": 4,
+        "name": "Heritage Royal Edinburgh",
+        "postalcode": "EH22EQ",
+        "stars": 5,
+        "manager": "100-000-017",
+        "description": "A Victorian landmark facing Edinburgh Castle and the gardens of Princes Street, with baronial interiors and sweeping views of the Old Town."
+    },
+    {
+        "hotelid": 18,
+        "chainid": 4,
+        "name": "Heritage Manor Oxford",
+        "postalcode": "OX12LP",
+        "stars": 4,
+        "manager": "100-000-018",
+        "description": "A neoclassical hotel opposite the Ashmolean Museum, beloved by academics, visiting fellows, and discerning travellers exploring the University city."
+    },
+    {
+        "hotelid": 19,
+        "chainid": 4,
+        "name": "Heritage Townhouse Bath",
+        "postalcode": "BA24EB",
+        "stars": 4,
+        "manager": "100-000-019",
+        "description": "A perfectly preserved Georgian townhouse on Bath's grandest street, moments from the Roman Baths and the Jane Austen Centre."
+    },
+    {
+        "hotelid": 20,
+        "chainid": 4,
+        "name": "Heritage Inn York",
+        "postalcode": "YO17DD",
+        "stars": 3,
+        "manager": "100-000-020",
+        "description": "A cheerful inn in the shadow of York Minster, on a cobbled street lined with independent shops and Viking-era archaeology."
+    },
+    {
+        "hotelid": 21,
+        "chainid": 5,
+        "name": "Pacific Horizon Marina Singapore",
+        "postalcode": "018970",
+        "stars": 5,
+        "manager": "100-000-021",
+        "description": "An iconic tower hotel overlooking Marina Bay Sands and the glittering Singapore skyline. Infinity pool on the 57th floor."
+    },
+    {
+        "hotelid": 22,
+        "chainid": 5,
+        "name": "Pacific Horizon Orchard",
+        "postalcode": "238859",
+        "stars": 4,
+        "manager": "100-000-022",
+        "description": "A contemporary city hotel on Singapore's premier shopping strip, ideal for leisure travellers and families visiting Sentosa and the Gardens by the Bay."
+    },
+    {
+        "hotelid": 23,
+        "chainid": 5,
+        "name": "Pacific Horizon Tokyo Shinjuku",
+        "postalcode": "160023",
+        "stars": 5,
+        "manager": "100-000-023",
+        "description": "A skyscraper hotel in Shinjuku's high-rise district with breathtaking views of Mount Fuji on clear mornings. Award-winning Japanese kaiseki dining."
+    },
+    {
+        "hotelid": 24,
+        "chainid": 5,
+        "name": "Pacific Horizon Bangkok Riverside",
+        "postalcode": "10600",
+        "stars": 4,
+        "manager": "100-000-024",
+        "description": "A riverside resort on the Chao Phraya, with private boat transfers to the Grand Palace, Wat Pho, and Bangkok's famous floating markets."
+    },
+    {
+        "hotelid": 25,
+        "chainid": 5,
+        "name": "Pacific Horizon Sydney Harbour",
+        "postalcode": "2000",
+        "stars": 5,
+        "manager": "100-000-025",
+        "description": "A five-star icon overlooking the Sydney Opera House and Harbour Bridge from the Royal Botanic Gardens edge. A bucket-list destination in itself."
+    },
+    {
+        "hotelid": 26,
+        "chainid": 1,
+        "name": "Meridian Plaza New York",
+        "postalcode": "10022",
+        "stars": 5,
+        "manager": "100-000-026",
+        "description": "A secondary luxury hub in NYC to fulfill local density requirements."
+    },
+    {
+        "hotelid": 27,
+        "chainid": 1,
+        "name": "Meridian Urban Boston",
+        "postalcode": "02108",
+        "stars": 4,
+        "manager": "100-000-027",
+        "description": "Modern city living in the heart of Boston."
+    },
+    {
+        "hotelid": 28,
+        "chainid": 1,
+        "name": "Meridian Gateway Ottawa",
+        "postalcode": "K1P1A1",
+        "stars": 3,
+        "manager": "100-000-028",
+        "description": "Convenient access to Canada's capital."
+    },
+    {
+        "hotelid": 29,
+        "chainid": 2,
+        "name": "Azure Port Cannes",
+        "postalcode": "06400",
+        "stars": 5,
+        "manager": "100-000-029",
+        "description": "Harbour-side luxury for the yachting crowd."
+    },
+    {
+        "hotelid": 30,
+        "chainid": 2,
+        "name": "Azure Marseille",
+        "postalcode": "13001",
+        "stars": 4,
+        "manager": "100-000-030",
+        "description": "Chic Mediterranean vibes in Marseille."
+    },
+    {
+        "hotelid": 31,
+        "chainid": 2,
+        "name": "Azure Monaco",
+        "postalcode": "98000",
+        "stars": 5,
+        "manager": "100-000-031",
+        "description": "Prestige in the Principality."
+    },
+    {
+        "hotelid": 32,
+        "chainid": 3,
+        "name": "Summit View Zurich",
+        "postalcode": "8001",
+        "stars": 5,
+        "manager": "100-000-032",
+        "description": "Second luxury option in Zurich."
+    },
+    {
+        "hotelid": 33,
+        "chainid": 3,
+        "name": "Summit Basel",
+        "postalcode": "4051",
+        "stars": 4,
+        "manager": "100-000-033",
+        "description": "Ideal for Art Basel attendees."
+    },
+    {
+        "hotelid": 34,
+        "chainid": 3,
+        "name": "Summit Lausanne",
+        "postalcode": "1003",
+        "stars": 3,
+        "manager": "100-000-034",
+        "description": "Olympic city comfort."
+    },
+    {
+        "hotelid": 35,
+        "chainid": 4,
+        "name": "Heritage Mews London",
+        "postalcode": "W1K4DG",
+        "stars": 5,
+        "manager": "100-000-035",
+        "description": "Discrete luxury in a Mayfair mews."
+    },
+    {
+        "hotelid": 36,
+        "chainid": 4,
+        "name": "Heritage Cambridge",
+        "postalcode": "CB21ST",
+        "stars": 4,
+        "manager": "100-000-036",
+        "description": "Scholarly elegance in Cambridge."
+    },
+    {
+        "hotelid": 37,
+        "chainid": 4,
+        "name": "Heritage Brighton",
+        "postalcode": "BN11AA",
+        "stars": 3,
+        "manager": "100-000-037",
+        "description": "Classic seaside stay."
+    },
+    {
+        "hotelid": 38,
+        "chainid": 5,
+        "name": "Pacific Horizon Bay Singapore",
+        "postalcode": "018970",
+        "stars": 5,
+        "manager": "100-000-038",
+        "description": "Secondary luxury tower in Singapore."
+    },
+    {
+        "hotelid": 39,
+        "chainid": 5,
+        "name": "Pacific Horizon Kyoto",
+        "postalcode": "6008216",
+        "stars": 4,
+        "manager": "100-000-039",
+        "description": "Traditional spirit in modern Kyoto."
+    },
+    {
+        "hotelid": 40,
+        "chainid": 5,
+        "name": "Pacific Horizon Phuket",
+        "postalcode": "83000",
+        "stars": 3,
+        "manager": "100-000-040",
+        "description": "Beachside value in Phuket."
+    }
 ]
