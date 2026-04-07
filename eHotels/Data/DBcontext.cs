@@ -147,8 +147,8 @@ namespace Data
                 // foreach (var chain in hotelChains)
                 // {
                 //     await this.ExecuteAsync(@"
-                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country)
-                //         VALUES (0, 'Unknown', @ChainPostalCode, 'Unknown', 'Unknown')
+                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country,City)
+                //         VALUES (0, 'Unknown', @ChainPostalCode, 'Unknown', 'Unknown',"Unknown")
                 //         ON CONFLICT (PostalCode) DO NOTHING;",
                 //         new { chain.ChainPostalCode });
 
@@ -159,20 +159,6 @@ namespace Data
                 //         new { chain.ChainID, chain.ChainName, chain.ChainPostalCode });
                 // }
 
-                // foreach (var chain in hotelChains)
-                // {
-                //     await this.ExecuteAsync(@"
-                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country)
-                //         VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown')
-                //         ON CONFLICT (PostalCode) DO NOTHING;",
-                //         new { chain.PostalCode });
-
-                //     await this.ExecuteAsync(@"
-                //         INSERT INTO HotelChain (ChainID, ChainName, ChainPostalCode)
-                //         VALUES (@ChainID, @ChainName, @PostalCode)
-                //         ON CONFLICT (ChainID) DO NOTHING;",
-                //         new { chain.ChainID, chain.ChainName, chain.PostalCode });
-                // }
 
                 // foreach (var acc in accounts)
                 // {
@@ -186,8 +172,8 @@ namespace Data
                 // foreach (var hotel in hotels)
                 // {
                 //     await this.ExecuteAsync(@"
-                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country)
-                //         VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown')
+                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country,City)
+                //         VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown','Unknown')
                 //         ON CONFLICT (PostalCode) DO NOTHING;",
                 //         new { hotel.PostalCode });
 
@@ -201,8 +187,8 @@ namespace Data
                 // foreach (var emp in employees)
                 // {
                 //     await this.ExecuteAsync(@"
-                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country)
-                //         VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown')
+                //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country,City)
+                //         VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown','Unknown')
                 //         ON CONFLICT (PostalCode) DO NOTHING;",
                 //         new { emp.PostalCode });
 
