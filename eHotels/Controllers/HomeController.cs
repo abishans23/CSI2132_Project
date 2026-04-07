@@ -157,7 +157,7 @@ public class HomeController : Controller
         return null;
     }
 
-
+    // delete row in a table given its primary keys, used in the Manage dashboard to delete items in a table dynamically
     public async Task<IActionResult> DeleteRow(string tableName, string primaryKeys)
     {
         Console.Write("RECIVED KEYS: ");
@@ -184,6 +184,8 @@ public class HomeController : Controller
         return Json(new{success=true});
     }
 
+    // Insert values into a table given name, used for the Manage dashboard to add rows to tables
+    // dynamically
     public async Task<IActionResult> InsertTable(string tableName, string values)
     {
         Console.WriteLine(tableName + " " + values);
@@ -210,16 +212,48 @@ public class HomeController : Controller
                 @insertQuery
             );
 
-        Console.WriteLine(insertQuery);
+        Console.WriteLine("Insert Query:" + insertQuery);
 
         return Json(new{success=true});
     }
 
-    public IActionResult UpdateRow(string tableName, string values, string primaryKeys)
+    // Update values in a row given the primary keys and table name, used for the Manage dashboard to 
+    // edit rows to rows dynamically
+    public async Task<IActionResult> UpdateRow(string tableName, string values, string primaryKey)
     {
-        Console.WriteLine(tableName + values);
+        var valuePairs = JsonNode.Parse(values).AsObject();
+        var keys = JsonNode.Parse(primaryKey).AsObject();
 
-        string updateQuery = "";
+        string updateQuery = "UPDATE " + tableName + " SET ";
+
+        foreach (var v in valuePairs)
+        {
+            updateQuery += v.Key + " = ";
+            if (v.Value.ToString() == "")
+            {
+                updateQuery += "NULL, ";
+            }
+            else
+            {
+                updateQuery += "'" + v.Value + "', ";
+            }
+        }
+
+        updateQuery = updateQuery.Remove(updateQuery.Length - 2) + " WHERE ";
+
+        foreach (var k in keys)
+        {
+            updateQuery += k.Key + " = '" + k.Value + "' AND ";
+        }
+
+        updateQuery = updateQuery.Remove(updateQuery.Length - 5) + ";";
+
+        await _db.ExecuteAsync(
+                @updateQuery
+            );
+            
+        Console.WriteLine("Update Query: " + updateQuery);
+        
         return Json(new{success=true});
     }
     

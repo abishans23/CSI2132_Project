@@ -88,6 +88,7 @@
 
     </div>
 
+    @* Functionality for Add, Edit and Delete queries between the UI and database *@
     <script>
         const primaryKeys = {
             Hotel: ["hotelid"],
@@ -155,24 +156,31 @@
         @* update row values when editing *@
         editFormSumbitButton.onclick = async function(){
             let values = editFormListHolder.getElementsByClassName("input-holder");
-            let JSONData = {};
+            let updatedValues = {};
+            let primKey = editItemForm.getAttribute("primary-key");
 
             for (let inp = 0; inp < values.length; inp++){
                 let inpName = values[inp].querySelector(".input-name").innerHTML;
                 let inpValue = values[inp].querySelector(".input").value;
-                JSONData[inpName] = inpValue;
+                updatedValues[inpName] = inpValue;
             }
 
-            let updateResponse = await fetch("/Home/UpdateRow?tableName=" + addItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSON.stringify(JSONData)));
+            let JSONData = JSON.stringify(updatedValues);
+
+            let updateResponse = await fetch("/Home/UpdateRow?tableName=" + editItemForm.getAttribute("schema-name") + "&values=" + encodeURIComponent(JSONData) +
+                "&primaryKey="+encodeURIComponent(primKey));
 
             editItemForm.style.display = "none";
+            viewEditFormOverlay.style.display = "none";
         }
 
+        @* loop over all tables *@
         for (let i = 0; i < dbItems.length; i++){
             let name = dbItems[i].querySelector(".item-title").innerHTML;
             let schemaName =  name.replaceAll(' ', '');
             let addButton = dbItems[i].querySelector(".add-item");
 
+            @* add functionality to the 'Add' button *@
             addButton.onclick = async function(){
                 addFormListHolder.innerHTML = '';
                 addItemFormTitle.innerHTML = "Add " + name;
@@ -203,16 +211,18 @@
                 
             }
 
+            @* add functionality to the 'Edit' button shown with the Add and table name *@
             dbItems[i].querySelector(".edit-button").onclick = async function(){
                 formListHolder.innerHTML = ""
-                
-                let response = await fetch("/Home/GetTableRows?tableName=" + schemaName);
+
+                @* get the rows for the table if edit is clicked to display them *@
+                let response = await fetch("/Home/GetTableRows?tableName=" + schemaName); 
 
                 response.json().then(rowData => {
-
+                    @* loop over all the data rows and show data on ui *@
                     for (let i = 0; i < rowData.rows.length; i++){
-                        console.log(rowData.rows[i]);
 
+                        @* find the primary key values for the current data and string them to show on ui *@
                         let keys = primaryKeys[schemaName];
                         let primaryKeyString = keys[0] + ": " + rowData.rows[i][keys[0]];
                         let rowPrimaryKeys = {};
@@ -251,7 +261,7 @@
                                     tempDiv.remove();
                                     console.log("DELETED");
                                 } else {
-                                    console.log("EROR DELETEING")
+                                    console.log("ERROR DELETEING")
                                 }
                             })
                         }
@@ -264,6 +274,7 @@
                             editFormSumbitButton.innerHTML = "Confirm";
 
                             editItemForm.setAttribute("schema-name", schemaName);
+                            editItemForm.setAttribute("primary-key", objectPrimaryKeys);
 
                             let schemaResponse = await fetch("/Home/GetSchema?tableName=" + schemaName);
 
@@ -271,11 +282,20 @@
                                 
                                 for (let k = 0; k < data.length; k++){
                                     let tmpDiv = document.createElement("div");
-                                    tmpDiv.innerHTML += 
-                                    '<div class="input-holder">' +
-                                        '<div class="input-name" id="DB-DATA">' + data[k] + '</div>' +
-                                        '<input class="input" id="DB-INPUT" value="' + rowData.rows[i][data[k]] + '"/>'+
-                                    '</div>'
+
+                                    if (keys.includes(data[k])){
+                                        tmpDiv.innerHTML += 
+                                        '<div class="primary-key-holder">' +
+                                            '<div>' + data[k] + '</div>' +
+                                            '<div>' + rowData.rows[i][data[k]] + '</div>' +
+                                        '</div>'
+                                    } else {
+                                        tmpDiv.innerHTML += 
+                                        '<div class="input-holder">' +
+                                            '<div class="input-name" id="DB-DATA">' + data[k] + '</div>' +
+                                            '<input class="input" id="DB-INPUT" value="' + rowData.rows[i][data[k]] + '"/>'+
+                                        '</div>'
+                                    }
 
                                     let initElem = tmpDiv.firstChild;
                                     editFormListHolder.appendChild(initElem);
@@ -283,7 +303,6 @@
                                 }
 
                             })
-
                         }
 
                     } 

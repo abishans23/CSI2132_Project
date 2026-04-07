@@ -124,3 +124,13 @@
     font-size: large;
     width: 5em;
 }
+
+.primary-key-holder{
+    display: flex;
+    font-style: serif;
+    gap: 1em;
+    padding-left: 0.5em;
+    justify-content: left;
+    align-items: center;
+    font-size: large;
+}
