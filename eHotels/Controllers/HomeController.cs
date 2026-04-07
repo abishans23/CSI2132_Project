@@ -249,7 +249,19 @@ public class HomeController : Controller
     }
 
     public async Task InsertAddress(int streetNumber, string streetName, string city, string province, string country, string postalCode)
-    {
+    {   
+        //strip spaces
+        string tmp = postalCode;
+        postalCode = "";
+        foreach (char c in postalCode)
+        {
+            if (c != ' ')
+            {
+                postalCode += c;
+            }
+        }
+
+        //causes warnings sometimes but insertion is performed successfully
         await _db.ExecuteAsync(
             @"INSERT INTO Address VALUES (@streetNumber, @streetName, @postalCode, @province, @country, @city)", 
             new{streetNumber, streetName, postalCode, province, country, city}
