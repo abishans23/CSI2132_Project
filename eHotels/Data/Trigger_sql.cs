@@ -38,18 +38,37 @@ namespace Data
                     END;
                     ";
 
-        public static readonly string deletebooking = @"CREATE TRIGGER deleteBooking
-                    AFTER INSERT ON Renting
-                    FOR EACH ROW BEGIN
-                        INSERT INTO ArchivedBooking ( HotelId, BookingDate, Status, StartDate, EndDate
-                    )
-                    SELECT HotelId, BookingDate, Status, StartDate, EndDate
-                    FROM Booking
-                    WHERE StartDate = NEW.StartDate AND EndDate = NEW.EndDate AND IdType = NEW.IdType AND IdNumber = NEW.IdNumber AND RoomNumber = NEW.RoomNumber AND HotelId = NEW.HotelId AND Status = 'Scheduled';
+        public static readonly string deletebooking = @"CREATE OR REPLACE FUNCTION archive_and_delete_booking()
+                    RETURNS TRIGGER AS $$
+                    BEGIN
+                        INSERT INTO ArchivedBooking (HotelId, BookingDate, Status, StartDate, EndDate)
+                        SELECT HotelId, BookingDate, Status, StartDate, EndDate
+                        FROM Booking
+                        WHERE StartDate = NEW.StartDate 
+                        AND EndDate = NEW.EndDate 
+                        AND IdType = NEW.IdType 
+                        AND IdNumber = NEW.IdNumber 
+                        AND RoomNumber = NEW.RoomNumber 
+                        AND HotelId = NEW.HotelId 
+                        AND Status = 'Scheduled';
 
-                    DELETE FROM Booking
-                    WHERE StartDate = NEW.StartDate AND EndDate = NEW.EndDate AND IdType = NEW.IdType AND IdNumber = NEW.IdNumber AND RoomNumber = NEW.RoomNumber AND HotelId = NEW.HotelId;
+                        -- Delete the record from Booking
+                        DELETE FROM Booking
+                        WHERE StartDate = NEW.StartDate 
+                        AND EndDate = NEW.EndDate 
+                        AND IdType = NEW.IdType 
+                        AND IdNumber = NEW.IdNumber 
+                        AND RoomNumber = NEW.RoomNumber 
+                        AND HotelId = NEW.HotelId;
+
+                        RETURN NEW; -- Required for trigger functions
                     END;
+                    
+                    $$ LANGUAGE plpgsql;
+                    CREATE TRIGGER deleteBooking
+                    AFTER INSERT ON Renting
+                    FOR EACH ROW
+                    EXECUTE FUNCTION archive_and_delete_booking();
                     ";
     }
 }

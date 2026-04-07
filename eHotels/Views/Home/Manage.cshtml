@@ -15,7 +15,7 @@
 
 <body>
 
-    <div class="form-overlay" style="display: none;">
+    <div class="form-overlay" id="view-edit-form" style="display: none;">
 
         <div class="form-container" style="max-height: 80vh;">
             <button class="close-button">X</button>
@@ -33,6 +33,8 @@
 
     </div>
 
+
+
     <div class="page-title-holder">
         <div class="page-title">Manage Database</div>
         <div class="line-break"></div>
@@ -45,7 +47,7 @@
                 <div class="item-title">@tableName</div>
                 <div class="line-break"></div>
                 <button class="edit-button">Edit</button>
-                <button>Add</button>
+                <button class="add-item">Add</button>
             </div>
         }
 
@@ -73,19 +75,21 @@
         };
 
         let dbItems = document.getElementsByClassName("db-item");
-        let formOverlay = document.querySelector(".form-overlay");
+        let viewEditFormOverlay = document.getElementById("view-edit-form");
         let formListHolder = document.querySelector(".form-list-holder");
         let closeButton = document.querySelector(".close-button");
         let formTitle = document.querySelector(".form-title");
         
-        closeButton.onclick = function(){
-            formOverlay.style.display = "none";
+        viewEditFormOverlay.querySelector(".close-button").onclick = function(){
+            viewEditFormOverlay.style.display = "none";
         }
 
         for (let i = 0; i < dbItems.length; i++){
 
             let name = dbItems[i].querySelector(".item-title").innerHTML;
             let schemaName =  name.replaceAll(' ', '');
+            let addButton = dbItems[i].querySelector(".add-item");
+
             dbItems[i].querySelector(".edit-button").onclick = async function(){
                 formListHolder.innerHTML = ""
                 
@@ -142,7 +146,7 @@
                 });
 
                 formTitle.innerHTML = "Edit " + name
-                formOverlay.style.display = "block"
+                viewEditFormOverlay.style.display = "block"
             }
 
         }
