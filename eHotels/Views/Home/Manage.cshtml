@@ -164,20 +164,20 @@
                 
                 let response = await fetch("/Home/GetTableRows?tableName=" + schemaName);
 
-                response.json().then(data => {
+                response.json().then(rowData => {
 
-                    for (let i = 0; i < data.rows.length; i++){
-                        console.log(data.rows[i]);
+                    for (let i = 0; i < rowData.rows.length; i++){
+                        console.log(rowData.rows[i]);
 
                         let keys = primaryKeys[schemaName];
-                        let primaryKeyString = keys[0] + ": " + data.rows[i][keys[0]];
+                        let primaryKeyString = keys[0] + ": " + rowData.rows[i][keys[0]];
                         let rowPrimaryKeys = {};
 
-                        rowPrimaryKeys[keys[0]] = data.rows[i][keys[0]]
+                        rowPrimaryKeys[keys[0]] = rowData.rows[i][keys[0]]
 
                         for (let k = 1; k < keys.length; k++){
-                            primaryKeyString += ", " + keys[k] + ": " + data.rows[i][keys[k]];
-                            rowPrimaryKeys[keys[k]] = data.rows[i][keys[k]];
+                            primaryKeyString += ", " + keys[k] + ": " + rowData.rows[i][keys[k]];
+                            rowPrimaryKeys[keys[k]] = rowData.rows[i][keys[k]];
                         }
 
                         let rowHTML = 
