@@ -3,7 +3,6 @@ using Dapper;
 using System.Net.Sockets;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Collections;
 
 namespace Data
 {
@@ -15,6 +14,7 @@ namespace Data
         public DBContext(ILogger<DBContext> logger)
         {
             _logger = logger;
+            // Note: In a production environment, move this to appsettings.json or Environment Variables
             string connectionString = "Host=ep-sweet-glitter-a8ag8fj1-pooler.eastus2.azure.neon.tech; Database=neondb; Username=neondb_owner; Password=npg_cU7jafXmtI5k; SSL Mode=VerifyFull; Channel Binding=Require;Include Error Detail=true;";
             db = NpgsqlDataSource.Create(connectionString);
         }
@@ -24,19 +24,7 @@ namespace Data
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
                 if (db == null) return false;
-
-                try
-                {
-                    await db.OpenConnectionAsync();
-                }
-                catch (Npgsql.NpgsqlException ex) when (ex.InnerException is SocketException socketEx)
-                {
-                    Console.WriteLine($"DB connection failed: {socketEx.SocketErrorCode}");
-                }
-                catch (Npgsql.NpgsqlException ex)
-                {
-                    Console.WriteLine($"Npgsql error: {ex.Message}");
-                }
+                await using var conn = await db.OpenConnectionAsync();
                 return true;
             }, _logger);
         }
@@ -46,7 +34,6 @@ namespace Data
             return await Utils.TryExecuteAsync<IEnumerable<T>, DBContext>(async () =>
             {
                 if (db == null) throw new InvalidOperationException("Database source not initialized.");
-
                 await using var conn = await db.OpenConnectionAsync();
                 return await conn.QueryAsync<T>(sql, parameters);
             }, _logger) ?? Enumerable.Empty<T>();
@@ -57,7 +44,6 @@ namespace Data
             return await Utils.TryExecuteAsync<int, DBContext>(async () =>
             {
                 if (db == null) throw new InvalidOperationException("Database source not initialized.");
-
                 await using var conn = await db.OpenConnectionAsync();
                 return await conn.ExecuteAsync(sql, parameters);
             }, _logger);
@@ -65,6 +51,7 @@ namespace Data
 
         public async Task<bool> SeedDatabase()
         {
+            // 1. Load JSON Data
             string[] jsonPaths = {
                 Path.Combine("Data", "Hotel.json"),
                 Path.Combine("Data", "HotelChain.json"),
@@ -74,7 +61,7 @@ namespace Data
                 Path.Combine("Data", "Address.json")
             };
 
-            List<string> fileData = new List<string>();
+            var fileData = new List<string>();
             foreach (var path in jsonPaths)
             {
                 if (!File.Exists(path)) return false;
@@ -92,170 +79,147 @@ namespace Data
             var rooms = JsonSerializer.Deserialize<List<Room>>(fileData[2], options);
             var accounts = JsonSerializer.Deserialize<List<Account>>(fileData[3], options);
             var employees = JsonSerializer.Deserialize<List<Employee>>(fileData[4], options);
-            var addresses = JsonSerializer.Deserialize<List<Address>>(fileData[5], options);
 
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
-                if (hotelChains == null || rooms == null || hotels == null || accounts == null || employees == null)
-                    return false;
-
-                //   await this.ExecuteAsync(@"
-                //           DROP TABLE IF EXISTS Renting,  CASCADE;");
-
-                await this.ExecuteAsync(CreateString.createAddress);
-                await this.ExecuteAsync(CreateString.createAccount);
-                await this.ExecuteAsync(CreateString.createHotelChain);
-                await this.ExecuteAsync(CreateString.createHotel);
-                await this.ExecuteAsync(CreateString.createEmployee);
-                await this.ExecuteAsync(CreateString.createRoom);
-                await this.ExecuteAsync(CreateString.createBooking);
-                await this.ExecuteAsync(CreateString.createRenting);
-                await this.ExecuteAsync(CreateString.createCustomer);
-                await this.ExecuteAsync(CreateString.createHotelEmail);
-                await this.ExecuteAsync(CreateString.createHotelPhone);
-                await this.ExecuteAsync(CreateString.createHotelChainEmail);
-                await this.ExecuteAsync(CreateString.createHotelChainPhone);
-                await this.ExecuteAsync(CreateString.createHotelImage);
-                await this.ExecuteAsync(CreateString.createReview);
-                await this.ExecuteAsync(CreateString.createRoomProblem);
-                await this.ExecuteAsync(CreateString.createRoomAmenity);
-
-                  await this.ExecuteAsync(CreateString.createArchivedBooking);
-                  await this.ExecuteAsync(CreateString.createArchivedRenting);
-   
-            
-
+                // 2. Create Tables in Dependency Order
+                // Independent tables first
+                await ExecuteAsync(CreateString.createAddress);
+                await ExecuteAsync(CreateString.createAccount);
+                await ExecuteAsync(CreateString.createCustomer); // Must exist before Booking/Renting
                 
-                await this.ExecuteAsync(TriggerString.bookingconflict);
-                await this.ExecuteAsync(TriggerString.deletebooking);
-                await this.ExecuteAsync(TriggerString.rentingconflict);
+                // Tables with Foreign Keys
+                await ExecuteAsync(CreateString.createHotelChain);
+                await ExecuteAsync(CreateString.createHotel);
+                await ExecuteAsync(CreateString.createEmployee);
+                await ExecuteAsync(CreateString.createRoom);
+                
+                // Transactional tables
+                await ExecuteAsync(CreateString.createBooking);
+                await ExecuteAsync(CreateString.createRenting);
+                
+                // Metadata/Attribute tables
+                await ExecuteAsync(CreateString.createHotelEmail);
+                await ExecuteAsync(CreateString.createHotelPhone);
+                await ExecuteAsync(CreateString.createHotelChainEmail);
+                await ExecuteAsync(CreateString.createHotelChainPhone);
+                await ExecuteAsync(CreateString.createHotelImage);
+                await ExecuteAsync(CreateString.createReview);
+                await ExecuteAsync(CreateString.createRoomProblem);
+                await ExecuteAsync(CreateString.createRoomAmenity);
+                await ExecuteAsync(CreateString.createArchivedBooking);
+                await ExecuteAsync(CreateString.createArchivedRenting);
 
-                await this.ExecuteAsync(IndexString.area);
-                await this.ExecuteAsync(IndexString.bookingdates);
-                await this.ExecuteAsync(IndexString.employeesInHotel);
-                await this.ExecuteAsync(IndexString.roomcapacity);
+                // 3. Create Programmability Objects
+                await ExecuteAsync(TriggerString.bookingconflict);
+                await ExecuteAsync(TriggerString.deletebooking);
+                await ExecuteAsync(TriggerString.rentingconflict);
 
-                await this.ExecuteAsync(ViewString.RoomNum);
-                await this.ExecuteAsync(ViewString.RoomNumCity);
+                await ExecuteAsync(IndexString.area);
+                await ExecuteAsync(IndexString.bookingdates);
+                await ExecuteAsync(IndexString.employeesInHotel);
+                await ExecuteAsync(IndexString.roomcapacity);
 
-                await this.ExecuteAsync(@"
-                    DROP TABLE IF EXISTS CUSTOMER CASCADE;");
+                await ExecuteAsync(ViewString.RoomNum);
+                await ExecuteAsync(ViewString.RoomNumCity);
 
-
-
-           
-                foreach (var chain in hotelChains)
+                // 4. Data Insertion
+                foreach (var chain in hotelChains ?? new())
                 {
-                    await this.ExecuteAsync(@"
-                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country,City)
-                        VALUES (0, 'Unknown', @ChainPostalCode, 'Unknown', 'Unknown','Unknown')
-                        ON CONFLICT (PostalCode) DO NOTHING;",
-                        new { chain.ChainPostalCode });
+                    await ExecuteAsync(@"
+                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country, City)
+                        VALUES (0, 'Unknown', @ChainPostalCode, 'Unknown', 'Unknown', 'Unknown')
+                        ON CONFLICT (PostalCode) DO NOTHING;", new { chain.ChainPostalCode });
 
-                    await this.ExecuteAsync(@"
-                        INSERT INTO HotelChain (ChainID, ChainName, PostalCode)
-                        VALUES (@ChainID, @ChainName, @PostalCode)
-                        ON CONFLICT (ChainID) DO NOTHING;",
-                        new { chain.ChainID, chain.ChainName, chain.ChainPostalCode });
+                    await ExecuteAsync(@"
+                        INSERT INTO HotelChain (ChainID, ChainName, ChainPostalCode)
+                        VALUES (@ChainID, @ChainName, @ChainPostalCode)
+                        ON CONFLICT (ChainID) DO NOTHING;", new { chain.ChainID, chain.ChainName, chain.ChainPostalCode });
                 }
 
-
-                foreach (var acc in accounts)
+                foreach (var acc in accounts ?? new())
                 {
-                    await this.ExecuteAsync(@"
+                    await ExecuteAsync(@"
                         INSERT INTO Account (Email, Username, Password)
                         VALUES (@Email, @Username, @Password)
-                        ON CONFLICT (Email) DO NOTHING;",
-                        new { acc.Email, acc.Username, acc.Password });
+                        ON CONFLICT (Email) DO NOTHING;", new { acc.Email, acc.Username, acc.Password });
                 }
 
-                foreach (var hotel in hotels)
+                foreach (var hotel in hotels ?? new())
                 {
-                    await this.ExecuteAsync(@"
-                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country,City)
-                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown','Unknown')
-                        ON CONFLICT (PostalCode) DO NOTHING;",
-                        new { hotel.PostalCode });
+                    await ExecuteAsync(@"
+                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country, City)
+                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown', 'Unknown')
+                        ON CONFLICT (PostalCode) DO NOTHING;", new { hotel.PostalCode });
 
-                    await this.ExecuteAsync(@"
+                    await ExecuteAsync(@"
                         INSERT INTO Hotel (HotelID, ChainID, Name, PostalCode, Stars, Manager, Description)
                         VALUES (@HotelID, @ChainID, @Name, @PostalCode, @Stars, NULL, @Description)
-                        ON CONFLICT (HotelID) DO NOTHING;",
-                        new { hotel.HotelID, hotel.ChainID, hotel.Name, hotel.PostalCode, hotel.Stars, hotel.Description });
+                        ON CONFLICT (HotelID) DO NOTHING;", new { hotel.HotelID, hotel.ChainID, hotel.Name, hotel.PostalCode, hotel.Stars, hotel.Description });
                 }
 
-                foreach (var emp in employees)
+                foreach (var emp in employees ?? new())
                 {
-                    await this.ExecuteAsync(@"
-                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country,City)
-                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown','Unknown')
-                        ON CONFLICT (PostalCode) DO NOTHING;",
-                        new { emp.PostalCode });
+                    await ExecuteAsync(@"
+                        INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country, City)
+                        VALUES (0, 'Unknown', @PostalCode, 'Unknown', 'Unknown', 'Unknown')
+                        ON CONFLICT (PostalCode) DO NOTHING;", new { emp.PostalCode });
 
-                    await this.ExecuteAsync(@"
+                    await ExecuteAsync(@"
                         INSERT INTO Employee (SSN, FirstName, LastName, PostalCode, Position, HotelID, Email)
                         VALUES (@SSN, @FirstName, @LastName, @PostalCode, @Position, @HotelID, @Email)
-                        ON CONFLICT (SSN) DO NOTHING;",
-                        new { emp.SSN, emp.FirstName, emp.LastName, emp.PostalCode, emp.Position, emp.HotelID, emp.Email });
+                        ON CONFLICT (SSN) DO NOTHING;", new { emp.SSN, emp.FirstName, emp.LastName, emp.PostalCode, emp.Position, emp.HotelID, emp.Email });
                 }
 
-                foreach (var room in rooms)
+                foreach (var room in rooms ?? new())
                 {
-                    await this.ExecuteAsync(@"
+                    await ExecuteAsync(@"
                         INSERT INTO Room (RoomNumber, HotelID, Price, Capacity, View, Extendable)
                         VALUES (@RoomNumber, @HotelID, @Price, @Capacity, @View, @Extendable)
-                        ON CONFLICT (RoomNumber, HotelID) DO NOTHING;",
-                        new { room.RoomNumber, room.HotelID, room.Price, room.Capacity, room.View, room.Extendable });
+                        ON CONFLICT (RoomNumber, HotelID) DO NOTHING;", new { room.RoomNumber, room.HotelID, room.Price, room.Capacity, room.View, room.Extendable });
                 }
 
-                await this.ExecuteAsync(@"
+                // 5. Finalize Relationships (Circular dependencies)
+                await ExecuteAsync(@"
                     ALTER TABLE Hotel DROP CONSTRAINT IF EXISTS fk_hotel_manager;
                     ALTER TABLE Hotel ADD CONSTRAINT fk_hotel_manager FOREIGN KEY (Manager) REFERENCES Employee(SSN);
                     ALTER TABLE Employee DROP CONSTRAINT IF EXISTS fk_employee_hotel;
                     ALTER TABLE Employee ADD CONSTRAINT fk_employee_hotel FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID);");
 
-                foreach (var hotel in hotels)
+                foreach (var hotel in hotels ?? new())
                 {
-                    await this.ExecuteAsync(@"
-                        UPDATE Hotel SET Manager = @Manager WHERE HotelID = @HotelID;",
-                        new { hotel.Manager, hotel.HotelID });
+                    if (!string.IsNullOrEmpty(hotel.Manager))
+                    {
+                        await ExecuteAsync(@"UPDATE Hotel SET Manager = @Manager WHERE HotelID = @HotelID;", 
+                            new { hotel.Manager, hotel.HotelID });
+                    }
                 }
-                await this.ExecuteAsync(@"
-                ALTER TABLE Booking
-                ADD CONSTRAINT chk_date CHECK(StartDate <= EndDate)
-                ");
-
-                await this.ExecuteAsync(@"
-                ALTER TABLE Renting
-                ADD CONSTRAINT chk_date CHECK(StartDate <= EndDate)
-                ");
 
                 return true;
             }, _logger);
         }
 
-
         public async Task<bool> GetColumnsAndTypes()
         {
             return await Utils.TryExecuteAsync<bool, DBContext>(async () =>
             {
-                TableColumnsAndTypes.Hotel = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotel);
-                TableColumnsAndTypes.HotelChain = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChain);
-                TableColumnsAndTypes.Address = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetAddress);
-                TableColumnsAndTypes.HotelEmail = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelEmail);
-                TableColumnsAndTypes.HotelPhone = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelPhone);
-                TableColumnsAndTypes.HotelChainEmail = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChainEmail);
-                TableColumnsAndTypes.HotelChainPhone = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChainPhone);
-                TableColumnsAndTypes.HotelImage = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelImage);
-                TableColumnsAndTypes.Account = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetAccount);
-                TableColumnsAndTypes.Employee = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetEmployee);
-                TableColumnsAndTypes.Room = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRoom);
-                TableColumnsAndTypes.RoomProblem = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRoomProblem);
-                TableColumnsAndTypes.RoomAmenity = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRoomAmenity);
-                TableColumnsAndTypes.Booking = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetBooking);
-                TableColumnsAndTypes.Customer = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetCustomer);
-                TableColumnsAndTypes.Renting = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRenting);
-                TableColumnsAndTypes.Review = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetReview);
+                TableColumnsAndTypes.Hotel = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetHotel);
+                TableColumnsAndTypes.HotelChain = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetHotelChain);
+                TableColumnsAndTypes.Address = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetAddress);
+                TableColumnsAndTypes.HotelEmail = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetHotelEmail);
+                TableColumnsAndTypes.HotelPhone = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetHotelPhone);
+                TableColumnsAndTypes.HotelChainEmail = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetHotelChainEmail);
+                TableColumnsAndTypes.HotelChainPhone = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetHotelChainPhone);
+                TableColumnsAndTypes.HotelImage = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetHotelImage);
+                TableColumnsAndTypes.Account = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetAccount);
+                TableColumnsAndTypes.Employee = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetEmployee);
+                TableColumnsAndTypes.Room = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetRoom);
+                TableColumnsAndTypes.RoomProblem = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetRoomProblem);
+                TableColumnsAndTypes.RoomAmenity = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetRoomAmenity);
+                TableColumnsAndTypes.Booking = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetBooking);
+                TableColumnsAndTypes.Customer = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetCustomer);
+                TableColumnsAndTypes.Renting = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetRenting);
+                TableColumnsAndTypes.Review = await Utils.MapSchemaToDictionary(this, ColumnsAndTypes.GetReview);
                 return true;
             }, _logger);
         }

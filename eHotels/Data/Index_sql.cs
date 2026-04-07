@@ -8,7 +8,7 @@ namespace Data
 
         public static readonly string roomcapacity = @"CREATE INDEX roomCapacity on Room(Capacity)";
 
-        public static readonly string bookingdates = @"CREATE INDEX bookingDates ON Booking(HotelID, RoomNumber, StartDate, EndDate";
+        public static readonly string bookingdates = @"CREATE INDEX bookingDates ON Booking(HotelID, RoomNumber, StartDate, EndDate)";
 
     }
 
