@@ -121,9 +121,9 @@ namespace Data
                     );";
 
         public static readonly string createBooking = @"CREATE TABLE IF NOT EXISTS Booking(
-                    BookingID INT NOT NULL CHECK (BookingID >= 0) PRIMARY KEY,
+                    BookingID INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
                     BookingDate DATE NOT NULL,
-                    Status VARCHAR(20) NOT NULL CHECK(Status IN ('Cancelled', 'Scheduled', 'Occupied')),
+                    Status VARCHAR(20) NOT NULL CHECK(Status IN ('Cancelled', 'Scheduled')),
                     StartDate DATE NOT NULL,
                     EndDate DATE NOT NULL,
                     RoomNumber INT NOT NULL,
@@ -151,7 +151,7 @@ namespace Data
 
 
         public static readonly string createRenting = @"CREATE TABLE IF NOT EXISTS Renting(
-                    RentingID INT CHECK(RentingID >=0) PRIMARY KEY,
+                    RentingID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
                     Status VARCHAR(20) NOT NULL CHECK(Status IN ('Occupied', 'Cancelled', 'Finished')),
                     StartDate DATE NOT NULL,
                     EndDate DATE NOT NULL,
