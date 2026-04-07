@@ -47,7 +47,7 @@ public class HomeController : Controller
 
     public IActionResult Manage()
     {
-        string[] allTables = new string[] {"Account", "Address", "Archived Booking", "Archived Renting", "Booking", "Customer",
+        string[] allTables = new string[] {"Account", "Address", "Archived Booking", "Archived Renting", "Booking",
             "Customer", "Employee", "Hotel", "Hotel Chain Email", "Hotel Chain Phone", "Hotel Email", "Hotel Phone",
             "Renting", "Review", "Room", "Room Amenity", "Room Problem"};
         
@@ -67,11 +67,26 @@ public class HomeController : Controller
         return Json(new {rows});
     }
 
-    public IActionResult DeleteRow(string tableName, string primaryKeys)
+    public async Task<IActionResult> DeleteRow(string tableName, string primaryKeys)
     {
         Console.Write("RECIVED KEYS: ");
-        var keys = JsonArray.Parse(primaryKeys);
-        
+        Console.WriteLine(JsonNode.Parse(primaryKeys));
+        var keys = JsonNode.Parse(primaryKeys).AsObject();
+
+        string deleteQuery = "DELETE FROM " + tableName + " WHERE ";
+
+        foreach (var k in keys)
+        {
+            deleteQuery += k.Key + " = '" + k.Value + "' AND ";
+        }
+
+        deleteQuery = deleteQuery.Remove(deleteQuery.Length - 4) + ";";
+
+        Console.WriteLine(deleteQuery);
+
+        await _db.ExecuteAsync(
+                @deleteQuery
+            );
 
         return Json(new{success=true});
     }
