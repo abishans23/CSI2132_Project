@@ -84,6 +84,83 @@ public class HomeController : Controller
         return Json(JSONData);
     }
 
+    public Dictionary<String, String> convertToDict(string tableName)
+    {
+        switch (tableName)
+        {
+            case "Hotel":
+                return TableColumnsAndTypes.Hotel;
+                break;
+            
+            case "HotelChain":
+                return TableColumnsAndTypes.HotelChain;
+                break;
+
+            case "Address":
+                return TableColumnsAndTypes.Address;
+                break;
+
+            case "HotelEmail":
+                return TableColumnsAndTypes.HotelEmail;
+                break;
+
+            case "HotelPhone":
+                return TableColumnsAndTypes.HotelPhone;
+                break;
+
+            case "HotelChainEmail":
+                return TableColumnsAndTypes.HotelChainEmail;
+                break;
+
+            case "HotelChainPhone":
+                return TableColumnsAndTypes.HotelChainPhone;
+                break;
+
+            case "HotelImage":
+                return TableColumnsAndTypes.HotelImage;
+                break;
+
+            case "Account":
+                return TableColumnsAndTypes.Account;
+                break;
+
+            case "Employee":
+                return TableColumnsAndTypes.Employee;
+                break;
+
+            case "Room":
+                return TableColumnsAndTypes.Room;
+                break;
+
+            case "RoomProblem":
+                return TableColumnsAndTypes.RoomProblem;
+                break;
+
+            case "RoomAmenity":
+                return TableColumnsAndTypes.RoomAmenity;
+                break;
+
+            case "Booking":
+                return TableColumnsAndTypes.Booking;
+                break;
+
+            case "Customer":
+                return TableColumnsAndTypes.Customer;
+                break;
+
+            case "Renting":
+                return TableColumnsAndTypes.Renting;
+                break;
+
+            case "Review":
+                return TableColumnsAndTypes.Review;
+                break;
+        }
+
+        return null;
+    }
+
+
     public async Task<IActionResult> DeleteRow(string tableName, string primaryKeys)
     {
         Console.Write("RECIVED KEYS: ");
