@@ -68,6 +68,7 @@ public class HomeController : Controller
     {
         Console.Write("RECIVED KEYS: ");
         Console.WriteLine(JsonNode.Parse(primaryKeys));
+        //construct dynamic delete query given table name and primary key values
         var keys = JsonNode.Parse(primaryKeys).AsObject();
 
         string deleteQuery = "DELETE FROM " + tableName + " WHERE ";
