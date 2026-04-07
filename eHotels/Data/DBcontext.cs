@@ -102,67 +102,46 @@ namespace Data
                 //   await this.ExecuteAsync(@"
                 //           DROP TABLE IF EXISTS Renting,  CASCADE;");
 
-            //     await this.ExecuteAsync(CreateString.createAddress);
-            //     await this.ExecuteAsync(CreateString.createAccount);
-            //     await this.ExecuteAsync(CreateString.createHotelChain);
-            //     await this.ExecuteAsync(CreateString.createHotel);
-            //     await this.ExecuteAsync(CreateString.createEmployee);
-            //     await this.ExecuteAsync(CreateString.createRoom);
-             //    await this.ExecuteAsync(CreateString.createBooking);
-           //      await this.ExecuteAsync(CreateString.createRenting);
-            //     await this.ExecuteAsync(CreateString.createCustomer);
-            //     await this.ExecuteAsync(CreateString.createHotelEmail);
-            //     await this.ExecuteAsync(CreateString.createHotelPhone);
-            //     await this.ExecuteAsync(CreateString.createHotelChainEmail);
-            //     await this.ExecuteAsync(CreateString.createHotelChainPhone);
-            //     await this.ExecuteAsync(CreateString.createHotelImage);
-            //     await this.ExecuteAsync(CreateString.createHotelAmenity);
-            //     await this.ExecuteAsync(CreateString.createReview);
-            //     await this.ExecuteAsync(CreateString.createRoomProblem);
-            //     await this.ExecuteAsync(CreateString.createRoomAmenity);
-            //     await this.ExecuteAsync(CreateString.createRoomBooking);
-            //     await this.ExecuteAsync(CreateString.createRentedRoom);
-            //     await this.ExecuteAsync(CreateString.createCustBooking);
-            //     await this.ExecuteAsync(CreateString.createRentingTenant);
-            //       await this.ExecuteAsync(CreateString.createArchivedBooking);
-             //      await this.ExecuteAsync(CreateString.createArchivedRenting);
-                //     await this.ExecuteAsync(CreateString.createAddress);
-                //     await this.ExecuteAsync(CreateString.createAccount);
-                //     await this.ExecuteAsync(CreateString.createHotelChain);
-                //     await this.ExecuteAsync(CreateString.createHotel);
-                //     await this.ExecuteAsync(CreateString.createEmployee);
-                //     await this.ExecuteAsync(CreateString.createRoom);
-                //    await this.ExecuteAsync(CreateString.createBooking);
-                //      await this.ExecuteAsync(CreateString.createRenting);
-                //     await this.ExecuteAsync(CreateString.createCustomer);
-                //     await this.ExecuteAsync(CreateString.createHotelEmail);
-                //     await this.ExecuteAsync(CreateString.createHotelPhone);
-                //     await this.ExecuteAsync(CreateString.createHotelChainEmail);
-                //     await this.ExecuteAsync(CreateString.createHotelChainPhone);
-                //     await this.ExecuteAsync(CreateString.createHotelImage);
-                //     await this.ExecuteAsync(CreateString.createHotelAmenity);
-                //     await this.ExecuteAsync(CreateString.createReview);
-                //     await this.ExecuteAsync(CreateString.createRoomProblem);
-                //     await this.ExecuteAsync(CreateString.createRoomAmenity);
-                //     await this.ExecuteAsync(CreateString.createRoomBooking);
-                //     await this.ExecuteAsync(CreateString.createRentedRoom);
-                //     await this.ExecuteAsync(CreateString.createCustBooking);
-                //     await this.ExecuteAsync(CreateString.createRentingTenant);
+                await this.ExecuteAsync(CreateString.createAddress);
+                await this.ExecuteAsync(CreateString.createAccount);
+                await this.ExecuteAsync(CreateString.createHotelChain);
+                await this.ExecuteAsync(CreateString.createHotel);
+                await this.ExecuteAsync(CreateString.createEmployee);
+                await this.ExecuteAsync(CreateString.createRoom);
+                await this.ExecuteAsync(CreateString.createBooking);
+                await this.ExecuteAsync(CreateString.createRenting);
+                await this.ExecuteAsync(CreateString.createCustomer);
+                await this.ExecuteAsync(CreateString.createHotelEmail);
+                await this.ExecuteAsync(CreateString.createHotelPhone);
+                await this.ExecuteAsync(CreateString.createHotelChainEmail);
+                await this.ExecuteAsync(CreateString.createHotelChainPhone);
+                await this.ExecuteAsync(CreateString.createHotelImage);
+                await this.ExecuteAsync(CreateString.createReview);
+                await this.ExecuteAsync(CreateString.createRoomProblem);
+                await this.ExecuteAsync(CreateString.createRoomAmenity);
+
+                  await this.ExecuteAsync(CreateString.createArchivedBooking);
+                  await this.ExecuteAsync(CreateString.createArchivedRenting);
+   
+            
+
                 
-                // await this.ExecuteAsync(TriggerString.bookingconflict);
-                // await this.ExecuteAsync(TriggerString.deletebooking);
-                // await this.ExecuteAsync(TriggerString.rentingconflict);
+                await this.ExecuteAsync(TriggerString.bookingconflict);
+                await this.ExecuteAsync(TriggerString.deletebooking);
+                await this.ExecuteAsync(TriggerString.rentingconflict);
 
-                // await this.ExecuteAsync(IndexString.area);
-                // await this.ExecuteAsync(IndexString.bookingdates);
-                // await this.ExecuteAsync(IndexString.employeesInHotel);
-                // await this.ExecuteAsync(IndexString.roomcapacity);
+                await this.ExecuteAsync(IndexString.area);
+                await this.ExecuteAsync(IndexString.bookingdates);
+                await this.ExecuteAsync(IndexString.employeesInHotel);
+                await this.ExecuteAsync(IndexString.roomcapacity);
 
-                // await this.ExecuteAsync(ViewString.RoomNum);
-                // await this.ExecuteAsync(ViewString.RoomNumCity);
+                await this.ExecuteAsync(ViewString.RoomNum);
+                await this.ExecuteAsync(ViewString.RoomNumCity);
 
                 // await this.ExecuteAsync(@"
                 //     DROP TABLE IF EXISTS CUSTOMER CASCADE;");
+
+
 
            
                 // foreach (var chain in hotelChains)
@@ -170,7 +149,7 @@ namespace Data
                 //     await this.ExecuteAsync(@"
                 //         INSERT INTO Address (StreetNum, StreetName, PostalCode, Province, Country)
                 //         VALUES (0, 'Unknown', @ChainPostalCode, 'Unknown', 'Unknown')
-                //         ON CONFLICT (ChainPostalCode) DO NOTHING;",
+                //         ON CONFLICT (PostalCode) DO NOTHING;",
                 //         new { chain.ChainPostalCode });
 
                 //     await this.ExecuteAsync(@"
@@ -282,7 +261,6 @@ namespace Data
                 TableColumnsAndTypes.HotelChainEmail = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChainEmail);
                 TableColumnsAndTypes.HotelChainPhone = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelChainPhone);
                 TableColumnsAndTypes.HotelImage = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelImage);
-                TableColumnsAndTypes.HotelAmenity = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetHotelAmenity);
                 TableColumnsAndTypes.Account = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetAccount);
                 TableColumnsAndTypes.Employee = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetEmployee);
                 TableColumnsAndTypes.Room = await Utils.MapSchemaToDictionary(this,ColumnsAndTypes.GetRoom);
