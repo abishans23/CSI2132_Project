@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <button id="add-db-item" class="submit-button">Add</button>
+            <button id="add-db-item" class="submit-button"></button>
         </div>
 
     </div>
@@ -113,8 +113,6 @@
             let values = editFormListHolder.getElementsByClassName("input-holder");
             let JSONData = {};
 
-            editFormSumbitButton.innerHTML = "add";
-
             for (let inp = 0; inp < values.length; inp++){
                 let inpName = values[inp].querySelector(".input-name").innerHTML;
                 let inpValue = values[inp].querySelector(".input").value;
@@ -139,6 +137,8 @@
                 editFormListHolder.innerHTML = '';
                 editItemFormTitle.innerHTML = "Add " + name;
                 editItemForm.style.display = "block";
+
+                editFormSumbitButton.innerHTML = "Add";
 
                 editItemForm.setAttribute("schema-name", schemaName);
 
