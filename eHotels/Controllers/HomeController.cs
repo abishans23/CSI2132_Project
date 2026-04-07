@@ -44,7 +44,7 @@ public class HomeController : Controller
 
     public IActionResult Manage()
     {
-        string[] allTables = new string[] {"Account", "Address", "Archived Booking", "Archived Renting", "Booking", "Customer",
+        string[] allTables = new string[] {"Account", "Address", "Archived Booking", "Archived Renting", "Booking",
             "Customer", "Employee", "Hotel", "Hotel Chain Email", "Hotel Chain Phone", "Hotel Email", "Hotel Phone",
             "Renting", "Review", "Room", "Room Amenity", "Room Problem"};
         
@@ -67,7 +67,10 @@ public class HomeController : Controller
     public IActionResult DeleteRow(string tableName, string primaryKeys)
     {
         Console.Write("RECIVED KEYS: ");
-        var keys = JsonArray.Parse(primaryKeys);
+        var keys = JsonNode.Parse(primaryKeys).AsArray().Select(x => x.GetValue<string>());
+
+        Console.WriteLine(Utils.BuildDelete(tableName, keys));
+
         
 
         return Json(new{success=true});
