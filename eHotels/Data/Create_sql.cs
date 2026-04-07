@@ -130,6 +130,7 @@ namespace Data
                     HotelID INT NOT NULL,
                     IDType VARCHAR(30) NOT NULL,
                     IDNumber VARCHAR(30) NOT NULL,
+                    CHECK (StartDate <= EndDate),
                     FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID) ON DELETE CASCADE,
                     FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber) ON DELETE CASCADE
                     );";
@@ -145,7 +146,7 @@ namespace Data
                     PostalCode VARCHAR(6) NOT NULL,
                     Email VARCHAR(30) UNIQUE CHECK(Email LIKE '%@%' AND Email LIKE '%.%'),
                     PRIMARY KEY (IDType, IDNumber),
-                    FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode)
+                    FOREIGN KEY (PostalCode) REFERENCES Address(PostalCode) ON DELETE CASCADE
                     );";
 
 
@@ -162,6 +163,7 @@ namespace Data
                     HotelID INT NOT NULL,
                     IDType VARCHAR(30) NOT NULL,
                     IDNumber VARCHAR(30) NOT NULL,
+                    CHECK (StartDate <= EndDate),
                     FOREIGN KEY(RoomNumber, HotelID) REFERENCES Room(RoomNUmber, HotelID) ON DELETE CASCADE,
                     FOREIGN KEY(IDType, IDNumber) REFERENCES Customer (IDType, IDNumber) ON DELETE CASCADE
                     );";
@@ -175,22 +177,22 @@ namespace Data
                     Date DATE,
                     Comments VARCHAR(200),
                     PRIMARY KEY(Email, HotelID),
-                    FOREIGN KEY (Email) REFERENCES Customer(Email),
-                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
+                    FOREIGN KEY (Email) REFERENCES Customer(Email) ON DELETE CASCADE,
+                    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID) ON DELETE CASCADE
                     );";
 
         public static readonly string createArchivedBooking = @"CREATE TABLE IF NOT EXISTS ArchivedBooking(
-	                ArchivedBookingID INT NOT NULL CHECK(ArchivedBookingID >=0) PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+	                ArchivedBookingID INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
                     HotelID INT CHECK(HotelID >=0),
                     BookingDate DATE,
-                    Status VARCHAR(20) NOT NULL CHECK(Status IN ('Cancelled', 'Scheduled', 'Occupied')),
+                    Status VARCHAR(20) NOT NULL CHECK(Status IN ('Cancelled', 'Scheduled')),
                     StartDate DATE,
                     EndDate DATE,
                     FOREIGN KEY(HotelID) REFERENCES Hotel ON DELETE CASCADE
                 );";
 
         public static readonly string createArchivedRenting = @"CREATE TABLE IF NOT EXISTS ArchivedRenting(
-                    ArchivedRentingID INT  CHECK(ArchivedRentingID >=0) PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    ArchivedRentingID INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
                     Status VARCHAR(20) NOT NULL CHECK(Status IN ('Occupied', 'Cancelled', 'Finished')),
                     HotelID INT CHECK(HotelID >=0),
                     StartDate DATE NOT NULL,
