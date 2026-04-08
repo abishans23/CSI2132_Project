@@ -111,9 +111,9 @@ namespace Data
                 // await ExecuteAsync(CreateString.createArchivedRenting);
 
                 // // 3. Create Programmability Objects
-                 await ExecuteAsync(TriggerString.bookingconflict);
+                // await ExecuteAsync(TriggerString.bookingconflict);
                 // await ExecuteAsync(TriggerString.deletebooking);
-                 await ExecuteAsync(TriggerString.rentingconflict);
+                // await ExecuteAsync(TriggerString.rentingconflict);
 
                 // await ExecuteAsync(IndexString.area);
                 // await ExecuteAsync(IndexString.bookingdates);
