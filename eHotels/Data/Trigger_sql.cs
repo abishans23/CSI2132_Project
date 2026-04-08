@@ -12,6 +12,7 @@ namespace Data
                             AND NEW.startDate <= endDate 
                             AND NEW.endDate >= startDate 
                             AND status = 'Scheduled'
+                            AND NOT (idtype = NEW.idtype AND idnumber = NEW.idnumber)
                         ) 
                         OR EXISTS (
                             SELECT 1 FROM Renting
@@ -48,6 +49,7 @@ namespace Data
                             AND NEW.startDate <= endDate 
                             AND NEW.endDate >= startDate 
                             AND status = 'Scheduled'
+                            AND NOT (idtype = NEW.idtype AND idnumber = NEW.idnumber)
                         ) 
                         OR EXISTS (
                             SELECT 1 FROM Renting
